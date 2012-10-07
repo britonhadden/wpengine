@@ -1,0 +1,41 @@
+/* 
+    User Style:
+    Change the following styles to modify the appearance of ColorBox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#cboxOverlay{background:#000;}
+#colorbox{}
+        .cboxIframe{background:#fff;}
+        #cboxError{padding:50px; border:1px solid #ccc;}
+        #cboxLoadedContent{border:5px solid #000; background:#fff;}
+        #cboxTitle,
+        #cboxCurrent {
+        	position:absolute; 
+        	bottom:10px;
+        	left:10px; 
+        	max-width: 50%;
+        	background:#000;
+        	color:#fff;
+        	opacity: 0.7;
+        	padding: 1px 5px;
+        	font: 13px/1.6em "Helvetica Neue", Arial, Helvetica, sans-serif;
+        	-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+        }
+        #cboxCurrent{ 
+        	left: auto; 
+        	right:10px; 
+        	padding-bottom: 0px;
+        }
+        #cboxTitle:hover { opacity: 1.0; }
+        #cboxTitle a { color: #ffd62c; }
+        #cboxSlideshow{position:absolute; top:-20px; right:90px; color:#fff;}
+        #cboxPrevious{position:absolute; top:50%; left:5px; margin-top:-32px; background:url(images/dark_controls.png) no-repeat top left; width:28px; height:65px; text-indent:-9999px;}
+        #cboxPrevious:hover{background-position:bottom left;}
+        #cboxNext{position:absolute; top:50%; right:5px; margin-top:-32px; background:url(images/dark_controls.png) no-repeat top right; width:28px; height:65px; text-indent:-9999px;}
+        #cboxNext:hover{background-position:bottom right;}
+        #cboxLoadingOverlay{background:#000;}
+        #cboxLoadingGraphic{background:url(images/dark_loading.gif) no-repeat center center;}
+        #cboxClose{position:absolute; top:5px; right:5px; display:block; background:url(images/dark_controls.png) no-repeat top center; width:38px; height:19px; text-indent:-9999px;}
+        #cboxClose:hover{background-position:bottom center;}

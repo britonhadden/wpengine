@@ -1,0 +1,22 @@
+*** Showcase WordPress Plugin Changelog ***
+
+2012.08.13 - version 1.3
+ * [New] Ability to choose "WordPress Gallery" as an image source
+ * [New] Automatic updates
+ * [New] Added "Image Slider Only" layout option
+ * [New] showcase() template tag
+ * [New] Thumbnail captions option
+ * [New] Added filters and hooks
+ * [Changed] Updated FlexSlider to v1.8
+ * [Changed] Can now change lightbox config for custom setup
+ * [Fixed] Support for multiple galleries
+
+2012.03.09 - version 1.2
+ * [Fixed] The DIRECTORY_SEPARATOR bug
+ * [Fixed] The missing slash in image URL bug
+ 
+2012.03.01 - version 1.1
+ * [Fixed] The double slash in image URL bug
+
+2012.02.23 - version 1.0
+ * Initial release
