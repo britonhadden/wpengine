@@ -92,6 +92,6 @@ watch:
 	watchr -e "watch('less/.*\.less') { system 'make ydn' }"
 
 ydn:
-	recess --compile ./less/ydn.less > bootstrap/css/ydn.css
+	recess --compile ./less/ydn.less > ../css/ydn.css
 
 .PHONY: docs watch gh-pages
