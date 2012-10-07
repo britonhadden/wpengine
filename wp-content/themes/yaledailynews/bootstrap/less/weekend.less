@@ -1,0 +1,357 @@
+
+#weekend {
+  @linkGray: #929396;
+ //this pushes the entire layout inside of 960px viewport we use with this grid
+  margin-left: 20px;
+  //create the right edge of the layout, which the header slides on
+  .box-shadow(-20px 0 10px -10px #E3E3E3);
+  padding: 20px 0;
+
+  .clearfix();
+
+  //when the WEEKEND header is on there, the primary column has to shrink slightly
+  #primary {
+    .makeColumn(15);
+  }
+
+  .header {
+    @navHeight: 65px;
+    @navTopPadding: 11px;
+    //the outermost div must have both width and height set
+    //otherwise, the lenght of the page will change when .wrapper gets fixed to the top of the page
+    width: @gridRowWidth;
+    height: @navHeight + @navTopPadding;
+    margin-bottom: 30px;
+    //these styles allow .wrapper's background to cover #weekend's dropshadow
+    position: relative;
+    margin-left: -24px;
+
+    .wrapper {
+      height: 65px;
+      padding-top: @navTopPadding;
+      background: transparent url("@{asset_path}weekend/header_fold.png") 0 1px no-repeat;
+
+      //these styles are necessary when the .wrapper element has a fixed position at the top of the page
+      width: @gridRowWidth;
+      top: 0;
+      z-index: 500;
+    }
+
+    .content {
+      //this is the actual bar where content sits
+      height: @navHeight;
+      background-color: black;
+      padding-left: 35px;
+    }
+
+    #weekend-logo {
+      .hide-text();
+      background: transparent url("@{asset_path}weekend/logo.gif") 0 0 no-repeat;
+      height: 100%;
+      width: 170px;
+      float: left;
+    }
+
+    .menu-weekend-container {
+      float:left;
+      margin-left:10px;
+    }
+
+    .weekend-nav {
+      //since we're not using the .navbar structure from bootstrap,
+      //we have to make the nav elements inline ourselves
+      //and handle vertical centering with the line-height trick
+      list-style: none;
+      font-family: @sansFontFamily;
+      text-transform: uppercase;
+      margin-left: 0px;
+
+      > li {
+        line-height: @navHeight;
+        display: inline-block;
+        .ie7-inline-block();
+        padding-left: 10px;
+      }
+
+
+      .caret {
+        display: none;
+      }
+
+
+      //override bootstrap styling of the links so that their background color stays black
+      //and that the font is white rather than blue
+
+      a {
+        color: @linkGray;
+
+        &:hover {
+          color: @white;
+          background-color: inherit;
+          text-decoration: underline;
+        }
+
+        &.active {
+          color: @white;
+          background-color: black;
+        }
+      }
+
+      //override some bootstrap styles to make it look like WEEKEND
+      .dropdown-menu {
+        .border-radius(0);
+        background-color: black;
+        border: none;
+      }
+    } //end nav styles
+
+  } //end header styles
+
+  @thickBorderWidth: 10px; //this is the size of the thick border on each popout
+  @thinBorderWidth: 1px; //this is the size of the border around everything; it will actually be doubled due to boxes touching
+
+  .blocks {
+    //center the whole layout
+    margin: auto auto;
+    //the width isn't actually one that comes with the grid because there's no gutter between the blocks
+    width: (@gridColumnWidth * 21) + (@gridGutterWidth  * (21 - 2) );
+    .clearfix();
+    //set the background color to match the borders in case any gaps come up
+    background-color: black;
+
+    //these right/bottom borders are necessary because the thin borders of the boxes 
+    //get cut off on their right/bottom edges.  In some palces, the next box's edge
+    //solves the problem.  However, along the right/bottom of .blocks, there's no
+    //other box. Thus, we add the border to the container itself
+    border-color: black;
+    border-width: 0 @thinBorderWidth @thinBorderWidth 0;
+    border-style: solid;
+
+  }
+
+  //default block styles
+  .block {
+
+
+    //the positive padding & negative margin combination makes the "overflow:hidden"
+    //directive have no effect on the top and left sides of the box. this allows
+    //the popout effect to exceed the boundaries of the container as expected
+    //without changing the position of the box
+    padding: 20px 0 0 20px;
+    margin: -20px 0 0 -20px;
+
+    float: left;
+    overflow: hidden;
+
+    //z-index trick necessary for overflow hidden in IE7
+    position: relative;
+    z-index: 10;
+
+
+    //the edges are actually made from black & transparent borders
+    //browsers render borders at 45 degree angles, so by using only one side, 
+    //it's possible to generate the popout effect without image backgrounds
+    .edge {
+      border-width: @thickBorderWidth; 
+      border-style: solid;
+      position:absolute;
+      height: 0;
+      width: 0;
+    }
+
+    .right.edge {
+      border-color: transparent transparent transparent black;
+      border-right-width: 0px;
+      right:0;
+    }
+
+    .bottom.edge {
+      border-color: black transparent transparent transparent;
+      border-bottom-width: 0;
+      bottom:0;
+    }
+
+    .wrapper {
+      position: relative;
+      //z-index trick necessary for overflow hidden in IE7
+      z-index:9;
+    }
+
+    //if the pop-out class is applied to the block, the thick borders will be hidden by 
+    //default and will be exposed on hover
+    &.pop-out .wrapper {
+      .transition( all 0.2s );
+    }
+
+    &.pop-out:hover .wrapper {
+      margin-left: -@thickBorderWidth;
+      margin-top: -@thickBorderWidth;
+      .transition( all 0.2s);
+    }
+
+    .content {
+      background-color: white;
+      border: 1px solid black;
+    }
+
+    .entry-meta {
+      font-family: @sansFontFamily;
+      color: black;
+
+      a {
+        color: black;
+      }
+    }
+
+    .entry-category {
+      text-transform: uppercase;
+    }
+ 
+    //if there's no featured image, a div will get rendered instead.
+    //this background image just has some black/white lines to add visual interest
+    //even when there's not a photo
+    .no-image {
+      background-image: url("@{asset_path}weekend/no-image-background.jpg");
+    }
+
+    //some offsets to make the no-image backgrounds look random even though they aren't
+    &:nth-child(5n).small .no-image {
+      background-position: 200 500px;
+    }
+
+    &:nth-child(3n).small .no-image {
+      background-position: 0 300px;
+    }
+
+    &:nth-child(2n).small .no-image {
+      background-position: 300px 300px;
+    }
+   
+
+  }
+
+  //this mixin generates the styles for a block that spans @colSpan columns
+  //and is @height tall.  It will be used to generate the different sized boxes on
+  //the homepage and then will also be used for accent elements throughout the site
+  .block-gen(@colSpan,@height,@padding,@imageHeight,@imageWidth: 100%){
+    //@colSpan & @height dictate the absolute width and height
+    //padding will be set such that these are the outside sizes
+    @width: (@gridColumnWidth * @colSpan) + (@gridGutterWidth * (@colSpan - 1));
+
+    .right.edge {
+      height: @height + @thickBorderWidth;
+    }
+
+    .bottom.edge {
+      width: @width + @thickBorderWidth;
+    }
+
+    .content {
+      width: @width;
+      height: @height;
+
+      //the article/div inside content is there so that the browser will handler border, padding, etc
+      //and will get all of these features add up to the appropriate outerWidth
+      > article,
+      > div  {
+        padding: @padding;
+      }
+    }
+
+    .wrapper {
+      height: @height + @thickBorderWidth;
+      width: @width + @thickBorderWidth;
+    }
+
+    width: @width + @thickBorderWidth;
+    height: @height + @thickBorderWidth;
+
+    //if the pop-out class is applied to the block, the thick borders will be hidden by 
+    //default and will be exposed on hover. consequently, we must shrink the box to hide the
+    //borders
+    &.pop-out {
+      width: @width; 
+      height: @height;
+    }
+
+    .no-image {
+      height: @imageHeight;
+      width: @imageWidth;
+    }
+  }
+  
+  
+  .block.big {
+    .block-gen(14,490px,10px,396px);
+  }
+
+  .block.small {
+    .block-gen(7,245px,10px,150px);
+  }
+
+  .block.medium {
+    .block-gen(14,245px,10px,225px,320px);
+  }
+
+  //these two sizes have images on top of metadata, so put a margin bottom on the image
+  .block.big .entry-image,
+  .block.small .entry-image {
+    margin-bottom: 10px;
+  }
+
+  //this size has images next to entry-meta
+  .block.medium {
+    .entry-image {
+      float: left;
+      margin-right: 10px;
+    }
+
+    .entry-meta {
+      float: left;
+      clear: none;
+    }
+  }
+  
+  //these are wrappers used to keep the blocks in the correct order
+  .block-group {
+    float: left;
+
+    &.big {
+      width: (@gridColumnWidth * 14) + (@gridGutterWidth * (14 - 1)); //this is bad. the 14 here must match the size of big above
+    }
+
+    &.small {
+      width:  (@gridColumnWidth * 7) + (@gridGutterWidth * (7 - 1)); // bad for same reason as above; should be refactored into variables
+    }
+  }
+
+
+  //WEEKEND single story styles (mostly to override colors & hide some elements)
+  .entry-header .entry-meta {
+    display: none; //authors & pub date will be shown in another box
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: black;
+    font-family: @sansFontFamily;
+  }
+
+  a {
+    color: @linkGray;
+
+    &:hover {
+      color: darken(@linkGray,15%);
+    }
+  }
+
+}
+
+body.category #weekend .blocks {
+    //on the category pages, the blocks container has to shrink. since there are three columns
+    //of stories, we subtract three gutters
+    width: (@gridColumnWidth * 21) + (@gridGutterWidth  * (21 - 3) );
+}
+
+
+
+

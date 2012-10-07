@@ -1,0 +1,365 @@
+@import "bootstrap.less";
+@asset_path: "http://localhost/wp-content/themes/ydnxc/img/";
+
+//Change the button coloring so that we get brown instead of bootstrap's default gray
+.btn:hover {
+  color: @grayDark;
+  background-color: darken(@xcLightTan, 10%);
+  *background-color: darken(@xcLightTan, 15%); /* Buttons in IE7 don't get borders, so darken on hover */
+}
+
+//Set the default sizes on the content areas
+@xcTopPadding: 40px;
+@xcMainSidePadding: 25px;
+@xcMainColSpan: 18;
+@xcSidebarSidePadding: 5px;
+@xcSidebarColSpan: 6;
+
+#primary {
+  .makeColumn(@xcMainColSpan);
+  background-color: @white;
+
+  #content {
+    padding: @xcTopPadding @xcMainSidePadding 0 @xcMainSidePadding;
+  }
+}
+
+#secondary {
+  .makeColumn(@xcSidebarColSpan);
+  background-color: @xcLightTan;
+
+  #sidebar {
+    padding: @xcTopPadding @xcSidebarSidePadding 0 @xcSidebarSidePadding;
+  }
+}
+
+//maintain the column backgrounds even when they're different heights
+#main {
+  background: transparent url("@{asset_path}cross_campus_bg.jpg") 0 0 repeat-y;
+}
+
+body {
+  background-color: @xcTan;
+}
+
+//Create the navs at the bottom and top of the page
+.top-bottom { 
+  background-color: @xcDarkTan;
+  font-family: @sansFontFamily;
+  line-height: 35px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  // the link lists are styled as UL's. setup the proper padding and draw a line to the right of them
+  ul {
+    list-style: none;
+    margin: 0;
+    li {
+      display: inline-block;
+      .ie7-inline-block();
+      margin-right: 5px;
+      padding-right: 5px;
+      border-right: 1px solid @xcTan;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+
+.top-bottom, .top-bottom a {
+  color: @xcLightTan;
+}
+
+//the top nav needs to create space below; the bottom nav needs to create space above
+@topBottomMargin: 35px;
+#top {
+  margin-bottom: @topBottomMargin;
+}
+
+#bottom {
+  margin-top: @topBottomMargin; 
+}
+
+
+//replace the link text with the cross campus logo.
+.site-title  {
+  .hide-text();
+  a {
+    background: transparent url("@{asset_path}cross_campus_logo.jpg") center 2px no-repeat; //the logo has a small white line on the bottom; use the y offset to hide it
+    #grid > .core > .span(18);
+    height: 70px;
+    display: block;
+  }
+}
+
+//styling for the sidebar; includes defaults for no-js
+#sidebar {
+    #tabbed,
+    .widget {
+      margin-bottom: 20px;
+    }
+
+    & >  .widget_text {
+      text-align: center;
+    }
+}
+
+// styling for the tabbed content on the siebar
+#sidebar #tabbed.js {
+
+  //override the default spacing that separates widgets
+  .widget {
+    margin-bottom: 0;
+  }
+ 
+  //make the tabbed content ignore the padding of the sidebar
+  margin-left: -@xcSidebarSidePadding;
+  #grid > .core > .span(@xcSidebarColSpan);
+ 
+  //remove some of the default bootstrap styles that interfere
+  .nav-tabs {
+    border: none;
+    margin-bottom: 0;
+  }
+
+  //default styles for the tabs (inactive state)
+  .nav-tabs > li > a {
+    .border-radius(0);
+     border: 1px solid @xcDarkTan;
+     border-bottom: none;
+     color: @xcTan;
+     margin-right: 0;
+     padding: 5px 5px;
+     &:hover {
+      background-color: transparent;
+      color: @xcDarkTan;
+     }
+   }
+
+  //override the defaults with the active styles.
+  //Hover is included as well so that the tab doesn't change on hover
+  .nav-tabs > .active > a,
+  .nav-tabs > .active > a:hover { 
+    border-bottom: 1px solid @white;
+    background-color: @white;
+    color: @xcTan;
+  }
+
+  //the default styles for each tab panel 
+  .tab-pane {
+    background-color: @white;
+    padding: 10px;
+    border: 1px solid @xcDarkTan;
+    color: @xcDarkTan;
+
+    a {
+      color: @xcTan;
+    }
+  }
+ 
+  //remove unneeded list styles
+  #blogroll ul,
+  #twitter ul {
+    margin-left: 0;
+    list-style: none;
+  }
+
+  //put some space between the tweets
+  #twitter ul li {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#nav-below {
+
+  .nav-previous,
+  .nav-next { 
+    margin-bottom: 10px;
+    display: inline-block;
+    .ie7-inline-block;
+  } 
+
+  .nav-previous {
+    float: left;
+  }
+
+  .nav-next {
+    float: right;
+  }
+
+
+  #featured-posts {
+    //these styles setup the borders
+    //the negative margin is necessary to make the borders touch the edge of the content area
+    border-bottom: 8px solid @xcDarkTan;
+    border-top: 3px solid @xcDarkTan;
+    margin-left: -@xcMainSidePadding;
+    #grid > .core > .span(@xcMainColSpan);
+    
+    ul {
+     background: transparent url("@{asset_path}featured-posts-bg.png") 0 0 repeat-y;
+     list-style: none;
+     margin: 0;
+     padding: 10px @xcMainSidePadding; //re-establish the content-area margin for the featured posts themselves
+    }
+
+    li { 
+      //these are the styles for the individual featured posts
+      display: inline-block;
+      .ie7-inline-block();
+      width: 150px;
+      margin: 0 10px;
+
+      img { 
+        margin-bottom: 10px;
+      }
+     
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+// Javascript will enable the position-bottom style if necessary
+// This is to fix problems with #secondary being taller than #primary
+#main {
+  position: relative;
+}
+
+#nav-below.position-bottom {
+  position: absolute;
+  bottom: 0;
+
+  //due to the absolute positioning, the nav stops respecting the right
+  //padding of it's container
+  .nav-next {
+    margin-right: @xcMainSidePadding;
+  }
+}
+
+// Beginning styles for the individual posts
+/////////////////////////////////////////////
+
+//these are the story captions and section dividers
+.divider {
+  background-color: @xcLightTan;
+  margin-bottom: 10px;
+
+  //the inner div maintains the white background
+  > div {
+    background-color: @white;
+    line-height: 1.5em;
+    padding-right: 10px;
+    display: inline-block;
+    .ie7-inline-block();
+
+    a {
+      color: @black;
+    }
+  }
+
+  //the dividers that start stories use different styles than the
+  //dividers that start sections (e.g. the comments section)
+  &.section {
+    color: @xcDarkTan;
+    text-transform: uppercase;
+    #font > .sans-serif();
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+ 
+}
+
+.entry-header {
+  margin-bottom: 10px;
+}
+
+.entry-featured-image {
+  margin-bottom: 10px;
+}
+
+//Styles for the caption below pictures on story pages
+//and below pictures on image.php
+.entry-caption,
+.entry-featured-image .image-meta {
+  margin-top: 10px;
+  color: @xcGray;
+}
+
+.post {
+  margin-bottom: 20px;
+}
+
+.commentlist {
+  list-style: none;
+  margin-left: 0;
+  
+  li {
+    margin-bottom: 20px;
+  }
+
+  footer a,
+  footer,
+  header,
+  header a {
+    color: @xcGray;
+  }
+}
+
+#commentform {
+  textarea {
+  width: 100%;
+  }
+}
+
+.edit-link {
+  margin-bottom: 10px;
+  display: inline-block;
+  .ie7-inline-block();
+}
+
+.filed-under {
+  border-top: 1px solid @xcGray;
+  border-bottom: 1px solid @xcGray;
+  padding: 10px 0;
+  color: @xcGray;
+
+  a {
+    color: @xcGray;
+  }
+}
+
+// Begin styles for index/category pages/search pages
+/////////////////////////////////////////////////////////
+
+.content-list {
+  article {
+    .clearfix();
+  }
+
+  .entry-thumbnail {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  h1 a {
+    color: black;
+    
+    &:hover {
+      text-decoration: none;
+      color: @xcDarkTan;
+    }
+ }
+
+}

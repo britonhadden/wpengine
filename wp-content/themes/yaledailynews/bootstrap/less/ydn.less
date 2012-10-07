@@ -1,0 +1,471 @@
+@import "bootstrap.less";
+
+@asset_path: "http://localhost/wp-content/themes/ydn/img/";
+
+@import "weekend.less";
+/* define some borders for the grid system  using LESS mixins to build the
+styles up dynamically */
+
+.borderX (@index) when (@index > 0) {
+  (~".border@{index}") { .border(@index); }
+  .borderX(@index - 1);
+} 
+
+.borderX(0) {}
+
+@border_path: "@{asset_path}gray_pixel.gif";
+.border (@columns) {
+  @border_pos: (@gridColumnWidth + @gridGutterWidth) * @columns + (@gridGutterWidth / 2 );
+  background: transparent url(@border_path) @border_pos 0 repeat-y;
+}
+
+.borderX(@gridColumns);
+
+
+body {
+    background: url("@{asset_path}page_body_bg.jpg") repeat-x scroll 0 0 white;
+}
+#pre-header {
+    margin-top: 5px;
+}
+#pre-header div.pull-left {
+    height: 28px;
+    line-height: 28px;
+}
+
+@masthead_path:  "@{asset_path}masthead.jpg"; 
+#masthead a {
+    background: url("http://localhost/wp-content/themes/ydn/img/masthead.jpg") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 120px;
+    margin-bottom: 10px;
+    width: 750px;
+    .hide-text();
+}
+.main-navigation .navbar-inner {
+    .border-radius(0);
+}
+.main-navigation .navbar-inner .container {
+    display: block;
+    font-weight: bold;
+    width: @gridRowWidth;
+}
+
+/* Use CSS to toggle the menus.
+ * Remove the top margin to prevent flickering */
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+#leaderboard {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+#primary, textarea#comment {
+    .makeColumn(16);
+}
+#secondary {
+    .makeColumn(8);
+}
+
+#menu-primary-menu {
+  //the nav underneath the masthead
+  width: 100%;
+  text-transform: uppercase;
+  font-family: @sansFontFamily;
+}
+
+/* the sidebar-widgets classes are for the headers on sidebars around the site */
+.sidebar-widgets {
+  .widget {
+      border: 1px solid @ydnLightGray;
+      padding: 5px;
+  }
+
+  .widget h1 {
+      background-color: @ydnLightGray;
+      color: @ydnGray;
+      font-family:@sansFontFamily; 
+      font-size: 100%;
+      line-height: 1em;
+      margin-bottom: 5px;
+      padding: 8px;
+  }
+}
+
+@double_border_path: "@{asset_path}double_line.gif";
+.double-border {
+    background: url(@double_border_path) repeat-x scroll 0 0 transparent;
+    clear: both;
+    height: 3px;
+    padding: 7px 0;
+    width: 100%;
+}
+.entry-header {
+    margin-bottom: 20px;
+}
+.entry-header .entry-meta {
+    border-bottom: 1px solid @ydnLightGray;
+    border-top: 1px solid @ydnLightGray;
+    font-family: @sansFontFamily; 
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+.entry-header .entry-title {
+    margin-bottom: 10px;
+}
+.entry-header .entry-authors, .entry-header .entry-authors a {
+    color: @ydnDarkGray;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.entry-header .entry-pubdate {
+    color: @ydnGray;
+}
+.entry-featured-image {
+    border-top: 1px solid @ydnLightGray;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+.entry-featured-image .image-meta {
+    color: @ydnGray;
+    margin-top: 10px;
+}
+.entry-content .alignleft {
+    float: left;
+    margin-right: 10px;
+}
+.entry-content .alignright {
+    float: right;
+    margin-left: 10px;
+}
+.entry-content .aligncenter {
+    margin: auto;
+}
+.entry-content .social-share {
+    border: 1px solid @ydnLightGray;
+    float: right;
+    margin: 0 0 10px 10px;
+    padding: 8px;
+    width: 110px;
+}
+
+@social_share_path: "@{asset_path}share_story.gif";
+.entry-content .social-share li {
+    background: url(@social_share_path) no-repeat scroll 0 0 transparent;
+    border-bottom: 1px solid @ydnLightGray;
+    color: @ydnGray;
+    font-family: @sansFontFamily; 
+    font-size: 85%;
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+    padding-left: 25px;
+    text-transform: uppercase;
+}
+.entry-content .social-share li:last-child {
+    border-bottom: medium none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.entry-content .social-share .twitter {
+    background-position: 0 -65px;
+}
+.entry-content .social-share .discuss {
+    background-position: 0 -130px;
+}
+.post, .video {
+    margin-bottom: 10px;
+}
+.comments-title {
+    border-bottom: 1px solid @ydnLightGray;
+    line-height: 1em;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.form-submit #submit {
+  .btn();
+}
+li.comment {
+    border-bottom: 1px solid @ydnLightGray;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.comment header {
+    margin-bottom: 5px;
+}
+.comment footer, .comment footer a {
+    color: @ydnGray;
+}
+.site-footer {
+    color: @ydnGray;
+    text-align: center;
+    text-transform: uppercase;
+}
+.site-footer a {
+    color: @ydnGray;
+}
+
+/* content-list is a fairly generic set of styles that control the display
+ * of any lists of stories/other content. It's used to keep our bylines,
+ * headlines, etc consistently styled across the site. Unfortunately,
+ * I lost the original LESS and it's just compiled CSS */
+.content-list .item.standard .thumbnail {
+    float: right;
+}
+.content-list .item .section {
+    color: @ydnGray;
+    font-family: @sansFontFamily;
+    text-transform: uppercase;
+}
+.content-list .item {
+    margin-bottom: 20px;
+}
+.content-list .meta, .content-list .meta a {
+    color: @ydnGray;
+    font-family: @sansFontFamily;
+    text-transform: uppercase;
+}
+.content-list .meta .comment-count, .content-list .meta a .comment-count {
+    color: @ydnOrange;
+}
+.content-list.archive .item.standard .section {
+    display: none;
+}
+.content-list .meta .datetime:before {
+    content: "• ";
+}
+
+.content-list.narrow .meta .datetime:before {
+    content: "";
+}
+
+.content-list.narrow .meta .bylines, .content-list.narrow .meta .datetime {
+    display: block;
+}
+.content-list.borders .item {
+    border-bottom: 1px solid @ydnLightGray;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+.content-list.borders .item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.page-header {
+    margin-bottom: 20px;
+}
+
+@carouselWidth: 470px;
+@carouselHeight: 350px;
+
+.carousel {
+  margin-bottom: 10px;
+}
+
+.carousel .meta {
+    width: 300px;
+}
+.carousel .navlist {
+    bottom: 10px;
+    margin-bottom: 0;
+    position: absolute;
+    right: 0;
+    width: 130px;
+    z-index: 100;
+}
+
+.carousel .navlist li {
+    background: url("@{asset_path}carousel-nav-inactive.png") no-repeat scroll 0 0 transparent;
+    color: white;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 40px;
+    text-transform: uppercase;
+}
+.carousel .navlist li.arrow {
+    background: url("@{asset_path}carousel-nav-active.png") no-repeat scroll 0 0 transparent;
+}
+
+
+.carousel .force-display {
+  display: block !important;
+}
+
+.carousel .meta {
+  a {
+    color: @white;
+  }
+
+  .bylines {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: @sansFontFamily;
+  }
+}
+
+.carousel-inner {
+  width: @carouselWidth;
+  height: @carouselHeight;
+}
+
+
+#cross-campus {
+  h1 {
+    @cross_campus_path: "@{asset_path}cross_campus_logo.jpg";
+    .hide-text();
+    background: transparent url(@cross_campus_path) -5px 0 no-repeat;
+    height: 78px;
+    width: 178px;
+    margin-bottom: 5px;
+  }
+
+  text-align: center;
+
+  h3 {
+    color: @ydnDarkGray;
+  }
+
+  .more {
+    text-transform: uppercase;
+    border-top: 1px solid @ydnLightGray;
+    padding-top: 5px;
+    margin-top: 5px;
+    display: block;
+    color: @ydnGray;
+    &:hover {
+      color: @ydnDarkGray;
+    }
+
+  }
+}
+
+.home {
+  .widget {
+    border: 1px solid @ydnLightGray;
+    padding: 5px;
+  }
+}
+
+/* On the bottom of the home page, there are boxes that correspond to the print
+ * sections of the paper. */
+.home {
+  .print-section {
+    h1 {
+      text-transform: uppercase;
+      color: black;
+      font-size: 130%;
+      line-height: 1.25em;
+      margin-bottom: 10px;
+    }
+    
+    .featured.item {
+      //collapse bottom margins so that we don't get extra space
+      margin-bottom: 0;
+
+      p {
+        margin-bottom: 0;
+      }
+
+    }
+
+    //put some spacing between the headline & the image
+    img {
+      margin-bottom: 10px;
+    }
+
+    .content-list, &.content-list {
+      .item {
+        margin-bottom: 10px;
+      }
+    }
+
+
+    .headline {
+      font-size: 120%;
+    }
+  }
+
+  #video-thumbnails {
+    margin-bottom: 10px;
+
+    .image {
+      display: block;
+      position: relative;
+      margin-bottom: 10px;
+
+      span {
+        display: block;
+        height: 100px;
+        width: 150px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: transparent url("@{asset_path}/play_arrow.png") no-repeat center center;
+      }
+    }
+  }
+
+  #more-videos {
+    text-align: center;
+    margin-bottom: 10px;
+
+    a {
+      color: @ydnGray;
+      text-transform: uppercase;
+    }
+  }
+ 
+}
+
+//styles for the opinion landing page
+.category-opinion {
+  
+  .page-title {
+    border-bottom: 1px solid @ydnLightGray;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .featured {
+    //styles for the large section on the top of the page, where the opinion image is
+    .content-list .item {
+      margin-bottom: 0px;
+    }
+
+    img {
+      margin-bottom: 10px;
+    }
+  }
+
+  #opinion-cat-selector {
+    background-color: @ydnLightGray; 
+    text-transform: uppercase;
+    font-family: @sansFontFamily;
+    font-weight: bold;
+
+    li a {
+      background-color: transparent;
+      border: none;
+      .border-radius(0);
+      color: darken( @ydnLightGray, 20%);
+      &:hover {
+        color: @ydnDarkGray;
+      }
+    }
+
+    li.active a, li.active a:hover {
+      color: @ydnDarkGray;
+    }
+
+    li.active {
+      background: url("@{asset_path}opinion_tab_active.png") no-repeat center bottom;
+    }
+
+  }
+
+}
