@@ -4,7 +4,7 @@
  * Description:    Child theme for WEEKEND
  * Author:         Yale Daily News
  * Author URI:     http://yaledailynews.com
- * Template:       ydn
+ * Template:       yaledailynews
  * Version:        1.0
  * */
-@import url("../ydn/style.css");
+@import url("../yaledailynews/style.css");
