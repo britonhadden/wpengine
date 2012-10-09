@@ -59,23 +59,11 @@
 			<div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'ydn' ); ?>"><?php _e( 'Skip to content', '_s' ); ?></a></div>
       <div class="navbar">
         <div class="navbar-inner">
-          <div class="menu-primary-container container">
-            <ul id="menu-primary-menu" class="nav">
-              <li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home active menu-item-41"><a href="http://localhost/" class="active">Home</a></li>
-              <li id="menu-item-75" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-75"><a href="http://localhost/blog/category/city/">City</a></li>
-              <li id="menu-item-76" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-76"><a href="http://localhost/blog/category/culture/">Culture</a></li>
-              <li id="menu-item-77" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-77"><a href="http://localhost/blog/category/opinion/">Opinion</a></li>
-              <li id="menu-item-78" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-78"><a href="http://localhost/blog/category/scitech/">Sci/Tech</a></li>
-              <li id="menu-item-79" class="menu-item menu-item-type-taxonomy menu-item-object-category dropdown menu-item-79"><a href="http://localhost/blog/category/sports/" class="dropdown-toggle" data-toggle="dropdown">Sports <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li id="menu-item-80" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-80"><a href="http://localhost/blog/category/sports/sports-fall/">Fall</a></li>
-                  <li id="menu-item-81" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-81"><a href="http://localhost/blog/category/sports/sports-spring/">Spring</a></li>
-                  <li id="menu-item-82" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-82"><a href="http://localhost/blog/category/sports/sports-winter/">Winter</a></li>
-              </ul>
-            </li>
-            <li id="menu-item-83" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-83"><a href="http://localhost/blog/category/university/">University</a></li>
-            <li id="menu-item-84" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-84"><a href="http://localhost/blog/category/weekend/">WEEKEND</a></li>
-          </ul></div>
+          <?php wp_nav_menu( array( 'theme_location' => 'primary',
+                                    'container_class' => 'menu-primary-container container',
+                                    'walker' => Bootstrap_Walker_Nav_Menu,
+                                    'menu_class' => 'nav'
+                                    )); ?>
 
         </div>
       </div>
