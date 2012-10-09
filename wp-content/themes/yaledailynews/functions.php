@@ -64,7 +64,15 @@ function ydn_setup() {
 	 * Add default posts and comments RSS feed links to head
 	 */
 	add_theme_support( 'automatic-feed-links' );
+
+  /** Add menu support */
   add_theme_support( 'menus' );
+  
+  register_nav_menus( array(
+    'primary' => __( 'Primary Menu', 'ydn'),
+    ));
+
+
 
 	/**
 	 * Enable support for Post Thumbnails
