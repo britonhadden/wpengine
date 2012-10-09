@@ -141,7 +141,7 @@ function ydn_scripts() {
 	global $post;
 
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
-  wp_enqueue_style( 'bootstrap-ydn', get_template_directory_uri() . '/css/ydn.css');
+  wp_enqueue_style( 'bootstrap-ydn', get_stylesheet_uri() . '/css/ydn.css');
 
   wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap/bootstrap.js', array('jquery') );
   wp_enqueue_script( 'throttle-debounce', get_template_directory_uri() . '/js/jquery.ba-throttle-debounce.min.js', array('jquery') );
