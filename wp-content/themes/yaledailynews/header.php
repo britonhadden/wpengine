@@ -61,7 +61,7 @@
         <div class="navbar-inner">
           <?php wp_nav_menu( array( 'theme_location' => 'primary',
                                     'container_class' => 'menu-primary-container container',
-                                    'walker' => Bootstrap_Walker_Nav_Menu,
+                                    'walker' => new Bootstrap_Walker_Nav_Menu,
                                     'menu_class' => 'nav'
                                     )); ?>
 
