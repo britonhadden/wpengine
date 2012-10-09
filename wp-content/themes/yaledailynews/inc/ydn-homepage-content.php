@@ -112,9 +112,9 @@ class YDN_homepage_content {
 
     $query = new WP_Query($query_params);
     if ( empty($query->posts) ) {
-          /* we weren't able to find any matching posts, so return null and go no further */
+          /* we weren't able to find any matching posts, so return empty array and go no further */
           /* error state */
-          return null;
+          return array();
     } else {
           /* set our list to all the posts from query response */
           return $query->posts;
