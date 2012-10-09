@@ -27,8 +27,7 @@ if (! function_exists("ydn_home_print_section") ):
         </div>
 
         <div class="span7">
-          <?php if(! $section_content["list"])
-          foreach($section_content["list"] as $post): setup_postdata($post); ?>
+          <?php foreach($section_content["list"] as $post): setup_postdata($post); ?>
            <div class="item">
             <a href="<?php the_permalink(); ?>" class="headline"><?php the_title(); ?></a>
             <div class="meta">
@@ -91,11 +90,11 @@ class YDN_homepage_content {
     $output = array();
     $output["featured"] = $this->featured_post($cat_slug);
     if ($output["featured"] == null ) {
-        return null;
+        return array();
     }
     $output["list"] = $this->get_post_list($cat_slug, $n_list, $output["featured"]->ID );
     if ($output["list"] == null) {
-        return null;
+        return array();
     }
 
     return $output;
