@@ -118,7 +118,7 @@ function ydnxc_scripts() {
 	global $post;
 
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
-  wp_enqueue_style( 'ydnxc_style', get_template_directory_uri() . '/css/cross_campus.css');
+  wp_enqueue_style( 'ydnxc_style', get_stylesheet_uri() . '/css/cross_campus.css');
 
 	wp_enqueue_script( 'small-menu', get_template_directory_uri() . '/js/small-menu.js', array( 'jquery' ), '20120206', true );
   wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.js', array('jquery') );
