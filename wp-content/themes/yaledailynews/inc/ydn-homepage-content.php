@@ -27,7 +27,8 @@ if (! function_exists("ydn_home_print_section") ):
         </div>
 
         <div class="span7">
-          <?php foreach($section_content["featured"] as $post): setup_postdata($post); ?>
+          <?php if(! $section_content["list"])
+          foreach($section_content["list"] as $post): setup_postdata($post); ?>
            <div class="item">
             <a href="<?php the_permalink(); ?>" class="headline"><?php the_title(); ?></a>
             <div class="meta">
