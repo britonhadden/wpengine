@@ -90,11 +90,11 @@ class YDN_homepage_content {
     $output = array();
     $output["featured"] = $this->featured_post($cat_slug);
     if ($output["featured"] == null ) {
-        return array();
+        $output["featured"] = array();
     }
     $output["list"] = $this->get_post_list($cat_slug, $n_list, $output["featured"]->ID );
     if ($output["list"] == null) {
-        return array();
+        $output["list"] == null;
     }
 
     return $output;
