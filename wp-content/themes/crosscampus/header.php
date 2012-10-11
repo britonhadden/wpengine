@@ -7,9 +7,6 @@
  * @package ydnxc
  * @since ydnxc 1.0
  */
-printf("TEMPLATE DIRECTORY URI %s<br>", get_template_directory_uri() );
-printf("STYLESHEET DIRECTORY URI %s<br>", get_stylesheet_directory_uri() );
-die();
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
