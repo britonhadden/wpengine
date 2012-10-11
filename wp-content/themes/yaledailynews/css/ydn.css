@@ -5776,6 +5776,10 @@ textarea#comment {
   background-color: #ebebeb;
 }
 
+.sidebar-widgets .advertisement {
+  text-align: center;
+}
+
 .double-border {
   width: 100%;
   height: 3px;
