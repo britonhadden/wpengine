@@ -17,6 +17,6 @@ function ydn_legacy_photos_filter($atts) {
 
 }
 
-add_shortcode('ydn-legacy-photo', 'ydn_legacy_photos_filter');
+add_shortcode('ydn-legacy-photos', 'ydn_legacy_photos_filter');
 
 ?>
