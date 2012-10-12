@@ -14,6 +14,8 @@ License: GPL2
 function ydn_legacy_photos_filter($atts) {
 	var_dump($atts);
 	die();
+
+	if (is_null($atts))
 }
 
 add_shortcode('ydn-legacy-photo', 'ydn_legacy_photos_filter');
