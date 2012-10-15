@@ -5983,13 +5983,17 @@ li.comment {
   color: #959595;
 }
 
-/* Inline photos design for YDN legacy photos and more. */
+/* Inline photos design for YDN legacy photos and more. 
+   EARL: This probably needs restructuring to take advantage of LESS' nested features. */
 
 .inline {
+  padding: 15px;
+  margin-top: 5px;
+  margin-bottom: 15px;
   background-color: #ebebeb;
 }
 
-.inline .inline-left {
+.inline-left {
   float: left;
   width: 180px;
   margin-right: 20px;
@@ -6003,6 +6007,9 @@ li.comment {
 
 .content-list .item.standard .thumbnail {
   float: right;
+  margin-bottom: 5px;
+  /* EARL: Not sure if this should go here. */
+
 }
 
 .content-list .item .section {

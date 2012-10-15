@@ -220,17 +220,20 @@ li.comment {
     color: @ydnGray;
 }
 
-/* Inline photos design for YDN legacy photos and more. */
+/* Inline photos design for YDN legacy photos and more. 
+   EARL: This probably needs restructuring to take advantage of LESS' nested features. */
 .inline {
   background-color: @ydnLightGray;
-
-  .inline-left {
+  margin-bottom: 15px;
+  margin-top: 5px;
+  padding: 15px;
+}
+.inline-left {
     clear: left;
     float: left;
     margin-right: 20px;
     width: 180px;
   }
-}
 
 /* content-list is a fairly generic set of styles that control the display
  * of any lists of stories/other content. It's used to keep our bylines,
@@ -238,6 +241,7 @@ li.comment {
  * I lost the original LESS and it's just compiled CSS */
 .content-list .item.standard .thumbnail {
     float: right;
+    margin-bottom: 5px; /* EARL: Not sure if this should go here. */
 }
 .content-list .item .section {
     color: @ydnGray;
