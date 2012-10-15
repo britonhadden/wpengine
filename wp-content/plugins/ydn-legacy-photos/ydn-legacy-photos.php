@@ -14,7 +14,7 @@ License: GPL2
 function ydn_legacy_photos_filter($atts) {
 	$id = $atts[id];
 
-	if (wp_attachment_is_image($id)){
+	if ( wp_attachment_is_image( $id ) ) {
 		$src = wp_get_attachment_image($id, medium);
 		print "ID variable is $id";
 		#var_dump($src);
