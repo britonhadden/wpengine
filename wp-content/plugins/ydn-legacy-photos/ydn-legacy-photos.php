@@ -14,12 +14,14 @@ License: GPL2
 function ydn_legacy_photos_filter($atts) {
 	$id = $atts[id];
 
-	$src = wp_get_attachment_image_src($id);
-	#print "ID variable is $id";
-	#var_dump($src);
-	#var_dump($atts);
-	$return_string = '<div class="inline inline-left">' . '<img src="' . $src[0] . '" />' . get_media_credit_html($id) . ' </div>';
-	return $return_string;
+	if (wp_attachment_is_image($id){
+		$src = wp_get_attachment_image($id, medium);
+		#print "ID variable is $id";
+		#var_dump($src);
+		#var_dump($atts);
+		$return_string = '<div class="inline inline-left">' . '<img src="' . $src[0] . '" />' . get_media_credit_html($id) . ' </div>';
+		return $return_string;
+	}
 
 }
 
