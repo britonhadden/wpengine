@@ -5983,6 +5983,19 @@ li.comment {
   color: #959595;
 }
 
+/* Inline photos design for YDN legacy photos and more. */
+
+.inline {
+  background-color: #ebebeb;
+}
+
+.inline .inline-left {
+  float: left;
+  width: 180px;
+  margin-right: 20px;
+  clear: left;
+}
+
 /* content-list is a fairly generic set of styles that control the display
  * of any lists of stories/other content. It's used to keep our bylines,
  * headlines, etc consistently styled across the site. Unfortunately,

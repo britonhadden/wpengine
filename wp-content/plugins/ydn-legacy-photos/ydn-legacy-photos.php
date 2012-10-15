@@ -18,9 +18,8 @@ function ydn_legacy_photos_filter($atts) {
 	#print "ID variable is $id";
 	#var_dump($src);
 	#var_dump($atts);
-	$return_string = '<img src="' . $src[0] . '" />';
+	$return_string = '<div class="inline inline-left">' . '<img src="' . $src[0] . '" />' . get_media_credit_html($id); . ' </div>';
 	return $return_string;
-	die();
 
 }
 
