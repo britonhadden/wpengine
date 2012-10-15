@@ -19,7 +19,7 @@ function ydn_legacy_photos_filter($atts) {
 	var_dump($src);
 	#var_dump($atts);
 	$return_string = '<img src="' . $src(0) . '" />';
-	return return_string;
+	return $return_string;
 	die();
 
 }
