@@ -12,7 +12,9 @@ License: GPL2
  **/
 
 function ydn_legacy_photos_filter($atts) {
-	return "<img src=\"http://yaledailynews.com/wp-content/uploads/2012/09/ct-state-capitol-creative-commons-300x225.jpg\" />";
+	$id = 1;
+
+	#$src = wp_get_attachment_image_src($id);
 	var_dump($atts);
 	die();
 
