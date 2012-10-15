@@ -14,10 +14,10 @@ License: GPL2
 function ydn_legacy_photos_filter($atts) {
 	$id = $atts[id];
 
-	#$src = wp_get_attachment_image_src($id);
-	print "ID variable is $id";
-
-	var_dump($atts);
+	$src = wp_get_attachment_image_src($id);
+	#print "ID variable is $id";
+	var_dump($src);
+	#var_dump($atts);
 	die();
 
 }
