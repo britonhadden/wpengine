@@ -18,6 +18,8 @@ function ydn_legacy_photos_filter($atts) {
 	#print "ID variable is $id";
 	var_dump($src);
 	#var_dump($atts);
+	$return_string = '<img src="' . $src(0) . '" />';
+	return return_string;
 	die();
 
 }
