@@ -16,9 +16,9 @@ function ydn_legacy_photos_filter($atts) {
 
 	$src = wp_get_attachment_image_src($id);
 	#print "ID variable is $id";
-	var_dump($src);
+	#var_dump($src);
 	#var_dump($atts);
-	$return_string = '<img src="' . $src(0) . '" />';
+	$return_string = '<img src="' . $src[0] . '" />';
 	return $return_string;
 	die();
 
