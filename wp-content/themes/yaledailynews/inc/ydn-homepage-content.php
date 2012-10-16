@@ -12,6 +12,7 @@ if (! function_exists("ydn_home_print_section") ):
 
     //first post we deal with is featured, so pop it into the global
     $post = $section_content["featured"];
+    setup_postdata($post);
     ?>
     <div class="print-section content-list narrow">
       <h1><?php echo $slug; ?></h1>
