@@ -5993,6 +5993,13 @@ li.comment {
   background-color: #ebebeb;
 }
 
+.inline .photo-credit {
+  padding: 10px 0  5px 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #777777;
+}
+
 .inline-left {
   float: left;
   width: 180px;
