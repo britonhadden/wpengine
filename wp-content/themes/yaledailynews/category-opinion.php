@@ -14,15 +14,16 @@
       <?php if (empty($friday_forum_content)): /* the regular layout */ ?>
         <?php $standard_content = ydn_fix_list_size($standard_content,'opinion',4); ?>
         <div class="content-list">
-          <?php $post = array_shift($main_content);  setup_postdata($post); get_template_part('list','standard'); ?>
+          <?php $post = array_shift($standard_content);  setup_postdata($post); get_template_part('list','opinion'); ?>
         </div>
       <?php else: /* the friday-forum layout */ ?>
 
       <?php endif; ?>
     </div>
     <div class="span5 content-list narrow borders">
-      <?php foreach( $main_content as $post ): setup_postdata($post); ?>
-        <?php get_template_part('list', ydn_get_post_format()) ?>
+      <?php $standard_content = ydn_fix_list_size($standard_content,'opinion',3); ?> 
+      <?php foreach( $standard_content as $post ): setup_postdata($post); ?>
+        <?php get_template_part('list', 'opinion') ?>
       <?php endforeach; ?>
     </div>  
   </div>
