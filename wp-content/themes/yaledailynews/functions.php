@@ -285,6 +285,7 @@ function ydn_fix_list_size($list, $category, $size) {
 
   $category = get_category($category);
   vardump($category);
+  die("FLAG");
 }
 
 /**
