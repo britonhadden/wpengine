@@ -1,6 +1,6 @@
 <?php 
   $friday_forum_content = z_get_posts_in_zone("opinion-friday-forum");
-  $main_content = z_get_posts_in_zone("opinion-main-posts");
+  $standard_content = z_get_posts_in_zone("opinion-standard");
   $ydn_suppress_thumbnails = true; // ugly hack, but necessary to pass variables to template
 ?>
 <?php get_header(); ?>
@@ -11,7 +11,8 @@
       <!-- This is the section with the featured opinion image & main story.  If Friday Forum is available,
            it's drawn here as well -->
       <?php ydn_get_special_image("opinion_featured_image","opinion-featured"); ?>
-      <?php if (empty( $friday_forum_content ) ): /* the regular layout */ ?>
+      <?php if (empty($friday_forum_content)): /* the regular layout */ ?>
+        <?php $standard_content = ydn_fix_list_size($standard_content,'opinion',4); ?>
         <div class="content-list">
           <?php $post = array_shift($main_content);  setup_postdata($post); get_template_part('list','standard'); ?>
         </div>

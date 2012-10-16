@@ -127,10 +127,6 @@ function ydn_widgets_init() {
 		'before_title' => '<h1 class="widget-title">',
 		'after_title' => '</h1>',
   ) );
-
-
-
-
 }
 add_action( 'widgets_init', 'ydn_widgets_init' );
 
@@ -157,13 +153,6 @@ function ydn_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'ydn_scripts' );
 
-/* A fomat function that defaults to standard */
-function ydn_get_post_format() {
-  global $post;
-  $format = get_post_format();
-  return ($format == false) ? "standard" : $format;
-}
-
 /**
  * Register custom metadata fields in the admin interface
  */
@@ -183,9 +172,14 @@ function ydn_register_custom_metadata() {
   }
 
 }
-
 add_action('admin_menu', 'ydn_register_custom_metadata');
 
+/* A fomat function that defaults to standard */
+function ydn_get_post_format() {
+  global $post;
+  $format = get_post_format();
+  return ($format == false) ? "standard" : $format;
+}
 
 /**
  * Register custom metadata for our attachments.  Unforunately, the custom metadata manager doesn't work with 
@@ -193,7 +187,6 @@ add_action('admin_menu', 'ydn_register_custom_metadata');
  *
  * The flags we register here allow images to be marked for the home page as WEEKEND cover/Front Page/Magazine Cover
  */
-
 
 /**
  * Render a select box on the attachment page that allows users to mark an image
@@ -269,11 +262,34 @@ if (! function_exists("ydn_excerpt_read_more") ):
   add_filter('excerpt_more', 'ydn_excerpt_read_more');
 endif;
 
+/**
+ * A function that brings an unknown sized list to the given length by removing extra elements
+ * or by fetching additional stories from the given category.
+ *
+ * $list --> the list of stories to trim/top off
+ * $category --> the slug of the category to pull
+ * $size --> the desired number of elements in the output
+ *
+ * returns: the final list of size $size
+ */
+function ydn_fix_list_size($list, $category, $size) {
+  //if the $list already has enough elements, return the first $size elements
+  if ($size >= count($list)) {
+    return array_slice($list,0,$size);
+  }
+
+  //if we're not given a category, there's nothing to do
+  if (empty($category)) {
+    return $list;
+  }
+
+  $category = get_category($category);
+  vardump($category);
+}
 
 /**
- * Implement the Custom Header feature
+ * Include other funciton files
  */
-//require( get_template_directory() . '/inc/custom-header.php' );
 require( get_template_directory() . '/inc/bootstrap-menu-walker.php' );
 require( get_template_directory() . '/inc/slideshow-slides.php');
 require( get_template_directory() . '/inc/ydn-homepage-content.php');
