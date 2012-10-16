@@ -274,7 +274,7 @@ endif;
  */
 function ydn_fix_list_size($list, $category, $size) {
   //if the $list already has enough elements, return the first $size elements
-  if ($size >= count($list)) {
+  if ($size <= count($list)) {
     return array_slice($list,0,$size);
   }
 
