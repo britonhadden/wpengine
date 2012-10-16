@@ -274,7 +274,7 @@ endif;
  */
 function ydn_fix_list_size($list, $category, $size) {
   //if the $list already has enough elements, return the first $size elements
-  if ($size >= count($list)) {
+  if ($size <= count($list)) {
     return array_slice($list,0,$size);
   }
 
@@ -282,10 +282,24 @@ function ydn_fix_list_size($list, $category, $size) {
   if (empty($category)) {
     return $list;
   }
+  
+  $category = get_category_by_slug($category);
+  //if the category query doesn't return anything, there's nothing to do
+  if (empty($category)) {
+    return $list;
+  }
 
-  $category = get_category($category);
-  vardump($category);
-  die("FLAG");
+  //Need the post IDs to avoid repeating elements from the $list
+  $excluded_ids = Array();
+  foreach($list as $obj) {
+    $excluded_ids[] = $obj->ID;
+  }
+
+  $query_params = array('posts_per_page' => $size - count($excluded_ids),
+                        'cat' => $category->term_id,
+                        'post__not_in' => $excluded_ids);
+  $query = new WP_Query($query_params);
+  return array_merge($list, $query->posts);
 }
 
 /**
