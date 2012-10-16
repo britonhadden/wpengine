@@ -167,7 +167,11 @@ function ydn_register_custom_metadata() {
                                                                        'group' => 'ydn_metadata') );
 
     //user level meta
-    x_add_metadata_field( "ydn_legacy_password", array('user'), array( 'label' => "YDN Legacy Password Hash" ) );
+    x_add_metadata_group('ydn_user_metadata', array('user'), array('label' => "YDN Metadata"));
+    x_add_metadata_field("ydn_legacy_password", array('user'), array( 'label' => "YDN Legacy Password Hash", "group" => "ydn_user_metadata"));
+    x_add_metadata_field("ydn_user_photo", array('user'), array( "label" => "User Photo", //this line requires the ydn_edit_callback
+                                                            "group" => "ydn_user_metadata",
+                                                            "field_type" => "upload"));
 
   }
 
