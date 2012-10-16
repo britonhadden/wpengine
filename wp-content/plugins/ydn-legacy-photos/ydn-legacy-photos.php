@@ -15,8 +15,7 @@ function ydn_legacy_photos_filter($atts) {
 	$id = $atts[id];
 
 	if ( wp_attachment_is_image( $id ) ) {
-		print "ID variable is $id";
-		$return_string = '<div class="inline inline-left">' . wp_get_attachment_image($id, medium) . '<div class="photo-credit">' . get_media_credit_html($id) . '</div><div class="caption">' . get_post($id)->post_excerpt . ' </div></div>';
+		$return_string = '<div class="inline inline-left"><a href="' . wp_get_attachment_url($id) . '">' . wp_get_attachment_image($id, medium) . '</a><div class="photo-credit">' . get_media_credit_html($id) . '</div><div class="caption">' . get_post($id)->post_excerpt . ' </div></div>';
 		return $return_string;
 	}
 
