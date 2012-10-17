@@ -6273,3 +6273,20 @@ li.comment {
 .category-opinion #opinion-cat-selector li.active {
   background: url("http://yaledailynews.com/wp-content/themes/yaledailynews/img/opinion_tab_active.png") no-repeat center bottom;
 }
+
+.category-opinion #opinion-cat-content .content-list .item {
+  float: left;
+  width: 350px;
+  margin-left: 10px;
+}
+
+.category-opinion #opinion-cat-content .content-list .item.even {
+  float: left;
+  width: 350px;
+  margin-left: 50px;
+}
+
+.category-opinion #opinion-cat-content .content-list .item img {
+  float: left;
+  margin-right: 5px;
+}

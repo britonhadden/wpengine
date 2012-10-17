@@ -35,16 +35,49 @@
       <ul id="opinion-cat-selector" class="nav nav-tabs">
         <li class="active"><a href="#staff-columns" data-toggle="tab">Staff Columns</a></li>
         <li><a href="#guest-columns" data-toggle="tab">Guest Columns</a></li>
-        <li><a href="#news-views" data-toggle="tab">News' Views</a></li>
+        <li><a href="#the-news-views" data-toggle="tab">News' Views</a></li>
         <li><a href="#letters" data-toggle="tab">Letters</a></li>
-        <li><a href="#op-ed-live" data-toggle="tab">Op-Ed Live</a></li>
+        <li><a href="#oped-live" data-toggle="tab">Op-Ed Live</a></li>
       </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="staff-columns">staff cols</div>
-        <div class="tab-pane" id="guest-columns">guest cols</div>
-        <div class="tab-pane" id="news-views">nvewss</div>
-        <div class="tab-pane" id="letters">letters</div>
-        <div class="tab-pane" id="op-ed-live">cols</div>
+      <div class="tab-content" id="opinion-cat-content">
+        <?php 
+          function ydn_opinion_lower_content($slug, $class = ''){ ?>
+            <div class="tab-pane content-list <?php echo $class; ?>" id="<?php echo $slug; ?>">
+            <?php
+            global $ydn_opinion_class, $ydn_show_auth_thumb, $post;
+
+            //grab enough content to fill out the page
+            $opinion_lower_content = ydn_fix_list_size(array(),$slug,8);
+            $ydn_show_auth_thumb = true;
+            $i = 0; //count the number of iterations, so that we can set the even class
+            foreach($opinion_lower_content as $post): setup_postdata($post);
+              if($i % 2 == 0 ) {
+                $ydn_opinion_class = "";
+                echo '<div class="row">';
+              } else {
+                $ydn_opinion_class = "even";
+              }
+              //$ydn_opinion_class = ($i % 2) ? "even" : "";
+              get_template_part('list','opinion');
+              if ($i++ % 2 != 0 ) {
+                echo '</div>';
+              }
+
+            endforeach;
+
+            //set these back to neutral values
+            $ydn_opinion_class = '';
+            $ydn_show_auth_thumb = false;
+            ?>
+            </div>
+            <?php
+          }
+        ?>
+        <?php ydn_opinion_lower_content('staff-columns','active'); ?>
+        <?php ydn_opinion_lower_content('guest-columns'); ?>
+        <?php ydn_opinion_lower_content('the-news-views'); ?>
+        <?php ydn_opinion_lower_content('letters'); ?>
+        <?php ydn_opinion_lower_content('oped-live'); ?>
       </div>
     </div>
   </div>
