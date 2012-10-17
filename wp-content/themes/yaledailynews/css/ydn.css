@@ -6124,6 +6124,13 @@ li.comment {
   height: 350px;
 }
 
+/* YDN Photos Modal Styling */
+
+.ydn-photo-modal .modal-close {
+  position: relative;
+  bottom: -20px;
+}
+
 #cross-campus {
   text-align: center;
 }
