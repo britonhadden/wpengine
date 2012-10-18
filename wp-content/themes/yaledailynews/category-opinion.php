@@ -84,6 +84,6 @@
 
 </div><!-- main column wrapper -->
 <div class="span5">
-  sidebar
+  <?php dynamic_sidebar('opinion-sidebar'); ?>  
 </div><!-- sidebar wrapper -->
 <?php get_footer(); ?>
