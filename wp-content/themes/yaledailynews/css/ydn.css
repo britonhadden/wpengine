@@ -6129,6 +6129,10 @@ li.comment {
 .ydn-photo-modal .modal-close {
   position: relative;
   bottom: -5px;
+  background: #000000;
+  /* fallback color */
+
+  background: rgba(0, 0, 0, 0.7);
 }
 
 #cross-campus {
