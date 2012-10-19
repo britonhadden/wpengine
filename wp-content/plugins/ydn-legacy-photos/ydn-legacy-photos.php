@@ -31,8 +31,12 @@ function ydn_legacy_photos_modal() {
 		<div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			
 			<div class="modal-body ydn-photo-modal">
-				<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">×</button>
-				<img src="http://yaledailynews.com/wp-content/uploads/2012/10/food.jpg">
+				<div class="modal-close">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				</div>
+				<div class="modal-photo">
+					<img src="http://yaledailynews.com/wp-content/uploads/2012/10/food.jpg">
+				</div>
 			</div>
 			<div class="modal-footer">
 				<p>Let's pretend I was a caption.</p>
