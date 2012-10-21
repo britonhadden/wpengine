@@ -83,7 +83,7 @@ function ydn_setup() {
   add_image_size('home-print-section',230,176,true);
   add_image_size('home-print-section-narrow',230,285,true);
   add_image_size('opinion-featured',550,425,true);
-  add_image_size('home-video-thumbnail',150,100,true);
+  add_image_size('video-thumbnail',150,100,true);
 	/**
 	 * Add support for the Aside Post Formats
 	 */
@@ -291,7 +291,7 @@ endif;
  *
  * returns: the final list of size $size
  */
-function ydn_fix_list_size($list, $category, $size) {
+function ydn_fix_list_size($list, $category, $size, $post_type = 'post') {
   //if the $list already has enough elements, return the first $size elements
   if ($size <= count($list)) {
     return array_slice($list,0,$size);
@@ -316,7 +316,8 @@ function ydn_fix_list_size($list, $category, $size) {
 
   $query_params = array('posts_per_page' => $size - count($excluded_ids),
                         'cat' => $category->term_id,
-                        'post__not_in' => $excluded_ids);
+                        'post__not_in' => $excluded_ids,
+                        'post_type' => $post_type);
   $query = new WP_Query($query_params);
   return array_merge($list, $query->posts);
 }

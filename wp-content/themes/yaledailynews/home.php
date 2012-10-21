@@ -32,7 +32,7 @@
              while ( $videos_query->have_posts() ) : $videos_query->the_post();
             ?>
               <div class="span4 item">
-                <a href="<?php echo get_permalink(); ?>" class="image"><?php the_post_thumbnail('home-video-thumbnail'); ?><span></span></a>
+                <a href="<?php echo get_permalink(); ?>" class="image"><?php the_post_thumbnail('video-thumbnail'); ?><span></span></a>
                 <a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
               </div>
             <?php endwhile; ?>
