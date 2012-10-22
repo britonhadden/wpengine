@@ -7,6 +7,7 @@ class YDN_Mag_Issue_Type {
 
   const type_slug = 'mag-issue';
   const num_elts_selected = 20; //number to pull into each drop down
+  const week_range = 2; //number of weeks before/after pub date to pull into drop downs
 
   function __construct() {
     //bind actions
@@ -49,44 +50,69 @@ class YDN_Mag_Issue_Type {
   }
 
   function register_meta_boxes() {
-    add_meta_box('top_content','Top Content', array($this, 'draw_meta_box'), YDN_Mag_Issue_Type::type_slug, 'normal', 'default', array(3));
+    add_meta_box('top_content','Top Content', array($this, 'draw_meta_box'), YDN_Mag_Issue_Type::type_slug, 'normal', 'default', array(4));
+    add_meta_box('essays','Essays', array($this, 'draw_meta_box'), YDN_Mag_Issue_Type::type_slug, 'normal', 'default', array(3));
+    add_meta_box('small_talk','Small Talk', array($this, 'draw_meta_box'), YDN_Mag_Issue_Type::type_slug, 'normal', 'default', array(3));
+    add_meta_box('shorts','Shorts', array($this, 'draw_meta_box'), YDN_Mag_Issue_Type::type_slug, 'normal', 'default', array(4));
+    add_meta_box('poetry','Poetry', array($this, 'draw_meta_box'), YDN_Mag_Issue_Type::type_slug, 'normal', 'default', array(4));
+    add_meta_box('photo_essay','Photo Essay', array($this, 'draw_meta_box'), YDN_Mag_Issue_Type::type_slug, 'normal', 'default', array(1));
   }
 
   function draw_meta_box($post,$args) {
     //used to draw all of the metaboxes on the admin page
+    $this->post = $post;
     if (count($args['args']) != 1) {
       //this should never happen
       die('invalid number of arguments passed');
     }
     $num_elts = $args['args'][0];
     $content_type = $arg['id'];
-    $story_list = $this->fetch_content_for($content_type);
+    if (!isset($this->story_list) ) {
+      $this->fetch_content();
+    }
 
     for($i = 0; $i < $num_elts; $i++) {
       $field_name = "ydn_issue_" . $content_type . "_" . $i;
       ?>
       <div>
         <label for="<?php echo $field_name; ?>">Element <?php echo $i + 1; ?>:</label> 
-        <?php $this->create_dropdown($story_list, $field_name, 0); ?>
+        <?php $this->create_dropdown($field_name, 0); ?>
       </div>
       <?php
     }
     
   }
 
-  private function fetch_content_for($content_id) {
-    //gets a content_id and fetches the most recent 20 stories in the relevant categories
+  private function fetch_content() {
+    //gets a content_id and fetches the stories within the week_range from pub date
     $query_args = array( 'posts_per_page' => YDN_Mag_Issue_Type::num_elts_selected );
+    add_filter('posts_where', array($this, 'fetch_content_where_filter')); 
+    $results = new WP_Query($query_args);
+    remove_filter('posts_where', array($this, 'fetch_content_where_filter'));
 
-    switch ($content_id) {
-
-    }
+    $this->story_list = $results->get_posts(); 
   }
 
-  private function create_dropdown($story_list, $name, $post_id) {
+  function fetch_content_where_filter($where = '') {
+    //necessary to allow WP to select posts published +- week_range weeks from pub date
+    $current_time = strtotime($this->post->post_date);
+    $start_date = strtotime( '-' . YDN_Mag_Issue_Type::week_range . " weeks", $current_time);
+    $end_date = strtotime( '+' . YDN_Mag_Issue_Type::week_range . " weeks", $current_time);
+    $where .= " AND post_date >= '" . date('Y-m-d', $start_date) . "' AND post_date <= '" . date('Y-m-d',$end_date). "'";
+  }
+
+
+  private function create_dropdown($name, $post_id) {
     //renders a drop down, setting its value to $post_id unless nothing is passed
     echo "<select id=\"". $name . "name=\"". $name . "\">";
-    print_r($story_list);
+    foreach($this->story_list as $post) {
+     if ($post->ID == $post_id) {
+       $selected = " selected=\"selected\" ";
+     } else {
+       $selected = "";
+     }
+     echo "<option value=\"" . $post->ID . "\"" . $selected . ">" . $post->post_title . "</option>"; 
+    }
     echo "</select>";
   }
 
