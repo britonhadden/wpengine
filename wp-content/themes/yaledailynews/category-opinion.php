@@ -74,15 +74,17 @@
         <?php ydn_opinion_lower_content('letters'); ?>
         <div class="tab-pane content-list" id="oped-live">
           <?php
-            $oped_live_content = ydn_fix_list_size(array(),'oped-live',8,'video');
+            $temp_post = $post;
+            $oped_live_content = ydn_fix_list_size(array(),'oped-live',16,'video');
             $i = 0;
-            foreach($oped_live_content as $oped_video): setup_postdata($oped_video);
+            foreach($oped_live_content as $post): setup_postdata($post);
               if($i % 4 == 0) {
                 echo '<div class="row">';
               }
               ?>
               <div class="item">
-                <?php the_post_thumbnail('video_thumbnail'); ?> 
+                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('video-thumbnail'); ?></a>
+                <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
               </div>
               <?php
               if(++$i % 4 == 0 ) {
@@ -90,6 +92,7 @@
               }
                 
             endforeach;
+            $post = $temp_post;
           ?>
         </div>
       </div>
