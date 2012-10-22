@@ -11,6 +11,7 @@
  */
 
 define("XC_BLOG_ID",2);
+define("YDN_MAIN_SITE_ID",1);
 
 /**
  * Set the content width based on the theme's design and stylesheet.
