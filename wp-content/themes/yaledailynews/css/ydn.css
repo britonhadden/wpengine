@@ -6126,14 +6126,15 @@ li.comment {
 
 /* YDN Photos Modal Styling */
 
-.ydn-photo-modal .modal-close {
+#ydn-photo-modal .modal-body {
+  max-height: none;
+}
+
+#ydn-photo-modal .modal-close {
   position: relative;
-  bottom: -20px;
   display: block;
   height: 0;
   padding: 5px;
-  background: #000000;
-  background: rgba(0, 0, 0, 0.9);
 }
 
 #cross-campus {
