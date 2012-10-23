@@ -19,8 +19,42 @@ class YDN_Mag_Issue_Type {
   //it's a class level function
   public static function get_instance() {
     NULL  === self::$instance and self::$instance = new self;
-
     return self::$instance;
+  }
+
+  public static function get_content($issue_id) {
+    //returns an array of the content matching $issue_ido
+    
+    //content_ids is a nested array that dictates which IDs go with which content_types
+    $content_ids = get_post_meta($issue_id, self::metadata_key, true);
+    //id_to_obj -- an array mapping ids to their objects
+    $id_to_obj = array();
+    //flat_ids -- an array of just ids
+    $flat_ids = array();
+    //content -- a nested array mapping content_types to their actual content objects 
+    $content = array();
+
+    //first we need to build a flat array of IDs so we can query for them in one hit
+    foreach ($content_ids as $ids_for_type) {
+      $flat_ids = array_merge($ids_for_type, $flat_ids);
+    }
+
+    //grab the objects and then build a map of IDs to the post ojects
+    $query = new WP_Query(array( 'post__in' => $flat_ids));
+    foreach($query->posts as $post) {
+      $id_to_obj[$post->ID] = $post;
+    }
+
+    //finally build up content, piece by piece, from the original multidimensional array
+    foreach ($content_ids as $content_type => $ids) {
+      foreach ($ids as $id) {
+          if(array_key_exists($id,$id_to_obj)) {
+            $content[$content_type][] = $id_to_obj[$id];
+          }
+      }
+    }
+    
+    return($content);
   }
 
   public function init() {
@@ -72,9 +106,16 @@ class YDN_Mag_Issue_Type {
   }
 
   public function register_meta_boxes() {
+    add_meta_box("cover-photo", "Cover Photo", function($this, 'draw_meta_box_cover'), self::type_slug, 'normal', 'default'));
+
     foreach ($this->content_types as $id => $meta) { 
       add_meta_box($id,$meta["title"], array($this, 'draw_meta_box'), self::type_slug, 'normal', 'default', array($meta["num"]));
     }
+  }
+
+  public function draw_meta_box_cover($post) {
+    $this->fetch_image_list();
+
   }
 
   public function draw_meta_box($post,$args) {
@@ -144,10 +185,18 @@ class YDN_Mag_Issue_Type {
     $query_args = array( 'posts_per_page' => YDN_Mag_Issue_Type::num_elts_selected );
     add_filter('posts_where', array($this, 'fetch_content_where_filter')); 
     $results = new WP_Query($query_args);
-    remove_filter('posts_where', array($this, 'fetch_content_where_filter'));
-
-    $this->story_list = $results->get_posts(); 
+    $this->story_list = $results->posts; 
+    remove_filter('posts_where', array($this, 'fetch_content_where_filter')); 
   }
+
+  private function fetch_iamge_list() {
+    if(isset($this->image_list)) { return; }
+    $query_args = array( 'posts_per_page' => YDN_Mag_Issue_Type::num_elts_selected, 'post_type' => 'attachment' );
+    add_filter('posts_where', array($this, 'fetch_content_where_filter')); 
+    $results = new WP_Query($query_args);
+    $this->image_list = $results->posts; 
+    remove_filter('posts_where', array($this, 'fetch_content_where_filter')); 
+ }
 
   private function fetch_current_meta() {
     if (isset($this->current_meta)) { return; }
@@ -159,7 +208,8 @@ class YDN_Mag_Issue_Type {
     $current_time = strtotime($this->post->post_date);
     $start_date = strtotime( '-' . YDN_Mag_Issue_Type::week_range . " weeks", $current_time);
     $end_date = strtotime( '+' . YDN_Mag_Issue_Type::week_range . " weeks", $current_time);
-    $where .= " AND post_date >= '" . date('Y-m-d', $start_date) . "' AND post_date <= '" . date('Y-m-d',$end_date). "'";
+    $where .= " AND post_date between '" . date('Y-m-d', $start_date) . "' AND '" . date('Y-m-d',$end_date). "'";
+    return $where;
   }
 
 

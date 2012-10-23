@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php 
+$issue_content = YDN_Mag_Issue_Type::get_content(get_the_id());
+var_dump($issue_content);
+die();
+get_header(); ?>
   <div class="span24">
     <!-- Top layer containing the top-stories from the issue -->
     <div class="row">
