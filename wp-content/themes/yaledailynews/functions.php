@@ -99,48 +99,48 @@ add_action( 'after_setup_theme', 'ydn_setup' );
  *
  * @since ydn 1.0
  */
-function ydn_widgets_init() {
-	register_sidebar( array(
-		'name' => __( 'Sidebar', 'ydn' ),
-		'id' => 'sidebar-1',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
-	) );
+if (!function_exists('ydn_widgets_init')):
+  function ydn_widgets_init() {
+    register_sidebar( array(
+      'name' => __( 'Sidebar', 'ydn' ),
+      'id' => 'sidebar-1',
+      'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+      'after_widget' => "</aside>",
+      'before_title' => '<h1 class="widget-title">',
+      'after_title' => '</h1>',
+    ) );
 
-  register_sidebar( array(
-    'name' => __( 'Leaderboard', 'ydn' ),
-    'id' => 'leaderboard',
-    'class' => 'sidebar-widgets',
-    'before_widget' => '<div id="leaderboard">',
-    'after_widget' => '</div>',
-    'before_title' => '',
-    'after_title' => ''
-  ) );
+    register_sidebar( array(
+      'name' => __( 'Leaderboard', 'ydn' ),
+      'id' => 'leaderboard',
+      'class' => 'sidebar-widgets',
+      'before_widget' => '<div id="leaderboard">',
+      'after_widget' => '</div>',
+      'before_title' => '',
+      'after_title' => ''
+    ) );
 
-  register_sidebar( array(
-    'name' => __( 'Homepage Advertisements', 'ydn' ),
-    'id' => 'home-advertisements',
-    'class' => 'sidebar-widgets',
-    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
-  ) );
+    register_sidebar( array(
+      'name' => __( 'Homepage Advertisements', 'ydn' ),
+      'id' => 'home-advertisements',
+      'class' => 'sidebar-widgets',
+      'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+      'after_widget' => "</aside>",
+      'before_title' => '<h1 class="widget-title">',
+      'after_title' => '</h1>',
+    ) );
 
-  register_sidebar( array(
-    'name' => __( 'Opinion Sidebar', 'ydn' ),
-    'id' => 'opinion-sidebar',
-    'class' => 'sidebar-widgets',
-    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
-  ) );
-
-
-}
+    register_sidebar( array(
+      'name' => __( 'Opinion Sidebar', 'ydn' ),
+      'id' => 'opinion-sidebar',
+      'class' => 'sidebar-widgets',
+      'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+      'after_widget' => "</aside>",
+      'before_title' => '<h1 class="widget-title">',
+      'after_title' => '</h1>',
+    ) );
+  }
+endif; //function_exists
 add_action( 'widgets_init', 'ydn_widgets_init' );
 
 /**
