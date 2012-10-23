@@ -26,7 +26,7 @@ function ydn_legacy_photos_filter($atts) {
 add_shortcode('ydn-legacy-photo-inline', 'ydn_legacy_photos_filter');
 
 function ydn_legacy_photos_modal() {
-    if ( is_singular()):
+    if (is_singular('post')):
     ?>
 		<div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			
@@ -46,5 +46,12 @@ function ydn_legacy_photos_modal() {
     endif;
 }
 add_action('wp_footer', 'ydn_legacy_photos_modal');
+
+function ydn_legacy_photos_enqueue_scripts() {
+  if (is_singular('post')) {
+    wp_enqueue_script( 'ydn-legacy-photo-inline', plugins_url() . '/ydn-legacy-photos/ydn-legacy-photo-inline.js');
+  }
+}
+add_action('wp_enqueue_scripts','ydn_legacy_photos_enqueue_scripts');
 
 ?>

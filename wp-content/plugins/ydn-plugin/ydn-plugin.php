@@ -35,9 +35,11 @@ class YDN_XC_Widget extends WP_Widget {
     <p><label for="<?php echo $this->get_field_name; ?>">Category:</label> 
     <?php
     switch_to_blog(YDN_XC_ID);
-    $dropdown_args = array("selected" => isset($instance["cat"]) ? $instance["cat"] : 0,
-                           "id" => $this->get_field_id('cat'),
+    $dropdown_args = array("id" => $this->get_field_id('cat'),
                            "name" => $this->get_field_name('cat') );
+    if(isset($instance["cat"])) {
+      $dropdown_args["selected"] = $instance["cat"];
+    }
     wp_dropdown_categories($dropdown_args);
     restore_current_blog();
   }
