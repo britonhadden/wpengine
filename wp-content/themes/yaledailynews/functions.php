@@ -11,6 +11,7 @@
  */
 
 define("XC_BLOG_ID",2);
+define("YDN_MAIN_SITE_ID",1);
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -83,7 +84,7 @@ function ydn_setup() {
   add_image_size('home-print-section',230,176,true);
   add_image_size('home-print-section-narrow',230,285,true);
   add_image_size('opinion-featured',550,425,true);
-  add_image_size('home-video-thumbnail',150,100,true);
+  add_image_size('video-thumbnail',150,100,true);
 	/**
 	 * Add support for the Aside Post Formats
 	 */
@@ -98,48 +99,48 @@ add_action( 'after_setup_theme', 'ydn_setup' );
  *
  * @since ydn 1.0
  */
-function ydn_widgets_init() {
-	register_sidebar( array(
-		'name' => __( 'Sidebar', 'ydn' ),
-		'id' => 'sidebar-1',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
-	) );
+if (!function_exists('ydn_widgets_init')):
+  function ydn_widgets_init() {
+    register_sidebar( array(
+      'name' => __( 'Sidebar', 'ydn' ),
+      'id' => 'sidebar-1',
+      'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+      'after_widget' => "</aside>",
+      'before_title' => '<h1 class="widget-title">',
+      'after_title' => '</h1>',
+    ) );
 
-  register_sidebar( array(
-    'name' => __( 'Leaderboard', 'ydn' ),
-    'id' => 'leaderboard',
-    'class' => 'sidebar-widgets',
-    'before_widget' => '<div id="leaderboard">',
-    'after_widget' => '</div>',
-    'before_title' => '',
-    'after_title' => ''
-  ) );
+    register_sidebar( array(
+      'name' => __( 'Leaderboard', 'ydn' ),
+      'id' => 'leaderboard',
+      'class' => 'sidebar-widgets',
+      'before_widget' => '<div id="leaderboard">',
+      'after_widget' => '</div>',
+      'before_title' => '',
+      'after_title' => ''
+    ) );
 
-  register_sidebar( array(
-    'name' => __( 'Homepage Advertisements', 'ydn' ),
-    'id' => 'home-advertisements',
-    'class' => 'sidebar-widgets',
-    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
-  ) );
+    register_sidebar( array(
+      'name' => __( 'Homepage Advertisements', 'ydn' ),
+      'id' => 'home-advertisements',
+      'class' => 'sidebar-widgets',
+      'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+      'after_widget' => "</aside>",
+      'before_title' => '<h1 class="widget-title">',
+      'after_title' => '</h1>',
+    ) );
 
-  register_sidebar( array(
-    'name' => __( 'Opinion Sidebar', 'ydn' ),
-    'id' => 'opinion-sidebar',
-    'class' => 'sidebar-widgets',
-    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
-  ) );
-
-
-}
+    register_sidebar( array(
+      'name' => __( 'Opinion Sidebar', 'ydn' ),
+      'id' => 'opinion-sidebar',
+      'class' => 'sidebar-widgets',
+      'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+      'after_widget' => "</aside>",
+      'before_title' => '<h1 class="widget-title">',
+      'after_title' => '</h1>',
+    ) );
+  }
+endif; //function_exists
 add_action( 'widgets_init', 'ydn_widgets_init' );
 
 /**
@@ -291,7 +292,7 @@ endif;
  *
  * returns: the final list of size $size
  */
-function ydn_fix_list_size($list, $category, $size) {
+function ydn_fix_list_size($list, $category, $size, $post_type = 'post') {
   //if the $list already has enough elements, return the first $size elements
   if ($size <= count($list)) {
     return array_slice($list,0,$size);
@@ -316,7 +317,8 @@ function ydn_fix_list_size($list, $category, $size) {
 
   $query_params = array('posts_per_page' => $size - count($excluded_ids),
                         'cat' => $category->term_id,
-                        'post__not_in' => $excluded_ids);
+                        'post__not_in' => $excluded_ids,
+                        'post_type' => $post_type);
   $query = new WP_Query($query_params);
   return array_merge($list, $query->posts);
 }

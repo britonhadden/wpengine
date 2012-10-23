@@ -365,7 +365,11 @@ li.comment {
 }
 
 #cross-campus {
-  h1 {
+ border: 1px solid @ydnLightGray;
+ padding: 5px;
+ text-align: center;
+
+ h1 {
     @cross_campus_path: "@{asset_path}cross_campus_logo.jpg";
     .hide-text();
     background: transparent url(@cross_campus_path) -5px 0 no-repeat;
@@ -373,8 +377,6 @@ li.comment {
     width: 178px;
     margin-bottom: 5px;
   }
-
-  text-align: center;
 
   h3 {
     color: @ydnDarkGray;
@@ -518,17 +520,28 @@ li.comment {
 
   }
 
-  #opinion-cat-content .content-list .item {
-    .makeColumn(9);
-
-    &.even {
+  #opinion-cat-content .content-list {
+    .item {
       .makeColumn(9,1);
+
+      &:first-child {
+        .makeColumn(9);
+      }
+
+      img {
+        float: left;
+        margin-right: 5px;
+      }
     }
 
-    img {
-      float: left;
-      margin-right: 5px;
-    }
+    &#oped-live {
+      .item {
+        .makeColumn(4,1);
+      }
+
+      .item:first-child {
+        .makeColumn(4);
+      }
   }
-
+ }
 }

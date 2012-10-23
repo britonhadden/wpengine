@@ -44,7 +44,7 @@
           function ydn_opinion_lower_content($slug, $class = ''){ ?>
             <div class="tab-pane content-list <?php echo $class; ?>" id="<?php echo $slug; ?>">
             <?php
-            global $ydn_opinion_class, $ydn_show_auth_thumb, $post;
+            global $ydn_show_auth_thumb, $post;
 
             //grab enough content to fill out the page
             $opinion_lower_content = ydn_fix_list_size(array(),$slug,8);
@@ -52,21 +52,16 @@
             $i = 0; //count the number of iterations, so that we can set the even class
             foreach($opinion_lower_content as $post): setup_postdata($post);
               if($i % 2 == 0 ) {
-                $ydn_opinion_class = "";
                 echo '<div class="row">';
-              } else {
-                $ydn_opinion_class = "even";
               }
-              //$ydn_opinion_class = ($i % 2) ? "even" : "";
               get_template_part('list','opinion');
-              if ($i++ % 2 != 0 ) {
+              if (++$i % 2 == 0 ) {
                 echo '</div>';
               }
 
             endforeach;
 
             //set these back to neutral values
-            $ydn_opinion_class = '';
             $ydn_show_auth_thumb = false;
             ?>
             </div>
@@ -77,7 +72,29 @@
         <?php ydn_opinion_lower_content('guest-columns'); ?>
         <?php ydn_opinion_lower_content('the-news-views'); ?>
         <?php ydn_opinion_lower_content('letters'); ?>
-        <?php ydn_opinion_lower_content('oped-live'); ?>
+        <div class="tab-pane content-list" id="oped-live">
+          <?php
+            $temp_post = $post;
+            $oped_live_content = ydn_fix_list_size(array(),'oped-live',16,'video');
+            $i = 0;
+            foreach($oped_live_content as $post): setup_postdata($post);
+              if($i % 4 == 0) {
+                echo '<div class="row">';
+              }
+              ?>
+              <div class="item">
+                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('video-thumbnail'); ?></a>
+                <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+              </div>
+              <?php
+              if(++$i % 4 == 0 ) {
+                echo '</div>';
+              }
+                
+            endforeach;
+            $post = $temp_post;
+          ?>
+        </div>
       </div>
     </div>
   </div>

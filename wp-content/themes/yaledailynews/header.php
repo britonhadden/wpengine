@@ -59,11 +59,15 @@
 			<div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'ydn' ); ?>"><?php _e( 'Skip to content', '_s' ); ?></a></div>
       <div class="navbar">
         <div class="navbar-inner">
-          <?php wp_nav_menu( array( 'theme_location' => 'primary',
+            <?php
+            switch_to_blog(YDN_MAIN_SITE_ID); //this is necessary so that the menu will be shared among all the children themes
+            wp_nav_menu( array( 'theme_location' => 'primary',
                                     'container_class' => 'menu-primary-container container',
                                     'walker' => new Bootstrap_Walker_Nav_Menu,
                                     'menu_class' => 'nav'
-                                    )); ?>
+                                 ));
+            restore_current_blog();
+            ?>
 
         </div>
       </div>

@@ -107,12 +107,18 @@ class YDN_XC_Widget extends WP_Widget {
     switch_to_blog(YDN_XC_ID);
     ?>
       <script id="ydn-xc-widget-posts" type="text/html">
-      <?php
-        while($this->xc_posts->have_posts()) { 
-          $this->xc_posts->the_post();
-          get_template_part('list','xc');
-        }
-      ?>
+        <div class="content-list">
+          <?php
+            while($this->xc_posts->have_posts()) { 
+              $this->xc_posts->the_post();
+              get_template_part('list','xc');
+            }
+          ?>
+        </div>
+        <div class="controls clearfix">
+          <a href="#" class="pull-left prev">&laquo; Prev</a>
+          <a href="#" class="pull-right next">Next &raquo;</a>
+        </div>
       </script>
     <?php
 
