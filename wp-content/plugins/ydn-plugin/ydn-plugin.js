@@ -58,5 +58,4 @@
   }
 
   $(document).ready(initialize);
- 
 } (jQuery));

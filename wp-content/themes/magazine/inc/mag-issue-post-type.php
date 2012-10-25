@@ -23,15 +23,16 @@ class YDN_Mag_Issue_Type {
   }
 
   public static function get_content($issue_id) {
+    define('SAVEQUERIES',true);
     //returns an array of the content matching $issue_ido
-    
+
     //content_ids is a nested array that dictates which IDs go with which content_types
     $content_ids = get_post_meta($issue_id, self::metadata_key, true);
     //id_to_obj -- an array mapping ids to their objects
     $id_to_obj = array();
     //flat_ids -- an array of just ids
     $flat_ids = array();
-    //content -- a nested array mapping content_types to their actual content objects 
+    //content -- a nested array mapping content_types to their actual content objects
     $content = array();
 
     //first we need to build a flat array of IDs so we can query for them in one hit
@@ -40,7 +41,7 @@ class YDN_Mag_Issue_Type {
     }
 
     //grab the objects and then build a map of IDs to the post ojects
-    $query = new WP_Query(array( 'post__in' => $flat_ids));
+    $query = new WP_Query(array( 'post__in' => $flat_ids, 'posts_per_page' => 20));
     foreach($query->posts as $post) {
       $id_to_obj[$post->ID] = $post;
     }
@@ -48,12 +49,12 @@ class YDN_Mag_Issue_Type {
     //finally build up content, piece by piece, from the original multidimensional array
     foreach ($content_ids as $content_type => $ids) {
       foreach ($ids as $id) {
-          if(array_key_exists($id,$id_to_obj)) {
-            $content[$content_type][] = $id_to_obj[$id];
-          }
+        if(array_key_exists($id,$id_to_obj)) {
+          $content[$content_type][] = $id_to_obj[$id];
+        }
       }
     }
-    
+
     return($content);
   }
 
@@ -69,6 +70,8 @@ class YDN_Mag_Issue_Type {
                                   "poetry" => array("title" => "Poetry", "num" => 4),
                                   "photo_essay" => array("title" => "Photo Essay", "num" => 1) );
 
+    add_image_size('magazine_cover_image',390,500,true);
+
   }
 
   public function register_post_type() {
@@ -83,7 +86,7 @@ class YDN_Mag_Issue_Type {
           'view_item' => __('View Issue'),
           'search_items' => __('Search Issues'),
           'not_found' =>  __('No issues found'),
-          'not_found_in_trash' => __('No issues found in Trash'), 
+          'not_found_in_trash' => __('No issues found in Trash'),
           'parent_item_colon' => '',
           'menu_name' => __('Issues')
         );
@@ -91,24 +94,24 @@ class YDN_Mag_Issue_Type {
             'labels' => $labels,
             'public' => true,
             'publicly_queryable' => true,
-            'show_ui' => true, 
-            'show_in_menu' => true, 
+            'show_ui' => true,
+            'show_in_menu' => true,
             'query_var' => true,
             'rewrite' => true,
             'capability_type' => 'post',
-            'has_archive' => true, 
+            'has_archive' => true,
             'hierarchical' => false,
             'menu_position' => null,
             'supports' => array( 'title' )
-      ); 
+      );
       register_post_type(self::type_slug,$args);
       flush_rewrite_rules(); //magic sauce that makes permalinks work
   }
 
   public function register_meta_boxes() {
-    add_meta_box("cover-photo", "Cover Photo", function($this, 'draw_meta_box_cover'), self::type_slug, 'normal', 'default'));
+    add_meta_box("cover-photo", "Cover Photo", array($this, 'draw_meta_box_cover'), self::type_slug, 'normal', 'default');
 
-    foreach ($this->content_types as $id => $meta) { 
+    foreach ($this->content_types as $id => $meta) {
       add_meta_box($id,$meta["title"], array($this, 'draw_meta_box'), self::type_slug, 'normal', 'default', array($meta["num"]));
     }
   }
@@ -120,7 +123,7 @@ class YDN_Mag_Issue_Type {
 
   public function draw_meta_box($post,$args) {
     //used to draw all of the metaboxes on the admin page
-    
+
     wp_nonce_field(plugin_basename(__FILE__), 'ydnmag_issue_nonce');
 
     $this->post = $post;
@@ -175,7 +178,7 @@ class YDN_Mag_Issue_Type {
     }
 
     update_post_meta($post_id, self::metadata_key, $issue_vars);
-    
+
   }
 
   private function fetch_story_list() {
@@ -183,19 +186,19 @@ class YDN_Mag_Issue_Type {
 
     //gets a content_id and fetches the stories within the week_range from pub date
     $query_args = array( 'posts_per_page' => YDN_Mag_Issue_Type::num_elts_selected );
-    add_filter('posts_where', array($this, 'fetch_content_where_filter')); 
+    add_filter('posts_where', array($this, 'fetch_content_where_filter'));
     $results = new WP_Query($query_args);
-    $this->story_list = $results->posts; 
-    remove_filter('posts_where', array($this, 'fetch_content_where_filter')); 
+    $this->story_list = $results->posts;
+    remove_filter('posts_where', array($this, 'fetch_content_where_filter'));
   }
 
   private function fetch_iamge_list() {
     if(isset($this->image_list)) { return; }
     $query_args = array( 'posts_per_page' => YDN_Mag_Issue_Type::num_elts_selected, 'post_type' => 'attachment' );
-    add_filter('posts_where', array($this, 'fetch_content_where_filter')); 
+    add_filter('posts_where', array($this, 'fetch_content_where_filter'));
     $results = new WP_Query($query_args);
-    $this->image_list = $results->posts; 
-    remove_filter('posts_where', array($this, 'fetch_content_where_filter')); 
+    $this->image_list = $results->posts;
+    remove_filter('posts_where', array($this, 'fetch_content_where_filter'));
  }
 
   private function fetch_current_meta() {
@@ -224,7 +227,7 @@ class YDN_Mag_Issue_Type {
      } else {
        $selected = "";
      }
-     echo "<option value=\"{$post->ID}\" {$selected} >" . $post->post_title . "</option>"; 
+     echo "<option value=\"{$post->ID}\" {$selected} >" . $post->post_title . "</option>";
     }
     echo "</select>";
   }
