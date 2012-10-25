@@ -1,5 +1,6 @@
 <?php
 include('inc/mag-issue-post-type.php');
+include('inc/template-tags.php');
 
 function ydn_widgets_init() {
     register_sidebar( array(
@@ -31,6 +32,12 @@ function ydn_widgets_init() {
     ) );
 }
 
+function ydn_mag_add_body_class($classes) {
+  //a function to ensure that every page has a "magazine" body class
+    $classes[] = "magazine";
+    return $classes;
+}
+add_filter("body_class","ydn_mag_add_body_class");
 
 ?>
 

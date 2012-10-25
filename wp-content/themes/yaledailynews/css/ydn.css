@@ -5590,6 +5590,76 @@ body.category #weekend .blocks {
   width: 810px;
 }
 
+body.magazine .content-list .overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+body.magazine .content-list .item {
+  position: relative;
+}
+
+body.magazine #top-content {
+  margin-bottom: 20px;
+}
+
+body.magazine #top-content .content-list .item {
+  margin-bottom: 0;
+}
+
+body.magazine #top-content #cover {
+  float: left;
+  width: 390px;
+  height: 500px;
+  margin-left: 10px;
+}
+
+body.magazine #top-content .essays > div {
+  float: left;
+  width: 550px;
+  height: 153px;
+  margin-left: 10px;
+}
+
+body.magazine #top-content .essays > div:first-child {
+  margin-bottom: 20px;
+}
+
+body.magazine #top-content .essays > div:last-child {
+  margin-top: 20px;
+}
+
+body.magazine #bottom-content {
+  float: left;
+  width: 710px;
+  margin-left: 10px;
+}
+
+body.magazine #bottom-content .item {
+  float: left;
+  width: 350px;
+  margin-left: 10px;
+}
+
+body.magazine #bottom-content .item .thumb img {
+  float: left;
+  width: 150px;
+  height: 153px;
+  margin: 0 10px 5px 0;
+  margin-left: 10px;
+  margin-left: 0;
+}
+
+body.magazine #bottom-content .dominant.item {
+  float: left;
+  width: 710px;
+  height: 230px;
+  margin-left: 10px;
+}
+
 /* define some borders for the grid system  using LESS mixins to build the
 styles up dynamically */
 

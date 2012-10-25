@@ -71,6 +71,9 @@ class YDN_Mag_Issue_Type {
                                   "photo_essay" => array("title" => "Photo Essay", "num" => 1) );
 
     add_image_size('magazine_cover_image',390,500,true);
+    add_image_size('magazine_top_long',550,153,true);
+    add_image_size('magazine_bottom_long',710,225,true);
+    add_image_size('magazine_span4',148,135,true);
 
   }
 
@@ -117,7 +120,6 @@ class YDN_Mag_Issue_Type {
   }
 
   public function draw_meta_box_cover($post) {
-    $this->fetch_image_list();
 
   }
 

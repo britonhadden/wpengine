@@ -9,4 +9,4 @@
     <span class="datetime"><?php echo get_the_date(); ?> &bull; <?php ydn_comment_count(); ?></span>
   </div>
   <div class="teaser"><?php echo get_the_excerpt(); ?></div>
-</div> 
+</div>
