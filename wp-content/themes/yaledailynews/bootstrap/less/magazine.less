@@ -18,6 +18,14 @@ body.magazine {
     }
   }
 
+  h1.mag-section {
+    color: @ydnGray;
+    &.border {
+      margin-bottom: 15px;
+      border-bottom: 2px solid @ydnGray;
+    }
+  }
+
   #top-content {
     //the topmost block of content, including the cover
     margin-bottom: 20px;
@@ -44,10 +52,8 @@ body.magazine {
       }
     }
   }
-  #bottom-content {
-    .makeColumn(18);
-
-    /* begin styles for the bottom block of essays */
+  /* begin styles for the bottom block of essays */
+  #bottom-essays {
     .item {
       //defaults for the non-dominant items
       .makeColumn(9);
@@ -63,7 +69,17 @@ body.magazine {
       //over-ride height/width
       height:230px;
       .makeColumn(18);
+      margin-left:0;
     }
-    /* end styles for bottom essay block */
+  }
+
+  #shorts-poetry {
+    .item {
+      display:block;
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom:0;
+      }
+    }
   }
 }

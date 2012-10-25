@@ -5590,6 +5590,11 @@ body.category #weekend .blocks {
   width: 810px;
 }
 
+body.magazine {
+  /* begin styles for the bottom block of essays */
+
+}
+
 body.magazine .content-list .overlay {
   position: absolute;
   bottom: 0;
@@ -5600,6 +5605,15 @@ body.magazine .content-list .overlay {
 
 body.magazine .content-list .item {
   position: relative;
+}
+
+body.magazine h1.mag-section {
+  color: #959595;
+}
+
+body.magazine h1.mag-section.border {
+  margin-bottom: 15px;
+  border-bottom: 2px solid #959595;
 }
 
 body.magazine #top-content {
@@ -5632,19 +5646,13 @@ body.magazine #top-content .essays > div:last-child {
   margin-top: 20px;
 }
 
-body.magazine #bottom-content {
-  float: left;
-  width: 710px;
-  margin-left: 10px;
-}
-
-body.magazine #bottom-content .item {
+body.magazine #bottom-essays .item {
   float: left;
   width: 350px;
   margin-left: 10px;
 }
 
-body.magazine #bottom-content .item .thumb img {
+body.magazine #bottom-essays .item .thumb img {
   float: left;
   width: 150px;
   height: 153px;
@@ -5653,11 +5661,21 @@ body.magazine #bottom-content .item .thumb img {
   margin-left: 0;
 }
 
-body.magazine #bottom-content .dominant.item {
+body.magazine #bottom-essays .dominant.item {
   float: left;
   width: 710px;
   height: 230px;
   margin-left: 10px;
+  margin-left: 0;
+}
+
+body.magazine #shorts-poetry .item {
+  display: block;
+  margin-bottom: 10px;
+}
+
+body.magazine #shorts-poetry .item:last-child {
+  margin-bottom: 0;
 }
 
 /* define some borders for the grid system  using LESS mixins to build the

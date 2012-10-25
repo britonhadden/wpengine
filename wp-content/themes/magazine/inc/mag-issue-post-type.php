@@ -74,6 +74,7 @@ class YDN_Mag_Issue_Type {
     add_image_size('magazine_top_long',550,153,true);
     add_image_size('magazine_bottom_long',710,225,true);
     add_image_size('magazine_span4',148,135,true);
+    add_image_size('magazine_small_talk',230,100,true);
 
   }
 
