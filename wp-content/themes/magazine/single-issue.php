@@ -1,5 +1,6 @@
 <?php
   $issue_content = YDN_Mag_Issue_Type::get_content(get_the_id());
+  $issue_content = ($issue_content == null) ? array() : $issue_content;
   get_header();
 ?>
   <div class="span24">
@@ -7,7 +8,7 @@
     <div class="row" id="top-content">
       <div id="cover">
         <?PHP
-        if(array_key_exists(0,$issue_content["top_content"])) {
+        if($issue_content["top_content"] !== null && array_key_exists(0,$issue_content["top_content"])) {
           $temp_post = $post;
           $post = $issue_content["top_content"][0];
           setup_postdata($post);

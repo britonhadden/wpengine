@@ -15,16 +15,15 @@ class YDN_Mag_Issue_Type {
   const week_range = 2; //number of weeks before/after pub date to pull into drop downs
   const metadata_key = "ydn_mag_issue";
 
-  //function to create/grab the instance of the class
-  //it's a class level function
   public static function get_instance() {
+    //function to create/grab the instance of the class
+    //it's a class level function
     NULL  === self::$instance and self::$instance = new self;
     return self::$instance;
   }
 
   public static function get_content($issue_id) {
-    define('SAVEQUERIES',true);
-    //returns an array of the content matching $issue_ido
+    //returns an array of the content matching $issue_id.
 
     //content_ids is a nested array that dictates which IDs go with which content_types
     $content_ids = get_post_meta($issue_id, self::metadata_key, true);
@@ -41,7 +40,11 @@ class YDN_Mag_Issue_Type {
     }
 
     //grab the objects and then build a map of IDs to the post ojects
-    $query = new WP_Query(array( 'post__in' => $flat_ids, 'posts_per_page' => 20));
+    $query = new WP_Query(array( 'post__in' => $flat_ids,
+                                 'posts_per_page' => 20,
+                                 'post_type' => array("post","attachment"),
+                                 'post_status' => array("inherit","publish")
+                               ));
     foreach($query->posts as $post) {
       $id_to_obj[$post->ID] = $post;
     }
@@ -63,13 +66,15 @@ class YDN_Mag_Issue_Type {
     $this->register_post_type();
     add_action('add_meta_boxes', array($this, 'register_meta_boxes'));
     add_action('save_post', array($this, 'save_issue_metadata'));
-    $this->content_types = array( "top_content" => array("title" => "Top Content", "num" => 4),
-                                  "essays" => array("title" => "Essays", "num" => 3),
-                                  "small_talk" => array("title" => "Small Talk", "num" => 3),
-                                  "shorts" => array("title" => "Shorts", "num" => 4),
-                                  "poetry" => array("title" => "Poetry", "num" => 4),
-                                  "photo_essay" => array("title" => "Photo Essay", "num" => 1) );
+    //setup the data model -- should be constant, but PHP doesn't allow arrays to be class constants
+    $this->issue_data_model = array( "top_content" => array("title" => "Top Content", "num" => 4, "post_type"=>"post"),
+                                  "essays" => array("title" => "Essays", "num" => 3, "post_type"=>"post"),
+                                  "small_talk" => array("title" => "Small Talk", "num" => 3, "post_type"=>"post"),
+                                  "shorts" => array("title" => "Shorts", "num" => 4, "post_type" => "post"),
+                                  "poetry" => array("title" => "Poetry", "num" => 4, "post_type" => "post"),
+                                  "photo_essay" => array("title" => "Photo Essay", "num" => 1, "post_type" => "attachment") );
 
+    //register the image sizes necessary to draw the magazine content
     add_image_size('magazine_cover_image',390,500,true);
     add_image_size('magazine_top_long',550,153,true);
     add_image_size('magazine_bottom_long',710,225,true);
@@ -79,6 +84,7 @@ class YDN_Mag_Issue_Type {
   }
 
   public function register_post_type() {
+      //registers the post type with WP. It's run on an init hook
       $labels = array(
           'name' => _x('Issues', 'ydn'),
           'singular_name' => _x('Issue', 'ydn'),
@@ -113,45 +119,37 @@ class YDN_Mag_Issue_Type {
   }
 
   public function register_meta_boxes() {
-    add_meta_box("cover-photo", "Cover Photo", array($this, 'draw_meta_box_cover'), self::type_slug, 'normal', 'default');
-
-    foreach ($this->content_types as $id => $meta) {
-      add_meta_box($id,$meta["title"], array($this, 'draw_meta_box'), self::type_slug, 'normal', 'default', array($meta["num"]));
+    //sets up the callbacks on the admin page for all of the meta boxes.
+    //based on the data model array given in init
+    foreach ($this->issue_data_model as $data_id => $data_fields) {
+      add_meta_box($data_id,$data_fields["title"], array($this, 'draw_meta_box'), self::type_slug, 'normal', 'default', $data_fields);
     }
   }
-
-  public function draw_meta_box_cover($post) {
-
-  }
-
   public function draw_meta_box($post,$args) {
     //used to draw all of the metaboxes on the admin page
-
+    //creates the appropriate number of dropdowns for the specific type of content
     wp_nonce_field(plugin_basename(__FILE__), 'ydnmag_issue_nonce');
 
     $this->post = $post;
-    if (count($args['args']) != 1) {
-      //this should never happen
-      die('invalid number of arguments passed');
-    }
-    $num_elts = $args['args'][0];
     $content_type = $args['id'];
-    $this->fetch_story_list();
+    $args = $args["args"]; //a bunch of crap is passed in, this gives us just the relevant array
+    //grab content we'll need
     $this->fetch_current_meta();
-
-    for($i = 0; $i < $num_elts; $i++) {
+    $dropdown_values = $this->fetch_content_by_type($args["post_type"]);
+    //build the fields
+    for($i = 0; $i < $args["num"]; $i++) {
       $field_name = "ydn_issue_{$content_type}_{$i}";
       ?>
       <div>
         <label for="<?php echo $field_name; ?>">Element <?php echo $i + 1; ?>:</label>
         <?php
           if (count($this->current_meta) > 1) {
-            //there's data already saved, extract the current type
-            $current_type = $this->current_meta[$content_type][$i];
+            //there's data already saved, extract the current type and mark it selected in the dropdown
+            $selected = $this->current_meta[$content_type][$i];
           } else {
-            $current_type = NULL;
+            $selected = NULL;
           }
-          $this->create_dropdown($field_name, $current_type);
+          $this->create_dropdown($field_name, $dropdown_values, $selected);
         ?>
       </div>
       <?php
@@ -159,6 +157,8 @@ class YDN_Mag_Issue_Type {
   }
 
   public function save_issue_metadata($post_id) {
+    //this is the callback that extracts the issue information, structures it into an array
+    //and saves it in the self::metadata_key custom field
     $_POST += array("{self::type_slug}_edit_nonce" => '');
     if ($_POST['post_type'] != self::type_slug) {
       return;
@@ -172,7 +172,7 @@ class YDN_Mag_Issue_Type {
 
     $issue_vars = array(); //will build an array of IDs for the content types and then save it as a single meta
 
-    foreach($this->content_types as $id => $type_meta) {
+    foreach($this->issue_data_model as $id => $type_meta) {
       $num = $type_meta["num"];
       $issue_vars[$id] = array();
       for($i = 0; $i < $num; $i++) {
@@ -184,33 +184,37 @@ class YDN_Mag_Issue_Type {
 
   }
 
-  private function fetch_story_list() {
-    if (isset($this->story_list)) { return; } //value is already chached
-
-    //gets a content_id and fetches the stories within the week_range from pub date
-    $query_args = array( 'posts_per_page' => YDN_Mag_Issue_Type::num_elts_selected );
+  private function fetch_content_by_type($type = "post") {
+    //gets a content_id and fetches the content within the week_range from pub date of the issue
+    //used to populate cached values
+    if(isset($this->cached_content) && array_key_exists($type, $this->cached_content)) {
+      //return from the cache if possible
+      return($this->cached_content[$type]);
+    }
+    //ensure the cache exists
+    $this->cached_content = isset($this->cached_content) ? $this->cached_content : array();
+    //run the query
+    $query_args = array( 'posts_per_page' => YDN_Mag_Issue_Type::num_elts_selected,
+                         'post_type' => $type,
+                         'post_status' => array("publish","inherit")
+                       );
     add_filter('posts_where', array($this, 'fetch_content_where_filter'));
     $results = new WP_Query($query_args);
-    $this->story_list = $results->posts;
     remove_filter('posts_where', array($this, 'fetch_content_where_filter'));
+
+    $this->cached_content[$type] = $results->posts;
+    return($results->posts);
   }
 
-  private function fetch_iamge_list() {
-    if(isset($this->image_list)) { return; }
-    $query_args = array( 'posts_per_page' => YDN_Mag_Issue_Type::num_elts_selected, 'post_type' => 'attachment' );
-    add_filter('posts_where', array($this, 'fetch_content_where_filter'));
-    $results = new WP_Query($query_args);
-    $this->image_list = $results->posts;
-    remove_filter('posts_where', array($this, 'fetch_content_where_filter'));
- }
-
   private function fetch_current_meta() {
+    //just a cache wrapper around the current metadata for the issue
     if (isset($this->current_meta)) { return; }
     $this->current_meta = get_post_meta($this->post->ID,self::metadata_key,true);
   }
 
   public function fetch_content_where_filter($where = '') {
     //necessary to allow WP to select posts published +- week_range weeks from pub date
+    //set as a filter which is then removed after the query is complete
     $current_time = strtotime($this->post->post_date);
     $start_date = strtotime( '-' . YDN_Mag_Issue_Type::week_range . " weeks", $current_time);
     $end_date = strtotime( '+' . YDN_Mag_Issue_Type::week_range . " weeks", $current_time);
@@ -218,13 +222,12 @@ class YDN_Mag_Issue_Type {
     return $where;
   }
 
-
-  private function create_dropdown($name, $post_id) {
-    //renders a drop down, setting its value to $post_id unless nothing is passed
+  private function create_dropdown($name, $posts, $post_id) {
+    //renders a drop down of $posts, setting its value to $post_id unless nothing is passed
     $post_id = (int) $post_id;
     echo "<select id=\"{$name}\" name=\"{$name}\">";
     echo "<option value=\"-1\">--------</option>";
-    foreach($this->story_list as $post) {
+    foreach($posts as $post) {
      if ($post->ID == $post_id) {
        $selected = " selected=\"selected\" ";
      } else {
