@@ -1,0 +1,53 @@
+# Translation of the WordPress plugin   by .
+# Copyright (C) 2010 
+# This file is distributed under the same license as the  package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/nrelate-related-content\n"
+"POT-Creation-Date: 2010-07-22 00:36+0000\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin/dashboard.php:32
+msgid "Dashboard"
+msgstr ""
+
+#: admin/dashboard.php:32
+msgid "nrelate"
+msgstr ""
+
+#: admin/nrelate-main-menu.php:88
+msgid "From our Blog:"
+msgstr ""
+
+#: related-widget.php:14
+msgid "Show related posts"
+msgstr ""
+
+#: related-widget.php:16
+msgid "nrelate Related Widget"
+msgstr ""
+
+#: related-widget.php:41
+msgid "Related Posts:"
+msgstr ""
+
+#: related-widget.php:46
+msgid "Adjust your settings"
+msgstr ""
+
+#: related_settings/nrelate-related-settings.php:360
+msgid "Save Changes"
+msgstr ""
+
+#: related_settings/related-menu.php:19
+msgid "Related Content"
+msgstr ""
