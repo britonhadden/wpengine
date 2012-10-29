@@ -19,7 +19,7 @@ define("YDN_MAIN_SITE_ID",1);
  * @since ydn 1.0
  */
 if ( ! isset( $content_width ) )
-	$content_width = 640; /* pixels */
+  $content_width = 640; /* pixels */
 
 if ( ! function_exists( 'ydn_setup' ) ):
 /**
@@ -33,64 +33,64 @@ if ( ! function_exists( 'ydn_setup' ) ):
  */
 function ydn_setup() {
 
-	/**
-	 * Custom template tags for this theme.
-	 */
-	require( get_template_directory() . '/inc/template-tags.php' );
+  /**
+   * Custom template tags for this theme.
+   */
+  require( get_template_directory() . '/inc/template-tags.php' );
 
-	/**
-	 * Custom functions that act independently of the theme templates
-	 */
-	//require( get_template_directory() . '/inc/tweaks.php' );
+  /**
+   * Custom functions that act independently of the theme templates
+   */
+  //require( get_template_directory() . '/inc/tweaks.php' );
 
-	/**
-	 * Custom Theme Options
-	 */
-	//require( get_template_directory() . '/inc/theme-options/theme-options.php' );
+  /**
+   * Custom Theme Options
+   */
+  //require( get_template_directory() . '/inc/theme-options/theme-options.php' );
 
-	/**
-	 * WordPress.com-specific functions and definitions
-	 */
-	//require( get_template_directory() . '/inc/wpcom.php' );
+  /**
+   * WordPress.com-specific functions and definitions
+   */
+  //require( get_template_directory() . '/inc/wpcom.php' );
 
-	/**
-	 * Make theme available for translation
-	 * Translations can be filed in the /languages/ directory
-	 * If you're building a theme based on ydn, use a find and replace
-	 * to change 'ydn' to the name of your theme in all the template files
-	 */
-	load_theme_textdomain( 'ydn', get_template_directory() . '/languages' );
+  /**
+   * Make theme available for translation
+   * Translations can be filed in the /languages/ directory
+   * If you're building a theme based on ydn, use a find and replace
+   * to change 'ydn' to the name of your theme in all the template files
+   */
+  load_theme_textdomain( 'ydn', get_template_directory() . '/languages' );
 
-	/**
-	 * Add default posts and comments RSS feed links to head
-	 */
-	add_theme_support( 'automatic-feed-links' );
+  /**
+   * Add default posts and comments RSS feed links to head
+   */
+  add_theme_support( 'automatic-feed-links' );
 
   /** Add menu support */
   add_theme_support( 'menus' );
-  
+
   register_nav_menus( array(
     'primary' => __( 'Primary Menu', 'ydn'),
     ));
 
 
 
-	/**
-	 * Enable support for Post Thumbnails
-	 */
-	add_theme_support( 'post-thumbnails' );
+  /**
+   * Enable support for Post Thumbnails
+   */
+  add_theme_support( 'post-thumbnails' );
   add_image_size('entry-featured-image',630,9999999); /* crop the image so that it's 630px wide, don't care about height */
   add_image_size('home-carousel',470,350,true);
   add_image_size('home-print-section',230,176,true);
   add_image_size('home-print-section-narrow',230,285,true);
   add_image_size('opinion-featured',550,425,true);
   add_image_size('video-thumbnail',150,100,true);
-	/**
-	 * Add support for the Aside Post Formats
-	 */
-	add_theme_support( 'post-formats', array( 'aside', ) );
+  /**
+   * Add support for the Aside Post Formats
+   */
+  add_theme_support( 'post-formats', array( 'aside', ) );
 
-                                                
+
 }
 endif; // ydn_setup
 add_action( 'after_setup_theme', 'ydn_setup' );
@@ -147,22 +147,22 @@ add_action( 'widgets_init', 'ydn_widgets_init' );
  * Enqueue scripts and styles
  */
 function ydn_scripts() {
-	global $post;
+  global $post;
 
-	wp_enqueue_style( 'style', get_stylesheet_uri() );
+  wp_enqueue_style( 'style', get_stylesheet_uri() );
   wp_enqueue_style( 'bootstrap-ydn', get_template_directory_uri() . '/css/ydn.css');
 
   wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.js', array('jquery') );
   wp_enqueue_script( 'throttle-debounce', get_template_directory_uri() . '/js/jquery.ba-throttle-debounce.min.js', array('jquery') );
   wp_enqueue_script( 'ydn', get_template_directory_uri() . '/js/ydn.js', array('jquery','bootstrap-js','throttle-debounce') );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+  if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+    wp_enqueue_script( 'comment-reply' );
+  }
 
-	if ( is_singular() && wp_attachment_is_image( $post->ID ) ) {
-		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
-	}
+  if ( is_singular() && wp_attachment_is_image( $post->ID ) ) {
+    wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
+  }
 }
 add_action( 'wp_enqueue_scripts', 'ydn_scripts' );
 
@@ -182,9 +182,6 @@ function ydn_register_custom_metadata() {
     //user level meta
     x_add_metadata_group('ydn_user_metadata', array('user'), array('label' => "YDN Metadata"));
     x_add_metadata_field("ydn_legacy_password", array('user'), array( 'label' => "YDN Legacy Password Hash", "group" => "ydn_user_metadata"));
-    x_add_metadata_field("ydn_user_photo", array('user'), array( "label" => "User Photo", //this line requires the ydn_edit_callback
-                                                            "group" => "ydn_user_metadata",
-                                                            "field_type" => "upload"));
 
   }
 
@@ -199,18 +196,18 @@ function ydn_get_post_format() {
 }
 
 /**
- * Register custom metadata for our attachments.  Unforunately, the custom metadata manager doesn't work with 
- * attachments and we have to do these by hand 
+ * Register custom metadata for our attachments.  Unforunately, the custom metadata manager doesn't work with
+ * attachments and we have to do these by hand
  *
  * The flags we register here allow images to be marked for the home page as WEEKEND cover/Front Page/Magazine Cover
  */
 
 /**
  * Render a select box on the attachment page that allows users to mark an image
- * as a special type 
+ * as a special type
  */
 
-//start building the html we need to render the select box 
+//start building the html we need to render the select box
 //build a simple function to render options on the attachment page
 function ydn_build_option($name,$value,$current_value) {
    $o = '<option value="' . $value . '"';
@@ -227,11 +224,11 @@ function ydn_attachment_fields_to_edit($form_fields, $post) {
   // $post is the attachemnt record in the database $post->post_type == 'attachment'
   // (attachments are treated as posts in the wordpress database)
 
-  //grab what the meta is set to currently so that we can choose the appropriate default for the select box 
-  $current_value = get_post_meta($post->ID, "_ydn_attachment_special_type", true); 
+  //grab what the meta is set to currently so that we can choose the appropriate default for the select box
+  $current_value = get_post_meta($post->ID, "_ydn_attachment_special_type", true);
 
 
-      
+
   $field_name = 'attachments[' . $post->ID . '][_ydn_attachment_special_type]';
 
   $html = '<select name="' . $field_name  . '" id="' . $field_name . '">';
@@ -269,7 +266,7 @@ function ydn_attachment_fields_to_save($post, $attachment) {
 add_filter("attachment_fields_to_save", "ydn_attachment_fields_to_save", null, 2);
 
 /**
- * Add our >> read more button to the end of excerpts 
+ * Add our >> read more button to the end of excerpts
  */
 if (! function_exists("ydn_excerpt_read_more") ):
   function ydn_excerpt_read_more($more) {
@@ -299,7 +296,7 @@ function ydn_fix_list_size($list, $category, $size, $post_type = 'post') {
   if (empty($category)) {
     return $list;
   }
-  
+
   $category = get_category_by_slug($category);
   //if the category query doesn't return anything, there's nothing to do
   if (empty($category)) {
