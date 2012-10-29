@@ -47,6 +47,7 @@
         <div class="span6">
           <!-- most popular/most viewed -->
           Most popular/viewed posts will go here
+          <?php if (function_exists('nrelate_popular')) nrelate_popular(); ?>
         </div>
 
         <div class="span13 print-section">

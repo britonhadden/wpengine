@@ -33,9 +33,9 @@ function ydn_legacy_photos_modal() {
     ?>
 		<div class="modal hide" id="ydn-photo-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-body">
-				<div class="modal-close">
+				<!-- <div class="modal-close">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				</div>
+				</div> -->
 				<div class="modal-photo">
 				</div>
 			</div>
