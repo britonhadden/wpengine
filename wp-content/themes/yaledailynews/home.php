@@ -49,7 +49,7 @@
           <?php if (function_exists('nrelate_popular')) nrelate_popular(); ?>
         </div>
 
-        <div class="span13 print-section">
+        <div class="span13 print-section" id="opinion-section">
           <!-- opinion -->
           <h1>Opinion</h1>
           <div class="content-list">

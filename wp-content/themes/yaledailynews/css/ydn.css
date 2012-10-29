@@ -6247,6 +6247,9 @@ li.comment {
 }
 
 #cross-campus h3 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
   color: #777777;
 }
 
@@ -6334,7 +6337,11 @@ li.comment {
 }
 
 .home .print-section .headline {
-  font-size: 120%;
+  font-size: 110%;
+}
+
+.home .print-section .meta {
+  font-size: 11px;
 }
 
 .home #video-thumbnails {
@@ -6365,6 +6372,15 @@ li.comment {
 .home #more-videos a {
   color: #959595;
   text-transform: uppercase;
+}
+
+#opinion-section .headline {
+  font-size: 100%;
+}
+
+#opinion-section h1 {
+  font-size: 110%;
+  text-align: center;
 }
 
 #ydn-popular-posts .nrelate {
