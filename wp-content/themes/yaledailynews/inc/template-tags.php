@@ -134,6 +134,7 @@ function ydn_get_featured_image() {
       <?php  the_post_thumbnail('entry-featured-image'); ?>
       <?php if($featured_image_obj): ?>
         <div class="image-meta">
+
           <?php if( $featured_image_obj->post_excerpt): ?>
             <span class="caption"> <?php echo esc_html( $featured_image_obj->post_excerpt ); ?> </span>
           <?php endif; ?>
