@@ -75,7 +75,7 @@ function ydnxc_widgets_init() {
     'after_widget' => "</aside>",
     'before_title' => '<h3 class="widget-title">',
     'after_title' => '</h3>',
-  ) )
+  ) );
 
   register_sidebar( array(
     'name' => __( 'Content Sidebar Tabs', 'ydnxc' ),
