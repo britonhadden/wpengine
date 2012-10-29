@@ -44,9 +44,8 @@
       <div class="double-border"></div>
 
       <div class="row border6">
-        <div class="span6">
+        <div class="span6" id="ydn-popular-posts">
           <!-- most popular/most viewed -->
-          Most popular/viewed posts will go here
           <?php if (function_exists('nrelate_popular')) nrelate_popular(); ?>
         </div>
 
