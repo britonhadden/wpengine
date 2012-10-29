@@ -124,8 +124,7 @@ function ydn_get_featured_image() {
     $featured_image_id = get_post_thumbnail_id( $post->ID );
     $featured_image_obj = get_posts( array( 'numberposts' => 1,
                                             'include' => $featured_image_id,
-                                            'post_type' => 'attachment',
-                                            'post_parent' => $post->ID ) );
+                                            'post_type' => 'attachment' ) );
     if ( is_array($featured_image_obj) && !empty($featured_image_obj) ) {
       $featured_image_obj = $featured_image_obj[0];
     }
@@ -136,7 +135,7 @@ function ydn_get_featured_image() {
       <?php if($featured_image_obj): ?>
         <div class="image-meta">
           <?php if( $featured_image_obj->post_excerpt): ?>
-            <span class="caption"> <?php echo esc_html( $featured_image_obj->post_excerpt ); ?> </span> 
+            <span class="caption"> <?php echo esc_html( $featured_image_obj->post_excerpt ); ?> </span>
           <?php endif; ?>
           <?php
             $attribution_text = get_media_credit_html($featured_image_obj);
@@ -208,7 +207,7 @@ endif;
  * This function is used to get the section for stories.
  * It assumes that each story is in one top-level category,
  * and returns the name of the first top-level cat it encounters.
- * If no category is applied, it will simply return an empty string 
+ * If no category is applied, it will simply return an empty string
  *
  * Defaults to the current global post if none specified
  * */
@@ -231,7 +230,7 @@ endif;
  * for the javascript-enabled version into a template at the bottom of the page.
  *
  * Function requires an array of posts and an HTML ID.  Allows args array as well.
- */ 
+ */
 if (!class_exists('YDN_Carousel') ):
   class YDN_Carousel {
     public function __construct($posts, $html_id ) {
@@ -240,7 +239,7 @@ if (!class_exists('YDN_Carousel') ):
 
       $this->render_no_js();
       add_action('wp_print_footer_scripts', array($this, 'render_js_template') );
-    } 
+    }
     private $posts, $html_id, $args;
 
     private function render_no_js( ) {
@@ -249,7 +248,7 @@ if (!class_exists('YDN_Carousel') ):
       $i = 0;
 
       $post = $this->posts[0];
-      ?>   
+      ?>
       <div id="<?php echo $this->html_id; ?>" class="carousel slide no-js">
         <div class="carousel-inner">
           <div class="item active">
@@ -260,7 +259,7 @@ if (!class_exists('YDN_Carousel') ):
     <?php
     $post = $temp_post;
     }
-    
+
     //must be public so that it can be called from the callback
     public function render_js_template() {
       global $post;
@@ -270,9 +269,9 @@ if (!class_exists('YDN_Carousel') ):
       ?>
         <script id="<?php echo $this->html_id; ?>-template" type="text/html">
           <div class="carousel-inner">
-          <?php 
-                foreach( $this->posts as $post): 
-                  setup_postdata($post); 
+          <?php
+                foreach( $this->posts as $post):
+                  setup_postdata($post);
                   if (get_post_type($post->ID) == 'slideshow-slide') {
                     //setup the variables for the custom posts that link to arbitrary URLs
                     $url = get_post_meta(  $post->ID, 'ydn_slideshow_url', true );
@@ -306,7 +305,7 @@ if (!class_exists('YDN_Carousel') ):
       $output = '<ul class="unstyled navlist">';
       $i = 0;
       foreach ($this->posts as $post) {
-        setup_postdata($post); 
+        setup_postdata($post);
         if (get_post_type($post->ID) == 'slideshow-slide') {
           //setup the variables for the custom posts that link to arbitrary URLs
           $cat = get_post_meta( $post->ID, 'ydn_slideshow_cat', true );
@@ -349,7 +348,7 @@ if (! function_exists("ydn_comment_count") ):
     //prints a link to the article w/ the number of comments
     global $post;
     ?>
-    <a href="<?php echo get_permalink();?>#comments-title" class="comment-count">(<?php echo $post->comment_count; ?>)</a> 
+    <a href="<?php echo get_permalink();?>#comments-title" class="comment-count">(<?php echo $post->comment_count; ?>)</a>
     <?php
   }
 endif;
@@ -382,7 +381,7 @@ function ydn_categorized_blog() {
 }
 
 /**
- * Returns the most recent attachment that has the specified "special type" metadata 
+ * Returns the most recent attachment that has the specified "special type" metadata
  */
 function ydn_get_special_image($type,$size) {
   //pull the image of special type $type, then render it in $size
@@ -400,7 +399,7 @@ function ydn_get_special_image($type,$size) {
     $attach_id = $query->posts[0]->ID;
     echo wp_get_attachment_image($attach_id, $size);
   }
-  
+
 }
 
 
