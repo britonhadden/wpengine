@@ -17,5 +17,8 @@ include('legacy-login.php');
 //XC widget defines the cross campus widget that runs in several sidebars
 //throughout the site
 include('xc-widget.php');
+
+//A recent comment widget that matches the styling needed for the XC sidebar
+include('comment-widget.php');
 ?>
 
