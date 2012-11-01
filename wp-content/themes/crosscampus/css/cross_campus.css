@@ -5299,6 +5299,7 @@ body {
   display: block;
   width: 710px;
   height: 70px;
+  text-decoration: none;
   background: transparent url("http://yaledailynews.com/wp-content/themes/crosscampus/img/cross_campus_logo.jpg") center 2px no-repeat;
 }
 
@@ -5523,6 +5524,7 @@ body {
 .entry-featured-image .image-meta {
   margin-top: 10px;
   color: #737373;
+  text-align: left;
 }
 
 .post {

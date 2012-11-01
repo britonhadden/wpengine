@@ -214,7 +214,7 @@ function ydnxc_get_featured_image() {
     $featured_image_obj = get_posts( array( 'numberposts' => 1,
                                             'include' => $featured_image_id,
                                             'post_type' => 'attachment',
-                                            'post_parent' => $post->ID ) );
+                                    ) );
     if ( is_array($featured_image_obj) && !empty($featured_image_obj) ) {
       $featured_image_obj = $featured_image_obj[0];
     }
