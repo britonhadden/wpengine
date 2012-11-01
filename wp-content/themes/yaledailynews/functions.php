@@ -80,6 +80,7 @@ function ydn_setup() {
    */
   add_theme_support( 'post-thumbnails' );
   add_image_size('entry-featured-image',630,9999999); /* crop the image so that it's 630px wide, don't care about height */
+  add_image_size('modal-photo', 9999999, 675);
   add_image_size('home-carousel',470,350,true);
   add_image_size('home-print-section',230,176,true);
   add_image_size('home-print-section-narrow',230,285,true);

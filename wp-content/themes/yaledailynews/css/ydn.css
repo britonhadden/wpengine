@@ -5608,6 +5608,7 @@ body.magazine .content-list .item {
 }
 
 body.magazine h1.mag-section {
+  font-size: 20px;
   color: #959595;
 }
 
@@ -5881,6 +5882,10 @@ textarea#comment {
   border: 0;
 }
 
+.section {
+  font-size: 11px;
+}
+
 .double-border {
   width: 100%;
   height: 3px;
@@ -5897,6 +5902,7 @@ textarea#comment {
   padding: 10px 0;
   margin-bottom: 10px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: left;
   border-top: 1px solid #ebebeb;
   border-bottom: 1px solid #ebebeb;
 }
@@ -6105,6 +6111,10 @@ li.comment {
  * headlines, etc consistently styled across the site. Unfortunately,
  * I lost the original LESS and it's just compiled CSS */
 
+.content-list .meta {
+  font-size: 11px;
+}
+
 .content-list .item.standard .thumbnail {
   float: right;
   margin-bottom: 5px;
@@ -6220,7 +6230,11 @@ li.comment {
 /* YDN Photos Modal Styling */
 
 #ydn-photo-modal .modal-body {
-  max-height: none;
+  max-height: 675px;
+}
+
+#ydn-photo-modal .modal-photo {
+  text-align: center;
 }
 
 #ydn-photo-modal .modal-caption {
@@ -6231,6 +6245,10 @@ li.comment {
   padding: 5px;
   text-align: center;
   border: 1px solid #ebebeb;
+}
+
+#cross-campus #cross-campus-header {
+  text-decoration: none;
 }
 
 #cross-campus h1 {
@@ -6338,10 +6356,6 @@ li.comment {
 
 .home .print-section .headline {
   font-size: 110%;
-}
-
-.home .print-section .meta {
-  font-size: 11px;
 }
 
 .home #video-thumbnails {

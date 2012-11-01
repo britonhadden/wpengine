@@ -14,7 +14,7 @@ License: GPL2
 function ydn_legacy_photos_filter($atts) {
 	$id = $atts[id];
 	$image_small = wp_get_attachment_image_src( $id, medium );
-	$image_large = wp_get_attachment_image_src( $id, large );
+	$image_large = wp_get_attachment_image_src( $id, 'modal-photo' );
 	$image_credit = get_media_credit_html($id);
 	$image_caption = get_post($id)->post_excerpt;
 

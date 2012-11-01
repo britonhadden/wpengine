@@ -109,6 +109,10 @@ body {
   }
 }
 
+.section {
+  font-size: 11px;
+}
+
 @double_border_path: "@{asset_path}double_line.gif";
 .double-border {
     background: url(@double_border_path) repeat-x scroll 0 0 transparent;
@@ -126,6 +130,7 @@ body {
     font-family: @sansFontFamily; 
     margin-bottom: 10px;
     padding: 10px 0;
+    text-align: left;
 }
 .entry-header .entry-title {
     margin-bottom: 10px;
@@ -253,6 +258,12 @@ li.comment {
  * of any lists of stories/other content. It's used to keep our bylines,
  * headlines, etc consistently styled across the site. Unfortunately,
  * I lost the original LESS and it's just compiled CSS */
+.content-list {
+    .meta {
+      font-size: 11px;
+    }
+}
+
 .content-list .item.standard .thumbnail {
     float: right;
     margin-bottom: 5px; /* EARL: Not sure if this should go here. */
@@ -359,7 +370,11 @@ li.comment {
 #ydn-photo-modal {
 
   .modal-body {
-    max-height: none;
+    max-height: 675px;
+  }
+
+  .modal-photo {
+    text-align: center;
   }
 
   .modal-caption {
@@ -375,6 +390,10 @@ li.comment {
  border: 1px solid @ydnLightGray;
  padding: 5px;
  text-align: center;
+
+ #cross-campus-header {
+    text-decoration: none;
+ }
 
  h1 {
     @cross_campus_path: "@{asset_path}cross_campus_logo.jpg";
@@ -481,10 +500,6 @@ li.comment {
 
     .headline {
       font-size: 110%;
-    }
-
-    .meta {
-      font-size: 11px
     }
   }
 

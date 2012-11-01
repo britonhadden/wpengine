@@ -126,7 +126,7 @@
     <div class="span5"> <!-- right most column -->
       <div id="cross-campus" class="widget">
         <?php switch_to_blog(XC_BLOG_ID); ?>
-        <a href="<?php echo get_bloginfo('url'); ?>"><h1>Cross Campus</h1></a>
+        <a id="cross-campus-header" href="<?php echo get_bloginfo('url'); ?>"><h1>Cross Campus</h1></a>
         <div class="content-list borders">
           <?php 
             $xc_posts = get_posts( array('numberposts' => 4 ) );
