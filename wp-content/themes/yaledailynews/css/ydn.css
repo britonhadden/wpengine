@@ -5670,6 +5670,10 @@ body.magazine #bottom-essays .dominant.item {
   margin-left: 0;
 }
 
+body.magazine #shorts-poetry {
+  margin-bottom: 20px;
+}
+
 body.magazine #shorts-poetry .item {
   display: block;
   margin-bottom: 10px;
@@ -5677,6 +5681,35 @@ body.magazine #shorts-poetry .item {
 
 body.magazine #shorts-poetry .item:last-child {
   margin-bottom: 0;
+}
+
+body.magazine #photo-essay {
+  position: relative;
+  width: 430px;
+  height: 300px;
+}
+
+body.magazine #photo-essay h1 {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+body.magazine #photo-essay span {
+  position: absolute;
+  width: 410px;
+  padding: 10px;
+  font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  letter-spacing: -1px;
+  color: white;
+  text-align: center;
+  background: #000000;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+body.magazine #photo-essay span:hover {
+  text-decoration: underline;
 }
 
 /* define some borders for the grid system  using LESS mixins to build the
@@ -6198,6 +6231,7 @@ li.comment {
   height: 26px;
   padding-left: 40px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
   line-height: 26px;
   color: white;
   text-transform: uppercase;

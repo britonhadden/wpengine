@@ -75,6 +75,8 @@ body.magazine {
   }
 
   #shorts-poetry {
+    margin-bottom: 20px;
+
     .item {
       display:block;
       margin-bottom: 10px;
@@ -82,5 +84,34 @@ body.magazine {
         margin-bottom:0;
       }
     }
+  }
+
+  #photo-essay {
+    height: 300px;
+    width: 430px;
+    position: relative; 
+   
+    h1 {
+      position: absolute; 
+      //top: 200px; 
+      width: 100%;
+      text-align: center;
+    }
+    
+    span {
+       position: absolute;
+       text-align: center;
+       width: 410px;
+       color: white; 
+       font: @sansFontFamily; //fix this. fonts not showing. getting overwritten by body style.
+       font-size: 24px;
+       letter-spacing: -1px;  
+       background: rgb(0, 0, 0); /* fallback color */
+       background: rgba(0, 0, 0, 0.7);
+       padding: 10px; 
+    }
+    span:hover {
+        text-decoration: underline;
+      }
   }
 }

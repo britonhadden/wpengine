@@ -115,8 +115,24 @@
               </div>
             </div>
             <div class="row">
-              <div class="span11" style="height:300px; background-color:brown;">
+              <div class="span11" id="photo-essay">
                 <!-- standalone/gallery image -->
+                <?php
+                  if ( array_key_exists ( "photo_essay", $issue_content ) ) {
+                    $content = $issue_content["photo_essay"] == null ? array() : $issue_content["photo_essay"];
+                    $content = $content[0];
+                    $id = $content->ID;
+                    $photo_essay_link = get_attachment_link($id);
+                    $photo_essay_image = wp_get_attachment_image_src( $id, 'magazine_photo_essay' );
+                    $photo_essay_author = $content->post_author; //FIX MEE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    if ( $content->post_type == 'attachment') {
+                      echo "<a href=\"{$photo_essay_link}\"><span>Photo Essay</span><img src=\"{$photo_essay_image[0]}\"></a>";
+                    } else
+                    echo "<img src=\"{$photo_essay_image[0]}\">";
+                  }
+                  
+                  ?>
+
               </div>
             </div>
           </div>
