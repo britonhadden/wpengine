@@ -130,7 +130,6 @@ body {
     font-family: @sansFontFamily; 
     margin-bottom: 10px;
     padding: 10px 0;
-    text-align: left;
 }
 .entry-header .entry-title {
     margin-bottom: 10px;
@@ -152,6 +151,7 @@ body {
 .entry-featured-image .image-meta {
     color: @ydnGray;
     margin-top: 10px;
+    text-align: left;
 }
 .entry-content .alignleft {
     float: left;
@@ -172,9 +172,8 @@ body {
     width: 110px;
 }
 
-@social_share_path: "@{asset_path}share_story.gif";
 .entry-content .social-share li {
-    background: url(@social_share_path) no-repeat scroll 0 0 transparent;
+    background: url("@{asset_path}share_story.gif") no-repeat scroll 0 0 transparent;
     border-bottom: 1px solid @ydnLightGray;
     color: @ydnGray;
     font-family: @sansFontFamily; 
@@ -381,9 +380,6 @@ li.comment {
     padding:0px 15px 15px 15px;
   }
 
-  .modal-close {
-  
-  }  
 }
 
 #cross-campus {

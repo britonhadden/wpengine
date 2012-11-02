@@ -319,6 +319,14 @@ function ydn_fix_list_size($list, $category, $size, $post_type = 'post') {
 }
 
 /**
+ * Function triggered on activation of the theme to take care of some settings
+ */
+function ydn_theme_activation() {
+  flush_rewrite_rules();
+}
+add_action('after_switch_theme', 'ydn_theme_activation');
+
+/**
  * Include other funciton files
  */
 require( get_template_directory() . '/inc/bootstrap-menu-walker.php' );
