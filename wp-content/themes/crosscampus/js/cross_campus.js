@@ -38,13 +38,13 @@
       var $tab_li, $tab_a, $tab_title, title_text, title_id;
 
       //Extract the useful info from the title, then remove it
-      $tab_title = $tab.find('.widget-title');
+      $tab_title = $tab.find('.widget-title, .nr_title > span');
       if ($tab_title.children().length !== 0) {
         //if we haven't hit a text node, try its first child.
         //this fix was originally intended for the twitter widget
         $tab_title = $tab_title.children().first();
       }
-      title_text = $tab_title.html();
+      title_text = $tab_title.html() || '';
       tab_id = title_text.replace(' ','').toLowerCase();
       $tab_title.remove();
 

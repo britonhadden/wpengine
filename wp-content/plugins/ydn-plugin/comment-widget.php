@@ -66,7 +66,10 @@ function __construct() {
     $output .= '<ul id="recentcomments">';
     if ( $comments ) {
       foreach ( (array) $comments as $comment) {
-        $output .=  '<li class="recentcomments">' . '<span class="comment">' . get_comment_text() . '</span>' . /* translators: comments widget: 1: comment author, 2: post link */ sprintf(_x('%1$s on %2$s', 'widgets'), get_comment_author_link(), '<a href="' . esc_url( get_comment_link($comment->comment_ID) ) . '">' . get_the_title($comment->comment_post_ID) . '</a>') . '</li>';
+        $comment_text = get_comment_text();
+        $comment_text = wp_trim_words($comment_text,25,'&hellip;');
+        $output .=  '<li class="recentcomments">' . '<span class="comment"><a href="' . esc_url( get_comment_link($comment->comment_ID) ) . '">' . $comment_text . '</a></span>';
+        $output .= sprintf(_x('%1$s on %2$s', 'widgets'), get_comment_author_link(), '<a href="' . esc_url( get_comment_link($comment->comment_ID) ) . '">' . get_the_title($comment->comment_post_ID) . '</a>') . '</li>';
       }
     }
     $output .= '</ul>';

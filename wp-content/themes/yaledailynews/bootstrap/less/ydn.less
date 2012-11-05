@@ -237,6 +237,7 @@ li.comment {
   margin-bottom: 15px;
   margin-top: 5px;
   padding: 15px;
+  clear: both;
 
   .photo-credit {
     padding: 10px 0  5px 0;
@@ -464,15 +465,7 @@ li.comment {
  * sections of the paper. */
 .home {
   .print-section {
-    h1 {
-      text-transform: uppercase;
-      color: black;
-      font-size: 130%;
-      line-height: 1.25em;
-      margin-bottom: 10px;
-    }
-    
-    .featured.item {
+   .featured.item {
       //collapse bottom margins so that we don't get extra space
       margin-bottom: 0;
 
@@ -528,34 +521,45 @@ li.comment {
       text-transform: uppercase;
     }
   }
- 
-}
 
-//Home page - Opinion Section 
-#opinion-section {
-  .headline{
-    font-size: 100%;
+  #opinion-section {
+    .headline{
+      font-size: 100%;
+    }
   }
-  h1 {
-    text-align: center;
-    font-size: 110%;
-  }
-}
 
-//nrelate Popular Posts Plugin
-#ydn-popular-posts {
-  .nrelate {
-    margin: 0;
+  //nrelate Popular Posts Plugin
+  #ydn-popular-posts {
+    .nrelate, .nrinner {
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
   }
+
+  .print-section h1,
   .nr_title {
-    padding: 0;
-    color: black;
-    font-weight: normal;
-    font-size: 14px;
-    text-align: center;
     text-transform: uppercase;
+    color: black;
+    font-size: 130%;
+    line-height: 1.25em;
+    margin-bottom: 10px;
+    padding-bottom: 0;
   }
 }
+
+
 
 //styles for the opinion landing page
 .category-opinion {

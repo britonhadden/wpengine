@@ -5299,7 +5299,6 @@ body {
   display: block;
   width: 710px;
   height: 70px;
-  text-decoration: none;
   background: transparent url("http://yaledailynews.com/wp-content/themes/crosscampus/img/cross_campus_logo.jpg") center 2px no-repeat;
 }
 
@@ -5318,6 +5317,23 @@ body {
   text-align: center;
 }
 
+#sidebar .nr_inner {
+  padding: 0;
+}
+
+#sidebar .nr_inner ul {
+  margin-left: 0;
+  list-style: none;
+}
+
+#sidebar .nr_inner li {
+  margin-bottom: 10px;
+}
+
+#sidebar .nr_inner a:hover {
+  text-decoration: underline;
+}
+
 #sidebar #tabbed.js {
   width: 230px;
   margin-left: -5px;
@@ -5329,6 +5345,9 @@ body {
 
 #sidebar #tabbed.js .nav-tabs {
   margin-bottom: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 75%;
+  text-transform: uppercase;
   border: none;
 }
 
@@ -5363,6 +5382,10 @@ body {
 }
 
 #sidebar #tabbed.js .tab-pane a {
+  color: #a7845c;
+}
+
+#sidebar #tabbed.js .tab-pane#twitter a {
   color: #d2baa1;
 }
 
