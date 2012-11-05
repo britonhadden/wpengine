@@ -36,7 +36,12 @@ function ydn_register_video_type() {
       );
       register_post_type('video',$args);
 }
-add_action( 'init', 'ydn_register_video_type');
+add_action('init', 'ydn_register_video_type',1);
+
+function ydn_video_type_flush() {
+  flush_rewrite_rules();
+}
+add_action( 'after_switch_theme', 'ydn_video_type_flush');
 
 
 ?>
