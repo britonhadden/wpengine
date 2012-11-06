@@ -91,7 +91,6 @@ body {
     #grid > .core > .span(18);
     height: 70px;
     display: block;
-    text-decoration: none;
   }
 }
 
@@ -103,14 +102,31 @@ body {
 
 //styling for the sidebar; includes defaults for no-js
 #sidebar {
-    #tabbed,
-    .widget {
-      margin-bottom: 20px;
+  #tabbed,
+  .widget {
+    margin-bottom: 20px;
+  }
+
+  & >  .widget_text {
+    text-align: center;
+  }
+
+  .nr_inner {
+    padding: 0;
+
+    ul {
+      list-style:none;
+      margin-left:0;
     }
 
-    & >  .widget_text {
-      text-align: center;
+    li {
+      margin-bottom: 10px;
     }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 // styling for the tabbed content on the siebar
@@ -129,6 +145,9 @@ body {
   .nav-tabs {
     border: none;
     margin-bottom: 0;
+    text-transform: uppercase;
+    font-family: @sansFontFamily;
+    font-size: 75%;
   }
 
   //default styles for the tabs (inactive state)
@@ -162,6 +181,10 @@ body {
     color: @xcDarkTan;
 
     a {
+      color: @xcDarkTan;
+    }
+
+    &#twitter a {
       color: @xcTan;
     }
   }

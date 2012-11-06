@@ -116,7 +116,6 @@ class YDN_Mag_Issue_Type {
             'supports' => array( 'title' )
       );
       register_post_type(self::type_slug,$args);
-      flush_rewrite_rules(); //magic sauce that makes permalinks work
   }
 
   public function register_meta_boxes() {
