@@ -122,13 +122,21 @@
                     $content = $issue_content["photo_essay"] == null ? array() : $issue_content["photo_essay"];
                     $content = $content[0];
                     $id = $content->ID;
-                    $photo_essay_link = get_attachment_link($id);
-                    $photo_essay_image = wp_get_attachment_image_src( $id, 'magazine_photo_essay' );
-                    $photo_essay_author = $content->post_author; //FIX MEE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    if ( $content->post_type == 'attachment') {
-                      echo "<a href=\"{$photo_essay_link}\"><span>Photo Essay</span><img src=\"{$photo_essay_image[0]}\"></a>";
-                    } else
-                    echo "<img src=\"{$photo_essay_image[0]}\">";
+                    // var_dump($content);
+                    
+                    if ( $content->post_type == 'post') {
+                      $photo_essay_image = get_the_post_thumbnail( $id, 'magazine_photo_essay' );
+                      $photo_essay_link = get_permalink( $id );
+                      $photo_essay_title = get_the_title( $id );
+                      // var_dump($photo_essay_image);
+                      echo "<a href=\"{$photo_essay_link}\"><span>{$photo_essay_title}</span>{$photo_essay_image}</a>";
+                    } else {
+                      $photo_essay_link = get_attachment_link($id);
+                      $photo_essay_image = wp_get_attachment_image_src( $id, 'magazine_photo_essay' );
+                      $photo_essay_author = $content->post_author; //FIX ME!
+                      echo "<span>Photo Essay</span><img src=\"{$photo_essay_image[0]}\">";
+                    }
+                    
                   }
                   
                   ?>
