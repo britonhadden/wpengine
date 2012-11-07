@@ -120,26 +120,22 @@ endif;
 if (! function_exists( 'ydn_get_featured_image') ):
 function ydn_get_featured_image() {
   global $post;
+  $temp_post = $post;
   if(  has_post_thumbnail() ):
     $featured_image_id = get_post_thumbnail_id( $post->ID );
-    $featured_image_obj = get_posts( array( 'numberposts' => 1,
-                                            'include' => $featured_image_id,
-                                            'post_type' => 'attachment' ) );
-    if ( is_array($featured_image_obj) && !empty($featured_image_obj) ) {
-      $featured_image_obj = $featured_image_obj[0];
-    }
-
+    $featured_image_obj = get_post($featured_image_id);
     ?>
     <div class="entry-featured-image">
       <?php  the_post_thumbnail('entry-featured-image'); ?>
       <?php if($featured_image_obj): ?>
         <div class="image-meta">
 
-          <?php if( $featured_image_obj->post_excerpt): ?>
+          <?php if($featured_image_obj->post_excerpt): ?>
             <span class="caption"> <?php echo esc_html( $featured_image_obj->post_excerpt ); ?> </span>
           <?php endif; ?>
           <?php
-            $attribution_text = get_media_credit_html($featured_image_obj);
+            $post = $featured_image_obj;
+            $attribution_text = get_media_credit_html();
             if(trim($attribution_text) != ''  ): ?>
               <span class="attribution">Photo by <?php echo $attribution_text; ?>.</span>
           <?php endif; ?>
@@ -147,8 +143,11 @@ function ydn_get_featured_image() {
       <?php endif; //end featured_image_obj check ?>
     </div>
     <?php endif; //end has_post_thumbnail condition
+    $post = $temp_post;
 }
 endif; // end function_exists condition
+
+
 
 
 /**
