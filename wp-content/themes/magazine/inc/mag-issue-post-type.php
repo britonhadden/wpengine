@@ -72,7 +72,7 @@ class YDN_Mag_Issue_Type {
                                   "small_talk" => array("title" => "Small Talk", "num" => 3, "post_type"=>"post"),
                                   "shorts" => array("title" => "Shorts", "num" => 4, "post_type" => "post"),
                                   "poetry" => array("title" => "Poetry", "num" => 4, "post_type" => "post"),
-                                  "photo_essay" => array("title" => "Photo Essay", "num" => 1, "post_type" => "attachment") );
+                                  "photo_essay" => array("title" => "Photo Essay", "num" => 1, "post_type" => "attachment,post"));
 
     //register the image sizes necessary to draw the magazine content
     add_image_size('magazine_cover_image',390,500,true);
@@ -80,6 +80,7 @@ class YDN_Mag_Issue_Type {
     add_image_size('magazine_bottom_long',710,225,true);
     add_image_size('magazine_span4',148,135,true);
     add_image_size('magazine_small_talk',230,100,true);
+    add_image_size('magazine_photo_essay', 440,300,true);
 
   }
 
@@ -192,9 +193,11 @@ class YDN_Mag_Issue_Type {
     }
     //ensure the cache exists
     $this->cached_content = isset($this->cached_content) ? $this->cached_content : array();
+    //allow multiple content types for post_type. separate multiple content types by comma.
+    $exploded_types = explode(',', $type);
     //run the query
     $query_args = array( 'posts_per_page' => YDN_Mag_Issue_Type::num_elts_selected,
-                         'post_type' => $type,
+                         'post_type' => $exploded_types,
                          'post_status' => array("publish","inherit")
                        );
     add_filter('posts_where', array($this, 'fetch_content_where_filter'));
