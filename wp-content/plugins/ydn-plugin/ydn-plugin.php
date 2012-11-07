@@ -20,5 +20,8 @@ include('xc-widget.php');
 
 //A recent comment widget that matches the styling needed for the XC sidebar
 include('comment-widget.php');
+
+//A plugin to handle our legacy URLs and route them to their new end points
+include('url-rewrites.php');
 ?>
 
