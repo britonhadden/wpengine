@@ -37,7 +37,7 @@ class YDN_URL_Rewrites {
       KEY legacy_url (legacy_url)
     );";
 
-    dbDelta($sql)
+    dbDelta($sql);
   }
 }
 //hook into wordpress
