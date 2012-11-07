@@ -65,10 +65,8 @@ class YDN_URL_Rewrites {
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');   //loads the dbdelta util
     $this->table_name = $wpdb->prefix . YDN_URL_Rewrites::table_suffix;
     $sql = "CREATE TABLE wp_legacy_urls (
-      id INT NOT NULL AUTO_INCREMENT,
       legacy_url VARCHAR(90) DEFAULT '' NOT NULL,
       new_url VARCHAR(90) DEFAULT '' NOT NULL,
-      PRIMARY KEY id (id),
       UNIQUE KEY legacy_url (legacy_url)
     );";
     dbDelta($sql);
