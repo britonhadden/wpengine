@@ -23,5 +23,7 @@ include('comment-widget.php');
 
 //A plugin to handle our legacy URLs and route them to their new end points
 include('url-rewrites.php');
+//install the plugin if it's a first activation
+//has to be in the main file
+register_activation_hook(__FILE__, array(YDN_URL_Rewrites::get_instance(), 'install'));
 ?>
-
