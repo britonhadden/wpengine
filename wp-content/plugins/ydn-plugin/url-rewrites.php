@@ -11,9 +11,18 @@
 class YDN_URL_Rewrites {
   //store a reference to the instance (creates a singleton)
   protected static $instance = NULL;
-  const table_suffix = "legacy_urls"; //DON'T USE THIS WITHOUT PREFIXING
+  //plugin meta
   const plugin_version = "1.0";
+  const plugin_name = "YDN_URL_Rewrites";
   const plugin_version_option = "YDN_URL_Rewrites_version";
+  //db settigngs
+  const table_suffix = "legacy_urls"; //DON'T USE THIS WITHOUT PREFIXING
+  //patterns & mappings
+  const staff_regex = "/^staff\/([a-zA-Z\-]*)/";
+  const staff_new_prefix = "blog/author/";
+  const article_regex = "/^news\/([0-9]{4}\/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\/[0-9]{2}\/[a-zA-Z\-]*)/";
+  //misc
+  const flag404 = "404ERROR";
 
   public static function get_instance() {
     NULL === self::$instance and self::$instance = new self;
@@ -26,22 +35,64 @@ class YDN_URL_Rewrites {
     global $wpdb;
     $this->table_name = $wpdb->prefix . YDN_URL_Rewrites::table_suffix;
 
-    add_action('template_redirect', array($this, 'handle_redirection'));
+    add_action('template_redirect', array($this, 'template_redirect_handler'),1);
   }
 
-  public function handle_redirection() {
+  public function template_redirect_handler() {
     global $wp;
     global $wp_query;
 
     if (!$wp_query->is_404)
       return; //redirects only intercepts 404 errors
 
-    $wpdb_query->is_404 = false;
+    //first check if this URL's rewrite is stored in the database -- saves DB
+    //hits
+    $target_url = wp_cache_get($wp->request, YDN_URL_Rewrites::plugin_name);
+    if ($target_url == YDN_URL_Rewrites::flag404) {
+      //we've cached a 404, so do nothing
+      return;
+    } elseif ($target_url) {
+      //a real url is in the cache, redirect to it
+      $this->redirect_to_relative($target_url);
+      return;
+    }
 
-    var_dump($wp->request);
-    die();
+    $pat_matches = array();
 
-    //str_replace('-','',$NAMEVAR)  //strips out dashes
+    //check if we're redirecting a staff URL (e.g yaledailynews.com/staff/author-name)
+    preg_match(YDN_URL_Rewrites::staff_regex, $wp->request, $pat_matches);
+    if(!empty($pat_matches)) {
+      //prepare the author string
+      $author = $pat_matches[1];
+      $author = str_replace("-","",$author);
+
+      //cache the value
+      if(empty($author)) {
+        //no where to redirect to -- cache a 404 and pass through
+        wp_cache_set($wp->request, YDN_URL_Rewrites::flag404, YDN_URL_Rewrites::plugin_name);
+      } else {
+        //form the relative URL and cache it
+        $target_url = YDN_URL_Rewrites::staff_new_prefix . $author;
+        wp_cache_set($wp->request, $target_url, YDN_URL_Rewrites::plugin_name);
+        $this->redirect_to_relative($target_url);
+      }
+
+      return;  //no more evaluation necessary -- the URL has been resolved if we get here
+    }
+
+    //check if we're redirecting an old article URL
+    preg_match(YDN_URL_Rewrites::article_regex, $wp->request, $pat_matches);
+    if (!empty($pat_matches)) {
+      var_dump($pat_matches);
+      die();
+    }
+  }
+
+  private function redirect_to_relative($rel) {
+    global $wp_query;
+    $wp_query->is_404 = false;
+    $abs = get_site_url(1, $rel) . '/';  //necessary so that we don't get double redirects
+    wp_redirect($abs, 301);
   }
 
   public function add_rewrite($legacy_url, $new_url) {
@@ -61,6 +112,7 @@ class YDN_URL_Rewrites {
     //ensures that all URLs are formatted appropriately on insert
     //designed to allow some flexibility in add_rewrite -- should *not* be
     //used in handle_redirection. it's not designed to be particularly
+    //
     $matches = array();
     $request_regex = '/.com\/(news\/)?([^?]*)/'; //0 = entire match 1 = "" or "news" 2 = the rest of the URL
     preg_match($request_regex, $url, $matches);
@@ -69,7 +121,7 @@ class YDN_URL_Rewrites {
     }
     $url = $matches[2];  //the good part of the URL
     $url = trim($url);   //ensure no bad whitespace
-    $url = trim($url, '/'); //remove leading/trailing slash
+    $url = trim($url,'\\'); //strips trailing slash
 
     return $url;
   }
