@@ -20,10 +20,28 @@ class YDN_URL_Rewrites {
     return self::$instance;
   }
 
+
   public function init() {
     //register hooks & such
     global $wpdb;
     $this->table_name = $wpdb->prefix . YDN_URL_Rewrites::table_suffix;
+
+    add_action('template_redirect', array($this, 'handle_redirection'));
+  }
+
+  public function handle_redirection() {
+    global $wp;
+    global $wp_query;
+
+    if (!$wp_query->is_404)
+      return; //redirects only intercepts 404 errors
+
+    $wpdb_query->is_404 = false;
+
+    var_dump($wp->request);
+    die();
+
+    //str_replace('-','',$NAMEVAR)  //strips out dashes
   }
 
   public function add_rewrite($legacy_url, $new_url) {
@@ -40,9 +58,16 @@ class YDN_URL_Rewrites {
   }
 
   private function sanitize_url($url) {
-    //ensures that all URLs are formatted appropriately and that our lookups
-    //match exactly
-    //
+    //ensures that all URLs are formatted appropriately on insert
+    //designed to allow some flexibility in add_rewrite -- should *not* be
+    //used in handle_redirection. it's not designed to be particularly
+    $matches = array();
+    $request_regex = '/.com\/(news\/)?([^?]*)/'; //0 = entire match 1 = "" or "news" 2 = the rest of the URL
+    preg_match($request_regex, $url, $matches);
+    if(empty($matches)) {
+      return "";
+    }
+    $url = $matches[2];  //the good part of the URL
     $url = trim($url);   //ensure no bad whitespace
     $url = trim($url, '/'); //remove leading/trailing slash
 
