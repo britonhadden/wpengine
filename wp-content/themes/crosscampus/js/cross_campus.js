@@ -1,5 +1,5 @@
 (function($) {
-  
+
   function init_onready() {
     build_sidebar_tabs();
   };
@@ -8,7 +8,7 @@
     //wait for the images to load before adjusting columns,
     //in case they change the height of primary
     adjust_column_heights();
-  }; 
+  };
 
 
   function adjust_column_heights() {
@@ -38,21 +38,21 @@
       var $tab_li, $tab_a, $tab_title, title_text, title_id;
 
       //Extract the useful info from the title, then remove it
-      $tab_title = $tab.find('.widget-title');
+      $tab_title = $tab.find('.widget-title, .nr_title > span');
       if ($tab_title.children().length !== 0) {
         //if we haven't hit a text node, try its first child.
         //this fix was originally intended for the twitter widget
         $tab_title = $tab_title.children().first();
       }
-      title_text = $tab_title.html();
+      title_text = $tab_title.html() || '';
       tab_id = title_text.replace(' ','').toLowerCase();
       $tab_title.remove();
 
-      //generate the LI element for the nav 
+      //generate the LI element for the nav
       $tab_li = $( document.createElement('li') );
       $tab_a = $( document.createElement('a') ).attr("href","#" + tab_id).html(title_text);
       $tab_li.append($tab_a);
-      $tabs_navigation.append($tab_li); 
+      $tabs_navigation.append($tab_li);
 
       //set the ID on the tab to match the anchor & add the appropriate classes
       $tab.attr("id",tab_id).addClass('tab-pane');
@@ -67,12 +67,12 @@
         $(this).tab('show');
       });
    } );
-    
+
    $tabbed.prepend($tabs_navigation);
-    
+
   };
 
-  $(document).ready( init_onready ); 
+  $(document).ready( init_onready );
   $(window).load( init_onload );
 
 } (jQuery) );

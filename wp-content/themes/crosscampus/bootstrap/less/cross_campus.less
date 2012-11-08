@@ -43,7 +43,7 @@ body {
 }
 
 //Create the navs at the bottom and top of the page
-.top-bottom { 
+.top-bottom {
   background-color: @xcDarkTan;
   font-family: @sansFontFamily;
   line-height: 35px;
@@ -94,16 +94,39 @@ body {
   }
 }
 
+.page-header {
+  border-bottom: 0;
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
 //styling for the sidebar; includes defaults for no-js
 #sidebar {
-    #tabbed,
-    .widget {
-      margin-bottom: 20px;
+  #tabbed,
+  .widget {
+    margin-bottom: 20px;
+  }
+
+  & >  .widget_text {
+    text-align: center;
+  }
+
+  .nr_inner {
+    padding: 0;
+
+    ul {
+      list-style:none;
+      margin-left:0;
     }
 
-    & >  .widget_text {
-      text-align: center;
+    li {
+      margin-bottom: 10px;
     }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 // styling for the tabbed content on the siebar
@@ -113,15 +136,18 @@ body {
   .widget {
     margin-bottom: 0;
   }
- 
+
   //make the tabbed content ignore the padding of the sidebar
   margin-left: -@xcSidebarSidePadding;
   #grid > .core > .span(@xcSidebarColSpan);
- 
+
   //remove some of the default bootstrap styles that interfere
   .nav-tabs {
     border: none;
     margin-bottom: 0;
+    text-transform: uppercase;
+    font-family: @sansFontFamily;
+    font-size: 75%;
   }
 
   //default styles for the tabs (inactive state)
@@ -155,10 +181,14 @@ body {
     color: @xcDarkTan;
 
     a {
+      color: @xcDarkTan;
+    }
+
+    &#twitter a {
       color: @xcTan;
     }
   }
- 
+
   //remove unneeded list styles
   #blogroll ul,
   #twitter ul {
@@ -178,11 +208,11 @@ body {
 #nav-below {
 
   .nav-previous,
-  .nav-next { 
+  .nav-next {
     margin-bottom: 10px;
     display: inline-block;
     .ie7-inline-block;
-  } 
+  }
 
   .nav-previous {
     float: left;
@@ -200,7 +230,7 @@ body {
     border-top: 3px solid @xcDarkTan;
     margin-left: -@xcMainSidePadding;
     #grid > .core > .span(@xcMainColSpan);
-    
+
     ul {
      background: transparent url("@{asset_path}featured-posts-bg.png") 0 0 repeat-y;
      list-style: none;
@@ -214,6 +244,7 @@ body {
       .ie7-inline-block();
       width: 150px;
       margin: 0 10px;
+      vertical-align: top; //these are inline-block elts, so this works. necessary when headlines are diff num lines
 
       img { 
         margin-bottom: 10px;
@@ -277,7 +308,37 @@ body {
     font-weight: bold;
     margin-bottom: 20px;
   }
- 
+
+  .tag {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: @sansFontFamily;
+
+    &.university {
+      color: #004569;
+    }
+    &.opinion {
+      color: #7E441D;
+    }
+    &.city {
+      color: #326324;
+    }
+    &.scitech {
+      color: #89A479;
+    }
+    &.culture {
+      color: #CF672E;
+    }
+    &.sports {
+      color: #00649E;
+    }
+    &.weekend {
+      color: #A30823;
+    }
+    &.magazine {
+      color: #CD8073;
+    }
+  }
 }
 
 .entry-header {
@@ -286,6 +347,7 @@ body {
 
 .entry-featured-image {
   margin-bottom: 10px;
+  text-align: center;
 }
 
 //Styles for the caption below pictures on story pages
@@ -294,6 +356,7 @@ body {
 .entry-featured-image .image-meta {
   margin-top: 10px;
   color: @xcGray;
+  text-align: left;
 }
 
 .post {

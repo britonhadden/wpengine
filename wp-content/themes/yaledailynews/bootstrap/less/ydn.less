@@ -3,6 +3,7 @@
 @asset_path: "http://yaledailynews.com/wp-content/themes/yaledailynews/img/";
 
 @import "weekend.less";
+@import "magazine.less";
 /* define some borders for the grid system  using LESS mixins to build the
 styles up dynamically */
 
@@ -108,6 +109,10 @@ body {
   }
 }
 
+.section {
+  font-size: 11px;
+}
+
 @double_border_path: "@{asset_path}double_line.gif";
 .double-border {
     background: url(@double_border_path) repeat-x scroll 0 0 transparent;
@@ -141,10 +146,12 @@ body {
     border-top: 1px solid @ydnLightGray;
     margin-bottom: 10px;
     padding-top: 10px;
+    text-align: center;
 }
 .entry-featured-image .image-meta {
     color: @ydnGray;
     margin-top: 10px;
+    text-align: left;
 }
 .entry-content .alignleft {
     float: left;
@@ -165,9 +172,8 @@ body {
     width: 110px;
 }
 
-@social_share_path: "@{asset_path}share_story.gif";
 .entry-content .social-share li {
-    background: url(@social_share_path) no-repeat scroll 0 0 transparent;
+    background: url("@{asset_path}share_story.gif") no-repeat scroll 0 0 transparent;
     border-bottom: 1px solid @ydnLightGray;
     color: @ydnGray;
     font-family: @sansFontFamily; 
@@ -190,6 +196,10 @@ body {
 }
 .post, .video {
     margin-bottom: 10px;
+}
+
+.attachment {
+  padding-bottom: 15px;
 }
 .comments-title {
     border-bottom: 1px solid @ydnLightGray;
@@ -227,6 +237,7 @@ li.comment {
   margin-bottom: 15px;
   margin-top: 5px;
   padding: 15px;
+  clear: both;
 
   .photo-credit {
     padding: 10px 0  5px 0;
@@ -247,6 +258,12 @@ li.comment {
  * of any lists of stories/other content. It's used to keep our bylines,
  * headlines, etc consistently styled across the site. Unfortunately,
  * I lost the original LESS and it's just compiled CSS */
+.content-list {
+    .meta {
+      font-size: 11px;
+    }
+}
+
 .content-list .item.standard .thumbnail {
     float: right;
     margin-bottom: 5px; /* EARL: Not sure if this should go here. */
@@ -318,6 +335,7 @@ li.comment {
     background: url("@{asset_path}carousel-nav-inactive.png") no-repeat scroll 0 0 transparent;
     color: white;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
     height: 26px;
     line-height: 26px;
     padding-left: 40px;
@@ -350,33 +368,76 @@ li.comment {
 }
 
 /* YDN Photos Modal Styling */
-.ydn-photo-modal {
+#ydn-photo-modal {
 
-  .modal-close {
-    display: block;
-    position: relative; 
-    height:0px;
-    bottom: -20px;
-    background: rgb(0, 0, 0); /* fallback color */
-    background: rgba(0, 0, 0, 0.9);
-    padding: 5px;
-  }  
+  .modal-body {
+    max-height: 675px;
+  }
+
+  .modal-photo {
+    text-align: center;
+  }
+
+  .modal-caption {
+    padding:0px 15px 15px 15px;
+  }
+
 }
 
 #cross-campus {
-  h1 {
+ border: 1px solid @ydnLightGray;
+ padding: 5px;
+ text-align: center;
+
+ #cross-campus-header {
+    text-decoration: none;
+ }
+
+ h1 {
     @cross_campus_path: "@{asset_path}cross_campus_logo.jpg";
     .hide-text();
     background: transparent url(@cross_campus_path) -5px 0 no-repeat;
     height: 78px;
     width: 178px;
     margin-bottom: 5px;
+    padding: 0;
   }
-
-  text-align: center;
 
   h3 {
     color: @ydnDarkGray;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+  }
+
+  .section {
+    font-weight: bold;
+    font-family: @sansFontFamily;
+
+    &.university {
+      color: #004569;
+    }
+    &.opinion {
+      color: #7E441D;
+    }
+    &.city {
+      color: #326324;
+    }
+    &.scitech {
+      color: #89A479;
+    }
+    &.culture {
+      color: #CF672E;
+    }
+    &.sports {
+      color: #00649E;
+    }
+    &.weekend {
+      color: #A30823;
+    }
+    &.magazine {
+      color: #CD8073;
+    }
   }
 
   .more {
@@ -389,6 +450,7 @@ li.comment {
     &:hover {
       color: @ydnDarkGray;
     }
+
 
   }
 }
@@ -404,15 +466,7 @@ li.comment {
  * sections of the paper. */
 .home {
   .print-section {
-    h1 {
-      text-transform: uppercase;
-      color: black;
-      font-size: 130%;
-      line-height: 1.25em;
-      margin-bottom: 10px;
-    }
-    
-    .featured.item {
+   .featured.item {
       //collapse bottom margins so that we don't get extra space
       margin-bottom: 0;
 
@@ -435,7 +489,7 @@ li.comment {
 
 
     .headline {
-      font-size: 120%;
+      font-size: 110%;
     }
   }
 
@@ -468,8 +522,45 @@ li.comment {
       text-transform: uppercase;
     }
   }
- 
+
+  #opinion-section {
+    .headline{
+      font-size: 100%;
+    }
+  }
+
+  //nrelate Popular Posts Plugin
+  #ydn-popular-posts {
+    .nrelate, .nrinner {
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .print-section h1,
+  .nr_title {
+    text-transform: uppercase;
+    color: black;
+    font-size: 130%;
+    line-height: 1.25em;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+  }
 }
+
+
 
 //styles for the opinion landing page
 .category-opinion {
@@ -517,17 +608,28 @@ li.comment {
 
   }
 
-  #opinion-cat-content .content-list .item {
-    .makeColumn(9);
-
-    &.even {
+  #opinion-cat-content .content-list {
+    .item {
       .makeColumn(9,1);
+
+      &:first-child {
+        .makeColumn(9);
+      }
+
+      img {
+        float: left;
+        margin-right: 5px;
+      }
     }
 
-    img {
-      float: left;
-      margin-right: 5px;
-    }
+    &#oped-live {
+      .item {
+        .makeColumn(4,1);
+      }
+
+      .item:first-child {
+        .makeColumn(4);
+      }
   }
-
+ }
 }

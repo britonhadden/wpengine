@@ -6,13 +6,13 @@
  * @since ydnxc 1.0
  */
 ?>
-		<div id="secondary" class="widget-area" role="complementary">
-			<?php do_action( 'before_sidebar' ); ?>
+    <div id="secondary" class="widget-area" role="complementary">
+      <?php do_action( 'before_sidebar' ); ?>
       <div id="sidebar">
          <aside id="search" class="widget widget_search">
             <?php get_search_form(); ?>
           </aside>
-       <div id="tabbed">  
+       <div id="tabbed">
           <div class="tab-content">
            <?php
             if ( is_single() ) {
@@ -29,4 +29,4 @@
         ?>
 
       </div> <!-- #sidebar -->
-		</div><!-- #secondary .widget-area -->
+    </div><!-- #secondary .widget-area -->

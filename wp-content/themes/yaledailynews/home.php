@@ -32,7 +32,7 @@
              while ( $videos_query->have_posts() ) : $videos_query->the_post();
             ?>
               <div class="span4 item">
-                <a href="<?php echo get_permalink(); ?>" class="image"><?php the_post_thumbnail('home-video-thumbnail'); ?><span></span></a>
+                <a href="<?php echo get_permalink(); ?>" class="image"><?php the_post_thumbnail('video-thumbnail'); ?><span></span></a>
                 <a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
               </div>
             <?php endwhile; ?>
@@ -44,12 +44,12 @@
       <div class="double-border"></div>
 
       <div class="row border6">
-        <div class="span6">
+        <div class="span6" id="ydn-popular-posts">
           <!-- most popular/most viewed -->
-          Most popular/viewed posts will go here
+          <?php if (function_exists('nrelate_popular')) nrelate_popular(); ?>
         </div>
 
-        <div class="span13 print-section">
+        <div class="span13 print-section" id="opinion-section">
           <!-- opinion -->
           <h1>Opinion</h1>
           <div class="content-list">
@@ -126,7 +126,7 @@
     <div class="span5"> <!-- right most column -->
       <div id="cross-campus" class="widget">
         <?php switch_to_blog(XC_BLOG_ID); ?>
-        <a href="<?php echo get_bloginfo('url'); ?>"><h1>Cross Campus</h1></a>
+        <a id="cross-campus-header" href="<?php echo get_bloginfo('url'); ?>"><h1>Cross Campus</h1></a>
         <div class="content-list borders">
           <?php 
             $xc_posts = get_posts( array('numberposts' => 4 ) );

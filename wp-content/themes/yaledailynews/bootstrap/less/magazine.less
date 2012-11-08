@@ -1,0 +1,117 @@
+// Filename: magazine.less
+// This is file has styles specific to the magazine layout
+
+body.magazine {
+  //namespaces for all magazine styles
+
+  .content-list {
+    .overlay {
+      background-color: rgba(255,255,255,.7);
+      position:absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 5px;
+    }
+
+    .item {
+      position:relative;
+    }
+  }
+
+  h1.mag-section {
+    color: @ydnGray;
+    font-size: 20px;
+    &.border {
+      margin-bottom: 15px;
+      border-bottom: 2px solid @ydnGray;
+    }
+  }
+
+  #top-content {
+    //the topmost block of content, including the cover
+    margin-bottom: 20px;
+
+    .content-list .item {
+        margin-bottom: 0; //override defaults from content-list
+    }
+
+    #cover {
+      .makeColumn(10);
+      height: 500px;
+    }
+
+    .essays > div {
+      .makeColumn(14);
+      height: 153px;
+
+      &:first-child {
+        margin-bottom: 20px;
+      }
+
+      &:last-child {
+        margin-top: 20px;
+      }
+    }
+  }
+  /* begin styles for the bottom block of essays */
+  #bottom-essays {
+    .item {
+      //defaults for the non-dominant items
+      .makeColumn(9);
+
+      .thumb img {
+        height: 153px;
+        .makeColumn(4);
+        margin: 0 10px 5px 0;
+        margin-left: 0;
+      }
+    }
+    .dominant.item {
+      //over-ride height/width
+      height:230px;
+      .makeColumn(18);
+      margin-left:0;
+    }
+  }
+
+  #shorts-poetry {
+    margin-bottom: 20px;
+
+    .item {
+      display:block;
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom:0;
+      }
+    }
+  }
+
+  #photo-essay {
+    height: 300px;
+    width: 430px;
+    position: relative; 
+   
+    h1 {
+      position: absolute; 
+      //top: 200px; 
+      width: 100%;
+      text-align: center;
+    }
+    
+    span {
+       position: absolute;
+       text-align: center;
+       width: 410px;
+       color: white; 
+       font: @sansFontFamily; //fix this. fonts not showing. getting overwritten by body style.
+       font-size: 24px;
+       letter-spacing: -1px;  
+       background: rgb(0, 0, 0); /* fallback color */
+       background: rgba(0, 0, 0, 0.7);
+       padding: 10px; 
+    }
+    span:hover {
+        text-decoration: underline;
+      }
+  }
+}
