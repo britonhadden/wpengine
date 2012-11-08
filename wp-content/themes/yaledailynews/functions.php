@@ -128,7 +128,15 @@ function ydn_widgets_init() {
 		'after_title' => '</h1>',
   ) );
 
-
+  register_sidebar( array(
+    'name' => __( 'Opinion Sidebar', 'ydn' ),
+    'id' => 'opinion-sidebar',
+    'class' => 'sidebar-widgets',
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
+  ) );
 
 
 }
@@ -143,7 +151,7 @@ function ydn_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
   wp_enqueue_style( 'bootstrap-ydn', get_template_directory_uri() . '/css/ydn.css');
 
-  wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap/bootstrap.js', array('jquery') );
+  wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.js', array('jquery') );
   wp_enqueue_script( 'throttle-debounce', get_template_directory_uri() . '/js/jquery.ba-throttle-debounce.min.js', array('jquery') );
   wp_enqueue_script( 'ydn', get_template_directory_uri() . '/js/ydn.js', array('jquery','bootstrap-js','throttle-debounce') );
 
@@ -154,15 +162,11 @@ function ydn_scripts() {
 	if ( is_singular() && wp_attachment_is_image( $post->ID ) ) {
 		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
 	}
+  if ( is_singular()) {
+    wp_enqueue_script( 'ydn-legacy-photo-inline', plugins_url() . '/ydn-legacy-photos/ydn-legacy-photo-inline.js');
+  }
 }
 add_action( 'wp_enqueue_scripts', 'ydn_scripts' );
-
-/* A fomat function that defaults to standard */
-function ydn_get_post_format() {
-  global $post;
-  $format = get_post_format();
-  return ($format == false) ? "standard" : $format;
-}
 
 /**
  * Register custom metadata fields in the admin interface
@@ -178,14 +182,23 @@ function ydn_register_custom_metadata() {
                                                                        'group' => 'ydn_metadata') );
 
     //user level meta
-    x_add_metadata_field( "ydn_legacy_password", array('user'), array( 'label' => "YDN Legacy Password Hash" ) );
+    x_add_metadata_group('ydn_user_metadata', array('user'), array('label' => "YDN Metadata"));
+    x_add_metadata_field("ydn_legacy_password", array('user'), array( 'label' => "YDN Legacy Password Hash", "group" => "ydn_user_metadata"));
+    x_add_metadata_field("ydn_user_photo", array('user'), array( "label" => "User Photo", //this line requires the ydn_edit_callback
+                                                            "group" => "ydn_user_metadata",
+                                                            "field_type" => "upload"));
 
   }
 
 }
-
 add_action('admin_menu', 'ydn_register_custom_metadata');
 
+/* A fomat function that defaults to standard */
+function ydn_get_post_format() {
+  global $post;
+  $format = get_post_format();
+  return ($format == false) ? "standard" : $format;
+}
 
 /**
  * Register custom metadata for our attachments.  Unforunately, the custom metadata manager doesn't work with 
@@ -193,7 +206,6 @@ add_action('admin_menu', 'ydn_register_custom_metadata');
  *
  * The flags we register here allow images to be marked for the home page as WEEKEND cover/Front Page/Magazine Cover
  */
-
 
 /**
  * Render a select box on the attachment page that allows users to mark an image
@@ -269,11 +281,49 @@ if (! function_exists("ydn_excerpt_read_more") ):
   add_filter('excerpt_more', 'ydn_excerpt_read_more');
 endif;
 
+/**
+ * A function that brings an unknown sized list to the given length by removing extra elements
+ * or by fetching additional stories from the given category.
+ *
+ * $list --> the list of stories to trim/top off
+ * $category --> the slug of the category to pull
+ * $size --> the desired number of elements in the output
+ *
+ * returns: the final list of size $size
+ */
+function ydn_fix_list_size($list, $category, $size) {
+  //if the $list already has enough elements, return the first $size elements
+  if ($size <= count($list)) {
+    return array_slice($list,0,$size);
+  }
+
+  //if we're not given a category, there's nothing to do
+  if (empty($category)) {
+    return $list;
+  }
+  
+  $category = get_category_by_slug($category);
+  //if the category query doesn't return anything, there's nothing to do
+  if (empty($category)) {
+    return $list;
+  }
+
+  //Need the post IDs to avoid repeating elements from the $list
+  $excluded_ids = Array();
+  foreach($list as $obj) {
+    $excluded_ids[] = $obj->ID;
+  }
+
+  $query_params = array('posts_per_page' => $size - count($excluded_ids),
+                        'cat' => $category->term_id,
+                        'post__not_in' => $excluded_ids);
+  $query = new WP_Query($query_params);
+  return array_merge($list, $query->posts);
+}
 
 /**
- * Implement the Custom Header feature
+ * Include other funciton files
  */
-//require( get_template_directory() . '/inc/custom-header.php' );
 require( get_template_directory() . '/inc/bootstrap-menu-walker.php' );
 require( get_template_directory() . '/inc/slideshow-slides.php');
 require( get_template_directory() . '/inc/ydn-homepage-content.php');

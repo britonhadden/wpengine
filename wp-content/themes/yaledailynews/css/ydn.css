@@ -5993,6 +5993,13 @@ li.comment {
   background-color: #ebebeb;
 }
 
+.inline .photo-credit {
+  padding: 10px 0  5px 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #777777;
+}
+
 .inline-left {
   float: left;
   width: 180px;
@@ -6115,6 +6122,18 @@ li.comment {
 .carousel-inner {
   width: 470px;
   height: 350px;
+}
+
+/* YDN Photos Modal Styling */
+
+.ydn-photo-modal .modal-close {
+  position: relative;
+  bottom: -20px;
+  display: block;
+  height: 0;
+  padding: 5px;
+  background: #000000;
+  background: rgba(0, 0, 0, 0.9);
 }
 
 #cross-campus {
@@ -6258,4 +6277,21 @@ li.comment {
 
 .category-opinion #opinion-cat-selector li.active {
   background: url("http://yaledailynews.com/wp-content/themes/yaledailynews/img/opinion_tab_active.png") no-repeat center bottom;
+}
+
+.category-opinion #opinion-cat-content .content-list .item {
+  float: left;
+  width: 350px;
+  margin-left: 10px;
+}
+
+.category-opinion #opinion-cat-content .content-list .item.even {
+  float: left;
+  width: 350px;
+  margin-left: 50px;
+}
+
+.category-opinion #opinion-cat-content .content-list .item img {
+  float: left;
+  margin-right: 5px;
 }

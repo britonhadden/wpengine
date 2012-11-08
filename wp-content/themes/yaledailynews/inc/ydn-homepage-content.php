@@ -12,6 +12,7 @@ if (! function_exists("ydn_home_print_section") ):
 
     //first post we deal with is featured, so pop it into the global
     $post = $section_content["featured"];
+    setup_postdata($post);
     ?>
     <div class="print-section content-list narrow">
       <h1><?php echo $slug; ?></h1>
@@ -111,15 +112,7 @@ class YDN_homepage_content {
     }
 
     $query = new WP_Query($query_params);
-    if ( empty($query->posts) ) {
-          /* we weren't able to find any matching posts, so return empty array and go no further */
-          /* error state */
-          return array();
-    } else {
-          /* set our list to all the posts from query response */
-          return $query->posts;
-    }
-
+    return $query->posts;
   }
 
   private function featured_post($cat_slug) {

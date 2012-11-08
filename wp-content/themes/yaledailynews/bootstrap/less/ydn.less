@@ -227,6 +227,14 @@ li.comment {
   margin-bottom: 15px;
   margin-top: 5px;
   padding: 15px;
+
+  .photo-credit {
+    padding: 10px 0  5px 0;
+    font-family: @sansFontFamily;
+    font-weight: 700;
+    color: @ydnDarkGray;
+  }
+ 
 }
 .inline-left {
     clear: left;
@@ -341,6 +349,19 @@ li.comment {
   height: @carouselHeight;
 }
 
+/* YDN Photos Modal Styling */
+.ydn-photo-modal {
+
+  .modal-close {
+    display: block;
+    position: relative; 
+    height:0px;
+    bottom: -20px;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.9);
+    padding: 5px;
+  }  
+}
 
 #cross-campus {
   h1 {
@@ -494,6 +515,19 @@ li.comment {
       background: url("@{asset_path}opinion_tab_active.png") no-repeat center bottom;
     }
 
+  }
+
+  #opinion-cat-content .content-list .item {
+    .makeColumn(9);
+
+    &.even {
+      .makeColumn(9,1);
+    }
+
+    img {
+      float: left;
+      margin-right: 5px;
+    }
   }
 
 }
