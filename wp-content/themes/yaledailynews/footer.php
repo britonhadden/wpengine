@@ -15,7 +15,7 @@
     <div class="double-border"></div>
 		<div class="site-info">
       &copy; <?php printf( date('Y') ); ?> Yale Daily News &bull; All Rights Reserved<br>
-      <a href="#">Rights and Permissions</a>
+      <a href="http://yaledailynews.com/rights-permissions/">Rights and Permissions</a>
 		</div><!-- .site-info -->
 	</footer><!-- .site-footer .site-footer -->
 </div><!-- #page .hfeed .site -->
