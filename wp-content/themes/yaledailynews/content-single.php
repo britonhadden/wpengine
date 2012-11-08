@@ -21,7 +21,7 @@
 		<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'ydn' ), 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-meta">
+	<!-- <footer class="entry-meta">
 		<?php
 			/* translators: used between list items, there is a space after the comma */
 			$category_list = get_the_category_list( __( ', ', 'ydn' ) );
@@ -57,5 +57,5 @@
 		?>
 
 		<?php edit_post_link( __( 'Edit', 'ydn' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer><!-- .entry-meta -->
+	</footer> --><!-- .entry-meta -->
 </article><!-- #post-<?php the_ID(); ?> -->
