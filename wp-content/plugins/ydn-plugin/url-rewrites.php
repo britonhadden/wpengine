@@ -41,6 +41,7 @@ class YDN_URL_Rewrites {
   public function template_redirect_handler() {
     global $wp;
     global $wp_query;
+    global $wpdb;
 
     if (!$wp_query->is_404)
       return; //redirects only intercepts 404 errors
@@ -58,33 +59,36 @@ class YDN_URL_Rewrites {
     }
 
     $pat_matches = array();
+    $target_url = false;
 
     //check if we're redirecting a staff URL (e.g yaledailynews.com/staff/author-name)
+    //if so, setup $target_url appropriately
     preg_match(YDN_URL_Rewrites::staff_regex, $wp->request, $pat_matches);
     if(!empty($pat_matches)) {
       //prepare the author string
       $author = $pat_matches[1];
       $author = str_replace("-","",$author);
+      $author_url = YDN_URL_Rewrites::staff_new_prefix . $author;
 
-      //cache the value
-      if(empty($author)) {
-        //no where to redirect to -- cache a 404 and pass through
-        wp_cache_set($wp->request, YDN_URL_Rewrites::flag404, YDN_URL_Rewrites::plugin_name);
-      } else {
-        //form the relative URL and cache it
-        $target_url = YDN_URL_Rewrites::staff_new_prefix . $author;
-        wp_cache_set($wp->request, $target_url, YDN_URL_Rewrites::plugin_name);
-        $this->redirect_to_relative($target_url);
-      }
-
-      return;  //no more evaluation necessary -- the URL has been resolved if we get here
+      $target_url = (empty($author)) ? YDN_URL_Rewrites::flag404 : $author_url;
     }
 
+    $pat_matches = array();
+
     //check if we're redirecting an old article URL
+    //if so, setup $target_url appropriately
     preg_match(YDN_URL_Rewrites::article_regex, $wp->request, $pat_matches);
     if (!empty($pat_matches)) {
-      var_dump($pat_matches);
-      die();
+      $query = $wpdb->prepare("SELECT new_url FROM $this->table_name WHERE legacy_url = %s", $pat_matches[1]);
+      $ret = $wpdb->get_var($query);
+      $target_url = (empty($ret)) ? YDN_URL_Rewrites::flag404 : $ret;
+    }
+
+    if($target_url) {   //target_url can only be true if one of the patterns matched -- must cache
+      wp_cache_set($wp->request, $target_url, YDN_URL_Rewrites::plugin_name);
+
+      if ($target_url != YDN_URL_Rewrites::flag404)   //only redirect on non-404
+        $this->redirect_to_relative($target_url);
     }
   }
 
@@ -96,10 +100,9 @@ class YDN_URL_Rewrites {
   }
 
   public function add_rewrite($legacy_url, $new_url) {
+    global $wpdb;
     if (empty($legacy_url) || empty($new_url))
       return;   //silly case, but don't add empty rewrites
-
-    global $wpdb;
 
     //keep everything tidy
     $legacy_url = $this->sanitize_url($legacy_url);
@@ -112,16 +115,27 @@ class YDN_URL_Rewrites {
     //ensures that all URLs are formatted appropriately on insert
     //designed to allow some flexibility in add_rewrite -- should *not* be
     //used in handle_redirection. it's not designed to be particularly
-    //
+    //efficient
     $matches = array();
-    $request_regex = '/.com\/(news\/)?([^?]*)/'; //0 = entire match 1 = "" or "news" 2 = the rest of the URL
+
+    //really messy way to grab the piece after .com
+    $url = explode(".com/",$url);
+    if (count($url) > 1) {
+      $url = $url[1];
+    } else {
+      $url = $url[0];
+    }
+
+    //use regex to remove news prefix if it exists
+    $request_regex = '/^(news\/)?([^?]*)/'; //0 = entire match 1 = "" or "news" 2 = the rest of the URL
     preg_match($request_regex, $url, $matches);
     if(empty($matches)) {
       return "";
     }
+
     $url = $matches[2];  //the good part of the URL
     $url = trim($url);   //ensure no bad whitespace
-    $url = trim($url,'\\'); //strips trailing slash
+    $url = trim($url,'/'); //strips trailing slash
 
     return $url;
   }
@@ -154,5 +168,4 @@ class YDN_URL_Rewrites {
 }
 //hook into wordpress
 add_action('init', array(YDN_URL_Rewrites::get_instance(), 'init'));
-//install the plugin if it's a first activation
 ?>
