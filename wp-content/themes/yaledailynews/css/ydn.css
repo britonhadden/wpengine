@@ -5967,6 +5967,20 @@ textarea#comment {
   text-align: left;
 }
 
+.entry-content {
+  *zoom: 1;
+}
+
+.entry-content:before,
+.entry-content:after {
+  display: table;
+  content: "";
+}
+
+.entry-content:after {
+  clear: both;
+}
+
 .entry-content .alignleft {
   float: left;
   margin-right: 10px;
