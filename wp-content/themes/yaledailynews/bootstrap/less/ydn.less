@@ -321,6 +321,11 @@ li.comment {
 
 .carousel {
   margin-bottom: 10px;
+
+  h3 {
+    line-height: 1.25em;
+    margin-bottom: 0.4em;
+  }
 }
 
 .carousel .meta {
@@ -373,9 +378,12 @@ li.comment {
 
 /* YDN Photos Modal Styling */
 #ydn-photo-modal {
+  @modalMaxHeight: 675px;
+  margin-top: (-1/2 * @modalMaxHeight);
 
   .modal-body {
-    max-height: 675px;
+    max-height: @modalMaxHeight;
+    // margin-top: (-1/2 * @modalMaxHeight);
   }
 
   .modal-photo {

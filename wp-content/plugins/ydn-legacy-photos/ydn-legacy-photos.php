@@ -31,7 +31,7 @@ add_shortcode('ydn-legacy-photo-inline', 'ydn_legacy_photos_filter');
 function ydn_legacy_photos_modal() {
     if (is_singular('post')):
     ?>
-		<div class="modal hide" id="ydn-photo-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal hide fade" id="ydn-photo-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-body">
 				<!-- <div class="modal-close">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
