@@ -14,17 +14,19 @@ class YDN_Propagate_Users {
     return self::$instance;
   }
 
-  public function user_registration_hook($user_id) {
-    global $blog_id;
-    $init_site = $blog_id;         //store the ID of the site user was added to
+  public function user_registration_hook($user_id,$password,$meta) {
     $user = new WP_User($user_id);
 
     //decide on the appropriate role that should be on the account
-    $roles_array = $user->roles;
-    if (empty($roles_array)) {
+    $role = $meta["new_role"];
+    if (empty($role)) {
       $role = YDN_Propagate_Users::default_role;
-    } else {
-      $role = $roles_array[0];
+    }
+
+    //determine if we can skip any sites
+    $init_site = $meta["add_to_blog"];
+    if(empty($init_site)) {
+      $init_site = NULL;
     }
 
     //add user to all blogs that they dont' already belong to
@@ -32,12 +34,8 @@ class YDN_Propagate_Users {
       if ($blog == $init_site) {
         continue;  //nothing to do
       }
-
-      //the probelm is that add user to by blog is failing for the main site
-      //the users are already in the main site..
       add_user_to_blog($blog, $user_id, $role);
     }
-
     restore_current_blog();
   }
 
@@ -56,5 +54,5 @@ class YDN_Propagate_Users {
     return $blogs;
   }
 }
-add_action("user_register", array(YDN_Propagate_Users::get_instance(), "user_registration_hook"));
+add_action("wpmu_activate_user", array(YDN_Propagate_Users::get_instance(), "user_registration_hook"),1000,3);
 ?>
