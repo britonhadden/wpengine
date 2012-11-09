@@ -26,4 +26,7 @@ include('url-rewrites.php');
 //install the plugin if it's a first activation
 //has to be in the main file
 register_activation_hook(__FILE__, array(YDN_URL_Rewrites::get_instance(), 'install'));
+
+//A plugin to make sure users get registered on all of the subsites
+include('propagate-users.php');
 ?>
