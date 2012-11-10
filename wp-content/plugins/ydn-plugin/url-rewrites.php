@@ -157,7 +157,7 @@ class YDN_URL_Rewrites {
     $this->table_name = $wpdb->prefix . YDN_URL_Rewrites::table_suffix;
     $sql = "CREATE TABLE wp_legacy_urls (
       legacy_url VARCHAR(90) DEFAULT '' NOT NULL,
-      new_url VARCHAR(90) DEFAULT '' NOT NULL,
+      new_url VARCHAR(210) DEFAULT '' NOT NULL,
       UNIQUE KEY legacy_url (legacy_url)
     );";
     dbDelta($sql);
