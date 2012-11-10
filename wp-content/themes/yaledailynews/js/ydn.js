@@ -3,7 +3,7 @@
   var YDN = window.YDN || (window.YDN = {});
 
   function initialize() {
-    equally_space_horizontally('#menu-primary-menu'); //spaces the links in the nav under the masthead
+    equally_space_horizontally('#menu-primary'); //spaces the links in the nav under the masthead
 
     var $body = $('body');
     //run the scripts for a single-post
@@ -29,7 +29,7 @@
    * data about the object */
   function attach_social_handlers() {
     var $social_share = $('.social-share');
-  
+
     /* generate the share parameters on page load, use them when the handlers fire */
     var fb_object = { 'method': 'feed',
                       'link': extract_metadata_for_key('url'),
@@ -39,7 +39,7 @@
 
     var twitter_object = { 'text': 'Checkout "'+ extract_metadata_for_key('title') + '"! ' + extract_metadata_for_key('url'),
                            'related': 'yaledailynews' };
-                      
+
     /* bind the event handlers */
     $social_share.find('.facebook').click( function() {
        FB.ui( fb_object );
@@ -78,14 +78,14 @@
     $home_carousel.removeClass('no-js').html( $home_carousel_template.html() );
     $home_carousel.carousel({ interval: 7000, pause: false });
 
-    $navlist = $home_carousel.find('.navlist'); 
+    $navlist = $home_carousel.find('.navlist');
     nav_height = $navlist.height();
 
     $items = $home_carousel.find('.item');
     /* this loop is pretty messy, but it's doing the job.
      * it 1) makes sure the captions for each picture are tall enough to hold the nav list
      *    2) binds the mouse over events for the navigation */
-   
+
     $items.addClass('force-display'); //the items need to be visible so that the height calculations will work
     $items.find('.carousel-caption').each(function(item_index, item_obj) {
       var $item_obj = $(item_obj);
@@ -97,7 +97,7 @@
       $item_obj.find('.navlist li').each(function(li_index, li_obj) {
         $li_obj = $(li_obj);
         if (!$li_obj.hasClass('arrow')) {
-          $li_obj.mouseenter( function() { 
+          $li_obj.mouseenter( function() {
             if (! sliding ) {
               $home_carousel.removeClass('slide').carousel(li_index).addClass('slide').carousel('pause');
               return false;
@@ -113,7 +113,7 @@
     $home_carousel.bind('slide', function() { sliding = true; } );
     $home_carousel.bind('slid', function() { sliding = false; } );
 
-    /* there were some problems with bootstrap's implementation of pause-on-hover. When multiple 
+    /* there were some problems with bootstrap's implementation of pause-on-hover. When multiple
      * carousel(index)'s were calle in a short time span, the cycling didn't get reset appropriately.
      * adding these handlers fixed the issues. */
     $home_carousel.mouseenter( function() { $home_carousel.carousel('pause'); } );
