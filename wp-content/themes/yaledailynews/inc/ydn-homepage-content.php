@@ -45,10 +45,25 @@ if (! function_exists("ydn_home_print_section") ):
   }
 endif; // function exists
 
-class YDN_homepage_content { 
+class YDN_homepage_content {
+  const cache_group = "YDN_home_content";
+  const cache_expiration = 300; //5 min cache expiration
   /* This class is used to pull content for the category-specific boxes on the homepage */
-  function __construct($slideshow_content, $top_three_content, $featured_content) {
-    /* initializes the class to start returning values */
+
+  private static $instance = NULL;
+
+  public static function get_instance() {
+    self::$instance === NULL && self::$instance = new self;
+    return self::$instance;
+  }
+
+  private function initialize_calculations() {
+    //setpup the necessary data structures to grab content from the database
+    //used in the event of a cache miss
+    $slideshow_content = z_get_posts_in_zone("homepage-slideshow");
+    $top_three_content = z_get_posts_in_zone("homepage-top-three");
+    $featured_content = z_get_posts_in_zone("homepage-featured-stories");
+
 
     /* anything included in slideshow/top_three should be excluded from the category specific boxes */
     $this->excluded_ids = array();
@@ -75,7 +90,6 @@ class YDN_homepage_content {
         }
       }
     }
-
   }
 
   function get_content_for_cat($cat_slug, $n_list = 5) {
@@ -85,9 +99,8 @@ class YDN_homepage_content {
           [featured] => 1) check if something in $featured_content is in the category, has a photo, and is not marked for exclusion. retrun post if found
                         2) return the most recent post in the category that has a photo and is not excluded
                         [list]     => return the most recent stories that are not [featured]
-       returns null if there's a problem 
+       returns null if there's a problem
     */
-
     $output = array();
     $output["featured"] = $this->featured_post($cat_slug);
     if ($output["featured"] == null ) {
@@ -103,6 +116,15 @@ class YDN_homepage_content {
 
   function get_post_list($cat_slug, $n_list = 5, $additional_exclude = null) {
     /* pull a list of stories in $cat_slug, excluding any posts in $additional_exclude */
+
+    //first try to pull from cache
+    $cache_key = implode(";",array("get_post_list", $cat_slug,$n_list,$additional_exclude));
+    $cached_val = wp_cache_get($cache_key, YDN_homepage_content::cache_group);
+    if ($cached_val) {
+      return $cached_val;
+    }
+
+    $this->initialize_calculations();
     $query_params = array( 'posts_per_page' => $n_list,
                            'category_name' => $cat_slug,
                          );
@@ -112,15 +134,28 @@ class YDN_homepage_content {
     }
 
     $query = new WP_Query($query_params);
+
+    //fill cache and return
+    wp_cache_set($cache_key, $query->posts, YDN_homepage_content::cache_group, YDN_homepage_content::cache_expiration);
     return $query->posts;
   }
 
   private function featured_post($cat_slug) {
     /* if there's a featured post in $featured_content_by_cat use it. otherwise, get the category's most recent post with a photo */
+
+    //first try to pull from cache
+    $cache_key = implode(";",array("featured_post", $cat_slug));
+    $cached_val = wp_cache_get($cache_key, YDN_homepage_content::cache_group);
+    if ($cached_val) {
+      return $cached_val;
+    }
+
+    //perform the calculations if necessary
+    $this->initialize_calculations();
     if ( array_key_exists( $cat_slug, $this->featured_content_by_cat ) &&
          !empty($this->featured_content_by_cat[$cat_slug])  ) {
         /* we have featured content from this category, so as long as it has a photo we're golden */
-        $output["featured"] = $this->featured_content_by_cat[$cat_slug][0];
+        $output = $this->featured_content_by_cat[$cat_slug][0];
     } else {
         /* we don't have any featured content for this category. we need to pull the latest post
          * that's not in excluded_ids, has a photo, and is in this cat */
@@ -136,9 +171,12 @@ class YDN_homepage_content {
           return null;
         } else {
           /* set our featured post for this category to be the query response */
-          return $query->posts[0];
+          $output =  $query->posts[0];
         }
     }
+
+    wp_cache_set($cache_key, $output, YDN_homepage_content::cache_group, YDN_homepage_content::cache_expiration);
+    return $output;
   }
 
 

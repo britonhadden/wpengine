@@ -1,10 +1,6 @@
 <?php
   /* grab the content for the page */
-  $top_three_content = z_get_posts_in_zone("homepage-top-three");
-  $top_three_content = ydn_fix_list_size($top_three_content, 'university', 3);
-  $slideshow_content = z_get_posts_in_zone("homepage-slideshow");
-  $slideshow_content = ydn_fix_list_size($slideshow_content, 'university', 4);
-  $print_section_content = new YDN_homepage_content($slideshow_content, $top_three_content, z_get_posts_in_zone('homepage-featured-stories') );
+  $print_section_content = YDN_homepage_content::get_instance();
 ?>
 <?php get_header(); ?>
     <div class="span19"> <!-- contains all content except right most column -->
