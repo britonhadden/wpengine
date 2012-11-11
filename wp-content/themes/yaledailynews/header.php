@@ -75,5 +75,5 @@
   </header><!-- #masthead .site-header -->
 
   <div id="main" class="container">
-    <?php if (!is_home() && function_exists('dynamic_sidebar')) { dynamic_sidebar('leaderboard'); } ?>
+    <?php if ((!is_home() || $blog_id != 1) && function_exists('dynamic_sidebar')) { dynamic_sidebar('leaderboard'); } ?>
     <div class="row">
