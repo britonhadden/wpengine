@@ -20,7 +20,7 @@ class YDN_URL_Rewrites {
   //patterns & mappings
   const staff_regex = "/^staff\/([a-zA-Z\-]*)/";
   const staff_new_prefix = "blog/author/";
-  const article_regex = "/^news\/([0-9]{4}\/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\/[0-9]{2}\/[a-zA-Z\-]*)/";
+  const article_regex = "/^news\/([0-9]{4}\/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\/[0-9]{2}\/[&;0-9a-zA-Z\-]*)/";
   //misc
   const flag404 = "404ERROR";
 
