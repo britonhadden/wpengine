@@ -1,6 +1,6 @@
 <?php
   /* grab the content for the page */
-  $print_section_content = YDN_homepage_content::get_instance();
+  $home_content = YDN_homepage_content::get_instance();
 ?>
 <?php get_header(); ?>
     <div class="span19"> <!-- contains all content except right most column -->
@@ -9,7 +9,7 @@
         <?php
           $ydn_suppress_thumbnails = true; // ugly hack, but necessary to pass variables to template
 
-          foreach ($top_three_content as $post):
+          foreach ($home_content->get_top_three_content() as $post):
             setup_postdata($post);
 
             get_template_part('list', ydn_get_post_format());
@@ -18,7 +18,7 @@
 
         </div> <!-- #top-three -->
         <div class="span12" id="slideshow-multimedia">
-          <?php new YDN_Carousel( $slideshow_content, "home-carousel" ); ?>
+          <?php new YDN_Carousel( $home_content->get_slideshow_content(), "home-carousel" ); ?>
           <div class="row" id="video-thumbnails">
             <?php
               $videos_query = new WP_Query( array( 'post_type' => 'video',
@@ -50,7 +50,7 @@
           <h1>Opinion</h1>
           <div class="content-list">
             <?php
-              foreach ($print_section_content->get_post_list("opinion") as $post):
+              foreach ($home_content->get_post_list("opinion") as $post):
                 setup_postdata($post);
             ?>
             <div class="item">
@@ -71,7 +71,7 @@
           <div class="print-section">
             <h1>Sports</h1>
             <?php
-              $sports_content = $print_section_content->get_content_for_cat("sports",2); //this is the list/featrued array
+              $sports_content = $home_content->get_content_for_cat("sports",2); //this is the list/featrued array
               $sports_stories = $sports_content["list"]; //this is a flat array of stories to be looped through
               array_unshift( $sports_stories, $sports_content["featured"] );
             ?>
@@ -106,13 +106,13 @@
 
         <div class="span13">
           <!-- column with content for most of the sections of the paper -->
-          <?php ydn_home_print_section($print_section_content, "university"); ?>
+          <?php ydn_home_print_section($home_content, "university"); ?>
           <div class="double-border"></div>
-          <?php ydn_home_print_section($print_section_content, "culture"); ?>
+          <?php ydn_home_print_section($home_content, "culture"); ?>
           <div class="double-border"></div>
-          <?php ydn_home_print_section($print_section_content, "city"); ?>
+          <?php ydn_home_print_section($home_content, "city"); ?>
           <div class="double-border"></div>
-          <?php ydn_home_print_section($print_section_content, "sci-tech"); ?>
+          <?php ydn_home_print_section($home_content, "sci-tech"); ?>
         </div>
 
       </div><!-- end row.border6 -->

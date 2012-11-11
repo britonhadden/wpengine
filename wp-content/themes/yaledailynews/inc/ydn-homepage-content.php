@@ -57,12 +57,41 @@ class YDN_homepage_content {
     return self::$instance;
   }
 
+  public function get_top_three_content() {
+    return $this->get_cached_zone("homepage-top-three");
+  }
+
+  public function get_slideshow_content() {
+    return $this->get_cached_zone("homepage-slideshow");
+  }
+
+  public function get_featured_content() {
+    return $this->get_cached_zone("homepage-featured-stories");
+  }
+
+  private function get_cached_zone($zone_name) {
+    $cache_key = $zone_name;
+    $cache_value = wp_cache_get($cache_key, YDN_homepage_content::cache_group, YDN_homepage_content::cache_expiration);
+    if ($cache_value) {
+      return $cache_value;
+    }
+
+    $content = z_get_posts_in_zone($zone_name);
+    if($content == NULL || empty($content)) {
+      $content = array();
+    } else {
+      wp_cache_set($cache_key,$content, YDN_homepage_content::cache_group, YDN_homepage_content::cache_expiration);
+    }
+
+    return $content;
+  }
+
   private function initialize_calculations() {
     //setpup the necessary data structures to grab content from the database
     //used in the event of a cache miss
-    $slideshow_content = z_get_posts_in_zone("homepage-slideshow");
-    $top_three_content = z_get_posts_in_zone("homepage-top-three");
-    $featured_content = z_get_posts_in_zone("homepage-featured-stories");
+    $slideshow_content = $this->get_slideshow_content();
+    $top_three_content = $this->get_top_three_content();
+    $featured_content = $this->get_featured_content();
 
 
     /* anything included in slideshow/top_three should be excluded from the category specific boxes */
