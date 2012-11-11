@@ -5302,7 +5302,7 @@ body {
   background: transparent url("http://yaledailynews.com/wp-content/themes/crosscampus/img/cross_campus_logo.jpg") center 2px no-repeat;
 }
 
-#masthead a:hover {
+#masthead h1 a:hover {
   text-decoration: none;
 }
 
