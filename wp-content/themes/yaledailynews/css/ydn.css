@@ -6163,7 +6163,7 @@ li.comment {
   font-size: 11px;
 }
 
-.item .standard:first-child h3 {
+.content-list .item .standard:first-child h3 {
   font-size: 22px;
 }
 
