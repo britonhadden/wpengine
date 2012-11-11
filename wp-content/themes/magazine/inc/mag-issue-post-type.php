@@ -27,6 +27,9 @@ class YDN_Mag_Issue_Type {
 
     //content_ids is a nested array that dictates which IDs go with which content_types
     $content_ids = get_post_meta($issue_id, self::metadata_key, true);
+    if (empty($content_ids)) {
+      return array();
+    }
     //id_to_obj -- an array mapping ids to their objects
     $id_to_obj = array();
     //flat_ids -- an array of just ids
