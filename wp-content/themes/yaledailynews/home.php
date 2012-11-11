@@ -13,15 +13,15 @@
         <?php
           $ydn_suppress_thumbnails = true; // ugly hack, but necessary to pass variables to template
 
-          foreach ($top_three_content as $post): 
+          foreach ($top_three_content as $post):
             setup_postdata($post);
 
             get_template_part('list', ydn_get_post_format());
           endforeach;
         ?>
-              
+
         </div> <!-- #top-three -->
-        <div class="span12" id="slideshow-multimedia"> 
+        <div class="span12" id="slideshow-multimedia">
           <?php new YDN_Carousel( $slideshow_content, "home-carousel" ); ?>
           <div class="row" id="video-thumbnails">
             <?php
@@ -128,7 +128,7 @@
         <?php switch_to_blog(XC_BLOG_ID); ?>
         <a id="cross-campus-header" href="<?php echo get_bloginfo('url'); ?>"><h1>Cross Campus</h1></a>
         <div class="content-list borders">
-          <?php 
+          <?php
             $xc_posts = get_posts( array('numberposts' => 4 ) );
             foreach ($xc_posts as $post):
               setup_postdata($post);

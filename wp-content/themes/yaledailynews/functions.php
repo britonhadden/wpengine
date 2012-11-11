@@ -83,7 +83,7 @@ function ydn_setup() {
   add_image_size('modal-photo', 9999999, 675);
   add_image_size('home-carousel',470,350,true);
   add_image_size('home-print-section',230,176,true);
-  add_image_size('home-print-section-narrow',230,285,true);
+  add_image_size('home-print-section-narrow',230,99999999);
   add_image_size('opinion-featured',550,425,true);
   add_image_size('video-thumbnail',150,100,true);
   /**
