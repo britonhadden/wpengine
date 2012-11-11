@@ -95,15 +95,15 @@
           </div><!-- print-section -->
           <div class="print-section">
             <h1>Today's Paper</h1>
-            <a href="#"><?php ydn_get_special_image("front_page","home-print-section-narrow"); ?></a>
+            <a href="http://issuu.com/yaledailynews" id="todayspaper" target="_blank"><?php ydn_get_special_image("front_page","home-print-section-narrow"); ?></a>
           </div><!-- print-section -->
           <div class="print-section">
             <h1>WEEKEND</h1>
-            <a href="#"><?php ydn_get_special_image("weekend_cover","home-print-section-narrow"); ?></a>
+            <a href="/weekend"><?php ydn_get_special_image("weekend_cover","home-print-section-narrow"); ?></a>
           </div><!-- print-section -->
           <div class="print-section">
             <h1>Magazine</h1>
-            <a href="#"><?php ydn_get_special_image("magazine_cover","home-print-section-narrow"); ?></a>
+            <a href="/magazine"><?php ydn_get_special_image("magazine_cover","home-print-section-narrow"); ?></a>
           </div><!-- print-section -->
 
         </div><!-- .span6 -->

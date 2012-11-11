@@ -13,6 +13,17 @@
 
    if ( $body.hasClass('home') ) {
      homepage_carousel_init();
+     $("#todayspaper").attr("href","http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf?mode=mini&viewMode=doublePage&shareMenuEnabled=false&printButtonEnabled=false&shareButtonEnabled=false&searchButtonEnabled=false&folderId=f3714766-9353-4f5c-90fe-82933127ab16").fancybox( {
+     'width': '600px',
+     'height': '450px',
+     'overlayColor': '#eee',
+     'type': 'swf',
+     'swf': {
+        'allowscriptaccess': 'always',
+        'menu': 'false',
+        'wmode': 'transparent',
+        'allowfullscreen': 'true'
+    } });
    }
 
    if ($('#weekend').length > 0) {
