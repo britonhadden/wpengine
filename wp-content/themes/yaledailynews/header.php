@@ -46,7 +46,7 @@
 <div id="page" class="hfeed site">
   <?php do_action( 'before' ); ?>
   <div id="pre-header" class="container">
-    <div class="pull-left">FOLLOW US <a target="_blank" href="http://www.facebook.com/YaleDailyNews"><img alt="Follow us on Facebook" src="http://yaledailynews.media.clients.ellingtoncms.com/static//ydnRedesign/images/facebook.png"></a> <a target="_blank" href="http://www.twitter.com/YaleDailyNews"><img alt="Follow us on Twitter" src="http://yaledailynews.media.clients.ellingtoncms.com/static//ydnRedesign/images/twitter.png"></a> &bull; <a href="/contact/">Contact Us</a> | <a href="/advertising/">Advertise</a> | <a href="http://alumni.yaledailynews.com/">Alumni</a> | <a href="/subscribe/">Subscribe</a> | <a href="/alerts/manage">Subscribe to e-mail headlines</a></div>
+    <div class="pull-left">FOLLOW US <a target="_blank" href="http://www.facebook.com/YaleDailyNews"><img alt="Follow us on Facebook" src="http://yaledailynews.media.clients.ellingtoncms.com/static//ydnRedesign/images/facebook.png"></a> <a target="_blank" href="http://www.twitter.com/YaleDailyNews"><img alt="Follow us on Twitter" src="http://yaledailynews.media.clients.ellingtoncms.com/static//ydnRedesign/images/twitter.png"></a> &bull; <a href="/contact/">Contact Us</a> | <a href="/advertising/">Advertise</a> | <a href="http://alumni.yaledailynews.com/">Alumni</a> | <a href="/subscribe/">Subscribe</a></div>
     <div class="pull-right"><?php get_search_form(); ?></div>
   </div>
   <header class="site-header" role="banner">

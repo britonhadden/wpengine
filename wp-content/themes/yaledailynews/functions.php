@@ -150,7 +150,6 @@ add_action( 'widgets_init', 'ydn_widgets_init' );
 function ydn_scripts() {
   global $post;
 
-  wp_enqueue_style( 'style', get_stylesheet_uri() );
   wp_enqueue_style( 'bootstrap-ydn', get_template_directory_uri() . '/css/ydn.css');
 
   wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.js', array('jquery') );
