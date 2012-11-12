@@ -192,6 +192,9 @@ class YDN_Mag_Issue_Type {
 
     update_post_meta($post_id, self::metadata_key, $issue_vars);
 
+    //clear cached content so that it'll refresh
+    wp_cache_delete($post_id, self::metadata_key);
+
   }
 
   private function fetch_content_by_type($type = "post") {
