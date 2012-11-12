@@ -21,19 +21,15 @@
           <?php new YDN_Carousel( $home_content->get_slideshow_content(), "home-carousel" ); ?>
           <div class="row" id="video-thumbnails">
             <?php
-              $videos_query = new WP_Query( array( 'post_type' => 'video',
-                                                   'posts_per_page' => '3',
-                                                   'orderby' => 'date',
-                                                   'order' => 'DESC' ) );
-             while ( $videos_query->have_posts() ) : $videos_query->the_post();
+            foreach ( $home_content->get_videos() as $video ) : setup_postdata($video);
             ?>
               <div class="span4 item">
                 <a href="<?php echo get_permalink(); ?>" class="image"><?php the_post_thumbnail('video-thumbnail'); ?><span></span></a>
                 <a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
               </div>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
           </div> <!-- #video-thumbnails -->
-          <div id="more-videos"><a href="#">More Videos &raquo;</a></div>
+          <div id="more-videos"><a href="/blog/video">More Videos &raquo;</a></div>
         </div><!-- #sldieshow-multimedia -->
       </div>
       <!-- starting the most-read/opinion section -->

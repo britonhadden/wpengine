@@ -69,6 +69,22 @@ class YDN_homepage_content {
     return $this->get_cached_zone("homepage-featured-stories");
   }
 
+  public function get_videos() {
+    $cache_key = "ydn_home_video";
+    $cache_value = wp_cache_get($cache_key, YDN_homepage_content::cache_group, YDN_homepage_content::cache_expiration);
+    if ($cache_value) {
+      return $cache_value;
+    }
+
+    $videos_query = new WP_Query( array( 'post_type' => 'video',
+                                         'posts_per_page' => '3',
+                                         'orderby' => 'date',
+                                         'order' => 'DESC' ) );
+    wp_cache_set($cache_key, $videos_query->posts, YDN_home_content::cache_group, YDN_home_content::cache_expiration);
+    return $videos_query->posts;
+
+  }
+
   private function get_cached_zone($zone_name) {
     $cache_key = $zone_name;
     $cache_value = wp_cache_get($cache_key, YDN_homepage_content::cache_group, YDN_homepage_content::cache_expiration);
