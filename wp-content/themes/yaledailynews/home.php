@@ -120,7 +120,7 @@
         <a id="cross-campus-header" href="/crosscampus"><h1>Cross Campus</h1></a>
         <div class="content-list borders">
           <?php
-            foreach ($home_content->get_xc_posts as $post):
+            foreach ($home_content->get_xc_posts() as $post):
               setup_postdata($post);
               get_template_part('list','xc');
             endforeach;
