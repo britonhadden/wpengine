@@ -5564,10 +5564,6 @@ a.badge:hover {
   width: 270px;
 }
 
-#weekend .entry-header .entry-meta {
-  display: none;
-}
-
 #weekend h1,
 #weekend h2,
 #weekend h3,
@@ -6163,7 +6159,7 @@ li.comment {
   font-size: 11px;
 }
 
-.content-list .item #top-three:first-child h3 {
+#top-three .item:first-child h3 {
   font-size: 22px;
 }
 
@@ -6331,7 +6327,7 @@ li.comment {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.2em;
-  color: #777777;
+  color: #555555;
 }
 
 #cross-campus .section {

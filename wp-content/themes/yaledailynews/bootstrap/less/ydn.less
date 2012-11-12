@@ -266,15 +266,15 @@ li.comment {
     .meta {
       font-size: 11px;
     }
-
-    .item #top-three{
-        &:first-child h3 { 
-          font-size: 22px;
-        }
-    }
 }
 
-
+#top-three {
+  .item {
+    &:first-child h3 { 
+      font-size: 22px;
+    }
+  }
+}
 
 .content-list .item.standard .thumbnail {
     float: right;
@@ -425,7 +425,7 @@ li.comment {
   }
 
   h3 {
-    color: @ydnDarkGray;
+    color: @gray;
     font-size: 14px;
     font-weight: 600;
     line-height: 1.2em;
