@@ -15,4 +15,4 @@ function ydn_redirect_wp_login() {
 		}
 	}
 }
-?php>
+?>
