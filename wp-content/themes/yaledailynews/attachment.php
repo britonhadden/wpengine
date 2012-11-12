@@ -19,10 +19,9 @@ get_header(); ?>
          } else {
            get_template_part( 'content', 'single' );
          }
+         echo "TESTING"
 
         ?>
-
-        TESTING ATTACHMENT PAGE
 
         <?php
           // If comments are open or we have at least one comment, load up the comment template
