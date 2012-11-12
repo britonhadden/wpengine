@@ -5302,6 +5302,10 @@ body {
   background: transparent url("http://yaledailynews.com/wp-content/themes/crosscampus/img/cross_campus_logo.jpg") center 2px no-repeat;
 }
 
+.site-title a:hover {
+  text-decoration: none;
+}
+
 .page-header {
   padding: 0;
   margin: 0 0 20px 0;
