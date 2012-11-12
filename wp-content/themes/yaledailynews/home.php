@@ -38,6 +38,7 @@
       <div class="row border6">
         <div class="span6" id="ydn-popular-posts">
           <!-- most popular/most viewed -->
+          &nbsp;
           <?php if (function_exists('nrelate_popular')) nrelate_popular(); ?>
         </div>
 
