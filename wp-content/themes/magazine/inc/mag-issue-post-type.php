@@ -25,6 +25,12 @@ class YDN_Mag_Issue_Type {
   public static function get_content($issue_id) {
     //returns an array of the content matching $issue_id.
 
+    //first check for cached values
+    $cached_val = wp_cache_get($issue_id, self::metadata_key);
+    if($cached_val) {
+      return $cached_val;
+    }
+
     //content_ids is a nested array that dictates which IDs go with which content_types
     $content_ids = get_post_meta($issue_id, self::metadata_key, true);
     if (empty($content_ids)) {
@@ -61,6 +67,7 @@ class YDN_Mag_Issue_Type {
       }
     }
 
+    wp_cache_set($issue_id, $content, self::metadata_key);
     return($content);
   }
 
@@ -184,6 +191,9 @@ class YDN_Mag_Issue_Type {
     }
 
     update_post_meta($post_id, self::metadata_key, $issue_vars);
+
+    //clear cached content so that it'll refresh
+    wp_cache_delete($post_id, self::metadata_key);
 
   }
 
