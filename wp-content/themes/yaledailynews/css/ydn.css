@@ -6168,9 +6168,14 @@ li.comment {
 
 .content-list .item.standard .thumbnail {
   float: right;
+  margin-bottom: 5px;
+  /* EARL: Not sure if this should go here. */
+
+}
+
+.content-list .item.standard .thumbnail img {
   width: 70px;
   height: 70px;
-  margin-bottom: 5px;
 }
 
 .content-list .item .section {
