@@ -1,3 +1,4 @@
+<?php
 /* This plugin will redirect users to
  * login from /wp-login
  * 
@@ -14,4 +15,4 @@ function ydn_redirect_wp_login() {
 		}
 	}
 }
-
+?php>
