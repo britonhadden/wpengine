@@ -28,6 +28,17 @@
 
    if ($('#weekend').length > 0) {
      weekend_top_nav();
+     $("#menu-top-nav li:last-child a").fancybox( {
+     'width': '600px',
+     'height': '450px',
+     'overlayColor': '#eee',
+     'type': 'swf',
+     'swf': {
+        'allowscriptaccess': 'always',
+        'menu': 'false',
+        'wmode': 'transparent',
+        'allowfullscreen': 'true'
+    } });
    }
 
    if ($body.hasClass('category-opinion') ) {
