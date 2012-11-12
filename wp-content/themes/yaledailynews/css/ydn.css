@@ -5838,6 +5838,7 @@ body {
 }
 
 .main-navigation .navbar-inner {
+  min-width: 1024px;
   min-width: 950px;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
