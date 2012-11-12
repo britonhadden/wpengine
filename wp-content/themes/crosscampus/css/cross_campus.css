@@ -5251,7 +5251,7 @@ body {
 .top-bottom {
   min-width: 950px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-weight: 400;
   line-height: 35px;
   text-transform: uppercase;
   background-color: #a7845c;
@@ -5277,7 +5277,7 @@ body {
 
 .top-bottom,
 .top-bottom a {
-  color: #f4ece4;
+  color: #d2baa1;
 }
 
 #top {
