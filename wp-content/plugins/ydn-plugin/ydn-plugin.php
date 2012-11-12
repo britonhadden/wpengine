@@ -29,4 +29,7 @@ register_activation_hook(__FILE__, array(YDN_URL_Rewrites::get_instance(), 'inst
 
 //A plugin to make sure users get registered on all of the subsites
 include('propagate-users.php');
+
+// A plugin to redirect wp-login to /login
+include('redirect-login.php');
 ?>
