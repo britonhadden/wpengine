@@ -21,7 +21,7 @@
           <?php new YDN_Carousel( $home_content->get_slideshow_content(), "home-carousel" ); ?>
           <div class="row" id="video-thumbnails">
             <?php
-            foreach ( $home_content->get_videos() as $video ) : setup_postdata($video);
+            foreach ( $home_content->get_videos() as $post ) : setup_postdata($post);
             ?>
               <div class="span4 item">
                 <a href="<?php echo get_permalink(); ?>" class="image"><?php the_post_thumbnail('video-thumbnail'); ?><span></span></a>
