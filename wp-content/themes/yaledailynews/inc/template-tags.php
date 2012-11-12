@@ -158,6 +158,7 @@ if (! function_exists('ydn_authors_with_type') ):
   function ydn_authors_with_type() {
     global  $post;
     $reporter_type = get_post_meta($post->ID, "ydn_reporter_type", true);
+
     if (!empty($reporter_type) ) {
        $reporter_type = '<br>' . $reporter_type;
     } else {
