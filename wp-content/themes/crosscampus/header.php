@@ -48,7 +48,15 @@
   <nav id="top" class="top-bottom">
     <div class="container clearfix">
     <span class="pull-left"><?php wp_nav_menu( array('theme_location' => 'top') ); ?></span>
-      <span class="pull-right"><a href="#">Login</a> | <a href="#">Logout</a></span>
+      <span class="pull-right">
+      	<?php 
+      	if (is_user_logged_in()) {
+      		$logout_url = wp_logout_url( get_home_url() );
+      		echo "<a href=\"{$logout_url}\">Logout</a>";
+      	} else
+      	{
+      		echo "<a href=\"http://yaledailynews.com/crosscampus/login\">Login</a>";
+      	}?></span>
     </div>
   </nav>
 	<header id="masthead" class="site-header container" role="banner"> 
