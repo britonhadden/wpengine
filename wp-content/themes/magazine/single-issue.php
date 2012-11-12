@@ -123,7 +123,7 @@
                     $content = $content[0];
                     $id = $content->ID;
                     // var_dump($content);
-                    
+
                     if ( $content->post_type == 'post') {
                       $photo_essay_image = get_the_post_thumbnail( $id, 'magazine_photo_essay' );
                       $photo_essay_link = get_permalink( $id );
@@ -136,9 +136,9 @@
                       $photo_essay_author = $content->post_author; //FIX ME!
                       echo "<span>Photo Essay</span><img src=\"{$photo_essay_image[0]}\">";
                     }
-                    
+
                   }
-                  
+
                   ?>
 
               </div>

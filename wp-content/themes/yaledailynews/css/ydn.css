@@ -5582,6 +5582,10 @@ a.badge:hover {
   color: #6c6d70;
 }
 
+#weekend .entry-authors {
+  color: #929396;
+}
+
 body.category #weekend .blocks {
   width: 810px;
 }

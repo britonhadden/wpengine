@@ -385,6 +385,16 @@ function ydn_categorized_blog() {
  */
 function ydn_get_special_image($type,$size) {
   //pull the image of special type $type, then render it in $size
+
+  //check the cache
+  $cache_key = implode(';', array($type, $size, "special_image"));
+  $cache_value = wp_cache_get($cache_key,"ydn");
+  if($cache_value) {
+    echo $cache_value;
+    return;
+  }
+
+  //if no cache value, grab from database
   $args = array( 'post_type' => 'attachment',
                  'post_status' => 'any',
                  'posts_per_page' => 1,
@@ -397,7 +407,9 @@ function ydn_get_special_image($type,$size) {
   //rendering time
   if ($query->have_posts()) {
     $attach_id = $query->posts[0]->ID;
-    echo wp_get_attachment_image($attach_id, $size);
+    $output =  wp_get_attachment_image($attach_id, $size);
+    wp_cache_set($cache_key, $output, "ydn");
+    echo $output;
   }
 
 }
