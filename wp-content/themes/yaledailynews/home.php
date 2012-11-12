@@ -120,10 +120,12 @@
         <a id="cross-campus-header" href="/crosscampus"><h1>Cross Campus</h1></a>
         <div class="content-list borders">
           <?php
+            switch_to_blog(XC_BLOG_ID);
             foreach ($home_content->get_xc_posts() as $post):
               setup_postdata($post);
               get_template_part('list','xc');
             endforeach;
+            restore_current_blog();
           ?>
         </div>
         <a class="more" href="/crosscampus">More from the blogs</a>
