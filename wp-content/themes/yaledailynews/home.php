@@ -117,19 +117,16 @@
 
     <div class="span5"> <!-- right most column -->
       <div id="cross-campus" class="widget">
-        <?php switch_to_blog(XC_BLOG_ID); ?>
-        <a id="cross-campus-header" href="<?php echo get_bloginfo('url'); ?>"><h1>Cross Campus</h1></a>
+        <a id="cross-campus-header" href="/crosscampus"><h1>Cross Campus</h1></a>
         <div class="content-list borders">
           <?php
-            $xc_posts = get_posts( array('numberposts' => 4 ) );
-            foreach ($xc_posts as $post):
+            foreach ($home_content->get_xc_posts as $post):
               setup_postdata($post);
               get_template_part('list','xc');
             endforeach;
           ?>
         </div>
-        <a class="more" href="<?php echo get_bloginfo('url'); ?>">More from the blogs</a>
-        <?php restore_current_blog(); ?>
+        <a class="more" href="/crosscampus">More from the blogs</a>
       </div> <!-- end #cross campus -->
       <div class="sidebar-widgets">
         <?php dynamic_sidebar('home-advertisements'); ?>

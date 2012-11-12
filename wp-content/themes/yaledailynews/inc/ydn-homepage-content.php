@@ -71,7 +71,7 @@ class YDN_homepage_content {
 
   public function get_videos() {
     $cache_key = "ydn_home_video";
-    $cache_value = wp_cache_get($cache_key, self::cache_group, YDN_homepage_content::cache_expiration);
+    $cache_value = wp_cache_get($cache_key, self::cache_group);
     if ($cache_value) {
       return $cache_value;
     }
@@ -82,6 +82,20 @@ class YDN_homepage_content {
                                          'order' => 'DESC' ) );
     wp_cache_set($cache_key, $videos_query->posts, self::cache_group, self::cache_expiration);
     return $videos_query->posts;
+  }
+
+  public function get_xc_posts() {
+    $cache_key = "xc_posts";
+    $cache_value = wp_cache_get($cache_key, self::cache_group);
+    if($cache_value) {
+      return $cache_value;
+    }
+
+    switch_to_blog(XC_BLOG_ID);
+    $xc_posts = get_posts( array('numberposts' => 4 ) );
+    wp_cache_set($cache_key,$xc_posts, self::cache_group, self::cache_expiration);
+    restore_current_blog();
+    return $xc_posts;
   }
 
   private function get_cached_zone($zone_name) {
