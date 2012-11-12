@@ -5249,6 +5249,7 @@ body {
 }
 
 .top-bottom {
+  min-width: 950px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: bold;
   line-height: 35px;
