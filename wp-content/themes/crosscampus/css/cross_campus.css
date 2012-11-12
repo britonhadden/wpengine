@@ -5306,6 +5306,10 @@ body {
   text-decoration: none;
 }
 
+#masthead h1 a:hover {
+  text-decoration: none;
+}
+
 .page-header {
   padding: 0;
   margin: 0 0 20px 0;
