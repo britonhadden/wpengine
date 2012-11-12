@@ -6187,6 +6187,17 @@ li.comment {
 
 .content-list .item {
   margin-bottom: 20px;
+  *zoom: 1;
+}
+
+.content-list .item:before,
+.content-list .item:after {
+  display: table;
+  content: "";
+}
+
+.content-list .item:after {
+  clear: both;
 }
 
 .content-list .meta,
