@@ -6200,6 +6200,17 @@ li.comment {
 
 .content-list .item {
   margin-bottom: 20px;
+  *zoom: 1;
+}
+
+.content-list .item:before,
+.content-list .item:after {
+  display: table;
+  content: "";
+}
+
+.content-list .item:after {
+  clear: both;
 }
 
 .content-list .meta,
@@ -6466,7 +6477,8 @@ li.comment {
 }
 
 .home #ydn-popular-posts .nrelate,
-.home #ydn-popular-posts .nrinner {
+.home #ydn-popular-posts .nr_inner {
+  padding: 0;
   margin: 0;
 }
 

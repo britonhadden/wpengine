@@ -157,9 +157,9 @@ endif; // end function_exists condition
 if (! function_exists('ydn_authors_with_type') ):
   function ydn_authors_with_type() {
     global  $post;
-    $reporter_type = get_post_custom_values("reporter_type");
+    $reporter_type = get_post_meta($post->ID, "ydn_reporter_type", true);
+
     if (!empty($reporter_type) ) {
-       $reporter_type = $reporter_type[0]; //there should only be one key associated with this value
        $reporter_type = '<br>' . $reporter_type;
     } else {
       $reporter_type = '';
