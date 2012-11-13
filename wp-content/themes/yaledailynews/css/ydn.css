@@ -5889,7 +5889,8 @@ textarea#comment {
   border: 1px solid #ebebeb;
 }
 
-.sidebar-widgets .widget h1 {
+.sidebar-widgets .widget h1,
+.sidebar-widgets .nr_title {
   padding: 8px;
   margin-bottom: 5px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -5897,6 +5898,10 @@ textarea#comment {
   line-height: 1em;
   color: #959595;
   background-color: #ebebeb;
+}
+
+.sidebar-widgets .nr_inner {
+  margin: 0;
 }
 
 .sidebar-widgets .advertisement {
