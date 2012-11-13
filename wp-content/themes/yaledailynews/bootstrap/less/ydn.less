@@ -87,7 +87,7 @@ body {
       padding: 5px;
   }
 
-  .widget h1 {
+  .widget h1, .nr_title {
       background-color: @ydnLightGray;
       color: @ydnGray;
       font-family:@sansFontFamily; 
@@ -95,6 +95,10 @@ body {
       line-height: 1em;
       margin-bottom: 5px;
       padding: 8px;
+  }
+
+  .nrelate {
+    margin:0;
   }
 
   .advertisement {
@@ -664,6 +668,12 @@ li.comment {
  }
 }
 
+
+/* Hide Nrelate when it shows up on pages it's not supposed to be on */
+body.page .nrelate-related-widget,
+body.archive .nrelate-related-widget {
+  display:none;
+}
 
 /*! fancyBox v2.1.3 fancyapps.com | fancyapps.com/fancybox/#license */
 .fancybox-wrap,
