@@ -6585,6 +6585,7 @@ li.comment {
 /* Hide Nrelate when it shows up on pages it's not supposed to be on */
 
 body.page .nrelate-related-widget,
+body.search .nrelate-related-widget,
 body.archive .nrelate-related-widget {
   display: none;
 }
