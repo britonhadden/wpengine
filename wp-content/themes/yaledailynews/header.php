@@ -12,7 +12,7 @@
 <head>
 <link rel="icon" 
       type="image/gif" 
-      href="ydn-logo.gif">
+      href="wp-content/themes/yaledailynews/ydn-logo.gif">
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 <title><?php
