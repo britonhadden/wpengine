@@ -12,6 +12,9 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
+<link rel="icon" 
+      type="image/gif" 
+      href="wp-content/themes/yaledailynews/ydn-logo.gif">
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
