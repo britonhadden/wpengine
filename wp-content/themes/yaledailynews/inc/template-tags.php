@@ -170,6 +170,21 @@ if (! function_exists('ydn_authors_with_type') ):
   }
 endif; //edn function_exists condition
 
+if (! function_exists('ydn_column_type') ):
+function ydn_column_type() {
+  global $post;
+  $column_type = get_post_meta($post->ID, "ydn_opinion_column", true);
+
+  if(!empty($column_type)) {
+    $column_type = '<br>' . $column_type;
+  } else {
+    $column_type = '';
+  }
+  
+  echo $column_type;
+
+}
+
 /**
  * outputs a twitter/facebook share links
  */
