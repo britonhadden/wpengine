@@ -176,14 +176,15 @@ function ydn_column_type() {
   $column_type = get_post_meta($post->ID, "ydn_opinion_column", true);
 
   if(!empty($column_type)) {
-    $column_type = '<br>' . $column_type;
+    $column_type = $column_type;
   } else {
     $column_type = '';
   }
-  
+
   echo $column_type;
 
 }
+endif; //end function_exists condition
 
 /**
  * outputs a twitter/facebook share links

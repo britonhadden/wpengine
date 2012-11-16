@@ -145,6 +145,14 @@ body {
     font-weight: bold;
     text-transform: uppercase;
 }
+.entry-columntype {
+    font-weight: bold;
+    color: @ydnDarkGray;
+    font-size: 120%;
+    font-style: @sansFontFamily;
+    padding-bottom: 0.5em;
+}
+
 .entry-header .entry-pubdate {
     color: @ydnGray;
 }
@@ -1074,9 +1082,14 @@ object {
   margin: 0 0 1.5em;
 }
 
-/* Button Primary Override */
+/* Button Primary Override 
+   For the login forms */
 .button-primary {
-  btn();
+  .btn();
+}
+
+#wp-submit {
+  .btn();
 }
 
 /* End _S default styling */
