@@ -365,7 +365,7 @@ if (! function_exists("ydn_comment_count") ):
     global $post;
     ?>
     <a href="<?php echo get_permalink();?>#comments-title" class="comment-count">
-      <span class="dsq-postid" rel="<?php htmlspecialchars(dsq_identifier_for_post($post))?>">(<?php echo $post->comment_count; ?>)</span>
+      <span class="dsq-postid" rel="<?php echo htmlspecialchars(dsq_identifier_for_post($post)); ?>"><?php echo $post->comment_count; ?></span>
     </a>
     <?php
   }
