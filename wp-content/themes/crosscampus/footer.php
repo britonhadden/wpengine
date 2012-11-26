@@ -14,8 +14,7 @@
   <footer>
     <nav id="bottom" class="top-bottom">
       <div class="container clearfix">
-        <span class="pull-left"><?php wp_nav_menu( array('theme_location' => 'bottom') ); ?></span>
-        <span class="pull-right"><a href="#">Login</a> | <a href="#">Logout</a></span>
+        <span class="pull-right"><?php wp_nav_menu( array('theme_location' => 'bottom') ); ?></span>
       </div>
     </nav>
   </footer>
