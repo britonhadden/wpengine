@@ -5226,7 +5226,7 @@ a.badge:hover {
 }
 
 #primary #content {
-  padding: 40px 25px 0 25px;
+  padding: 20px 25px 0 25px;
 }
 
 #secondary {
@@ -5237,7 +5237,7 @@ a.badge:hover {
 }
 
 #secondary #sidebar {
-  padding: 40px 5px 0 5px;
+  padding: 20px 5px 0 5px;
 }
 
 #main {
@@ -5319,7 +5319,7 @@ body {
 
 #sidebar #tabbed,
 #sidebar .widget {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 #sidebar > .widget_text {
@@ -5341,6 +5341,15 @@ body {
 
 #sidebar .nr_inner a:hover {
   text-decoration: underline;
+}
+
+#sidebar #tip-box {
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+#sidebar #search {
+  text-align: center;
 }
 
 #sidebar #tabbed.js {
