@@ -90,7 +90,8 @@
             <!-- contains shorts, poetry, and photo gallery -->
             <div class="row" id="shorts-poetry">
               <div class="span5">
-                <!-- shorts -->
+		<!-- shorts -->
+		<!-- note: renamed section to Shorts & Poetry temporarily. unchanged on Issues backend. -->
                 <h1 class="mag-section border">Shorts & Poetry</h1>
                 <div class="content-list">
                   <?php
@@ -102,7 +103,8 @@
                 </div>
               </div>
               <div class="span5 offset1">
-                <!-- poetry -->
+		<!-- poetry -->
+		<!-- note: renamed this section to Features temporarily. unchanged on Issues backend. -->
                 <h1 class="mag-section border">Features</h1>
                 <div class="content-list">
                   <?php
