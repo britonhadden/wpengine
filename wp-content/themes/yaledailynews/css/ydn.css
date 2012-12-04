@@ -5239,6 +5239,10 @@ a.badge:hover {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+#weekend #secondary .nr_title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 #weekend .header {
   position: relative;
   width: 950px;
