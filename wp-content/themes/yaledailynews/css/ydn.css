@@ -5277,7 +5277,7 @@ a.badge:hover {
 
 #weekend .header .weekend-nav {
   margin-left: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "BentonSansCond Light", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   list-style: none;
 }
@@ -5395,7 +5395,7 @@ a.badge:hover {
 }
 
 #weekend .block .entry-meta {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "BentonSansCond Light", Helvetica, Arial, sans-serif;
   color: black;
 }
 
@@ -5569,7 +5569,7 @@ a.badge:hover {
 #weekend h4,
 #weekend h5,
 #weekend h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "BentonSansCond Light", Helvetica, Arial, sans-serif;
   color: black;
 }
 
