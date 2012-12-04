@@ -5235,6 +5235,10 @@ a.badge:hover {
   margin-left: 10px;
 }
 
+#weekend #secondary .widget-title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 #weekend .header {
   position: relative;
   width: 950px;
