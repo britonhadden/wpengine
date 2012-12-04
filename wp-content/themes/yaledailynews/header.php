@@ -13,6 +13,7 @@
 <link rel="icon" 
       type="image/gif" 
       href="<?php bloginfo('stylesheet_directory'); ?>/ydn-logo.gif">
+<link href="//cloud.webtype.com/css/4596b2de-7ff9-443c-a183-c8e0e32196e1.css" rel="stylesheet" type="text/css" />
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 <title><?php
