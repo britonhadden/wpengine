@@ -104,9 +104,9 @@
           <!-- column with content for most of the sections of the paper -->
           <?php ydn_home_print_section($home_content, "university"); ?>
           <div class="double-border"></div>
-          <?php ydn_home_print_section($home_content, "culture"); ?>
-          <div class="double-border"></div>
           <?php ydn_home_print_section($home_content, "city"); ?>
+          <div class="double-border"></div>
+          <?php ydn_home_print_section($home_content, "culture"); ?>
           <div class="double-border"></div>
           <?php ydn_home_print_section($home_content, "sci-tech"); ?>
         </div>
