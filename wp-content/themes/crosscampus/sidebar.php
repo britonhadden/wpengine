@@ -11,9 +11,10 @@
       <div id="sidebar">
          <aside id="search" class="widget widget_search">
             <?php get_search_form(); ?>
-          </aside>
+	  </aside>
+		<div id="tip-box"><i class="icon-envelope"></i> Send tips to <a href="mailto:crosscampus@yaledailynews.com">Cross Campus</a>!</div>
        <div id="tabbed">
-          <div class="tab-content">
+	  <div class="tab-content">
            <?php
             if ( is_single() ) {
               dynamic_sidebar('content-sidebar-tabs');

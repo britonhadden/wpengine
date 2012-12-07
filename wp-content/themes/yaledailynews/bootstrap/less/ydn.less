@@ -22,6 +22,17 @@ styles up dynamically */
 
 .borderX(@gridColumns);
 
+.bentonsanscondlight {
+	font-family: "BentonSansCond Light";
+	font-style: normal;
+	font-weight: normal;
+     }
+
+.bentonsanscondmedium {
+        font-family: "BentonSansCond Medium";
+	font-style: normal;
+	font-weight: bold;
+    }
 
 body {
     background: url("@{asset_path}page_body_bg.jpg") repeat-x scroll 0 0 white;
@@ -45,6 +56,7 @@ body {
 .main-navigation .navbar-inner {
     min-width: 1024px;
     .border-radius(0);
+    min-width: @gridRowWidth;
 }
 .main-navigation .navbar-inner .container {
     display: block;
@@ -86,7 +98,7 @@ body {
       padding: 5px;
   }
 
-  .widget h1 {
+  .widget h1, .nr_title {
       background-color: @ydnLightGray;
       color: @ydnGray;
       font-family:@sansFontFamily; 
@@ -94,6 +106,10 @@ body {
       line-height: 1em;
       margin-bottom: 5px;
       padding: 8px;
+  }
+
+  .nrelate {
+    margin:0;
   }
 
   .advertisement {
@@ -140,6 +156,13 @@ body {
     font-weight: bold;
     text-transform: uppercase;
 }
+.entry-columntype {
+    color: @ydnDarkGray;
+    font-size: 120%;
+    font-style: italic;
+    padding-bottom: 0.5em;
+}
+
 .entry-header .entry-pubdate {
     color: @ydnGray;
 }
@@ -293,6 +316,7 @@ li.comment {
 }
 .content-list .item {
     margin-bottom: 20px;
+    .clearfix();
 }
 .content-list .meta, .content-list .meta a {
     color: @ydnGray;
@@ -535,7 +559,7 @@ li.comment {
         position: absolute;
         top: 0px;
         left: 0px;
-        background: transparent url("@{asset_path}/play_arrow.png") no-repeat center center;
+        background: transparent url("@{asset_path}play_arrow.png") no-repeat center center;
       }
     }
   }
@@ -558,8 +582,9 @@ li.comment {
 
   //nrelate Popular Posts Plugin
   #ydn-popular-posts {
-    .nrelate, .nrinner {
+    .nrelate, .nr_inner {
       margin: 0;
+      padding:0;
     }
 
     ul {
@@ -661,6 +686,13 @@ li.comment {
  }
 }
 
+
+/* Hide Nrelate when it shows up on pages it's not supposed to be on */
+body.page .nrelate-related-widget,
+body.search .nrelate-related-widget,
+body.archive .nrelate-related-widget {
+  display:none;
+}
 
 /*! fancyBox v2.1.3 fancyapps.com | fancyapps.com/fancybox/#license */
 .fancybox-wrap,
@@ -1060,5 +1092,14 @@ object {
   margin: 0 0 1.5em;
 }
 
+/* Button Primary Override 
+   For the login forms */
+.button-primary {
+  .btn();
+}
+
+#wp-submit {
+  .btn();
+}
 
 /* End _S default styling */

@@ -1,4 +1,4 @@
-<?php 
+<?php
   $friday_forum_content = z_get_posts_in_zone("opinion-friday-forum");
   $standard_content = z_get_posts_in_zone("opinion-standard");
   $ydn_suppress_thumbnails = true; // ugly hack, but necessary to pass variables to template
@@ -21,11 +21,11 @@
       <?php endif; ?>
     </div>
     <div class="span5 content-list narrow borders">
-      <?php $standard_content = ydn_fix_list_size($standard_content,'opinion',3); ?> 
+      <?php $standard_content = ydn_fix_list_size($standard_content,'opinion',3); ?>
       <?php foreach( $standard_content as $post ): setup_postdata($post); ?>
         <?php get_template_part('list', 'opinion') ?>
       <?php endforeach; ?>
-    </div>  
+    </div>
   </div>
 
   <div class="double-border"></div>
@@ -40,7 +40,7 @@
         <li><a href="#oped-live" data-toggle="tab">Op-Ed Live</a></li>
       </ul>
       <div class="tab-content" id="opinion-cat-content">
-        <?php 
+        <?php
           function ydn_opinion_lower_content($slug, $class = ''){ ?>
             <div class="tab-pane content-list <?php echo $class; ?>" id="<?php echo $slug; ?>">
             <?php
@@ -90,7 +90,7 @@
               if(++$i % 4 == 0 ) {
                 echo '</div>';
               }
-                
+
             endforeach;
             $post = $temp_post;
           ?>
@@ -100,7 +100,7 @@
   </div>
 
 </div><!-- main column wrapper -->
-<div class="span5">
-  <?php dynamic_sidebar('opinion-sidebar'); ?>  
+<div class="span5 sidebar-widgets">
+  <?php dynamic_sidebar('opinion-sidebar'); ?>
 </div><!-- sidebar wrapper -->
 <?php get_footer(); ?>

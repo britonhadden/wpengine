@@ -14,6 +14,15 @@
     .makeColumn(15);
   }
 
+  #secondary {
+	  .widget-title {
+		  font-family: @sansFontFamily;
+	  }
+	  .nr_title {
+		  font-family: @sansFontFamily;
+	  }
+  }
+
   .header {
     @navHeight: 65px;
     @navTopPadding: 11px;
@@ -62,7 +71,7 @@
       //we have to make the nav elements inline ourselves
       //and handle vertical centering with the line-height trick
       list-style: none;
-      font-family: @sansFontFamily;
+      font-family: @weekendFontFamily;
       text-transform: uppercase;
       margin-left: 0px;
 
@@ -195,7 +204,7 @@
     }
 
     .entry-meta {
-      font-family: @sansFontFamily;
+      font-family: @weekendFontFamily;
       color: black;
 
       a {
@@ -307,7 +316,6 @@
     }
 
     .entry-meta {
-      float: left;
       clear: none;
     }
   }
@@ -330,7 +338,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     color: black;
-    font-family: @sansFontFamily;
+    font-family: @weekendMediumFontFamily;
   }
 
   a {
@@ -345,6 +353,17 @@
     color: @linkGray;
   }
 
+}
+
+// Archives navigation buttons & footer
+#nav-below {
+  padding: 10px;
+}
+.nav-previous {
+  float: left;
+}
+.nav-next {
+  float:right;
 }
 
 body.category #weekend .blocks {

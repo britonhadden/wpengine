@@ -28,7 +28,7 @@
 
    if ($('#weekend').length > 0) {
      weekend_top_nav();
-     $("#menu-top-nav li:last-child a").fancybox( {
+     $("#menu-top-nav > li:last-child a").fancybox( {
      'width': '600px',
      'height': '450px',
      'overlayColor': '#eee',

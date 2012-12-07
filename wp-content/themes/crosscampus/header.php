@@ -12,6 +12,9 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
+<link rel="icon" 
+      type="image/gif" 
+      href="wp-content/themes/yaledailynews/ydn-logo.gif">
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
@@ -22,7 +25,7 @@
 
 	// Add the blog name.
 	bloginfo( 'name' );
-
+ 
 	// Add the blog description for the home/front page.
 	$site_description = get_bloginfo( 'description', 'display' );
 	if ( $site_description && ( is_home() || is_front_page() ) )
@@ -48,7 +51,15 @@
   <nav id="top" class="top-bottom">
     <div class="container clearfix">
     <span class="pull-left"><?php wp_nav_menu( array('theme_location' => 'top') ); ?></span>
-      <span class="pull-right"><a href="#">Login</a> | <a href="#">Logout</a></span>
+      <span class="pull-right">
+      	<?php 
+      	if (is_user_logged_in()) {
+      		$logout_url = wp_logout_url( get_home_url() );
+      		echo "<a href=\"{$logout_url}\">Logout</a>";
+      	} else
+      	{
+      		echo "<a href=\"http://yaledailynews.com/crosscampus/login\">Login</a>";
+      	}?></span>
     </div>
   </nav>
 	<header id="masthead" class="site-header container" role="banner"> 

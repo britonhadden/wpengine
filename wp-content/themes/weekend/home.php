@@ -10,28 +10,28 @@ $posts = z_get_posts_in_zone('homepage');
   <div id="weekend">
     <?php require get_stylesheet_directory() . '/topnav.php' ?>
     <div class="blocks">
-    
+
       <div class="block-group big">
-        <?php weekend_render_block($posts[0], 'big'); ?>      
-        <?php weekend_render_block($posts[4], 'medium'); ?>      
+        <?php weekend_render_block($posts[0], 'big'); ?>
+        <?php weekend_render_block($posts[4], 'medium'); ?>
       </div> <!-- .block-group -->
 
-      <div class="block-group small"> 
+      <div class="block-group small">
 
-        <?php weekend_render_block($posts[1], 'small'); ?>      
-        <?php weekend_render_block($posts[2], 'small'); ?>      
-        <?php weekend_render_block($posts[3], 'small'); ?>      
+        <?php weekend_render_block($posts[1], 'small'); ?>
+        <?php weekend_render_block($posts[2], 'small'); ?>
+        <?php weekend_render_block($posts[3], 'small'); ?>
       </div> <!-- .block group -->
 
-      <div class="block-group small"> 
-        <?php weekend_render_block($posts[4], 'small'); ?>      
-        <?php weekend_render_block($posts[7], 'small'); ?>      
-        <?php weekend_render_block($posts[8], 'small'); ?>      
+      <div class="block-group small">
+        <?php weekend_render_block($posts[5], 'small'); ?>
+        <?php weekend_render_block($posts[8], 'small'); ?>
+        <?php weekend_render_block($posts[9], 'small'); ?>
       </div> <!-- .block group -->
 
       <div class="block-group big">
-        <?php weekend_render_block($posts[5], 'big'); ?>      
-        <?php weekend_render_block($posts[6], 'medium'); ?>      
+        <?php weekend_render_block($posts[6], 'big'); ?>
+        <?php weekend_render_block($posts[7], 'medium'); ?>
       </div> <!-- .block-group -->
 
 

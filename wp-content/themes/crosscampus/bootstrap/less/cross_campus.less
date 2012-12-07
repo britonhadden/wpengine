@@ -9,7 +9,7 @@
 }
 
 //Set the default sizes on the content areas
-@xcTopPadding: 40px;
+@xcTopPadding: 20px;
 @xcMainSidePadding: 25px;
 @xcMainColSpan: 18;
 @xcSidebarSidePadding: 5px;
@@ -47,9 +47,9 @@ body {
   background-color: @xcDarkTan;
   font-family: @sansFontFamily;
   line-height: 35px;
-  font-weight: bold;
+  font-weight: 400;
   text-transform: uppercase;
-
+  min-width: @gridRowWidth;
   // the link lists are styled as UL's. setup the proper padding and draw a line to the right of them
   ul {
     list-style: none;
@@ -69,7 +69,7 @@ body {
 }
 
 .top-bottom, .top-bottom a {
-  color: @xcLightTan;
+  color: @xcTan;
 }
 
 //the top nav needs to create space below; the bottom nav needs to create space above
@@ -118,7 +118,7 @@ body {
 #sidebar {
   #tabbed,
   .widget {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   & >  .widget_text {
@@ -140,6 +140,13 @@ body {
     a:hover {
       text-decoration: underline;
     }
+  }
+  #tip-box {
+	padding-bottom: 15px;
+	text-align: center;
+  }
+  #search {
+	  text-align:center;
   }
 }
 
@@ -361,6 +368,10 @@ body {
 
 .entry-featured-image {
   margin-bottom: 10px;
+  text-align: center;
+}
+
+.entry-attachment {
   text-align: center;
 }
 

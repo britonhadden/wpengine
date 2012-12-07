@@ -157,9 +157,9 @@ endif; // end function_exists condition
 if (! function_exists('ydn_authors_with_type') ):
   function ydn_authors_with_type() {
     global  $post;
-    $reporter_type = get_post_custom_values("reporter_type");
+    $reporter_type = get_post_meta($post->ID, "ydn_reporter_type", true);
+
     if (!empty($reporter_type) ) {
-       $reporter_type = $reporter_type[0]; //there should only be one key associated with this value
        $reporter_type = '<br>' . $reporter_type;
     } else {
       $reporter_type = '';
@@ -169,6 +169,22 @@ if (! function_exists('ydn_authors_with_type') ):
     echo $reporter_type;
   }
 endif; //edn function_exists condition
+
+if (! function_exists('ydn_column_type') ):
+function ydn_column_type() {
+  global $post;
+  $column_type = get_post_meta($post->ID, "ydn_opinion_column", true);
+
+  if(!empty($column_type)) {
+    $column_type = $column_type;
+  } else {
+    $column_type = '';
+  }
+
+  echo $column_type;
+
+}
+endif; //end function_exists condition
 
 /**
  * outputs a twitter/facebook share links
@@ -348,7 +364,9 @@ if (! function_exists("ydn_comment_count") ):
     //prints a link to the article w/ the number of comments
     global $post;
     ?>
-    <a href="<?php echo get_permalink();?>#comments-title" class="comment-count">(<?php echo $post->comment_count; ?>)</a>
+    <a href="<?php echo get_permalink();?>#comments-title" class="comment-count">
+      <span class="dsq-postid" rel="<?php echo htmlspecialchars(dsq_identifier_for_post($post)); ?>"><?php echo $post->comment_count; ?></span>
+    </a>
     <?php
   }
 endif;

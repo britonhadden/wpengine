@@ -90,8 +90,9 @@
             <!-- contains shorts, poetry, and photo gallery -->
             <div class="row" id="shorts-poetry">
               <div class="span5">
-                <!-- shorts -->
-                <h1 class="mag-section border">Shorts</h1>
+		<!-- shorts -->
+		<!-- note: renamed section to Shorts & Poetry temporarily. unchanged on Issues backend. -->
+                <h1 class="mag-section border">Shorts & Poetry</h1>
                 <div class="content-list">
                   <?php
                   $content = $issue_content["shorts"] == null ? array() : $issue_content["shorts"];
@@ -102,8 +103,9 @@
                 </div>
               </div>
               <div class="span5 offset1">
-                <!-- poetry -->
-                <h1 class="mag-section border">Poetry</h1>
+		<!-- poetry -->
+		<!-- note: renamed this section to Features temporarily. unchanged on Issues backend. -->
+                <h1 class="mag-section border">Features</h1>
                 <div class="content-list">
                   <?php
                   $content = $issue_content["poetry"] == null ? array() : $issue_content["poetry"];

@@ -8,6 +8,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
+		<div class="entry-columntype"><?php ydn_column_type(); ?></div>
     <?php ydn_get_featured_image(); ?>
 		<div class="entry-meta">
       <div class="entry-authors">By <?php ydn_authors_with_type(); ?></div>
