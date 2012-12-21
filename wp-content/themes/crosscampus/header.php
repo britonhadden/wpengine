@@ -15,6 +15,7 @@
 <link rel="icon" 
       type="image/gif" 
       href="wp-content/themes/yaledailynews/ydn-logo.gif">
+<link href="//cloud.webtype.com/css/4596b2de-7ff9-443c-a183-c8e0e32196e1.css" rel="stylesheet" type="text/css" />
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
