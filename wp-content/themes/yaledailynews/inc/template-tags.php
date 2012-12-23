@@ -170,6 +170,12 @@ if (! function_exists('ydn_authors_with_type') ):
   }
 endif; //edn function_exists condition
 
+/**
+ * This is for subheadlines and opinion staff member's column names. 
+ * It's left as 'ydn_opinion_column' in the back-end because it was
+ * generalized into subheadlines after original implementation.
+ **/
+
 if (! function_exists('ydn_column_type') ):
 function ydn_column_type() {
   global $post;
@@ -445,4 +451,17 @@ function ydn_category_transient_flusher() {
 add_action( 'edit_category', 'ydn_category_transient_flusher' );
 add_action( 'save_post', 'ydn_category_transient_flusher' );
 
-
+/**
+ * Dynamic formatting of XC timestamps
+ * Note: Test out no-parameters version.
+ *
+ * @since ydn 1.1
+ **/
+if(!function_exists(ydn_timestamp)) :
+	function ydn_timestamp() {
+		$timestamp = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago';
+		if (ereg('min', $timestamp))
+			$timestamp = '<span class="recent-timestamp">' . $timestamp . '</span>';
+		return $timestamp;	
+	}
+endif;

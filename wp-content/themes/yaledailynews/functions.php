@@ -178,7 +178,7 @@ function ydn_register_custom_metadata() {
     x_add_metadata_group( 'ydn_metadata', array('post'), array('label' => "YDN Metadata") );
     x_add_metadata_field( 'ydn_reporter_type', array( 'post' ), array( 'label' => "Reporter type (e.g. Staff Reporter)",
                                                                    'group' => 'ydn_metadata' ) );
-    x_add_metadata_field( 'ydn_opinion_column', array( 'post'), array ( 'label' => "Opinion column (for staff columnists)",
+    x_add_metadata_field( 'ydn_opinion_column', array( 'post'), array ( 'label' => "Subheadline/Opinion column title (for staff columnists)",
                                                                        'group' => 'ydn_metadata') );
 
     //user level meta
