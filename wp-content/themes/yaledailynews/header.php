@@ -50,8 +50,14 @@
 <div id="page" class="hfeed site">
   <?php do_action( 'before' ); ?>
   <div id="pre-header" class="container">
-    <div class="pull-left">FOLLOW US <a target="_blank" href="http://www.facebook.com/YaleDailyNews"><img alt="Follow us on Facebook" src="http://yaledailynews.media.clients.ellingtoncms.com/static//ydnRedesign/images/facebook.png"></a> <a target="_blank" href="http://www.twitter.com/YaleDailyNews"><img alt="Follow us on Twitter" src="http://yaledailynews.media.clients.ellingtoncms.com/static//ydnRedesign/images/twitter.png"></a> &bull; <a href="/contact/">Contact Us</a> | <a href="/advertising/">Advertise</a> | <a href="http://alumni.yaledailynews.com/">Alumni</a> | <a href="/archives/">Archives</a> | <a href="/subscribe/">Subscribe</a></div>
-    <div class="pull-right"><?php get_search_form(); ?></div>
+	  <div class="pull-left"> 
+		<a href="/contact/">Contact Us</a> | <a href="/advertising/">Advertise</a> | <a href="http://alumni.yaledailynews.com/">Alumni</a> | <a href="/archives/">Archives</a> | <a href="/subscribe/">Subscribe</a></div>
+	<div class="pull-right">
+		<a target="_blank" href="http://www.facebook.com/YaleDailyNews"><img alt="Follow us on Facebook" class="social-media-icon" src="<?php echo get_template_directory_uri(); ?>/img/facebook-64.png"></a> 
+		<a target="_blank" href="http://www.twitter.com/YaleDailyNews"><img alt="Follow us on Twitter" class="social-media-icon" src="<?php echo get_template_directory_uri(); ?>/img/twitter-64.png"></a> 
+		<a target="_blank" href="http://yaledailynews.com/feed/"><img alt="Subscribe to RSS" class="social-media-icon" src="<?php echo get_template_directory_uri() ?>/img/rss-64.png"></a> 
+		<?php get_search_form(); ?>
+	</div>
   </div>
   <header class="site-header" role="banner">
     <div id="masthead" class="container">
