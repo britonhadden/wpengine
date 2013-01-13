@@ -3,7 +3,7 @@
   $home_content = YDN_homepage_content::get_instance();
 ?>
 <?php get_header(); ?>
-	<div class="span24"> Join the YDN! </div>
+	<div class="span24" id="recruit-banner"> <a href="https://docs.google.com/spreadsheet/viewform?fromEmail=true&formkey=dGI1NGJ0UDRQYTR4VVlUVi1tX0VMR2c6MQ">Join the YDN!</a> </div>
     <div class="span19"> <!-- contains all content except right most column -->
       <div class="row border7">
         <div class="span7 content-list narrow borders" id="top-three">

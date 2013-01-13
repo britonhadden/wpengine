@@ -5903,6 +5903,13 @@ body {
   font-weight: bold;
 }
 
+#recruit-banner {
+  margin-top: -7px;
+  margin-bottom: 10px;
+  text-align: center;
+  border: solid 1px;
+}
+
 /* Use CSS to toggle the menus.
  * Remove the top margin to prevent flickering */
 
