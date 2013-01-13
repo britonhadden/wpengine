@@ -8,14 +8,14 @@ function display_author_media($author_id, $sidebar = true, $limit = 10, $link_wi
 	$id = "id = " . ($sidebar ? "recent-media-sidebar" : "recent-media-inline");
 	$container = "div";
 
-	echo "<div $id>$header";
+	echo "<div $id>";
 	foreach ($media as $post) {
 		setup_postdata($post);
 		// If media is attached to a post, link to the parent post. Otherwise, link to attachment page itself.
 		if ($post->post_parent > 0 || !$link_without_parent)
-			$image = wp_get_attachment_image($post->ID, 'thumbnail');
+			$image = wp_get_attachment_image($post->ID, 'author-page-photog-photo');
 		else
-			$image = wp_get_attachment_link($post->ID, 'thumbnail', true);
+			$image = wp_get_attachment_link($post->ID, 'author-page-photog-photo', true);
 		$image = preg_replace('/title=".*"/', '', $image); // remove title attribute from image
 		$link = $post->post_parent > 0 ? "<a href='" . get_permalink($post->post_parent) . "' title='" . get_the_title($post->post_parent) . "'>$image</a>" : $image;
 		echo "<$container class='author-media' id='attachment-$post->ID'>$link</$container>";
@@ -39,6 +39,7 @@ function author_media_and_posts($id, $include_posts = true, $limit = 0, $exclude
 
 	$options = get_option( MEDIA_CREDIT_OPTION );
 	$start_date = $options['install_date'];
+	
 	if ($start_date)
 		$date_query = " AND post_date >= '$start_date'";
 
