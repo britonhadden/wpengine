@@ -8,13 +8,14 @@ Author URI: http://URI_Of_The_Plugin_Author
 License: GPL2
 */
 	function add_importer_endpoint() {
-		add_rewrite_endpoint( 'json', EP_ROOT );
+		add_rewrite_endpoint( 'importer', EP_ROOT );
 	}
 	add_action( 'init', 'add_importer_endpoint' );
 	function importer_template_redirect() {
 		global $wp_query;
 		echo("Importer! Post requests to this page will be imported.\n");
-		wp_mail("akshay.nathan@yale.edu", "POST REQUEST", implode(",", $_POST));	
+		if(!empty($_POST))
+			wp_mail("akshay.nathan08@gmail.edu", "POST REQUEST", implode(",", $_POST));	
 		exit;
 	}
 	add_action( 'template_redirect', 'importer_template_redirect' );
