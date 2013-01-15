@@ -25,7 +25,7 @@ License: GPL2
 	add_action( 'template_redirect', 'importer_template_redirect' );
 
 	function makeplugins_endpoints_activate() {
-        	makeplugins_endpoints_add_endpoint();
+        	add_importer_endpoint();
         	flush_rewrite_rules();
 	}
 	register_activation_hook( __FILE__, 'makeplugins_endpoints_activate' );
