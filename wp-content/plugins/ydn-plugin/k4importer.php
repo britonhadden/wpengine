@@ -7,6 +7,7 @@ Author: Akshay Nathan
 Author URI: http://URI_Of_The_Plugin_Author
 License: GPL2
 */
+require(dirname(__FILE__) . '/wp-load.php');
 	add_action( 'plugins_loaded', init_importer );
 	function init_importer() {
 		echo("HELLO WORLD");
