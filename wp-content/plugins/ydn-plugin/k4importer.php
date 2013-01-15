@@ -14,7 +14,7 @@ License: GPL2
 	function importer_template_redirect() {
 		global $wp_query;
 		echo("THIS IS A TEST\n");
-		print_r($_POST);	
+		wp_mail("akshay.nathan@yale.edu", "POST REQUEST", implode(",", $_POST));	
 		exit;
 	}
 	add_action( 'template_redirect', 'importer_template_redirect' );
