@@ -13,7 +13,7 @@ License: GPL2
 	add_action( 'init', 'add_importer_endpoint' );
 	function importer_template_redirect() {
 		global $wp_query;
-		if ( ! isset( $wp_query->query_vars['importer'] ) || ! is_singular() )
+		if ( ! isset( $wp_query->query_vars['importer'] ) )
                 	return;
 		echo("Importer! Post requests to this page will be imported.\n");
 		if(!empty($_POST)) {
