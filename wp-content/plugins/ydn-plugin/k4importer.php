@@ -15,7 +15,7 @@ License: GPL2
 		global $wp_query;
 		echo("Importer! Post requests to this page will be imported.\n");
 		if(!empty($_POST)) {
-			wp_mail("akshay.nathan08@gmail.edu", "POST REQUEST", implode(",", $_POST));	
+			wp_mail("akshay.nathan08@gmail.com", "POST REQUEST", implode(",", $_POST));	
 			echo(implode(",", $_POST));
 		}
 		exit;
