@@ -7,24 +7,31 @@ Author: Akshay Nathan
 Author URI: http://URI_Of_The_Plugin_Author
 License: GPL2
 */
-require(dirname(__FILE__) . '/wp-load.php');
-	add_action( 'plugins_loaded', init_importer );
-	function init_importer() {
-		echo("HELLO WORLD");
-		wp_mail( "akshay.nathan@yale.edu", "Test", "Email Test" );
+	function add_importer_endpoint() {
+		add_rewrite_endpoint( 'importer', EP_ROOT );
 	}
-	class k4Importer {
-		function import_story($xml_string) {
-			$xml = new SimpleXMLElement($xml_string);
-			// Extract Title
-			$title = $xml->headline->hl1->trim();
-			// Extract Authors into array with primary author first
-				// Split on and? get rid of whitespace and //'s
-			// Extract story html
-			$story = $xml->{'body.content'}->trim();
-			// Extract abstract, or leave blank if theres nothing but space
-			$excerpt = $xml->abstract->trim();
-			// Get the category/ies
+	add_action( 'init', 'add_importer_endpoint' );
+	function importer_template_redirect() {
+		global $wp_query;
+		if ( ! isset( $wp_query->query_vars['importer'] ) )
+                	return;
+		echo("Importer! Post requests to this page will be imported.\n");
+		if(!empty($_POST)) {
+			wp_mail("akshay.nathan08@gmail.com", "POST REQUEST", implode(",", $_POST));	
+			echo(implode(",", $_POST));
 		}
+		exit;
 	}
+	add_action( 'template_redirect', 'importer_template_redirect' );
+
+	function makeplugins_endpoints_activate() {
+        	add_importer_endpoint();
+        	flush_rewrite_rules();
+	}
+	register_activation_hook( __FILE__, 'makeplugins_endpoints_activate' );
+ 
+	function makeplugins_endpoints_deactivate() {
+		flush_rewrite_rules();
+	}
+	register_deactivation_hook( __FILE__, 'makeplugins_endpoints_deactivate' );
 ?>
