@@ -14,8 +14,10 @@ License: GPL2
 	function importer_template_redirect() {
 		global $wp_query;
 		echo("Importer! Post requests to this page will be imported.\n");
-		if(!empty($_POST))
+		if(!empty($_POST)) {
 			wp_mail("akshay.nathan08@gmail.edu", "POST REQUEST", implode(",", $_POST));	
+			echo(implode(",", $_POST));
+		}
 		exit;
 	}
 	add_action( 'template_redirect', 'importer_template_redirect' );
