@@ -7,8 +7,11 @@ Author: Akshay Nathan
 Author URI: http://URI_Of_The_Plugin_Author
 License: GPL2
 */
-	echo("HELLO WORLD");
-	wp_mail( "akshay.nathan@yale.edu", "Test", "Email Test" );
+	add_action( 'plugins_loaded', init_importer );
+	function init_importer() {
+		echo("HELLO WORLD");
+		wp_mail( "akshay.nathan@yale.edu", "Test", "Email Test" );
+	}
 	class k4Importer {
 		function import_story($xml_string) {
 			$xml = new SimpleXMLElement($xml_string);
