@@ -13,8 +13,8 @@ License: GPL2
 	add_action( 'init', 'add_importer_endpoint' );
 	function importer_template_redirect() {
 		global $wp_query;
-		echo("THIS IS A TEST");
-		print_r( $wp_query->query_vars );
+		echo("THIS IS A TEST\n");
+		print_r($_POST);	
 		exit;
 	}
 	add_action( 'template_redirect', 'importer_template_redirect' );
