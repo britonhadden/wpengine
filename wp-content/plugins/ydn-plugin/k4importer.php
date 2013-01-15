@@ -12,7 +12,21 @@ License: GPL2
 	}
 	add_action( 'init', 'add_importer_endpoint' );
 	function importer_template_redirect() {
+		global $wp_query;
+		echo("THIS IS A TEST");
 		print_r( $wp_query->query_vars );
+		exit;
 	}
 	add_action( 'template_redirect', 'importer_template_redirect' );
+
+	function makeplugins_endpoints_activate() {
+        	makeplugins_endpoints_add_endpoint();
+        	flush_rewrite_rules();
+	}
+	register_activation_hook( __FILE__, 'makeplugins_endpoints_activate' );
+ 
+	function makeplugins_endpoints_deactivate() {
+		flush_rewrite_rules();
+	}
+	register_deactivation_hook( __FILE__, 'makeplugins_endpoints_deactivate' );
 ?>
