@@ -1,25 +1,50 @@
 <?php
-/*
-Plugin Name: K4Importer
-Description: Importer for K4.
-Version: 1.0
-Author: Akshay Nathan
-Author URI: http://URI_Of_The_Plugin_Author
-License: GPL2
-*/
+    /*
+    Plugin Name: K4Importer
+    Description: Importer for K4.
+    Version: 1.0
+    Author: Akshay Nathan
+    Author URI: http://URI_Of_The_Plugin_Author
+    License: GPL2
+    */
+
 	function add_importer_endpoint() {
 		add_rewrite_endpoint( 'importer', EP_ROOT );
 	}
 	add_action( 'init', 'add_importer_endpoint' );
+
 	function importer_template_redirect() {
-		global $wp_query;
+        global $wp_query;
+        global $wpdb;
 		if ( ! isset( $wp_query->query_vars['importer'] ) )
                 	return;
-		echo("Importer! Post requests to this page will be imported.\n");
-		if(!empty($_POST)) {
-			wp_mail("akshay.nathan08@gmail.com", "POST REQUEST", implode(",", $_POST));	
-			echo(implode(",", $_POST));
-		}
+		echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
+		if( isset($_GET['NITFurl']) ) {
+            $url = $_GET['NITFurl'];
+            $xml = file_get_contents($url);
+            $xml_obj = new SimpleXMLElement($xml);
+            
+            $author = $xml_object->body->{'body.head'}->byline->person;
+            $title = $xml_object->body->{'body.head'}->byline->byttl;
+            $excerpt = $xml_object->body->{'body.head'}->abstract;
+            $story =  $xml_object->body->{'body.content'};
+            
+            $first_name = explode(" ", $author);
+            $last_name = $first_name[1];
+            $first_name = $first_name[0];
+            $query = $wpdb->prepare("SELECT user_id  FROM $wpdb->usermeta WHERE ( meta_key='first_name' AND meta_value=%s ) or ( meta_key='last_name' AND meta_value=%s )", $first_name ,$last_name);
+            $authorID= $wpdb->get_var( $query );
+
+            $post = array(
+              'post_author'    => $authorID,
+              'post_content'   => $story,
+              'post_excerpt'   => $excerpt,
+              'post_name'      => $title,
+              'post_status'    => 'draft',
+            );  
+            wp_insert_post( $post );
+
+        }
 		exit;
 	}
 	add_action( 'template_redirect', 'importer_template_redirect' );
