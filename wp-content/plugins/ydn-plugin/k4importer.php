@@ -32,7 +32,7 @@
             $first_name = explode(" ", $author);
             $last_name = $first_name[1];
             $first_name = $first_name[0];
-            $query = $wpdb->prepare("SELECT user_id  FROM $wpdb->usermeta WHERE ( meta_key='first_name' AND meta_value=%s ) or ( meta_key='last_name' AND meta_value=%s )", $first_name ,$last_name);
+            $query = $wpdb->prepare("SELECT user_id  FROM $wpdb->usermeta WHERE ( meta_key='first_name' AND meta_value='%s' ) and ( meta_key='last_name' AND meta_value='%s' )", $first_name ,$last_name);
             $authorID= $wpdb->get_var( $query );
 
             $post = array(
