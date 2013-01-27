@@ -1,0 +1,9 @@
+/**
+ * Event-O-Matic style
+ *
+ */
+#event-o-matic .error{color:#C33;margin:1em 0;}
+
+#icon-eom{background:url(../img/eom.png) center no-repeat;}
+
+#event-o-matic label.error{float:none;color:#FF0000;padding-left:.5em;vertical-align:top;}
