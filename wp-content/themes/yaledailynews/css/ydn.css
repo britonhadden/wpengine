@@ -6478,6 +6478,60 @@ li.comment {
   color: #777777;
 }
 
+#wknd-widget {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ebebeb;
+}
+
+#wknd-widget .recent-timestamp {
+  font-style: italic;
+  font-weight: bold;
+  color: #9d261d;
+}
+
+#wknd-widget #wknd-widget-header {
+  display: block;
+  width: 178px;
+  padding: 5px 0 5px 0;
+  margin-bottom: 5px;
+  background: black;
+}
+
+#wknd-widget h1 {
+  display: inline;
+  font-family: "BentonSansCond Medium", Arial;
+  font-size: 24px;
+  color: white;
+}
+
+#wknd-widget h2 {
+  display: inline;
+  font-family: "BentonSansCond Light", Arial;
+  font-size: 24px;
+  color: white;
+}
+
+#wknd-widget h3 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2em;
+  color: #555555;
+}
+
+#wknd-widget .more {
+  display: block;
+  padding-top: 5px;
+  margin-top: 5px;
+  color: #959595;
+  text-transform: uppercase;
+  border-top: 1px solid #ebebeb;
+}
+
+#wknd-widget .more:hover {
+  color: #777777;
+}
+
 .home .widget {
   padding: 5px;
   border: 1px solid #ebebeb;

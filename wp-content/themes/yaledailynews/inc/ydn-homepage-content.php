@@ -97,6 +97,20 @@ class YDN_homepage_content {
     restore_current_blog();
     return $xc_posts;
   }
+ 
+  public function get_wknd_posts() {
+    $cache_key = "wknd_posts";
+    $cache_value = wp_cache_get($cache_key, self::cache_group);
+    if($cache_value) {
+      return $cache_value;
+    }
+
+    switch_to_blog(WKND_BLOG_ID);
+    $wknd_posts = get_posts( array('numberposts' => 1, 'category' => 6 ) );
+    wp_cache_set($cache_key,$wknd_posts, self::cache_group, self::cache_expiration);
+    restore_current_blog();
+    return $wknd_posts;
+  }
 
   private function get_cached_zone($zone_name) {
     $cache_key = $zone_name;

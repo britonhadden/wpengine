@@ -10,6 +10,7 @@
  * Start by defining some constants that get used throughout the theme
  */
 
+define("WKND_BLOG_ID",3);
 define("XC_BLOG_ID",2);
 define("YDN_MAIN_SITE_ID",1);
 

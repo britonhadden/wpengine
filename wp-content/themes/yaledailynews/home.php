@@ -129,7 +129,21 @@
             restore_current_blog();
           ?>
         </div>
-        <a class="more" href="/crosscampus">More from the blogs</a>
+        <a class="more" href="/crosscampus">More from the XC blog</a>
+      </div> <!-- end #cross campus -->
+      <div id="wknd-widget" class="widget">
+		<a id="wknd-widget-header" href="/weekend/category/blog"><h1>WKND</hw> <h2>Blog</h2></a>
+        <div class="content-list borders">
+          <?php
+            switch_to_blog(WKND_BLOG_ID);
+            foreach ($home_content->get_WKND_posts() as $post):
+              setup_postdata($post);
+              get_template_part('list','wknd');
+            endforeach;
+            restore_current_blog();
+          ?>
+        </div>
+        <a class="more" href="/crosscampus">More from WEEKEND</a>
       </div> <!-- end #cross campus -->
       <div class="sidebar-widgets">
         <?php dynamic_sidebar('home-advertisements'); ?>
