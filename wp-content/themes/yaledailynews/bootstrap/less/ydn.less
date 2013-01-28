@@ -4,6 +4,7 @@
 
 @import "weekend.less";
 @import "magazine.less";
+@import "mixins.less";
 /* define some borders for the grid system  using LESS mixins to build the
 styles up dynamically */
 
@@ -466,20 +467,29 @@ li.comment {
 	font-weight: bold;
 }
 
- #cross-campus-header {
-    text-decoration: none;
- }
+#cross-campus-widget-header {
+	display: block;
+	width: 178px;
+	padding: 5px 0 5px 0;
+	margin-bottom: 5px;
+	.gradientBar(@ydnMarigold,@ydnDarkMarigold);
+	&:hover {
+		text-decoration: none;
+	}
+}
 
  h1 {
-    @cross_campus_path: "@{asset_path}cross_campus_logo.jpg";
-    .hide-text();
-    background: transparent url(@cross_campus_path) -5px 0 no-repeat;
-    height: 78px;
-    width: 178px;
-    margin-bottom: 5px;
-    padding: 0;
+    font-family: "BentonSansCond Medium", Arial;
+    color: white;
+    font-size: 48px;
   }
 
+  h2 {
+	  font-family: "BentonSansCond Light", Arial;
+	  color: white;
+	  font-size: 36px;
+  }
+  
   h3 {
     color: @gray;
     font-size: 14px;
@@ -546,7 +556,6 @@ li.comment {
 #wknd-widget-header {
 	display: block;
 	width: 178px;
-	padding: 5px 0 5px 0;
 	margin-bottom: 5px;
 	background: black;
 	&:hover {
@@ -558,14 +567,14 @@ li.comment {
     font-family: "BentonSansCond Medium", Arial;
     color: white;
     display: inline;
-    font-size: 24px;
+    font-size: 20px;
   }
 
   h2 {
 	  font-family: "BentonSansCond Light", Arial;
 	  color: white;
 	  display: inline;
-	  font-size: 24px;
+	  font-size: 20px;
   }
 
   h3 {

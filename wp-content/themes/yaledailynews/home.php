@@ -118,7 +118,7 @@
 
     <div class="span5"> <!-- right most column -->
       <div id="cross-campus" class="widget">
-        <a id="cross-campus-header" href="/crosscampus"><h1>Cross Campus</h1></a>
+        <a id="cross-campus-widget-header" href="/crosscampus"><h2>CROSS</h2> <h1>CAMPUS</h1></a>
         <div class="content-list borders">
           <?php
             switch_to_blog(XC_BLOG_ID);

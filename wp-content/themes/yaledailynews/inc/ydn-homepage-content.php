@@ -92,7 +92,7 @@ class YDN_homepage_content {
     }
 
     switch_to_blog(XC_BLOG_ID);
-    $xc_posts = get_posts( array('numberposts' => 4 ) );
+    $xc_posts = get_posts( array('numberposts' => 3 ) );
     wp_cache_set($cache_key,$xc_posts, self::cache_group, self::cache_expiration);
     restore_current_blog();
     return $xc_posts;
