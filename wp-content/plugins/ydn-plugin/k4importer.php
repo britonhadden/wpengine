@@ -34,6 +34,8 @@
             $first_name = $first_name[0];
             $query = $wpdb->prepare("SELECT user_id  FROM $wpdb->usermeta WHERE ( meta_key='first_name' AND meta_value='%s' ) and ( meta_key='last_name' AND meta_value='%s' )", $first_name ,$last_name);
             $authorID= $wpdb->get_var( $query );
+		
+	echo("$first_name $last_name $authorID $title $excerpt $story");
 
             $post = array(
               'post_author'    => $authorID,
