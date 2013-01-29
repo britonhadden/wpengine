@@ -21,8 +21,10 @@
 		echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
 		if( isset($_GET['NITFurl']) ) {
             $url = $_GET['NITFurl'];
+echo($url);
             $xml = file_get_contents($url);
-            $xml_obj = new SimpleXMLElement($xml);
+echo($xml);           
+ $xml_obj = new SimpleXMLElement($xml);
             
             $author = $xml_object->body->{'body.head'}->byline->person;
             $title = $xml_object->body->{'body.head'}->byline->byttl;
