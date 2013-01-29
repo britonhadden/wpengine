@@ -21,15 +21,9 @@
 		echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
 		if( isset($_GET['NITFurl']) ) {
             $url = $_GET['NITFurl'];
-echo($url);
-$curl_handle=curl_init();
-curl_setopt($curl_handle, CURLOPT_URL,$url);
-curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
-curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($curl_handle, CURLOPT_USERAGENT, 'ydn');
-$xml = curl_exec($curl_handle);
-curl_close($curl_handle);
-echo($xml);           
+echo("$url\n");
+$xml = file_get_contents("http://130.132.127.186:8080/K4XML/k4_nitf_1109_w10_column3_je%20[P]_8603326.xml");
+echo("$xml\n");           
  $xml_obj = new SimpleXMLElement($xml);
             
             $author = $xml_object->body->{'body.head'}->byline->person;
