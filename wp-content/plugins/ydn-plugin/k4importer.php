@@ -20,7 +20,7 @@
                 	return;
 		echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
 		if( isset($_GET['NITFurl']) ) {
-            $url = $_GET['NITFurl'];
+            $url = urlencode($_GET['NITFurl']);
 echo($url);
             $xml = file_get_contents($url);
 echo($xml);           
