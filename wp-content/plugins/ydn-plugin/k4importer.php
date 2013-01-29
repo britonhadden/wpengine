@@ -23,7 +23,6 @@
             $url = $_GET['NITFurl'];
 echo("$url\n");
 $xml = file_get_contents("http://130.132.127.186:8080/K4XML/k4_nitf_1109_w10_column3_je%20[P]_8603326.xml");
-echo("$xml\n");           
  $xml_obj = new SimpleXMLElement($xml);
             
             $author = $xml_object->body->{'body.head'}->byline->person;
