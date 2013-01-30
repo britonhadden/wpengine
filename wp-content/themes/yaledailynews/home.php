@@ -143,7 +143,7 @@
             restore_current_blog();
           ?>
         </div>
-        <a class="more" href="/crosscampus">More from WEEKEND</a>
+        <a class="more" href="/weekend/category/blog">More from WEEKEND</a>
       </div> <!-- end #cross campus -->
       <div class="sidebar-widgets">
         <?php dynamic_sidebar('home-advertisements'); ?>
