@@ -132,7 +132,7 @@
         <a class="more" href="/crosscampus">More from the XC blog</a>
       </div> <!-- end #cross campus -->
       <div id="wknd-widget" class="widget">
-		<a id="wknd-widget-header" href="/weekend/category/blog"><h1>WKND</hw> <h2>Blog</h2></a>
+		<a id="wknd-widget-header" href="/weekend/category/blog"><h1>WKND</hw> <h2>BLOG</h2></a>
         <div class="content-list borders">
           <?php
             switch_to_blog(WKND_BLOG_ID);
