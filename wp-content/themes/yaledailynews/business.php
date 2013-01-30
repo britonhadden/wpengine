@@ -21,7 +21,7 @@ Template name: Business
 
         <?php
           // If comments are open or we have at least one comment, load up the comment template
-          if ( comments_open() || '0' != get_comments_number() ) {
+          if ( comments_open()  ) {
             if (function_exists("dsq_is_installed") && dsq_is_installed() ) { echo '<h2 id="comments-title" class="comments-title">Comments</h2>'; } //if disqus is loaded, then put a comment header into the markup
             comments_template( '', true );
           }

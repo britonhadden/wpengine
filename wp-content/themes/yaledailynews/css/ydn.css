@@ -6900,7 +6900,7 @@ body {
   margin-top: -7px;
   margin-bottom: 10px;
   text-align: center;
-  border: solid 1px;
+  background: #ebebeb;
 }
 
 /* Use CSS to toggle the menus.
