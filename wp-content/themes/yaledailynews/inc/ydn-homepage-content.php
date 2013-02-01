@@ -186,7 +186,8 @@ class YDN_homepage_content {
     return $output;
   }
 
-  function get_post_list($cat_slug, $n_list = 5, $additional_exclude = null) {
+  function get_post_list($cat_slug, $n_list = 5, $additional_exclude = null,
+  $exclude_cat = null) {
     /* pull a list of stories in $cat_slug, excluding any posts in $additional_exclude */
 
     //first try to pull from cache
@@ -204,6 +205,11 @@ class YDN_homepage_content {
     if ($additional_exclude != null) {
       $query_params['post__not_in']  = array($additional_exclude);
     }
+
+	/* excludes categories from query by id, useful for subcats */
+	if ($exclude_cat) {
+		$query_params['category__not_in'] = array($exclude_cat);
+	}
 
     $query = new WP_Query($query_params);
 
