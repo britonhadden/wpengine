@@ -15,7 +15,7 @@ class Event_O_Matic_Admin extends Event_O_Matic{
  *
  */
 public function general(){
-	if (!current_user_can('manage_options')){
+	if (!current_user_can('edit_others_posts')){
 		wp_die( __('You do not have sufficient permissions to access this page.') );
     }
 	$event = new Event; //create event
@@ -141,7 +141,7 @@ public function general(){
  *
  */
 public function venue(){
-	if (!current_user_can('manage_options')){wp_die( __('You do not have sufficient permissions to access this page.'));}
+	if (!current_user_can('edit_others_posts')){wp_die( __('You do not have sufficient permissions to access this page.'));}
 	$venue = new Venue();
 	if(isset($_REQUEST['id'])){$venue->put(array('id'=>$_REQUEST['id']));} //add id
 	if ( isset($_POST['submit_delete']) && check_admin_referer('venue', 'eom-nonce')){ //delete
@@ -250,7 +250,7 @@ public function venue(){
  *
  */
 public function event(){
-	if (!current_user_can('manage_options')){wp_die( __('You do not have sufficient permissions to access this page.'));}
+	if (!current_user_can('edit_others_posts')){wp_die( __('You do not have sufficient permissions to access this page.'));}
 	$venue = new Venue;
 	$event = new Event;
 	$date = new Date;
@@ -419,7 +419,7 @@ public function event(){
  *
  */
 public function users(){
-	if (!current_user_can('manage_options')){
+	if (!current_user_can('edit_others_posts')){
 		wp_die( __('You do not have sufficient permissions to access this page.') );
     }
 	$p = new pagination;
@@ -483,7 +483,7 @@ public function users(){
  *
  */
 public function venues(){
-	if (!current_user_can('manage_options')){
+	if (!current_user_can('edit_others_posts')){
 		wp_die( __('You do not have sufficient permissions to access this page.') );
     }
 	$venue = new Venue();
@@ -549,7 +549,7 @@ public function venues(){
  *
  */
 public function events(){
-	if (!current_user_can('manage_options')){
+	if (!current_user_can('edit_others_posts')){
 		wp_die( __('You do not have sufficient permissions to access this page.') );
     }
 	$event = new Event;
@@ -657,12 +657,12 @@ public function html_events(){
  * 
  */
 public function menu() {
-	add_menu_page(__('Event-O-Matic', 'event-o-matic'), __('Event-O-Matic', 'event-o-matic'), 'manage_options', 'event-o-matic', array($this, 'general'), plugin_dir_url( __FILE__ ).'/img/eom_menu.png');
-	add_submenu_page( 'event-o-matic', __('Add Venue', 'event-o-matic'), __('Add Venue', 'event-o-matic'), 'manage_options', 'eom-venue', array($this, 'venue'));
-	add_submenu_page( 'event-o-matic', __('Add Event', 'event-o-matic'), __('Add Event', 'event-o-matic'), 'manage_options', 'eom-event', array($this, 'event'));
-	add_submenu_page( 'event-o-matic', __('Events', 'event-o-matic'), __('Events', 'event-o-matic'), 'manage_options', 'eom-events', array($this, 'events'));
-	add_submenu_page( 'event-o-matic', __('Venues', 'event-o-matic'), __('Venues', 'event-o-matic'), 'manage_options', 'eom-venues', array($this, 'venues'));
-	add_submenu_page( 'event-o-matic', __('Users', 'event-o-matic'), __('Users', 'event-o-matic'), 'manage_options', 'eom-users', array($this, 'users'));
+	add_menu_page(__('Event-O-Matic', 'event-o-matic'), __('Event-O-Matic', 'event-o-matic'), 'edit_others_posts', 'event-o-matic', array($this, 'general'), plugin_dir_url( __FILE__ ).'/img/eom_menu.png');
+	add_submenu_page( 'event-o-matic', __('Add Venue', 'event-o-matic'), __('Add Venue', 'event-o-matic'), 'edit_others_posts', 'eom-venue', array($this, 'venue'));
+	add_submenu_page( 'event-o-matic', __('Add Event', 'event-o-matic'), __('Add Event', 'event-o-matic'), 'edit_others_posts', 'eom-event', array($this, 'event'));
+	add_submenu_page( 'event-o-matic', __('Events', 'event-o-matic'), __('Events', 'event-o-matic'), 'edit_others_posts', 'eom-events', array($this, 'events'));
+	add_submenu_page( 'event-o-matic', __('Venues', 'event-o-matic'), __('Venues', 'event-o-matic'), 'edit_others_posts', 'eom-venues', array($this, 'venues'));
+	add_submenu_page( 'event-o-matic', __('Users', 'event-o-matic'), __('Users', 'event-o-matic'), 'edit_others_posts', 'eom-users', array($this, 'users'));
 }
 
 

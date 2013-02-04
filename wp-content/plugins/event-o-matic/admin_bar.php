@@ -7,7 +7,7 @@
  */
 function eom_admin_bar_init() {
 	// Is the user sufficiently leveled, or has the bar been disabled?
-	if (!is_super_admin() || !is_admin_bar_showing() ){ return; }
+	//if (!is_super_admin() || !is_admin_bar_showing() ){ return; }
 	add_action('admin_bar_menu', 'eom_admin_bar_links', 500);
 }
 add_action('admin_bar_init', 'eom_admin_bar_init'); 
