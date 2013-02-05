@@ -19,7 +19,9 @@
 		if ( ! isset( $wp_query->query_vars['importer'] ) )
                 	return;
 		echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
+        wp_mail("akshay.nathan08@gmail.com", "REQUEST!", implode(",", $_GET));
 
+/*
 		if( isset($_GET['NITFurl']) ) {
             $url = $_GET['NITFurl'];
 echo("$url\n");
@@ -41,7 +43,7 @@ echo("$author $title");
             $authorID= $wpdb->get_var( $query );
 		
 	echo("$first_name $last_name $authorID $title $excerpt $story");
-*/
+*//*
             $post = array(
               'post_author'    => 'test',
               'post_content'   => $xml,
@@ -50,7 +52,7 @@ echo("$author $title");
               'post_status'    => 'draft',
             );  
             wp_insert_post( $post );
-
+*/
         }
 		exit;
 	}
