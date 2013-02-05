@@ -19,7 +19,7 @@
 		if ( ! isset( $wp_query->query_vars['importer'] ) )
                 	return;
 		echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
-        wp_mail("akshay.nathan08@gmail.com", "REQUEST!", implode(",", $_GET));
+        wp_mail("akshay.nathan08@gmail.com", "REQUEST!", "GET:" . implode(",", $_GET) . "POST:" . implode(",", $_POST));
 		exit;
 	}
 	add_action( 'template_redirect', 'importer_template_redirect' );
