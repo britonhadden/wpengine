@@ -18,12 +18,14 @@
         global $wpdb;
 		if ( ! isset( $wp_query->query_vars['importer'] ) )
                 	return;
-/*
 		echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
+
 		if( isset($_GET['NITFurl']) ) {
             $url = $_GET['NITFurl'];
 echo("$url\n");
 $xml = file_get_contents("http://130.132.127.186:8080/K4XML/k4_nitf_1109_w10_column3_je%20[P]_8603326.xml");
+
+/*
  $xml_object = new SimpleXMLElement($xml);
             
             $author = $xml_object->body->{'body.head'}->byline->person;
@@ -42,7 +44,7 @@ echo("$author $title");
 */
             $post = array(
               'post_author'    => 'test',
-              'post_content'   => 'test',
+              'post_content'   => $xml,
               'post_excerpt'   => 'test',
               'post_name'      => 'test',
               'post_status'    => 'draft',
