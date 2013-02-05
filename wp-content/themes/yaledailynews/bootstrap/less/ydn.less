@@ -34,6 +34,16 @@ styles up dynamically */
 	font-style: normal;
 	font-weight: bold;
     }
+/* for retina images. use instead of background-image */
+.at2x(@path, @w: auto, @h: auto) {
+  background-image: url(@path);
+    @at2x_path: ~`"@{path}".split('.').slice(0, "@{path}".split('.').length - 1).join(".") + "@2x" + "." + "@{path}".split('.')["@{path}".split('.').length - 1]`;
+
+  @media all and (-webkit-min-device-pixel-ratio : 1.5) {
+      background-image: url(@at2x_path);
+      background-size: @w @h;
+    }  
+}
 
 body {
     background: url("@{asset_path}page_body_bg.jpg") repeat-x scroll 0 0 white;
@@ -62,7 +72,8 @@ body {
 }
 
 #masthead a {
-    background: url("@{asset_path}masthead.jpg") no-repeat scroll 0 0 transparent;
+	.at2x('@{asset_path}masthead.gif', 750px, 120px);
+    //background: url("@{asset_path}masthead.jpg") no-repeat scroll 0 0 transparent;
     display: block;
     height: 120px;
     margin-bottom: 10px;
