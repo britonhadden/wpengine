@@ -18,6 +18,7 @@
         global $wpdb;
 		if ( ! isset( $wp_query->query_vars['importer'] ) )
                 	return;
+/*
 		echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
 		if( isset($_GET['NITFurl']) ) {
             $url = $_GET['NITFurl'];
@@ -30,6 +31,7 @@ $xml = file_get_contents("http://130.132.127.186:8080/K4XML/k4_nitf_1109_w10_col
             $excerpt = $xml_object->body->{'body.head'}->abstract;
             $story =  $xml_object->body->{'body.content'};
             
+echo("$author $title");
             $first_name = explode(" ", $author);
             $last_name = $first_name[1];
             $first_name = $first_name[0];
@@ -37,12 +39,12 @@ $xml = file_get_contents("http://130.132.127.186:8080/K4XML/k4_nitf_1109_w10_col
             $authorID= $wpdb->get_var( $query );
 		
 	echo("$first_name $last_name $authorID $title $excerpt $story");
-
+*/
             $post = array(
-              'post_author'    => $authorID,
-              'post_content'   => $story,
-              'post_excerpt'   => $excerpt,
-              'post_name'      => $title,
+              'post_author'    => 'test',
+              'post_content'   => 'test',
+              'post_excerpt'   => 'test',
+              'post_name'      => 'test',
               'post_status'    => 'draft',
             );  
             wp_insert_post( $post );
