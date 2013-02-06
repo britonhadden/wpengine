@@ -288,7 +288,7 @@ case 'event_confirm': //event comfirmation
 	$r.='<p>'.date('F jS \a\t g:ia',$date->start).' to '.date('F jS \a\t g:ia',$date->end).'</p>';
 	$r.='<p><em>'.$event->description.'</em></p>';
 	if(isset($attach_id)){$r.= wp_get_attachment_image( $attach_id, 'large' );}
-	if($event->price){$r.='<p>'.__('Price:','event-o-matic').' '.esc_html($event->price).'</p>';}
+	if($event->price){$r.='<p>'.__('Price of attendance:','event-o-matic').' '.esc_html($event->price).'</p>';}
 	if($event->url){$r.='<p><a href="'.esc_url($event->url).'">'.esc_url($event->url).'</a></p>';}
 	$r.='<h2>'.esc_html($venue->name).'</h2>';
 	$r.='<p>'.esc_html($venue->address).'</p>';
@@ -467,7 +467,7 @@ public function events($atts){
 		$r.= '<h1>'.esc_html($event->name).'</h1>';
 		$r.= '<div class="eom_date">'.date("F jS Y - g:ia",strtotime($event->dateStart)).'</div>';
 		$r.= '<div class="eom_venue">'.__('at','event-o-matic').' <a href="#eomAddress">'.esc_html($event->venueName).'</a></div>';
-		if($event->price!=0.00){$r.='<div class="eom_price"><strong>'.__('Price:','event-o-matic').'</strong> '.$event->price.'</div>';}
+		if($event->price!=0.00){$r.='<div class="eom_price"><strong>'.__('Price of attendance:','event-o-matic').'</strong> '.$event->price.'</div>';}
 		$r.= '<p>'.$event->description.'</p>';
 		if($event->url){
 			$r.='<p><a href="'.esc_url($event->url).'" target="_blank" />'.__('Event Website', 'event-o-matic').'</a></p>';
@@ -525,7 +525,7 @@ public function events($atts){
 				$r.= '<h1><a href="'.add_query_arg(array('id'=>$event['id'],'vid'=>$event['venueId'])).'">'.esc_html($event['name']).'</a></h1>';
 				$r.= '<div class="eom_date">'.date("F jS Y",strtotime($event['dateStart'])).'</div>';
 				$r.= '<div class="eom_venue">'.esc_html($event['venueName']).'</div>';
-				if($event['price']!=0.00){$r.='<div class="eom_price"><strong>'.__('Price:','event-o-matic').'</strong> '.$event['price'].'</div>';}
+				if($event['price']!=0.00){$r.='<div class="eom_price"><strong>'.__('Price of attendance:','event-o-matic').'</strong> '.$event['price'].'</div>';}
 				$r.= '<p>'.substr($event['description'],0,200).'...</p></div>';
 			}
 			$r.='</div>';
