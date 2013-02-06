@@ -378,7 +378,7 @@ default: // Event submission form
 	
 	$r.='<p align="left"><label for="event_url">'.__('Website:','event-o-matic').'</label><br />';
 	$r.='<input type="text" name="event_url" class="url" maxlength="200" value="'.esc_attr($event->url).'" /></p>';
-	$r.='<p align="left"><label for="event_price">'.__('Price:','event-o-matic').'</label><br />';
+	$r.='<p align="left"><label for="event_price">'.__('Price of attendance:','event-o-matic').'</label><br />';
 	$r.='<input type="text" name="event_price" class="number" maxlength="10" value="'.esc_attr($event->price).'" /></p>';
 	$r.='<p><input type="submit" name="submit_event" value="'.__('Submit Event','event-o-matic').'" /></p>';
 break;
