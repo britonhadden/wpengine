@@ -6873,8 +6873,8 @@ body {
 
 #masthead a {
   display: block;
-  width: 650px;
-  height: 104px;
+  width: 750px;
+  height: 120px;
   margin-bottom: 10px;
   font: 0/0 a;
   color: transparent;
@@ -6887,7 +6887,7 @@ body {
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {
   #masthead a {
     background-image: url('../img/masthead@2x.gif');
-    background-size: 650px 104px;
+    background-size: 750px auto;
   }
 }
 
