@@ -40,7 +40,7 @@
 <meta property="og:title" content= "<?php echo get_the_title(); ?>" />
 <meta property="og:type" content="article"/>
 <meta property="og:url" content= "<?php echo get_permalink(); ?>" />
-<meta property="og:image" content= "http://yaledailynews.com/wp-content/themes/yaledailynews/ydn-logo.gif"/>
+<meta property="og:image" content= "http://yaledailynews.com/wp-content/themes/yaledailynews/ydn-logo-fb.jpg"/>
 <meta property="og:site_name" content="Yale Daily News"/>
 <meta property="og:description"
       content=  "<?php echo get_the_excerpt(); ?>" />
