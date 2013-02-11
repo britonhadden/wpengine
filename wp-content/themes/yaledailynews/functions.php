@@ -165,6 +165,10 @@ function ydn_scripts() {
   if ( is_singular() && wp_attachment_is_image( $post->ID ) ) {
     wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
   }
+
+	if ( is_page_template('multimedia.php') ) {
+		wp_enqueue_style( 'multimedia', get_template_directory_uri() . '/css/multimedia.css');
+	}
 }
 add_action( 'wp_enqueue_scripts', 'ydn_scripts' );
 
