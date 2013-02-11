@@ -207,7 +207,7 @@ if (!function_exists('ydn_facebook_link') ):
     $fb_params = array( "app_id" => $fb_app,
                         "link" => get_permalink(),
                         "name" => get_the_title(),
-                        "description" => "TEST DESCRIPTION",
+                        "description" => get_the_excerpt(),
                         "redirect_uri" => get_permalink(),
                         "picture" => "http://www.yaledailynews.com/wp-content/themes/yaledailynews/ydn-logo.gif" );
     $fb_share_url = "https://www.facebook.com/dialog/feed?" . http_build_query($fb_params);
