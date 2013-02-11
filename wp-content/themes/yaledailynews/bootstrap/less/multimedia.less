@@ -1,0 +1,31 @@
+@import "bootstrap.less";
+
+@asset_path: "../img/"; //relative to the /css directory
+
+@import "weekend.less";
+@import "magazine.less";
+@import "mixins.less";
+@import "ydn.less";
+
+body {
+	background: @grayDarker;
+}
+
+a {
+	color: @grayLight;
+	&:hover {
+		color: @white;
+	}
+}
+
+body {
+	color: @grayLighter;
+}
+
+#masthead a {
+	.at2x('@{asset_path}mastheadwhite.jpg', 750px);
+}
+
+.double-border {
+	background: @grayDarker;
+}
