@@ -209,7 +209,7 @@ if (!function_exists('ydn_facebook_link') ):
                         "name" => get_the_title(),
                         "description" => get_the_excerpt(),
                         "redirect_uri" => get_permalink(),
-                        "picture" => "wp-content/themes/yaledailynews/ydn-logo.gif" );
+                        "picture" => "http://www.yaledailynews.com/wp-content/themes/yaledailynews/ydn-logo.gif" );
     $fb_share_url = "https://www.facebook.com/dialog/feed?" . http_build_query($fb_params);
     printf('<a href="%1$s" target="_blank">Share</a>',$fb_share_url);
  }
