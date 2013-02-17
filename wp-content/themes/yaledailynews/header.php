@@ -37,6 +37,14 @@
     echo ' | ' . sprintf( __( 'Page %s', 'ydn' ), max( $paged, $page ) );
 
   ?></title>
+<meta property="og:title" content= "<?php echo get_the_title(); ?>" />
+<meta property="og:type" content="article"/>
+<meta property="og:url" content= "<?php echo get_permalink(); ?>" />
+<meta property="og:image" content= "http://yaledailynews.com/wp-content/themes/yaledailynews/ydn-logo-fb.jpg"/>
+<meta property="og:site_name" content="Yale Daily News"/>
+<meta property="og:description"
+      content=  "<?php echo get_the_excerpt(); ?>" />
+ 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
