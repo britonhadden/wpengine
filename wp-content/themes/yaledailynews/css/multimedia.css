@@ -19631,6 +19631,10 @@ object {
 
 /* End _S default styling */
 
+#primary {
+  width: 960px;
+}
+
 body {
   background: #222222;
 }
@@ -19645,6 +19649,24 @@ a:hover {
 
 body {
   color: #eeeeee;
+}
+
+#main-theater {
+  height: 500px;
+  background: #999999;
+}
+
+#slider {
+  height: 120px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #999999;
+}
+
+.archives-box {
+  float: left;
+  height: 120px;
+  background: #999999;
 }
 
 #masthead a {
