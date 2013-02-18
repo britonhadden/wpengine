@@ -119,5 +119,9 @@
   </header><!-- #masthead .site-header -->
 
   <div id="main" class="container">
-    <?php if ((!is_home() || $GLOBALS['blog_id'] != 1) && function_exists('dynamic_sidebar')) { dynamic_sidebar('leaderboard'); } ?>
+<?php 
+	if ((!is_home() || $GLOBALS['blog_id'] != 1) 
+		&& function_exists('dynamic_sidebar') && !is_page_template( 'multimedia.php' )) { 
+			dynamic_sidebar('leaderboard'); 
+		} ?>
     <div class="row">
