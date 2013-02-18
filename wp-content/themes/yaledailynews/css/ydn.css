@@ -6881,6 +6881,7 @@ body {
   text-shadow: none;
   background-color: transparent;
   background-image: url('../img/masthead.gif');
+  background-size: 562px auto;
   border: 0;
 }
 
