@@ -18281,6 +18281,7 @@ li.comment {
 }
 
 .site-footer {
+  padding-bottom: 7px;
   color: #959595;
   text-align: center;
   text-transform: uppercase;
