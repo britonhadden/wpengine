@@ -50,25 +50,25 @@ body {
 }
 #pre-header {
     margin-top: 5px;
+	.pull-right {
+		width: 320px;
+		.social-media-icon {
+			float: left;
+			height: 26px;
+			padding-left: 5px;
+			.opacity(70);
+			&:hover {
+				.opacity(100);	
+			}
+		}
+		.input-append {
+			float: right;
+		}
+	}
 }
 #pre-header div.pull-left {
     height: 28px;
     line-height: 28px;
-}
-.pull-right {
-	width: 320px;
-	.social-media-icon {
-		float: left;
-		height: 26px;
-		padding-left: 5px;
-		.opacity(70);
-		&:hover {
-			.opacity(100);	
-		}
-	}
-	.input-append {
-		float: right;
-	}
 }
 
 #masthead a {
@@ -285,9 +285,17 @@ li.comment {
     color: @ydnGray;
     text-align: center;
     text-transform: uppercase;
+
 }
 .site-footer a {
     color: @ydnGray;
+}
+
+#footer {
+
+    .pull-right {
+		width: 100%;
+	}
 }
 
 /* Inline photos design for YDN legacy photos and more. 
