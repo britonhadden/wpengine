@@ -84,8 +84,6 @@
 <div id="page" class="hfeed site">
   <?php do_action( 'before' ); ?>
   <div id="pre-header" class="container">
-	  <div class="pull-left"> 
-		<a href="/contact/">Contact Us</a> | <a href="/advertising/">Advertise</a> | <a href="http://alumni.yaledailynews.com/">Alumni</a> | <a href="/archives/">Archives</a> | <a href="/subscribe/">Subscribe</a></div>
 	<div class="pull-right">
 		<a target="_blank" href="http://www.facebook.com/YaleDailyNews"><img alt="Follow us on Facebook" class="social-media-icon" src="<?php echo get_template_directory_uri(); ?>/img/facebook-64.png"></a> 
 		<a target="_blank" href="http://www.twitter.com/YaleDailyNews"><img alt="Follow us on Twitter" class="social-media-icon" src="<?php echo get_template_directory_uri(); ?>/img/twitter-64.png"></a> 
