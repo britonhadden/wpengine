@@ -88,17 +88,12 @@
           </div><!-- print-section -->
 		<div class="print-section">
 			<h1>Comics</h1>
-			<?php 
-			  $comic_content= $home_content->get_content_for_cat("comics", 3);
-			  $comic_stories = $comic_content["list"];
-			  array_unshift( $comic_stories, $comic_content["featured"]); ?>
-			<div class="content-list">
-			  <?php foreach( $comic_stories as $post ): setup_postdata($post); ?>
-				<div class="item">
-				  <a href="<?php the_permalink(); ?>" class="headline"><?php the_title(); ?></a>
-				  <span class="meta"><a href="<?php the_permalink(); ?>" class="comment-count"><?php ydn_comment_count(); ?></a></span>
+<?php 
+			  $comic_content= $home_content->get_content_for_cat("comics");?>
+			  <a href="<?php echo get_permalink($comic_content["featured"]->ID); ?>">
+				<?php echo get_the_post_thumbnail($comic_content["featured"]->ID, 'home-print-section-narrow'); ?>
+</a>
 				</div>
-			  <?php endforeach; ?>
 			</div><!-- content-list -->
 
 </div>
