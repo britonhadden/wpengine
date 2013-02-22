@@ -14,7 +14,7 @@
 	<footer id="colophon" class="site-footer container" role="contentinfo">
     <div class="double-border"></div>
 		<div class="pull-left"> 
-			<a href="/contact/">Contact Us</a> | <a href="/advertising/">Advertise</a> | <a href="http://alumni.yaledailynews.com/">Alumni</a> | <a href="/archives/">Archives</a> | <a href="/subscribe/">Subscribe</a></div>
+			<a href="/contact/">Contact Us</a> | <a href="/advertising/">Advertise</a> | <a href="http://alumni.yaledailynews.com/">Alumni</a> | <a href="/archives/">Archives</a> | <a href="/subscribe/">Subscribe</a> | <a href="/wp-login.php">Login</a></div>
 		<div id="footer" class="pull-right">
       &copy; <?php printf( date('Y') ); ?> Yale Daily News &bull; <a href="http://yaledailynews.com/rights-permissions/">All Rights Reserved</a>
 		</div><!-- .site-info -->
