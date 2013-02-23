@@ -93,10 +93,8 @@
 			  <a href="<?php echo get_permalink($comic_content["featured"]->ID); ?>">
 				<?php echo get_the_post_thumbnail($comic_content["featured"]->ID, 'home-print-section-narrow'); ?>
 </a>
-				</div>
 			</div><!-- content-list -->
 
-</div>
           <div class="print-section">
             <h1>Today's Paper</h1>
             <a href="http://issuu.com/yaledailynews" id="todayspaper" target="_blank"><?php ydn_get_special_image("front_page","home-print-section-narrow"); ?></a>
