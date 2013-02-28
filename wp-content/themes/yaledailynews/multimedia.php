@@ -27,6 +27,7 @@ get_header(); ?>
 ?>
     <a class="thumbnail">
         <img src="http://img.youtube.com/vi/<?php echo $video_id;?>/default.jpg"/>
+        the_title();
     </a>
 <?php
     endforeach;
