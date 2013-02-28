@@ -12,9 +12,16 @@ get_header(); ?>
             </div>
 		</div>
 		<div class="row">
-            
             <div id="slider" class="span24">
-                                
+
+<?php
+    global $post;
+    $args = array( 'numberposts' => 5, 'offset'=> 1, 'category' => 3034 );
+    $myposts = get_posts( $args );
+    foreach( $myposts as $post ) :	setup_postdata($post); ?>
+	    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+<?php endforeach; ?>
+
             </div>
 		</div>
 		<div class="row">
