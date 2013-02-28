@@ -22,7 +22,8 @@ get_header(); ?>
         setup_postdata($post);
         $dom = new DOMDocument(get_the_content());
         $iframe = $dom->getElementsByTagName('iframe');
-        $iframe = $iframe->item(0);
+        echo count($iframe);
+        $iframe = $iframe->item(0);  // Theres only one iframe object per post
         $url = $iframe->getAttribute('src');
         echo $url;
         //if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
