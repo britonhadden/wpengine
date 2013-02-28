@@ -6864,11 +6864,15 @@ body {
 
 #toolbar.pull-right {
   width: 320px;
-  margin-top: 26px;
+  margin-top: 32px;
 }
 
 #toolbar.well-small {
   padding: 9px 9px 3px 9px;
+}
+
+#pre-header {
+  padding-top: 10px;
 }
 
 #pre-header div.pull-left {
@@ -6878,7 +6882,7 @@ body {
 
 #masthead a {
   display: block;
-  width: 562px;
+  width: 602px;
   height: 90px;
   margin-bottom: 10px;
   font: 0/0 a;
@@ -6886,14 +6890,14 @@ body {
   text-shadow: none;
   background-color: transparent;
   background-image: url('../img/masthead.gif');
-  background-size: 562px auto;
+  background-size: 602px auto;
   border: 0;
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {
   #masthead a {
     background-image: url('../img/masthead@2x.gif');
-    background-size: 562px auto;
+    background-size: 602px auto;
   }
 }
 
