@@ -16,7 +16,7 @@ get_header(); ?>
 
 <?php
     global $post;
-    $args = array( 'numberposts' => 5, 'offset'=> 1, 'category' => 3034 );
+    $args = array( 'numberposts' => 5, 'category' => '3034' );
     $myposts = get_posts( $args );
     echo count($myposts);
     foreach( $myposts as $post ) :	setup_postdata($post); ?>
