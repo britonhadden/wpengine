@@ -26,7 +26,7 @@ get_header(); ?>
         //if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
         //    $video_id = $match[1];
         //}
-    endforeach;*/
+    endforeach;
 ?>
             </div>
 		</div>
