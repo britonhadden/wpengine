@@ -25,7 +25,9 @@ get_header(); ?>
             $video_id = $match[1];
         }
 ?>
-    <img src="http://img.youtube.com/vi/<?php echo $video_id;?>/hqdefault.jpg"
+    <a class="thumbnail">
+        <img src="http://img.youtube.com/vi/<?php echo $video_id;?>/default.jpg"/>
+    </a>
 <?php
     endforeach;
 ?>
