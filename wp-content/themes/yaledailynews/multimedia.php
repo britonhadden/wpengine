@@ -7,7 +7,7 @@ get_header(); ?>
 	<div class="span24">
 		<div class="row">
             <div id="main-theater" class="span24">
-                <iframe width="560" height="315" src="http://www.youtube.com/embed/bPXTcgS8xZc" frameborder="0">
+                <iframe src="http://www.youtube.com/embed/bPXTcgS8xZc" frameborder="0">
                 </iframe>
             </div>
 		</div>
