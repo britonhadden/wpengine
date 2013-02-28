@@ -20,7 +20,13 @@ get_header(); ?>
     $myposts = get_posts( $args );
     echo count($myposts);
     foreach( $myposts as $post ) :	setup_postdata($post); ?>
-	    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+        <li><a href="<?php the_category(); ?>">
+<?php
+foreach((get_the_category()) as $category) { 
+    echo $category->cat_ID . ' '; 
+}
+?>
+<?php the_title(); ?></a></li>
 <?php endforeach; ?>
 
             </div>
