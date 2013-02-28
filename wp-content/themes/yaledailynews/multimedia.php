@@ -21,7 +21,7 @@ get_header(); ?>
     foreach( $myposts as $post ) :
         setup_postdata($post);
         $dom = new DOMDocument(get_the_content());
-        $iframe = $dom->getElementsByTagName('iframe');
+        $iframe = $dom->getElementsByTagName('iframe')->item(0);
         $url = $iframe->getAttribute('src');
         //$iframe = $iframe->item(0);  // Theres only one iframe object per post
         //$url = $iframe->getAttribute('src');
