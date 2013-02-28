@@ -16,19 +16,10 @@ get_header(); ?>
 
 <?php
     global $post;
-    $args = array( 'numberposts' => 5, 'post_type' => 'video' );
+    $args = array( 'numberposts' => 5, 'post_type' => 'video', 'category' => 3034 );
     $myposts = get_posts( $args );
     echo count($myposts);
-    foreach( $myposts as $post ) :	setup_postdata($post); ?>
-        <li><a href="<?php the_category(); ?>">
-<?php
-foreach((get_the_category()) as $category) { 
-    echo $category->cat_ID . ' '; 
-}
 ?>
-<?php the_title(); ?></a></li>
-<?php endforeach; ?>
-
             </div>
 		</div>
 		<div class="row">
