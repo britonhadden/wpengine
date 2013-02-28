@@ -20,7 +20,7 @@ get_header(); ?>
     $myposts = get_posts( $args );
     foreach( $myposts as $post ) :
         setup_postdata($post);
-        $xse = new SimpleXMLElement(the_content());
+        $xse = new DOMDocument(the_content());
         //$url = $xse->p[0]->iframe["src"];
         //echo $url;
         //if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
