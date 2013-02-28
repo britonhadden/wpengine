@@ -18,11 +18,11 @@ get_header(); ?>
     global $post;
     $args = array( 'numberposts' => 5, 'post_type' => 'video', 'category' => 3034 );
     $myposts = get_posts( $args );
-    /*foreach( $myposts as $post ) :
+    foreach( $myposts as $post ) :
         setup_postdata($post);
         $xse = new SimpleXMLElement(the_content());
-        $url = $xse->p[0]->iframe["src"];
-        echo $url;
+        //$url = $xse->p[0]->iframe["src"];
+        //echo $url;
         //if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
         //    $video_id = $match[1];
         //}
