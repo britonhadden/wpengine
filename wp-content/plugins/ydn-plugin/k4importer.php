@@ -16,7 +16,8 @@
 	function importer_template_redirect() {
         global $wp_query;
         global $wpdb;
-		if ( ! isset( $wp_query->query_vars['importer'] ) )
+        echo var_dump($wp_query);
+        if ( ! isset( $wp_query->query_vars['importer'] ) )
                 	return;
 		echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
         if( ! empty($_POST) || ! empty($_GET))
