@@ -20,17 +20,11 @@ get_header(); ?>
     $myposts = get_posts( $args );
     foreach( $myposts as $post ) :
         setup_postdata($post);
-        echo "BOB";
-        echo get_the_content();
-        $dom = new DOMDocument(get_the_content());
-        //$iframe = $dom->getElementsByTagName('iframe')->item(0);
-        //$url = $iframe->getAttribute('src');
-        //$iframe = $iframe->item(0);  // Theres only one iframe object per post
-        //$url = $iframe->getAttribute('src');
-        echo $url;
-        //if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
-        //    $video_id = $match[1];
-        //}
+        $url = strtok(get_the_content(), '\n');
+        if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
+            $video_id = $match[1];
+        }
+        echo $video_id;
     endforeach;
 ?>
             </div>
