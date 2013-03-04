@@ -18,31 +18,28 @@
 		},
 
 		_do_shcode : function(co) {
-			return co;
-			
-			// Fill out this function correctly to make the "[media-credit]"
-			// shortcodes render properly in TinyMCE
-			return co.replace(/\[media-credit([^\]]+)\]/g, function(a,b){
+			return co.replace(/\[media-credit([^\]]+)\]([\s\S]+?)\[\/media-credit\][\s\u00a0]*/g, function(a,b,c){
 				var id, name, cls, w, credit, div_cls;
 				
 				b = b.replace(/\\'|\\&#39;|\\&#039;/g, '&#39;').replace(/\\"|\\&quot;/g, '&quot;');
+				c = c.replace(/\\&#39;|\\&#039;/g, '&#39;').replace(/\\&quot;/g, '&quot;');
 				id = b.match(/id=([0-9]+)/i);
 				w = b.match(/width=['"]([0-9]+)/);
 				name = b.match(/name=['"]([^'"]+)/i);
 				cls = b.match(/align=['"]([^'"]+)/i);
 				w = b.match(/width=['"]([0-9]+)/);
-				
+
 				id = ( id && id[1] ) ? id[1] : '';
 				name = ( name && name[1] ) ? name[1] : '';
 				credit = name ? name : ($mediaCredit.id[id] + $mediaCredit.separator + $mediaCredit.organization);
 				cls = ( cls && cls[1] ) ? cls[1] : 'alignnone';
 				w = ( w && w[1] ) ? w[1] : '';
-				if ( ! w || ! credit ) return "";
+				if ( ! w || ! credit ) return c;
 				
 				div_cls = (cls == 'aligncenter') ? 'mceMediaCredit mceTemp mceIEcenter' : 'mceMediaCredit mceTemp';
-				
+
 				return '<div class="'+div_cls+'" draggable><span name="'+name+'" id="'+id+'" class="media-credit-mce '+cls+'" style="width: '+(10+parseInt(w))+
-				'px"><span class="media-credit-dd">'+credit+'</span></span></div>';
+				'px"><span class="media-credit-dt">'+c+'</span><span class="media-credit-dd">'+credit+'</span></span></div>';
 			});
 		},
 

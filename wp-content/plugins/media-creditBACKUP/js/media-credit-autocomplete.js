@@ -1,7 +1,7 @@
 function mediaCreditAutocomplete(id, currAuthorId, currAuthor) {
 	var PLUGIN_DIR = "../wp-content/plugins/media-credit/"; //TODO: better way to do this?
-	var inputField = "input#attachments-" + id + "-media-credit"
-	console.log(inputField);
+	var inputField = "input.[id='attachments[" + id + "][media-credit]']"
+	
 	jQuery(inputField)
 		.click(function() {
 			this.select();
@@ -18,7 +18,6 @@ function mediaCreditAutocomplete(id, currAuthorId, currAuthor) {
 			*/
 				removeID(id);
 			}
-			jQuery(this).trigger('change');
 		})
 		/* --- For jQuery UI autocomplete
 		.autocomplete({
@@ -27,10 +26,10 @@ function mediaCreditAutocomplete(id, currAuthorId, currAuthor) {
 			select: function(event, ui) {
 				addID(id, ui.item.id);
 			}
-		}) */
+		})*/
 		.autocomplete(ajaxurl, {
 		//	delay: 200
-			extraParams: { action: 'media_credit_author_names', limit: '5' }
+			extraParams: { action: 'media_credit_author_names' }
 		})
 		.result(function(event, data, formatted) {
 			addID(id, data[1]);
