@@ -3,7 +3,6 @@
   $issue_content = ($issue_content == null) ? array() : $issue_content;
   get_header();
 ?>
-	<div class="span24" id="recruit-banner"> <a class="bentonsanscondmedium" href="http://yaledailynews.com/storage/wallaceprize2013.zip">Enter the Wallace Prize 2013 Competition!</a> </div> 
   <div class="span24">
 	<!-- Top layer containing the top-stories from the issue -->
     <div class="row" id="top-content">
