@@ -19065,6 +19065,21 @@ object {
 
 /* End _S default styling */
 
+#searchform {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+#searchform:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+#searchform:focus {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
 #primary {
   width: 960px;
 }
@@ -19150,6 +19165,30 @@ a:hover {
   filter: alpha(opacity=100);
 }
 
+.carousel-inner {
+  width: auto;
+  height: auto;
+}
+
+.crop {
+  float: left;
+  overflow: hidden;
+}
+
+.crop img {
+  margin: -11px 0 -11px 0;
+}
+
+.carousel-control {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.carousel-control:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
 .archives-box {
   float: left;
   height: 120px;
@@ -19167,6 +19206,11 @@ a:hover {
     background-image: url('../img/mastheadwhite@2x.jpg');
     background-size: 602px auto;
   }
+}
+
+#masthead a:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
 }
 
 .double-border {

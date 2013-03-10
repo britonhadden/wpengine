@@ -12,30 +12,50 @@ get_header(); ?>
             </div>
 		</div>
 		<div class="row">
-            <div id="slider" class="span24">
-<ul>
+			<div id="slider" class="span24">
+				<div class="carousel slide">
+					<div class="carousel-inner">
 <?php
     global $post;
-    $args = array( 'numberposts' => 7, 'post_type' => 'video', 'category' => 3034 ); // 3034 is the category id for a package, we should really have numberposts = infinity and get all the posts and only display a certain amount at a time. 
+    $args = array( 'numberposts' => 21, 'post_type' => 'video', 'category' => 3034 ); // 3034 is the category id for a package, we should really have numberposts = infinity and get all the posts and only display a certain amount at a time. 
     $myposts = get_posts( $args );
-    foreach( $myposts as $post ) :
-        setup_postdata($post);
-        $url = strtok(get_the_content(), '\n');
+			for ($i = 0; $post = $myposts[$i]; $i++) {
+				setup_postdata($post);
+				$url = strtok(get_the_content(), '\n');			
         if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
             $video_id = $match[1];
         }
+				$active = ($i == 0 ? "active" : "");
+				if ($i % 7 == 0) {
 ?>
-<li>
-	<a href="#" rel="tooltip" class="thumbnail-video"  title="<?php the_title(); ?>">
-        <img class="thumbnail-youtube" src="http://img.youtube.com/vi/<?php echo $video_id;?>/0.jpg"/>
-    </a>
-</li>
+	<div class="item <?= $active ?>">
+					<ul>
 <?php
-    endforeach;
+				}
 ?>
-</ul>
-            </div>
-		</div>
+								<li>
+									<p class="crop" title="<?php the_title(); ?>">
+										<a href="#" rel="tooltip" class="thumbnail-video"  title="<?php the_title(); ?>">
+													<img class="thumbnail-youtube" src="http://img.youtube.com/vi/<?php echo $video_id;?>/0.jpg"/>
+											</a>
+									</p>
+								</li>
+<?php 
+				if (($i + 1) % 7 == 0) {
+?>
+					</ul>
+					</div>
+<?php
+				}
+			}
+?>
+</div>
+</div>
+						<a href="#" class="left carousel-control">‹</a>
+						<a href="#" class="right carousel-control">›</a>
+            </div> <!-- end of carousel -->
+		</div> <!-- end of slider -->
+		</div> <!-- end of row-->
 		<div class="row">
 			<div class="span12 archives-box">archives one</div>
 			<div class="span12 archives-box">archives two</div>
@@ -45,13 +65,6 @@ get_header(); ?>
 		<?php the_post();?>		
 	
 		<?php the_content(); ?>		
- <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
-				<script type="text/javascript">
-				$(document).ready(function() { 
-					$('.thumbnail-video').tooltip();
-				});
-
-				</script>
 </div><!-- #container -->
 
 <?php get_footer(); ?>

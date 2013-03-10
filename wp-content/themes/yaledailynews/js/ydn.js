@@ -44,7 +44,12 @@
    if ($body.hasClass('category-opinion') ) {
      opinion_init();
    }
-  };
+
+   if ($body.hasClass('page-template-multimedia-php')) {
+	tooltip_init();
+	carousel_init();
+   }
+  }
 
   /* social share buttons on story pages should launch popups
    * that are centered on the page and that provide appropriate
@@ -194,6 +199,22 @@
     var link_spacing = Math.floor((container_width - links_width) / ($selector.children().length - 1)) - 1;
     $selector.find('> li:not(:last-child)').css('margin-right', link_spacing + "px");
   };
+
+  function tooltip_init() {
+	$('.crop').tooltip();	 
+  }
+
+  function carousel_init() {
+	$('.carousel').carousel();
+	$('.left.carousel-control').click(function(e){ 
+		$('.carousel').carousel('prev'); 
+		e.preventDefault(); 
+	}); 
+	$('.right.carousel-control').click(function(e){ 
+		$('.carousel').carousel('next'); 
+		e.preventDefault(); 
+	}); 
+  }
 
   $(document).ready( initialize );
 

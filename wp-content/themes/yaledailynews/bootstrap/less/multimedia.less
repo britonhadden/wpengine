@@ -5,9 +5,21 @@
 @import "mixins.less";
 @import "ydn.less";
 
+#searchform {
+	.opacity(70);
+	&:hover {
+		.opacity(100);
+	}
+	&:focus {
+		.opacity(100);
+	}
+}
+
+
 #primary {
 	width: 960px;
 }
+
 
 body {
 	background: @grayDarker;
@@ -80,7 +92,25 @@ a {
 			.opacity(100);
 		}
 	}
+
 }
+	.carousel-inner {
+		width: auto;
+		height: auto;
+	}
+	.crop {
+		float: left;
+		overflow: hidden;
+		img {
+			margin: -11px 0 -11px 0;
+		}
+	}
+	.carousel-control {
+		.opacity(0);
+		&:hover {
+			.opacity(80);
+		}
+	}
 
 .archives-box {
 	height: 120px;
@@ -91,6 +121,9 @@ a {
 #masthead a {
 	.opacity(70);
 	.at2x('@{asset_path}mastheadwhite.jpg', 602px);
+	&:hover {
+		.opacity(100);
+	}
 }
 
 .double-border {
