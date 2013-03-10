@@ -27,16 +27,59 @@ a {
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
+
+.navbar .nav {
+	> li {
+		> a {
+			color: @grayLight;
+			&:hover {
+				color: @white;
+			}
+		}
+	}
+}
 #main-theater {
 	height: 500px;
 	background: @grayLight;
+	iframe {
+		width: 100%;
+		height: 100%;
+	}
 }
 
 #slider {
-	height: 120px;
-	background: @grayLight;
+	height: auto;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	ul {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	li {
+		&:first-child {
+			margin-left: -25px;
+			margin-right: 10px;
+		}
+		&:nth-child(7n+7) {
+			margin-right: 0px;
+			margin-left: 10px;
+		}
+		float: left; 
+		list-style: none;
+		margin-left: 9px;
+		margin-right: 9px;
+
+		.thumbnail-youtube {
+			width: 120px;	
+		}
+	}
+	a {
+		.opacity(70);
+		padding: 0;
+		&:hover {
+			.opacity(100);
+		}
+	}
 }
 
 .archives-box {
@@ -46,6 +89,7 @@ a {
 }
 
 #masthead a {
+	.opacity(70);
 	.at2x('@{asset_path}mastheadwhite.jpg', 602px);
 }
 
