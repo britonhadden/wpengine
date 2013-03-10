@@ -2,8 +2,6 @@
 
 @asset_path: "../img/"; //relative to the /css directory
 
-@import "weekend.less";
-@import "magazine.less";
 @import "mixins.less";
 @import "ydn.less";
 
@@ -22,10 +20,13 @@ a {
 	}
 }
 
-body {
-	color: @grayLighter;
+.navbar-inner {
+	background: none;
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
 }
-
 #main-theater {
 	height: 500px;
 	background: @grayLight;
@@ -45,9 +46,11 @@ body {
 }
 
 #masthead a {
-	.at2x('@{asset_path}mastheadwhite.jpg', 562px);
+	.at2x('@{asset_path}mastheadwhite.jpg', 602px);
 }
 
 .double-border {
 	background: @grayDarker;
 }
+
+
