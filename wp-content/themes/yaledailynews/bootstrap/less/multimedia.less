@@ -86,6 +86,13 @@ a {
 		}
 	}
 	a {
+		&.carousel-control {
+			.opacity(0);
+			&:hover {
+				.opacity(80);
+			}
+		}
+
 		.opacity(70);
 		padding: 0;
 		&:hover {
@@ -94,10 +101,6 @@ a {
 	}
 
 }
-	.carousel-inner {
-		width: auto;
-		height: auto;
-	}
 	.crop {
 		float: left;
 		overflow: hidden;
@@ -105,10 +108,11 @@ a {
 			margin: -11px 0 -11px 0;
 		}
 	}
-	.carousel-control {
-		.opacity(0);
-		&:hover {
-			.opacity(80);
+	.carousel {
+
+		.carousel-inner {
+			width: auto;
+			height: auto;
 		}
 	}
 
