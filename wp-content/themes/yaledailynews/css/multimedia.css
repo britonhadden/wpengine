@@ -16938,7 +16938,7 @@ body.magazine .content-list .overlay a h3 {
 
 body.magazine .content-list .item {
   position: relative;
-  overlow: hidden;
+  overflow: hidden !important;
 }
 
 body.magazine h1.mag-section {
