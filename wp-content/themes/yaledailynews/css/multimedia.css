@@ -16928,12 +16928,17 @@ body.magazine .content-list .overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 5px;
-  background-color: rgba(255, 255, 255, 0.7);
+  padding: 7px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+body.magazine .content-list .overlay a h3 {
+  color: #eee;
 }
 
 body.magazine .content-list .item {
   position: relative;
+  overlow: hidden;
 }
 
 body.magazine h1.mag-section {
