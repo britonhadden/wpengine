@@ -64,6 +64,7 @@ strtok(get_the_content(), '\n');
 echo strtok('');
 ?>
     </p>
+
   
   </div>
   <div class="span12 archives-box">archives two</div>
