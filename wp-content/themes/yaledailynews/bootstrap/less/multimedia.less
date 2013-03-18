@@ -32,6 +32,12 @@ a {
 	}
 }
 
+.video-content {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
 .navbar-inner {
 	background: none;
 	border: none;
@@ -39,8 +45,15 @@ a {
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
+#menu-multimedia {
+  .active {
+    background-color: transparent !important;
+  }
+}
 
 .navbar .nav {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-transform: uppercase;
 	> li {
 		> a {
 			color: @grayLight;
@@ -86,13 +99,6 @@ a {
 		}
 	}
 	a {
-		&.carousel-control {
-			.opacity(0);
-			&:hover {
-				.opacity(80);
-			}
-		}
-
 		.opacity(70);
 		padding: 0;
 		&:hover {
@@ -109,12 +115,24 @@ a {
 		}
 	}
 	.carousel {
-
 		.carousel-inner {
 			width: auto;
 			height: auto;
 		}
 	}
+  .carousel-control {
+    .opacity(0);
+    .transition(all .5s ease);
+    &.right {
+      right: -25px;
+    }
+    &.left {
+      left: -25px;
+    }
+    &:hover {
+      .opacity(100);
+    }
+  }
 
 .archives-box {
 	height: 120px;

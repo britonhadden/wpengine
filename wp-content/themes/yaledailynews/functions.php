@@ -72,6 +72,7 @@ function ydn_setup() {
 
   register_nav_menus( array(
     'primary' => __( 'Primary Menu', 'ydn'),
+    'multimedia' => __( 'Multimedia Menu', 'ydn')
     ));
 
 

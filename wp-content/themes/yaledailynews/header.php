@@ -104,11 +104,18 @@
       <div class="navbar">
         <div class="navbar-inner">
             <?php
-            wp_nav_menu( array( 'theme_location' => 'primary',
-                                    'container_class' => 'menu-primary-container container',
-                                    'walker' => new Bootstrap_Walker_Nav_Menu,
-                                    'menu_class' => 'nav'
-                                 ));
+  if (is_page_template('multimedia.php'))
+    wp_nav_menu( array( 'theme_location' => 'multimedia',
+      'container_class' => 'menu-primary-container container',
+      'walker' => new Bootstrap_Walker_Nav_Menu,
+      'menu_class' => 'nav'
+    ));
+  else
+    wp_nav_menu( array( 'theme_location' => 'primary',
+      'container_class' => 'menu-primary-container container',
+      'walker' => new Bootstrap_Walker_Nav_Menu,
+      'menu_class' => 'nav'
+    ));
             restore_current_blog(); //no longer necessary
             ?>
 

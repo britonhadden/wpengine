@@ -46,8 +46,9 @@
    }
 
    if ($body.hasClass('page-template-multimedia-php')) {
-	tooltip_init();
-	carousel_init();
+    tooltip_init();
+    carousel_init();
+    multimedia_selector();
    }
   }
 
@@ -214,6 +215,29 @@
 		$('.carousel').carousel('next'); 
 		e.preventDefault(); 
 	}); 
+  $('#slider').hover(function() {
+    $('.carousel-control').css('opacity', '.7'); 
+    $('.carousel-control').css('filter', 'alpha(opacity=70)'); 
+  }, function() {
+    $('.carousel-control').css('opacity', '0'); 
+    $('.carousel-control').css('filter', 'alpha(opacity=0)'); 
+  });
+  }
+
+  function multimedia_selector() {
+    $('.thumbnail-video').click(function(e){
+      e.preventDefault();
+      var videoId = e.currentTarget.attributes[1].value;
+      var videoAuthor = e.currentTarget.attributes[2].value;
+      var videoTitle = e.currentTarget.attributes.title.value;
+      var videoExcerpt = $('p[data-videoid="' + videoId + '"]').html();
+      console.log(videoExcerpt);
+      $('#video-player').attr('src', 'http://www.youtube.com/embed/' + videoId);
+      $('iframe').attr('src', $('iframe').attr('src')); // Reloads iFrame
+      $('#theatre-video-author').html('by ' + videoAuthor);
+      $('#theatre-video-title').html(videoTitle);
+      $('#theatre-video-excerpt').html(videoExcerpt);
+    });
   }
 
   $(document).ready( initialize );
