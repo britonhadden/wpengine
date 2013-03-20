@@ -58,13 +58,13 @@
   }
 
   function mult_helper(category) {
-    alert("HELLO");
+    var url = "http://yaledailynews.staging.wpengine.com/";
     $.ajax({
 	    type: "GET",
-    	data: "",
-    	url: "http://yaledailynews.staging.wordpress.com/?json=get_recent_posts",
+    	data: "?json=get_recent_posts",
+    	url: url,
         success: function(data) {
-            alert(data);
+            console.log(data);
         }
     }).done(function ( data ) {
         console.log(data);
