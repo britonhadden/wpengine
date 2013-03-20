@@ -70,7 +70,7 @@
         console.log(data);
         helper_helper("HELLO");
     });
-    }
+    });
   }
 
   function helper_helper(str) {
