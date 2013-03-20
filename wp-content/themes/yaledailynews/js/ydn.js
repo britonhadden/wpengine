@@ -58,10 +58,12 @@
   }
 
   function mult_helper(category) {
+    console.log("HELLO");
     if(!category)
         var query = "get_recent_posts?post_type=video";
     else
         var query = "get_category_posts?slug=" + category + "&post_type=video";
+    console.log("HELLO");
     var json = $.get("http://yaledailynews.staging.wpengine.com/?json=" + query,
             "", function(data) {
                     alert(data);
