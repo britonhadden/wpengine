@@ -66,7 +66,7 @@
     }).always(function (data) {
         console.log(data);
     });
-    }
+    });
   }
 
   /* social share buttons on story pages should launch popups
