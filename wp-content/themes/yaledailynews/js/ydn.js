@@ -58,17 +58,25 @@
   }
 
   function mult_helper(category) {
+    var query = "?json="
     if(!category)
-        var query = "get_recent_posts?post_type=video";
+        query = query + "get_recent_posts&post_type=video";
     else
-        var query = "get_category_posts?slug=" + category + "&post_type=video";
-    var url = "http://yaledailynews.staging.wpengine.com/?json=" + query;
+        query = query + "get_category_posts?slug=" + category + "&post_type=video";
+    var url = "http://yaledailynews.staging.wpengine.com/;
     console.log(url);
-    $.get(url, 
+    /*$.get(url, 
         function(data) {
             console.log(data);
             alert(data);
-        });  
+        });*/
+    jQuery.ajax({
+	    type: "GET",
+    	data: query,
+    	url: url,
+    	success: function(results) {
+		alert(results);
+	});
   }
 
   /* social share buttons on story pages should launch popups
