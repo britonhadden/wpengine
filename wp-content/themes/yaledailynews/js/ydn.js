@@ -58,11 +58,10 @@
   }
 
   function mult_helper(category) {
-    var url = "http://yaledailynews.staging.wpengine.com/";
     $.ajax({
 	    type: "GET",
-    	data: "?json=get_recent_posts",
-    	url: url,
+    	data: "",
+    	url: "http://yaledailynews.staging.wpengine.com/?json=get_recent_posts",
         success: function(data) {
             console.log(data);
         }
