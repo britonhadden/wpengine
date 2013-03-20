@@ -54,6 +54,24 @@
   }
 
   function mult_content_init() {
+      mult_helper("");
+  }
+
+  function mult_helper(category) {
+    var query = "?json="
+    if(!category)
+        query = query + "get_recent_posts&post_type=video";
+    else
+        query = query + "get_category_posts?slug=" + category + "&post_type=video";
+    var url = "http://yaledailynews.staging.wpengine.com/";
+    console.log(url);
+    $.ajax({
+	    type: "GET",
+    	data: query,
+    	url: url,
+    	success: function(results) {
+		alert(results);
+	}});
   }
 
   /* social share buttons on story pages should launch popups
