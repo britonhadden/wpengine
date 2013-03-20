@@ -72,7 +72,6 @@
     	url: url,
     	success: function(data) {
             console.log(data);
-		    alert(results);
 	    }
     });
   }
