@@ -58,6 +58,7 @@
   }
 
   function mult_helper(category) {
+      alert("HELLO");
     console.log("HELLO");
     if(!category)
         var query = "get_recent_posts?post_type=video";
