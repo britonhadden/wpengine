@@ -70,9 +70,9 @@
 	    type: "GET",
     	data: query,
     	url: url,
-    	success: function(data) {
-            console.log(data);
-	    }
+    }).done(function ( data ) {
+        console.log("HI");
+        console.log("Sample of data:", data);
     });
   }
 
