@@ -46,10 +46,19 @@
    }
 
    if ($body.hasClass('page-template-multimedia-php')) {
+    mult_content_init();
     tooltip_init();
     carousel_init();
     multimedia_selector();
    }
+  }
+
+  function mult_content_init() {
+       
+  }
+
+  function mult_helper() {
+  
   }
 
   /* social share buttons on story pages should launch popups
