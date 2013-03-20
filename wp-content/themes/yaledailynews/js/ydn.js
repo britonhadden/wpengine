@@ -59,10 +59,11 @@
 
   function mult_helper(category) {
     var query = "?json=";
-    if(!category)
+    if(!category) {
         query = query + "get_recent_posts&post_type=video";
-    else
+    } else {
         query = query + "get_category_posts?slug=" + category + "&post_type=video";
+    }
     var url = "http://yaledailynews.staging.wpengine.com/";
     console.log(url);
     $.ajax({
