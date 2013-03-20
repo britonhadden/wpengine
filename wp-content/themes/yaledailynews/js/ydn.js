@@ -70,7 +70,7 @@
             console.log(data);
             alert(data);
         });*/
-    jQuery.ajax({
+    $.ajax({
 	    type: "GET",
     	data: query,
     	url: url,
