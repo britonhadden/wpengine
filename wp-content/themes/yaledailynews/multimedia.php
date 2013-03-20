@@ -6,6 +6,21 @@
 <?php
     get_header();
 ?>
+<script>
+$(document).ready(function() {
+    $.ajax({
+	    type: "GET",
+    	data: "",
+    	url: "http://yaledailynews.staging.wpengine.com/?json=get_recent_posts",
+        success: function(data) {
+            console.log(data);
+        }
+    }).done(function ( data ) {
+        console.log(data);
+        helper_helper("HELLO");
+    }); 
+});
+</script>
 <a src="" id="Latest" class="mult-menu">Latest</a>
 <a src="" id="University" class="mult-menu">University</a>
 <a src="" id="Culture" class="mult-menu">Culture</a>

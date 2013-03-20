@@ -54,28 +54,6 @@
   }
 
   function mult_content_init() {
-      mult_helper("");
-  }
-
-  function mult_helper(category) {
-    $(document).ready(function() {
-    $.ajax({
-	    type: "GET",
-    	data: "",
-    	url: "/api/get_recent_posts/",
-        success: function(data) {
-            console.log(data);
-        }
-    }).done(function ( data ) {
-        console.log(data);
-        helper_helper("HELLO");
-    });
-    });
-  }
-
-  function helper_helper(str) {
-    alert("HELLO");
-    alert("str");
   }
 
   /* social share buttons on story pages should launch popups
