@@ -1,6 +1,6 @@
 <?php
 /*
-    Template Name: Multimediav2
+    Template Name: Multimedia
 */
 ?>
 <?php
