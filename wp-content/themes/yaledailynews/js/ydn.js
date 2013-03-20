@@ -58,6 +58,7 @@
   }
 
   function mult_helper(category) {
+      alert("HELLO");
     var query = "?json=";
     if(!category) {
         query = query + "get_recent_posts&post_type=video";
@@ -69,7 +70,7 @@
     $.ajax({
 	    type: "GET",
     	data: query,
-    	url: url,
+    	url: url
     }).done(function ( data ) {
         alert("JFSJDKLDFS");
         console.log("HI");
