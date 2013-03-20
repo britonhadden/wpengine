@@ -62,7 +62,7 @@
     $.ajax({
 	    type: "GET",
     	data: "",
-    	url: "/?json=get_recent_posts",
+    	url: "/wp-login.php",
         success: function(data) {
             console.log(data);
         }
