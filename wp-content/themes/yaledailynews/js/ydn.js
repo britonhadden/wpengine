@@ -62,7 +62,7 @@
     $.ajax({
 	    type: "GET",
     	data: "",
-    	url: "http://www.google.com,
+    	url: "http://www.google.com",
         success: function(data) {
             alert(data);
         }
