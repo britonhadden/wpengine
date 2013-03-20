@@ -61,14 +61,10 @@
     $(document).ready(function() {
     $.ajax({
 	    type: "GET",
-    	data: "",
+    	data: "json=get_recent_posts",
     	url: "http://yaledailynews.staging.wpengine.com/?json=get_recent_posts",
-        success: function(data) {
-            console.log(data);
-        }
     }).always(function (data) {
         console.log(data);
-        helper_helper("HELLO");
     });
     }
   }
