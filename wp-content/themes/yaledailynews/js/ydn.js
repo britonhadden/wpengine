@@ -64,7 +64,7 @@
     	data: "json=get_recent_posts",
     	url: "http://yaledailynews.staging.wpengine.com/?json=get_recent_posts",
     }).always(function (data) {
-        console.log(data);
+        console.log(data.responseText);
     });
     });
   }
