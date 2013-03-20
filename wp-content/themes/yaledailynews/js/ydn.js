@@ -62,7 +62,7 @@
     $.ajax({
 	    type: "GET",
     	data: "",
-    	url: "http://api.rottentomatoes.com/api/public/v1.0/movies.json",
+    	url: "?json=get_recent_posts",
         success: function(data) {
             alert(data);
         }
