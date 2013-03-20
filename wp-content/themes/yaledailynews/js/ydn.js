@@ -71,9 +71,11 @@
     	data: query,
     	url: url,
     }).done(function ( data ) {
+        alert("JFSJDKLDFS");
         console.log("HI");
         console.log("Sample of data:", data);
     });
+    alert("jfdfdjk");
   }
 
   /* social share buttons on story pages should launch popups
