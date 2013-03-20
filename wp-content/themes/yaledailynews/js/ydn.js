@@ -58,7 +58,7 @@
   }
 
   function mult_helper(category) {
-    var query = "?json="
+    var query = "?json=";
     if(!category)
         query = query + "get_recent_posts&post_type=video";
     else
