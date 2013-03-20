@@ -61,13 +61,19 @@
     $.ajax({
 	    type: "GET",
     	data: "",
-    	url: "../?json=get_recent_posts",
+    	url: "http://yaledailynews.staging.wpengine.com/?json=get_recent_posts",
         success: function(data) {
             console.log(data);
         }
     }).done(function ( data ) {
         console.log(data);
+        helper_helper("HELLO");
     });
+  }
+
+  function helper_helper(str) {
+    alert("HELLO");
+    alert("str");
   }
 
   /* social share buttons on story pages should launch popups
