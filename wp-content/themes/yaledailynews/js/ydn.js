@@ -61,7 +61,7 @@
     $.ajax({
 	    type: "GET",
     	data: "",
-    	url: "?json=get_recent_posts",
+    	url: "../?json=get_recent_posts",
         success: function(data) {
             console.log(data);
         }
