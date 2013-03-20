@@ -70,13 +70,13 @@
             console.log(data);
             alert(data);
         });*/
-    $.ajax({
+    /*$.ajax({
 	    type: "GET",
     	data: query,
     	url: url,
     	success: function(results) {
 		alert(results);
-	}});
+	}});*/
   }
 
   /* social share buttons on story pages should launch popups
