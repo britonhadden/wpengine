@@ -62,7 +62,7 @@
     $.ajax({
 	    type: "GET",
     	data: "",
-    	url: "http://yaledailynews.staging.wpengine.com/?json=get_recent_posts",
+    	url: "/?json=get_recent_posts",
         success: function(data) {
             console.log(data);
         }
