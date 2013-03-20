@@ -70,15 +70,10 @@
 	    type: "GET",
     	data: query,
     	url: url,
-    	success: function(results) {
+    	success: function(data) {
+            console.log(data);
 		    alert(results);
-	    },
-        failure: function(results) {
-            alert("FAILURE");
-        },
-        done: function(results) {
-            alert("DONE");
-        }
+	    }
     });
   }
 
