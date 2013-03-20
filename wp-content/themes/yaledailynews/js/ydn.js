@@ -70,7 +70,11 @@
     $.ajax({
 	    type: "GET",
     	data: query,
-    	url: url
+    	url: url,
+        success: function(data) {
+            alert(data);
+            console.log("asfd");
+        }
     }).done(function ( data ) {
         alert("JFSJDKLDFS");
         console.log("HI");
