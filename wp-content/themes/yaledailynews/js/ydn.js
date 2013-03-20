@@ -58,6 +58,7 @@
   }
 
   function mult_helper(category) {
+    $(document).ready(function() {
     $.ajax({
 	    type: "GET",
     	data: "",
@@ -69,6 +70,7 @@
         console.log(data);
         helper_helper("HELLO");
     });
+    }
   }
 
   function helper_helper(str) {
