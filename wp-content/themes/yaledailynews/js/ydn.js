@@ -76,7 +76,7 @@
     	url: url,
     	success: function(results) {
 		alert(results);
-	});
+	}});
   }
 
   /* social share buttons on story pages should launch popups
