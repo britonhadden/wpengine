@@ -70,8 +70,15 @@
     	data: query,
     	url: url,
     	success: function(results) {
-		alert(results);
-	}});
+		    alert(results);
+	    },
+        failure: function(results) {
+            alert("FAILURE");
+        },
+        done: function(results) {
+            alert("DONE");
+        }
+    });
   }
 
   /* social share buttons on story pages should launch popups
