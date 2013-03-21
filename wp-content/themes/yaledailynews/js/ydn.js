@@ -89,7 +89,7 @@
             var json = $.parseJSON(data.responseText.substring(st, nd + 1));
             if(json.status == "ok") {
                 console.log("Response ok. Parsing.");
-                var parsed_posts;
+                var parsed_posts = [];
                 for(var i = 0; i < json.count; i++) {
                     var post = json.posts[i];
                     var author = post.author.name;
