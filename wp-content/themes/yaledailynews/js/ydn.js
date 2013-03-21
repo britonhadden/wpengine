@@ -89,14 +89,14 @@ function mult_helper(category) {
                     var tmp = post.content;
                     var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
                     var id = tmp.match(myregexp);
-                    var id = id[1]; // get the video id
+                    id = id[1]; // get the video id
                     var k = tmp.indexOf('\n');
                     var content = tmp.substring(k + 1, tmp.length);
                     var parsed = {
-                        author: author;
-                        title: title;
-                        vid_id: id;
-                        content: content;
+                        author: author,
+                        title: title,
+                        vid_id: id,
+                        content: content
                     };
                     console.log(parsed);
                 }
@@ -105,6 +105,7 @@ function mult_helper(category) {
         }
     });
   }
+
   /* social share buttons on story pages should launch popups
    * that are centered on the page and that provide appropriate
    * data about the object */
