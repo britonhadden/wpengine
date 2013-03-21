@@ -64,7 +64,14 @@
     	data: "json=get_recent_posts",
     	url: "http://yaledailynews.staging.wpengine.com/?json=get_recent_posts",
     }).always(function (data) {
-        console.log(data.responseText);
+        if(!data.responseText) {
+            console.log("Error: could not pull posts.");
+        } else {
+            var st = data.responseText.indexOf('{');
+            var nd = data.responseText.lastIndexOf('}');
+            var json = data.responseText.substring(st, nd);
+            console.log(json);
+        }
     });
     });
   }
