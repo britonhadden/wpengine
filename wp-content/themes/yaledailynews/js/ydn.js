@@ -79,7 +79,9 @@
                     var author = post.author.name;
                     var title = post.title_plain;
                     var tmp = post.content;
-                    var tmp2 = tmp.substring(tmp.indexOf("youtube"), tmp.length);
+                    var yt = tmp.indexOf("youtube");
+                    var qs = tmp.indexOf('?', yt);
+                    var tmp2 = tmp.substring(yt, (qs < 0) ? tmp.length : qs);
                     console.log(tmp2);
                     var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
                     var id = tmp2.match(myregexp);
