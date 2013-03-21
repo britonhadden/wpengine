@@ -58,22 +58,33 @@
   }
 
   function mult_helper(category) {
-    $(document).ready(function() {
+    if(category) {
+        var query = "?json=get_category_posts&post_type=video&category_slug=" + category;
+    } else {
+        var query = "?json=get_recent_posts&post_type=video";
+    }
     $.ajax({
 	    type: "GET",
     	data: "json=get_recent_posts",
-    	url: "http://yaledailynews.staging.wpengine.com/?json=get_recent_posts",
+    	url: "http://yaledailynews.staging.wpengine.com/" + query,
     }).always(function (data) {
         if(!data.responseText) {
             console.log("Error: could not pull posts.");
         } else {
             var st = data.responseText.indexOf('{');
             var nd = data.responseText.lastIndexOf('}');
-            var json = data.responseText.substring(st, nd);
-            console.log(json);
+            var json = $.parseJSON(data.responseText.substring(st, nd + 1));
+            if(json["status"] == "ok") {
+                console.log("Response ok. Parsing.");
+                mult_insert_posts(json["posts"], json["count"]);
+            }
         }
     });
-    });
+  }
+
+  function mult_insert_posts(var post_array, var count) {
+    console.log(post_array);
+    console.log(count);
   }
 
   /* social share buttons on story pages should launch popups
