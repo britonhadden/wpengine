@@ -69,7 +69,7 @@
         var first = posts[0];
         console.log("Loading First Video");
         var htmlstr = "<iframe id=\"video-player\" src=\"http://youtube.com/embed/" + first.vid_id + "\" frameborder=0></iframe>";
-        $("#main-theater").html(htmlstring);
+        $("#main-theater").html(htmlstr);
         
         // Put the first post info into the appropriate place
         $("#theatre-video-title").html(first.title);
