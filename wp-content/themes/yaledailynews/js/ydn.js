@@ -54,19 +54,20 @@
   }
 
   function mult_content_init() {
-      mult_helper("");
+    mult_helper("");
   }
 
-  function mult_helper(category) {
+function mult_helper(category) {
+  	var query;
     if(category) {
-        var query = "?json=get_category_posts&post_type=video&category_slug=" + category;
+        query = "?json=get_category_posts&post_type=video&category_slug=" + category;
     } else {
-        var query = "?json=get_recent_posts&post_type=video";
+        query = "?json=get_recent_posts&post_type=video";
     }
     $.ajax({
 	    type: "GET",
     	data: "json=get_recent_posts",
-    	url: "http://yaledailynews.staging.wpengine.com/" + query,
+    	url: "http://yaledailynews.staging.wpengine.com/" + query
     }).always(function (data) {
         if(!data.responseText) {
             console.log("Error: could not pull posts.");
@@ -74,19 +75,13 @@
             var st = data.responseText.indexOf('{');
             var nd = data.responseText.lastIndexOf('}');
             var json = $.parseJSON(data.responseText.substring(st, nd + 1));
-            if(json["status"] == "ok") {
+            if(json.status == "ok") {
                 console.log("Response ok. Parsing.");
-                mult_insert_posts(json["posts"], json["count"]);
+                mult_insert_posts(json.posts, json.count);
             }
         }
     });
   }
-
-  function mult_insert_posts(var post_array, var count) {
-    console.log(post_array);
-    console.log(count);
-  }
-
   /* social share buttons on story pages should launch popups
    * that are centered on the page and that provide appropriate
    * data about the object */
