@@ -80,6 +80,7 @@
                     var title = post.title_plain;
                     var tmp = post.content;
                     var tmp2 = tmp.substring(tmp.indexOf("youtube"), tmp.length);
+                    console.log(tmp2);
                     var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
                     var id = tmp2.match(myregexp);
                     id = id[1]; // get the video id
