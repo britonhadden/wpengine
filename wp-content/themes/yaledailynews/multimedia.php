@@ -6,7 +6,7 @@
 <?php
     get_header();
 ?>
-<a src="" id="Latest" class="mult-menu">Latest</a>
+<a src="" id="Weekly" class="mult-menu">Latest</a>
 <a src="" id="University" class="mult-menu">University</a>
 <a src="" id="Culture" class="mult-menu">Culture</a>
 <a src="" id="City" class="mult-menu">City</a>

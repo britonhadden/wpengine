@@ -54,16 +54,20 @@
   }
 
   function mult_content_init() {
-    mult_helper("");
+    mult_helper("weekly");
+  }
+
+
+  function mult_insert_posts(var post_array, var count) {
+    if(count == 0) {
+        console.log("No posts.");
+        return;
+    }
   }
 
 function mult_helper(category) {
   	var query;
-    if(category) {
-        query = "?json=get_category_posts&post_type=video&category_slug=" + category;
-    } else {
-        query = "?json=get_recent_posts&post_type=video";
-    }
+    query = "?json=get_category_posts&post_type=video&category_slug=" + category;
     $.ajax({
 	    type: "GET",
     	data: "json=get_recent_posts",
@@ -77,6 +81,25 @@ function mult_helper(category) {
             var json = $.parseJSON(data.responseText.substring(st, nd + 1));
             if(json.status == "ok") {
                 console.log("Response ok. Parsing.");
+                var parsed_posts;
+                for(var i = 0; i < json.count; i++) {
+                    var post = json.posts[i];
+                    var author = post.author.name;
+                    var title = post.title_plain;
+                    var tmp = post.content;
+                    var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+                    var id = tmp.match(myregexp);
+                    var id = id[1]; // get the video id
+                    var k = tmp.indexOf('\n');
+                    var content = tmp.substring(k + 1, tmp.length);
+                    var parsed = {
+                        author: author;
+                        title: title;
+                        vid_id: id;
+                        content: content;
+                    };
+                    console.log(parsed);
+                }
                 mult_insert_posts(json.posts, json.count);
             }
         }
