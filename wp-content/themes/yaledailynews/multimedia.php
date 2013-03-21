@@ -14,8 +14,6 @@
 <div class="span24">
     <div class="row">
         <div id="main-theater" class="span24">
-            <iframe id="video-player" src="" frameborder="0">
-            </iframe>
         </div>
     </div>
     <div class="row">
