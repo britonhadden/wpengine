@@ -55,8 +55,20 @@
 
   function mult_content_init() {
     mult_helper("weekly");
+    // Click listeners for each tab
+    // On-click call mult_helper(with the relevant category);
   }
 
+
+    function mult_insert_posts(posts) {
+        if(posts.length == 0) {
+            console.log("no posts");
+            return;
+        }
+        // Put the first post into the player
+        var first = posts[0];
+        
+    }
 
   function mult_helper(category) {
   	var query;
@@ -95,8 +107,9 @@
                         vid_id: id,
                         content: content
                     };
-                    console.log(parsed);
+                    parsed_posts.push(parsed);
                 }
+                mult_insert_posts(parsed_posts);
             }
         }
     });
