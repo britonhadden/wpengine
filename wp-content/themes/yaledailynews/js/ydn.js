@@ -68,7 +68,7 @@
         // Put the first post into the player
         var first = posts[0];
         console.log("Loading First Video");
-        var htmlstring = "<iframe id=\"video-player\" src=\"http://youtube.com/embed/" + first.vid_id + "frameborder=0></iframe>";
+        var htmlstring = "<iframe id=\"video-player\" src=\"http://youtube.com/embed/" + first.vid_id + "\" frameborder=0></iframe>";
         console.log(htmlstring);
         $("#main-theater").html(htmlstring);
         
