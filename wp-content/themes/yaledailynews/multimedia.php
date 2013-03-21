@@ -24,6 +24,16 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="span12">
+            <h6 id="theatre-video-title">
+            </h6>
+            <p id="theatre-video-author">
+            </p>
+            <p id="theatre-video-excerpt">
+            </p>
+        </div>
+    </div>
 </div>
 <?php
     get_footer();

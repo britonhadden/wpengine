@@ -68,10 +68,13 @@
         // Put the first post into the player
         var first = posts[0];
         console.log("Loading First Video");
-        var htmlstring = "<iframe id=\"video-player\" src=\"http://youtube.com/embed/" + first.vid_id + "\" frameborder=0></iframe>";
-        console.log(htmlstring);
+        var htmlstr = "<iframe id=\"video-player\" src=\"http://youtube.com/embed/" + first.vid_id + "\" frameborder=0></iframe>";
         $("#main-theater").html(htmlstring);
         
+        // Put the first post info into the appropriate place
+        $("#theatre-video-title").html(first.title);
+        $("#theatre-video-author").html(first.author);
+        $("#theatre-video-excerpt").html(first.content);
     }
 
   function mult_helper(category) {
