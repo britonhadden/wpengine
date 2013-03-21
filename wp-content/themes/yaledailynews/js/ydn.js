@@ -83,6 +83,7 @@
                     console.log(tmp2);
                     var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
                     var id = tmp2.match(myregexp);
+                    console.log(id);
                     id = id[1]; // get the video id
                     var k = tmp.indexOf('\n');
                     var content = tmp.substring(k + 1, tmp.length);
