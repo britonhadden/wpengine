@@ -58,12 +58,6 @@
   }
 
 
-  function mult_insert_posts(var post_array, var count) {
-    if(count == 0) {
-        console.log("No posts.");
-        return;
-    }
-  }
 /*
 function mult_helper(category) {
   	var query;
@@ -140,7 +134,6 @@ function mult_helper(category) {
                     };
                     console.log(parsed);
                 }
-                mult_insert_posts(json.posts, json.count);
             }
         }
     });
