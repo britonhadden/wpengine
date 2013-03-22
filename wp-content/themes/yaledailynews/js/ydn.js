@@ -85,7 +85,6 @@
             } else {
                 htmlstr += "<div class=\"item\"><ul>";
             }
-            console.log(htmlstr);
             var k = i + 7;
             for(i; i < k && i < posts.count; i++) {
                 var p = posts[i];
@@ -95,11 +94,10 @@
                 htmlstr += "<img class=\"thumbnail-youtube\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>";
                 htmlstr += "</a>";
                 htmlstr += "</p>";
-            console.log(htmlstr);
             }
             htmlstr += "</ul></div>";
+            console.log(htmlstr);
         }
-        console.log(htmlstr);
         $(".carousel-inner").html(htmlstr);
     }
 
