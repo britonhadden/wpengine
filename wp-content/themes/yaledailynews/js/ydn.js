@@ -54,6 +54,9 @@
     mult_helper("weekly");
     // Click listeners for each tab
     // On-click call mult_helper(with the relevant category);
+    $(".mult-menu").click(function() {
+        console.log("Click!");
+    });
     $("#Weekly").click(function() {
        mult_helper("weekly"); 
     });

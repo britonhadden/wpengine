@@ -6,11 +6,11 @@
 <?php
     get_header();
 ?>
-<a src="" id="Weekly" class="mult-menu">Weekly</a>
-<a src="" id="University" class="mult-menu">University</a>
-<a src="" id="Culture" class="mult-menu">Culture</a>
-<a src="" id="City" class="mult-menu">City</a>
-<a src="" id="Sports" class="mult-menu">Sports</a>
+<a href="#" id="Weekly" class="mult-menu">Weekly</a>
+<a href="#" id="University" class="mult-menu">University</a>
+<a href="#" id="Culture" class="mult-menu">Culture</a>
+<a href="#" id="City" class="mult-menu">City</a>
+<a href="#" id="Sports" class="mult-menu">Sports</a>
 <div class="span24">
     <div class="row">
         <div id="main-theater" class="span24">
