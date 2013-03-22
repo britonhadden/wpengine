@@ -79,12 +79,13 @@
         // Load the rest of the videos into the slider
         var i;
         htmlstr = "";
-        for(i = 0; i < posts.count;) {
+        for(i = 0; i < posts.count; i) {
             if(i == 0) {    // only the first 7 are active
                 htmlstr += "<div class=\"item active\"><ul>";
             } else {
-                htmlstr += "<div class=\"item\">";
+                htmlstr += "<div class=\"item\"><ul>";
             }
+            console.log(htmlstr);
             var k = i + 7;
             for(i; i < k, i < posts.count; i++) {
                 var p = posts[i];
@@ -94,6 +95,7 @@
                 htmlstr += "<img class=\"thumbnail-youtube\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>";
                 htmlstr += "</a>";
                 htmlstr += "</p>";
+            console.log(htmlstr);
             }
             htmlstr += "</ul></div>";
         }
