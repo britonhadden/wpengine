@@ -54,9 +54,6 @@
     mult_helper("weekly");
     // Click listeners for each tab
     // On-click call mult_helper(with the relevant category);
-    $(".mult-menu").click(function() {
-        console.log("Click!");
-    });
     $("#Weekly").click(function() {
        mult_helper("weekly"); 
     });
@@ -114,11 +111,10 @@
             }
             htmlstr += "</ul></div>\n";
         }
-            console.log(htmlstr);
         $(".carousel-inner").html(htmlstr);
-    tooltip_init();
-    carousel_init();
-    multimedia_selector();
+        tooltip_init();
+        carousel_init();
+        multimedia_selector();
     }
 
   function mult_helper(category) {
