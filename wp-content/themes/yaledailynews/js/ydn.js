@@ -96,8 +96,8 @@
                 htmlstr += "</p>";
             }
             htmlstr += "</ul></div>";
-            console.log(htmlstr);
         }
+            console.log(htmlstr);
         $(".carousel-inner").html(htmlstr);
     }
 
