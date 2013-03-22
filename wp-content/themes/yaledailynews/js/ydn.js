@@ -54,6 +54,21 @@
     mult_helper("weekly");
     // Click listeners for each tab
     // On-click call mult_helper(with the relevant category);
+    $("#Weekly").click(function() {
+       mult_helper("weekly"); 
+    });
+    $("#University").click(function() {
+       mult_helper("university-multimedia"); 
+    });
+    $("#Culture").click(function() {
+       mult_helper("culture-multimedia"); 
+    });
+    $("#City").click(function() {
+       mult_helper("city-multimedia"); 
+    });
+    $("#Sports").click(function() {
+       mult_helper("sports-multimedia"); 
+    });
   }
 
 
