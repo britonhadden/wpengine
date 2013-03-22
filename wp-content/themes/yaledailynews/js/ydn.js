@@ -47,9 +47,6 @@
 
    if ($body.hasClass('page-template-multimedia-php')) {
     mult_content_init();
-    tooltip_init();
-    carousel_init();
-    multimedia_selector();
    }
   }
 
@@ -101,6 +98,9 @@
         }
             console.log(htmlstr);
         $(".carousel-inner").html(htmlstr);
+    tooltip_init();
+    carousel_init();
+    multimedia_selector();
     }
 
   function mult_helper(category) {
