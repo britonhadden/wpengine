@@ -91,7 +91,7 @@
                 htmlstr += "<li>\n";
                 htmlstr += "<p class=\"crop\" title=\"" + p.title + "\">\n";
                 htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">\n";
-                htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + "TEST CONTENT" + "</p>\n";
+                htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + "Video Excerpt" + "</p>\n";
                 htmlstr += "<img class=\"thumbnail-video\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>\n";
                 htmlstr += "</a>\n";
                 htmlstr += "</p>\n";
