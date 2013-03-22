@@ -80,6 +80,7 @@
         var i;
         htmlstr = "";
         for(i = 0; i < posts.count; i) {
+            console.log("loop " + i);
             if(i == 0) {    // only the first 7 are active
                 htmlstr += "<div class=\"item active\"><ul>";
             } else {
