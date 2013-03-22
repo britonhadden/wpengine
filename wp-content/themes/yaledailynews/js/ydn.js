@@ -79,15 +79,14 @@
         // Load the rest of the videos into the slider
         var i;
         htmlstr = "";
-        for(i = 0; i < posts.count; i) {
-            console.log("loop " + i);
+        for(i = 0; i < posts.length; i) {
             if(i == 0) {    // only the first 7 are active
                 htmlstr += "<div class=\"item active\"><ul>";
             } else {
                 htmlstr += "<div class=\"item\"><ul>";
             }
             var k = i + 7;
-            for(i; i < k && i < posts.count; i++) {
+            for(i; i < k && i < posts.length; i++) {
                 var p = posts[i];
                 htmlstr += "<p class=\"crop\" title=\"" + p.title + "\">";
                 htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">";
