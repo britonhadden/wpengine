@@ -21,6 +21,8 @@
             <div class="carousel slide">
                 <div class="carousel-inner">
                 </div>
+      <a href="#" class="left carousel-control">‹</a>
+      <a href="#" class="right carousel-control">›</a>
             </div>
         </div>
     </div>

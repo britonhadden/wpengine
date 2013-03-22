@@ -75,6 +75,30 @@
         $("#theatre-video-title").html(first.title);
         $("#theatre-video-author").html(first.author);
         $("#theatre-video-excerpt").html(first.content);
+
+        // Load the rest of the videos into the slider
+        var i;
+        htmlstr = "";
+        for(i = 0; i < posts.count;) {
+            if(i == 0) {    // only the first 7 are active
+                htmlstr += "<div class=\"item active\"><ul>";
+            } else {
+                htmlstr += "<div class=\"item\">";
+            }
+            var k = i + 7;
+            for(i; i < k, i < posts.count; i++) {
+                var p = posts[i];
+                htmlstr += "<p class=\"crop\" title=\"" + p.title + "\">";
+                htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">";
+                htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + p.content + "</p>";
+                htmlstr += "<img class=\"thumbnail-youtube\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>";
+                htmlstr += "</a>";
+                htmlstr += "</p>";
+            }
+            htmlstr += "</ul></div>";
+        }
+        console.log(htmlstr);
+        $(".carousel-inner").html(htmlstr);
     }
 
   function mult_helper(category) {
