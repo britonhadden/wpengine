@@ -88,12 +88,14 @@
             var k = i + 7;
             for(i; i < k && i < posts.length; i++) {
                 var p = posts[i];
+                htmlstr += "<li>\n";
                 htmlstr += "<p class=\"crop\" title=\"" + p.title + "\">\n";
                 htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">\n";
                 //htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + p.content + "</p>";
                 htmlstr += "<img class=\"thumbnail-youtube\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>\n";
                 htmlstr += "</a>\n";
                 htmlstr += "</p>\n";
+                htmlstr += "</li>\n";
             }
             htmlstr += "</ul></div>\n";
         }
