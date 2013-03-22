@@ -90,7 +90,7 @@
                 var p = posts[i];
                 htmlstr += "<p class=\"crop\" title=\"" + p.title + "\">";
                 htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">";
-                htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + p.content + "</p>";
+                //htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + p.content + "</p>";
                 htmlstr += "<img class=\"thumbnail-youtube\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>";
                 htmlstr += "</a>";
                 htmlstr += "</p>";
