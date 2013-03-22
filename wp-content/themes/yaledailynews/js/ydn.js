@@ -87,7 +87,7 @@
             }
             console.log(htmlstr);
             var k = i + 7;
-            for(i; i < k, i < posts.count; i++) {
+            for(i; i < k && i < posts.count; i++) {
                 var p = posts[i];
                 htmlstr += "<p class=\"crop\" title=\"" + p.title + "\">";
                 htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">";
