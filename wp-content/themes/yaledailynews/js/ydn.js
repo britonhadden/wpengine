@@ -81,21 +81,21 @@
         htmlstr = "";
         for(i = 0; i < posts.length; i) {
             if(i == 0) {    // only the first 7 are active
-                htmlstr += "<div class=\"item active\"><ul>";
+                htmlstr += "<div class=\"item active\"><ul>\n";
             } else {
-                htmlstr += "<div class=\"item\"><ul>";
+                htmlstr += "<div class=\"item\"><ul>\n";
             }
             var k = i + 7;
             for(i; i < k && i < posts.length; i++) {
                 var p = posts[i];
-                htmlstr += "<p class=\"crop\" title=\"" + p.title + "\">";
-                htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">";
+                htmlstr += "<p class=\"crop\" title=\"" + p.title + "\">\n";
+                htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">\n";
                 //htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + p.content + "</p>";
-                htmlstr += "<img class=\"thumbnail-youtube\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>";
-                htmlstr += "</a>";
-                htmlstr += "</p>";
+                htmlstr += "<img class=\"thumbnail-youtube\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>\n";
+                htmlstr += "</a>\n";
+                htmlstr += "</p>\n";
             }
-            htmlstr += "</ul></div>";
+            htmlstr += "</ul></div>\n";
         }
             console.log(htmlstr);
         $(".carousel-inner").html(htmlstr);
