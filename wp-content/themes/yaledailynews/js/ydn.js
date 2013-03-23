@@ -2,7 +2,6 @@
   var YDN = window.YDN || (window.YDN = {});
 
   function initialize() {
-    console.log('earl');
     equally_space_horizontally('#menu-primary'); //spaces the links in the nav under the masthead
     equally_space_horizontally('#menu-multimedia-3'); //spaces the links in the nav under the masthead
 
@@ -135,7 +134,7 @@
             var nd = data.responseText.lastIndexOf('}');
             var json = $.parseJSON(data.responseText.substring(st, nd + 1));
             if(json.status == "ok") {
-                console.log("Response ok. Parsing. Earl");
+                console.log("Response ok. Parsing.");
                 var parsed_posts = [];
                 for(var i = 0; i < json.count; i++) {
                     var post = json.posts[i];
