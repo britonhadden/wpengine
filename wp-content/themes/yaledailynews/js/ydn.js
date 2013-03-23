@@ -104,7 +104,7 @@
                 htmlstr += "<p class=\"crop\" title=\"" + p.title + "\">\n";
                 htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">\n";
                 htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + "Video Excerpt" + "</p>\n";
-                htmlstr += "<img class=\"thumbnail-youtube\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>\n";
+                htmlstr += "<img class=\"thumbnail-youtube\" title=\"" + p.title + "\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>\n";
                 htmlstr += "</a>\n";
                 htmlstr += "</p>\n";
                 htmlstr += "</li>\n";
@@ -313,6 +313,7 @@
 
   function tooltip_init() {
 	$('.crop').tooltip();	 
+	$('.thumbnail-youtube').tooltip();	 
   }
 
   function carousel_init() {

@@ -155,6 +155,7 @@ function ydn_scripts() {
   wp_enqueue_style( 'bootstrap-ydn', get_template_directory_uri() . '/css/ydn.css');
 
 	if ( is_page_template('multimedia.php') ) {
+    remove_filter( 'setup_theme', 'wpautop' );
 		wp_enqueue_style( 'multimedia', get_template_directory_uri() . '/css/multimedia.css');
 	}
 
