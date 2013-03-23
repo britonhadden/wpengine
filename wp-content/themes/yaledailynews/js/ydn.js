@@ -103,7 +103,7 @@
                 htmlstr += "<li>\n";
                 htmlstr += "<div class=\"crop\" title=\"" + p.title + "\">\n";
                 htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">\n";
-                htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + "Video Excerpt" + "</p>\n";
+                htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + p.content.replace(/<(?:.|\n)*?>/gm, '') + "</p>\n";
                 htmlstr += "<img class=\"thumbnail-youtube\" title=\"" + p.title + "\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>\n";
                 htmlstr += "</a>\n";
                 htmlstr += "</div>\n";
@@ -141,10 +141,8 @@
                     var yt = tmp.indexOf("youtube");
                     var qs = tmp.indexOf('?', yt);
                     var tmp2 = tmp.substring(yt, (qs < 0) ? tmp.length : qs);
-                    console.log(tmp2);
                     var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
                     var id = tmp2.match(myregexp);
-                    console.log(id);
                     id = id[1]; // get the video id
                     var k = tmp.indexOf('\n');
                     var content = tmp.substring(k + 1, tmp.length);
@@ -341,7 +339,6 @@
       var videoAuthor = e.currentTarget.attributes[2].value;
       var videoTitle = e.currentTarget.attributes.title.value;
       var videoExcerpt = $('p[data-videoid="' + videoId + '"]').html();
-      console.log(videoExcerpt);
       $('#video-player').attr('src', 'http://www.youtube.com/embed/' + videoId);
       $('iframe').attr('src', $('iframe').attr('src')); // Reloads iFrame
       $('#theatre-video-author').html('by ' + videoAuthor);
