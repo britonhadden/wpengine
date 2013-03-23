@@ -2,7 +2,7 @@
   var YDN = window.YDN || (window.YDN = {});
 
   function initialize() {
-      console.log("TEST");
+      console.log("TESTING");
     equally_space_horizontally('#menu-primary'); //spaces the links in the nav under the masthead
 
     var $body = $('body');
