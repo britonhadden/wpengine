@@ -19191,7 +19191,7 @@ a:hover {
 }
 
 .crop img {
-  margin: -11px 0 -11px 0;
+  margin: -20px 0 -11px 0;
 }
 
 .carousel .carousel-inner {
@@ -19226,6 +19226,15 @@ a:hover {
   float: left;
   height: 120px;
   background: #999999;
+}
+
+#theatre-video-title {
+  color: #eeeeee;
+}
+
+#theatre-video-author,
+#theatre-video-excerpt {
+  color: #999999;
 }
 
 #masthead a {
