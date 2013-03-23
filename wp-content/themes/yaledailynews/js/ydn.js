@@ -47,10 +47,10 @@
 
    if ($body.hasClass('page-template-multimedia-php')) {
     console.log("Multimedia");
-    //mult_content_init();
+    mult_content_init();
    }
   }
-/*
+
   function mult_content_init() {
     console.log("Multimedia");
     mult_helper("multimedia");
@@ -161,7 +161,7 @@
         }
     });
   }
-*/
+
   /* social share buttons on story pages should launch popups
    * that are centered on the page and that provide appropriate
    * data about the object */
