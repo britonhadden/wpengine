@@ -2,7 +2,6 @@
   var YDN = window.YDN || (window.YDN = {});
 
   function initialize() {
-    console.log("TESTING");
     equally_space_horizontally('#menu-primary'); //spaces the links in the nav under the masthead
     equally_space_horizontally('#menu-multimedia-3'); //spaces the links in the nav under the masthead
 
@@ -47,13 +46,11 @@
    }
 
    if ($body.hasClass('page-template-multimedia-php')) {
-    console.log("Multimedia");
     mult_content_init();
    }
   }
 
   function mult_content_init() {
-    console.log("Multimedia");
     mult_helper("multimedia");
     // Click listeners for each tab
     // On-click call mult_helper(with the relevant category);
