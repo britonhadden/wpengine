@@ -51,6 +51,7 @@
   }
 
   function mult_content_init() {
+      console.log("Multimedia");
     mult_helper("multimedia");
     // Click listeners for each tab
     // On-click call mult_helper(with the relevant category);
