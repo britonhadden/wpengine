@@ -122,7 +122,7 @@
     query = "?json=get_category_posts&post_type=video&category_slug=" + category;
     $.ajax({
 	    type: "GET",
-    	url: "http://yaledailynews.staging.wpengine.com/" + query
+    	url: "http://yaledailynews.com/" + query
     }).always(function (data) {
         if(!data.responseText) {
             console.log("Error: could not pull posts.");
