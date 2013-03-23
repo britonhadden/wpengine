@@ -17,12 +17,12 @@ define("YDN_MAIN_SITE_ID",1);
 // fix custom post types (video)
 add_filter('pre_get_posts', 'query_post_type');
 function query_post_type($query) {
-  if(is_category() || is_tag() || is_home() && empty( $query->query_vars['suppress_filters'] ) ) {
+  if(is_category() || is_tag()) {
     $post_type = get_query_var('post_type');
 	if($post_type)
 	    $post_type = $post_type;
 	else
-	    $post_type = array('post','articles','nav_menu_item');
+	    $post_type = array('post','video'); // replace cpt to your custom post type
     $query->set('post_type',$post_type);
 	return $query;
     }
