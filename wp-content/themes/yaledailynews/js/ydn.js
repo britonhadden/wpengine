@@ -135,7 +135,7 @@
             var nd = data.responseText.lastIndexOf('}');
             var json = $.parseJSON(data.responseText.substring(st, nd + 1));
             if(json.status == "ok") {
-                console.log("Response ok. Parsing.");
+                console.log("Response ok. Parsing. Earl");
                 var parsed_posts = [];
                 for(var i = 0; i < json.count; i++) {
                     var post = json.posts[i];
