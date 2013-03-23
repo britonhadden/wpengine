@@ -14,6 +14,21 @@ define("WKND_BLOG_ID",3);
 define("XC_BLOG_ID",2);
 define("YDN_MAIN_SITE_ID",1);
 
+// fix custom post types (video)
+add_filter('pre_get_posts', 'query_post_type');
+function query_post_type($query) {
+  if(is_category() || is_tag() || is_home() && empty( $query->query_vars['suppress_filters'] ) ) {
+    $post_type = get_query_var('post_type');
+	if($post_type)
+	    $post_type = $post_type;
+	else
+	    $post_type = array('post','articles','nav_menu_item');
+    $query->set('post_type',$post_type);
+	return $query;
+    }
+}
+
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
@@ -259,19 +274,7 @@ function ydn_attachment_fields_to_edit($form_fields, $post) {
 }
 add_filter("attachment_fields_to_edit", "ydn_attachment_fields_to_edit", 100, 2);
 
-// fix custom post types (video)
-add_filter('pre_get_posts', 'query_post_type');
-function query_post_type($query) {
-  if(is_category() || is_tag() || is_home() && empty( $query->query_vars['suppress_filters'] ) ) {
-    $post_type = get_query_var('post_type');
-	if($post_type)
-	    $post_type = $post_type;
-	else
-	    $post_type = array('post','articles','nav_menu_item');
-    $query->set('post_type',$post_type);
-	return $query;
-    }
-}
+
 
 /**
  * A handler to save the attachment fields when the edit form
