@@ -313,7 +313,6 @@
 
   function tooltip_init() {
 	$('.crop').tooltip();	 
-	$('.thumbnail-youtube').tooltip();	 
   }
 
   function carousel_init() {
