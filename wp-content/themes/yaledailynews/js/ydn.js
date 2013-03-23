@@ -1,5 +1,5 @@
 (function($) {
-
+    console.log("Test");
   var YDN = window.YDN || (window.YDN = {});
 
   function initialize() {
