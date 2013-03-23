@@ -51,7 +51,7 @@
   }
 
   function mult_content_init() {
-    mult_helper("weekly");
+    mult_helper("multimedia");
     // Click listeners for each tab
     // On-click call mult_helper(with the relevant category);
     $("#Weekly").click(function() {
