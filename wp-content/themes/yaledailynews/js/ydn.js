@@ -4,6 +4,7 @@
 
   function initialize() {
     equally_space_horizontally('#menu-primary'); //spaces the links in the nav under the masthead
+    equally_space_horizontally('#menu-multimedia-3'); //spaces the links in the nav under the masthead
 
     var $body = $('body');
     //run the scripts for a single-post
@@ -54,6 +55,9 @@
     mult_helper("multimedia");
     // Click listeners for each tab
     // On-click call mult_helper(with the relevant category);
+    $('#menu-multimedia-3').click(function(e){
+      e.preventDefault();
+    });
     $("#Weekly").click(function() {
        mult_helper("weekly"); 
     });
