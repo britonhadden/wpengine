@@ -172,6 +172,7 @@ function ydn_scripts() {
 	if ( is_page_template('multimedia.php') ) {
     remove_filter( 'setup_theme', 'wpautop' );
 		wp_enqueue_style( 'multimedia', get_template_directory_uri() . '/css/multimedia.css');
+  wp_enqueue_script( 'ydn', get_template_directory_uri() . '/js/ydn.js', array('jquery') );
 	}
 
   wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.js', array('jquery') );
