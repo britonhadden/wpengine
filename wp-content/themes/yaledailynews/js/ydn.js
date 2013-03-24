@@ -60,6 +60,7 @@
     $('#menu-multimedia-3 li > a').click(function(e){
       e.preventDefault();
       console.log(e);
+      console.log('updated');
       var path = e.target.pathname;
       console.log(path);
       var lastSlash = path.lastIndexOf('/');
