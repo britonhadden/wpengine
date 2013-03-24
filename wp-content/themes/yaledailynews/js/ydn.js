@@ -133,7 +133,6 @@
     	url: "http://yaledailynews.com/" + query
     }).always(function (data) {
       try {
-        console.log('works?!');
         var json;
         if (data.responseText) {
           console.log('Response text parsing...');
