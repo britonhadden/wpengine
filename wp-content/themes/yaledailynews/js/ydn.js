@@ -132,39 +132,37 @@
 	    type: "GET",
     	url: "http://yaledailynews.com/" + query
     }).always(function (data) {
-        if(!data.responseText) {
-            console.log("Error: could not pull posts for: " + category);
-        } else {
-            var st = data.responseText.indexOf('{');
-            var nd = data.responseText.lastIndexOf('}');
-            var json = $.parseJSON(data.responseText.substring(st, nd + 1));
-            if(json.status == "ok") {
-                console.log("Response ok. Parsing.");
-                var parsed_posts = [];
-                for(var i = 0; i < json.count; i++) {
-                    var post = json.posts[i];
-                    var author = post.author.name;
-                    var title = post.title_plain;
-                    var tmp = post.content;
-                    var yt = tmp.indexOf("youtube");
-                    var qs = tmp.indexOf('?', yt);
-                    var tmp2 = tmp.substring(yt, (qs < 0) ? tmp.length : qs);
-                    var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
-                    var id = tmp2.match(myregexp);
-                    id = id[1]; // get the video id
-                    var k = tmp.indexOf('\n');
-                    var content = tmp.substring(k + 1, tmp.length);
-                    var parsed = {
-                        author: author,
-                        title: title,
-                        vid_id: id,
-                        content: content
-                    };
-                    parsed_posts.push(parsed);
-                }
-                mult_insert_posts(parsed_posts);
-            }
+      try {
+        var st = data.responseText.indexOf('{');
+        var nd = data.responseText.lastIndexOf('}');
+        var json = $.parseJSON(data.responseText.substring(st, nd + 1));
+        if(json.status == "ok") {
+          console.log("Response ok. Parsing.");
+          var parsed_posts = [];
+          for(var i = 0; i < json.count; i++) {
+            var post = json.posts[i];
+            var author = post.author.name;
+            var title = post.title_plain;
+            var tmp = post.content;
+            var yt = tmp.indexOf("youtube");
+            var qs = tmp.indexOf('?', yt);
+            var tmp2 = tmp.substring(yt, (qs < 0) ? tmp.length : qs);
+            var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+            var id = tmp2.match(myregexp);
+            id = id[1]; // get the video id
+            var k = tmp.indexOf('\n');
+            var content = tmp.substring(k + 1, tmp.length);
+            var parsed = {
+              author: author,
+              title: title,
+              vid_id: id,
+              content: content
+            };
+            parsed_posts.push(parsed);
+          }
+          mult_insert_posts(parsed_posts);
         }
+        } catch(e) {console.log("Error: could not pull posts for: " + category);} 
     });
   }
 
