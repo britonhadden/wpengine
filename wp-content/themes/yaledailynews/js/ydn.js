@@ -59,7 +59,9 @@
     // Selector id must be of the ul element containing the navbar links
     $('#menu-multimedia-3 li > a').click(function(e){
       e.preventDefault();
+      console.log(e);
       var path = e.target.pathname;
+      console.log(path);
       var lastSlash = path.lastIndexOf('/');
       mult_helper(path.substr(lastSlash));
       console.log('Content initialized for: ' + path.substr(lastSlash));
