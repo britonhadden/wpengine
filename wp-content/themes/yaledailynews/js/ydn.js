@@ -60,7 +60,7 @@
     // Click listeners for navbar 
     // On-click call mult_helper(with the relevant category);
     // Selector id must be of the ul element containing the navbar links
-    $('#menu-multimedia-3 li > a').click(function(e){
+    $('#menu-multimedia-2 li > a').click(function(e){
       e.preventDefault();
       console.log(e);
       var path = e.target.pathname;
