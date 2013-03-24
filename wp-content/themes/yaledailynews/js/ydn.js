@@ -63,7 +63,7 @@
       var path = e.target.pathname;
       console.log(path);
       var lastSlash = path.lastIndexOf('/');
-      if (lastSlash != path.length - 1) {
+      if (path.indexOf('/') != path.length - 1) {
         var i;
         var slash;
         for (i = 0; i < path.length - 1 && (i = path.indexOf('/', i)) != lastSlash; i++ )
