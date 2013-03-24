@@ -136,6 +136,7 @@
         console.log('works?!');
         var json;
         if (data.responseText) {
+          console.log('Response text parsing...');
           var st = data.responseText.indexOf('{');
           var nd = data.responseText.lastIndexOf('}');
           json = $.parseJSON(data.responseText.substring(st, nd + 1));
