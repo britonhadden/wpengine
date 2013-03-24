@@ -46,7 +46,7 @@
 
    if ($body.hasClass('page-template-multimedia-php')) {
     mult_content_init();
-    equally_space_horizontally('ul[id^="menu-multimedia"'); //spaces the links in the nav under the masthead
+    equally_space_horizontally('ul[id^="menu-multimedia"]'); //spaces the links in the nav under the masthead
     console.log('Spacing mult nav bar');
     } else {
       equally_space_horizontally('#menu-primary'); //spaces the links in the nav under the masthead
@@ -60,7 +60,7 @@
     // Click listeners for navbar 
     // On-click call mult_helper(with the relevant category);
     // Selector id must be of the ul element containing the navbar links
-    $('#menu-multimedia-2 li > a').click(function(e){
+    $('ul[id^="menu-multimedia"] li > a').click(function(e){
       e.preventDefault();
       console.log(e);
       var path = e.target.pathname;
