@@ -25,12 +25,12 @@
             foreach ( $home_content->get_videos() as $post ) : setup_postdata($post);
             ?>
               <div class="span4 item">
-                <a href="<?php echo get_permalink(); ?>" class="image"><?php the_post_thumbnail('video-thumbnail'); ?><span></span></a>
-                <a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
+                <a href="/ytv" class="image"><?php the_post_thumbnail('video-thumbnail'); ?><span></span></a>
+                <a href="/ytv"><?php the_title(); ?></a>
               </div>
             <?php endforeach; ?>
           </div> <!-- #video-thumbnails -->
-          <div id="more-videos"><a href="/blog/video">More Videos &raquo;</a></div>
+          <div id="more-videos"><a href="/ytv">More Videos &raquo;</a></div>
         </div><!-- #sldieshow-multimedia -->
       </div>
       <!-- starting the most-read/opinion section -->
