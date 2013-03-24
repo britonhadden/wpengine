@@ -53,29 +53,18 @@
 
   function mult_content_init() {
     mult_helper("multimedia");
-    // Click listeners for each tab
+    console.log('Content initialized.');
+    // Click listeners for navbar 
     // On-click call mult_helper(with the relevant category);
-    $('#menu-multimedia-3').click(function(e){
-      console.log(e);
+    // Selector id must be of the ul element containing the navbar links
+    $('#menu-multimedia-3 li > a').click(function(e){
       e.preventDefault();
-    });
-    $("#Weekly").click(function() {
-       mult_helper("weekly"); 
-    });
-    $("#University").click(function() {
-       mult_helper("university-multimedia"); 
-    });
-    $("#Culture").click(function() {
-       mult_helper("culture-multimedia"); 
-    });
-    $("#City").click(function() {
-       mult_helper("city-multimedia"); 
-    });
-    $("#Sports").click(function() {
-       mult_helper("sports-multimedia"); 
+      var path = e.target.pathname;
+      var lastSlash = path.lastIndexOf('/');
+      mult_helper(path.substr(lastSlash));
+      console.log('Content initialized.');
     });
   }
-
 
     function mult_insert_posts(posts) {
         if(posts.length == 0) {
