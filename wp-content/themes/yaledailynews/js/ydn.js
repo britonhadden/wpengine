@@ -62,7 +62,7 @@
       var path = e.target.pathname;
       var lastSlash = path.lastIndexOf('/');
       mult_helper(path.substr(lastSlash));
-      console.log('Content initialized.');
+      console.log('Content initialized for: ' + path.substr(lastSlash));
     });
   }
 
