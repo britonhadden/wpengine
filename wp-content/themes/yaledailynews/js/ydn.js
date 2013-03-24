@@ -133,11 +133,11 @@
     	url: "http://yaledailynews.com/" + query
     }).always(function (data) {
       try {
-        console.log('Updated!');
-        var st = data.responseText.indexOf('{');
-        var nd = data.responseText.lastIndexOf('}');
-        var json = $.parseJSON(data.responseText.substring(st, nd + 1));
-        if(true || json.status == "ok") {
+        console.log('works?!');
+        //var st = data.responseText.indexOf('{');
+        //var nd = data.responseText.lastIndexOf('}');
+        var json = data;//$.parseJSON(data.responseText.substring(st, nd + 1));
+        if(json.status == "ok") {
           console.log("Updated");
           console.log("Response ok. Parsing.");
           var parsed_posts = [];
