@@ -6,6 +6,7 @@
 <?php
     get_header();
 ?>
+<script type="text/javascript" src="/js/ydn.js"></script>
 <div class="span24">
     <div class="row">
         <div id="main-theater" class="span24">
