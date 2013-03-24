@@ -60,7 +60,6 @@
     $('#menu-multimedia-3 li > a').click(function(e){
       e.preventDefault();
       console.log(e);
-      console.log('updated');
       var path = e.target.pathname;
       console.log(path);
       var lastSlash = path.lastIndexOf('/');
@@ -69,10 +68,10 @@
         var slash;
         for (i = 0; i < path.length - 1 && (i = path.indexOf('/', i)) != lastSlash; i++ )
           slash = i;
-        mult_helper(path.substr(slash, lastSlash));
+        mult_helper(path.substr(slash + 1, lastSlash - slash - 1));
         console.log(path.substr(slash, lastSlash));
       } else {
-        mult_helper(path.substr(lastSlash));
+        mult_helper(path.substr(lastSlash + 1));
         console.log('Content initialized for: ' + path.substr(lastSlash));
       }
     });
