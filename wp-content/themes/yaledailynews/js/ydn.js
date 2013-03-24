@@ -134,9 +134,14 @@
     }).always(function (data) {
       try {
         console.log('works?!');
-        //var st = data.responseText.indexOf('{');
-        //var nd = data.responseText.lastIndexOf('}');
-        var json = data;//$.parseJSON(data.responseText.substring(st, nd + 1));
+        var json;
+        if (data.responseText) {
+          var st = data.responseText.indexOf('{');
+          var nd = data.responseText.lastIndexOf('}');
+          json = $.parseJSON(data.responseText.substring(st, nd + 1));
+        } else {
+          json = data;
+        }
         if(json.status == "ok") {
           console.log("Updated");
           console.log("Response ok. Parsing.");
