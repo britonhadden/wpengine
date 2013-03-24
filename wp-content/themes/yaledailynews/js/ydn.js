@@ -56,6 +56,7 @@
     // Click listeners for each tab
     // On-click call mult_helper(with the relevant category);
     $('#menu-multimedia-3').click(function(e){
+      console.log(e);
       e.preventDefault();
     });
     $("#Weekly").click(function() {
@@ -294,7 +295,7 @@
   /* some initialization for the opinion category landing page */
   function opinion_init() {
     equally_space_horizontally('#opinion-cat-selector');
-  };
+  }
 
   /* utility function used to evenly space <li> elements horizontally */
   /* selector is a CSS selector that targets the item you want to affect */
@@ -311,7 +312,7 @@
     });
     var link_spacing = Math.floor((container_width - links_width) / ($selector.children().length - 1)) - 1;
     $selector.find('> li:not(:last-child)').css('margin-right', link_spacing + "px");
-  };
+  }
 
   function tooltip_init() {
 	$('.crop').tooltip();	 
@@ -319,6 +320,7 @@
 
   function carousel_init() {
 	$('.carousel').carousel();
+	$('.carousel').carousel('pause');
 	$('.left.carousel-control').click(function(e){ 
 		$('.carousel').carousel('prev'); 
 		e.preventDefault(); 
