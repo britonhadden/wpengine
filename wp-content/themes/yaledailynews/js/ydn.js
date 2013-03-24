@@ -119,7 +119,7 @@
     	url: "http://yaledailynews.com/" + query
     }).always(function (data) {
         if(!data.responseText) {
-            console.log("Error: could not pull posts.");
+            console.log("Error: could not pull posts for: " + category);
         } else {
             var st = data.responseText.indexOf('{');
             var nd = data.responseText.lastIndexOf('}');
