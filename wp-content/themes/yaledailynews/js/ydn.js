@@ -124,7 +124,8 @@
         tooltip_init();
         carousel_init();
         multimedia_selector();
-        $('.progress').remove();
+        $('.progress[style$="display: none;"]').remove();  
+        $('.progress').fadeOut();
     }
 
   function mult_helper(category) {
@@ -132,7 +133,8 @@
     query = "?json=get_category_posts&count=21&post_type=video&category_slug=" + category;
     $.ajax({
       type: "GET",
-      url: "http://yaledailynews.com/" + query
+      //CHANGE ME BEFORE PUSHING TO PRODUCTION
+      url: "http://yaledailynews.staging.wpengine.com/" + query
     }).always(function (data) {
       try {
         var json;
@@ -172,7 +174,8 @@
           mult_insert_posts(parsed_posts);
         }
         } catch(e) {
-          $('.progress').remove();
+          $('.progress[style$="display: none;"]').remove();  
+          $('.progress').fadeOut();
           console.log("Error: could not pull posts for: " + category);
         } 
     });
