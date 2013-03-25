@@ -19159,6 +19159,7 @@ a:hover {
 
 #slider li {
   float: left;
+  width: 120px;
   margin-right: 9px;
   margin-left: 9px;
   list-style: none;
