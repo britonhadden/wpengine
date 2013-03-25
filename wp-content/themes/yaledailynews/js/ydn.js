@@ -66,7 +66,7 @@
       }
       var path = e.target.pathname;
       var lastSlash = path.lastIndexOf('/');
-      $(this).append('<div class="container progress progress-info progress-striped active"><div class="bar" style="width: 100%"></div></div>');
+      $('ul[id^="menu-multimedia"]').append('<div class="container progress progress-info progress-striped active"><div class="bar" style="width: 100%"></div></div>');
       if (path.indexOf('/') != path.length - 1) {
         var i;
         var slash;
