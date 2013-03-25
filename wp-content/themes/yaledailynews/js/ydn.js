@@ -86,7 +86,7 @@
       var path = e.target.pathname;
       var lastSlash = path.lastIndexOf('/');
       $('iframe').remove();
-      spinner.spin(target);
+      spinner.spin();
 
       if (path.indexOf('/') != path.length - 1) {
         var i;
