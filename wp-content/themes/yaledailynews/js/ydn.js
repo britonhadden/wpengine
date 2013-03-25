@@ -61,10 +61,10 @@
     // On-click call mult_helper(with the relevant category);
     // Selector id must be of the ul element containing the navbar links
     $('ul[id^="menu-multimedia"] li > a').click(function(e){
-      e.preventDefault();
-      console.log(e);
+      if (path != '/') {
+        e.preventDefault();
+      }
       var path = e.target.pathname;
-      console.log(path);
       var lastSlash = path.lastIndexOf('/');
       if (path.indexOf('/') != path.length - 1) {
         var i;
@@ -72,17 +72,17 @@
         for (i = 0; i < path.length - 1 && (i = path.indexOf('/', i)) != lastSlash; i++ )
           slash = i;
         mult_helper(path.substr(slash + 1, lastSlash - slash - 1));
-        console.log(path.substr(slash, lastSlash));
+        console.log('Initializing content for: ' + path.substr(slash, lastSlash));
       } else {
         mult_helper(path.substr(lastSlash + 1));
-        console.log('Content initialized for: ' + path.substr(lastSlash));
+        console.log('Initialized content for: ' + path.substr(lastSlash));
       }
     });
   }
 
     function mult_insert_posts(posts) {
-        if(posts.length == 0) {
-            console.log("no posts");
+        if(posts.length === 0) {
+            console.log("No posts");
             return;
         }
         // Put the first post into the player
@@ -100,7 +100,7 @@
         var i;
         htmlstr = "";
         for(i = 0; i < posts.length; i) {
-            if(i == 0) {    // only the first 7 are active
+            if(i === 0) {    // only the first 7 are active
                 htmlstr += "<div class=\"item active\"><ul>\n";
             } else {
                 htmlstr += "<div class=\"item\"><ul>\n";
@@ -126,11 +126,11 @@
     }
 
   function mult_helper(category) {
-  	var query;
-    query = "?json=get_category_posts&post_type=video&category_slug=" + category;
+    var query;
+    query = "?json=get_category_posts&count=21&post_type=video&category_slug=" + category;
     $.ajax({
-	    type: "GET",
-    	url: "http://yaledailynews.com/" + query
+      type: "GET",
+      url: "http://yaledailynews.com/" + query
     }).always(function (data) {
       try {
         var json;
@@ -323,20 +323,20 @@
   }
 
   function tooltip_init() {
-	$('.crop').tooltip();	 
+  $('.crop').tooltip();  
   }
 
   function carousel_init() {
-	$('.carousel').carousel();
-	$('.carousel').carousel('pause');
-	$('.left.carousel-control').click(function(e){ 
-		$('.carousel').carousel('prev'); 
-		e.preventDefault(); 
-	}); 
-	$('.right.carousel-control').click(function(e){ 
-		$('.carousel').carousel('next'); 
-		e.preventDefault(); 
-	}); 
+  $('.carousel').carousel();
+  $('.carousel').carousel('pause');
+  $('.left.carousel-control').click(function(e){ 
+    $('.carousel').carousel('prev'); 
+    e.preventDefault(); 
+  }); 
+  $('.right.carousel-control').click(function(e){ 
+    $('.carousel').carousel('next'); 
+    e.preventDefault(); 
+  }); 
   $('#slider').hover(function() {
     $('.carousel-control').css('opacity', '.7'); 
     $('.carousel-control').css('filter', 'alpha(opacity=70)'); 
