@@ -2,8 +2,6 @@
   var YDN = window.YDN || (window.YDN = {});
 
   function initialize() {
-    console.log('hi2');
-
     var $body = $('body');
     //run the scripts for a single-post
     if ( $body.hasClass('single-post') ) {
