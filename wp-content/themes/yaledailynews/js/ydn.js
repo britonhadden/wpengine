@@ -80,12 +80,11 @@
     // On-click call mult_helper(with the relevant category);
     // Selector id must be of the ul element containing the navbar links
     $('ul[id^="menu-multimedia"] li > a').click(function(e){
-        console.log(e);
-      if (path != '/') {
-        console.log('Path: ' + path);
-        e.preventDefault();
-      }
       var path = e.target.pathname;
+      if (path == '/') {
+        return;
+      }
+      e.preventDefault();
       var lastSlash = path.lastIndexOf('/');
       $('iframe').remove();
     var spinner = new Spinner(opts).spin(target);
