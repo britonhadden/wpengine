@@ -66,7 +66,7 @@
       }
       var path = e.target.pathname;
       var lastSlash = path.lastIndexOf('/');
-      $(iframe).remove();
+      $('iframe').remove();
 
       // Setup loading spinner
       var opts = {
