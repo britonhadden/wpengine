@@ -19097,18 +19097,6 @@ ul[id^="menu-multimedia"] {
   width: 100%;
 }
 
-#menu-multimedia-1 {
-  width: 100%;
-}
-
-#menu-multimedia-2 {
-  width: 100%;
-}
-
-#menu-multimedia-3 {
-  width: 100%;
-}
-
 a {
   color: #999999;
 }
@@ -19246,6 +19234,7 @@ a:hover {
 
 #theatre-video-title {
   color: #eeeeee;
+  text-transform: none;
 }
 
 #theatre-video-author,
