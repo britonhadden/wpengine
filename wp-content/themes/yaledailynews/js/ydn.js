@@ -66,7 +66,28 @@
       }
       var path = e.target.pathname;
       var lastSlash = path.lastIndexOf('/');
-      $('ul[id^="menu-multimedia"]').append('<div class="container progress progress-info progress-striped active"><div class="bar" style="width: 100%"></div></div>');
+
+      // Setup loading spinner
+      var opts = {
+        lines: 13, // The number of lines to draw
+        length: 7, // The length of each line
+        width: 4, // The line thickness
+        radius: 10, // The radius of the inner circle
+        corners: 1, // Corner roundness (0..1)
+        rotate: 0, // The rotation offset
+        color: '#000', // #rgb or #rrggbb
+        speed: 1, // Rounds per second
+        trail: 60, // Afterglow percentage
+        shadow: false, // Whether to render a shadow
+        hwaccel: false, // Whether to use hardware acceleration
+        className: 'spinner', // The CSS class to assign to the spinner
+        zIndex: 2e9, // The z-index (defaults to 2000000000)
+        top: 'auto', // Top position relative to parent in px
+        left: 'auto' // Left position relative to parent in px
+      };
+      var target = document.getElementById('main-theater');
+      var spinner = new Spinner(opts).spin(target);
+
       if (path.indexOf('/') != path.length - 1) {
         var i;
         var slash;
@@ -124,8 +145,7 @@
         tooltip_init();
         carousel_init();
         multimedia_selector();
-        $('.progress[style$="display: none;"]').remove();  
-        $('.progress').fadeOut();
+        spinner.stop();
     }
 
   function mult_helper(category) {
@@ -174,8 +194,7 @@
           mult_insert_posts(parsed_posts);
         }
         } catch(e) {
-          $('.progress[style$="display: none;"]').remove();  
-          $('.progress').fadeOut();
+          spinner.stop();
           console.log("Error: could not pull posts for: " + category);
         } 
     });
