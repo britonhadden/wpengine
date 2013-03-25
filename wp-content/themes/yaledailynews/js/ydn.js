@@ -81,6 +81,7 @@
     // Selector id must be of the ul element containing the navbar links
     $('ul[id^="menu-multimedia"] li > a').click(function(e){
       var path = e.target.pathname;
+      console.log(e);
       if (path == '/') {
         return;
       }
