@@ -77,6 +77,30 @@
 <noscript>
   <img src="http://b.scorecardresearch.com/p?c1=2&c2=15882552&cv=2.0&cj=1" />
 </noscript>
+<!-- Google DFP -->
+  <script type='text/javascript'>
+  var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+  <script type='text/javascript'>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/1041068/YDN_Lower_Skyscraper', [160, 600], 'div-gpt-ad-1364260459455-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+
 <?php wp_head(); ?>
 </head>
 
