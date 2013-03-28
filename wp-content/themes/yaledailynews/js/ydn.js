@@ -117,7 +117,7 @@
         
         // Put the first post info into the appropriate place
         $("#theatre-video-title").html(first.title);
-        $("#theatre-video-author").html(first.author);
+        $("#theatre-video-author").html('by ' + first.author);
         $("#theatre-video-excerpt").html(first.content);
 
         // Load the rest of the videos into the slider
@@ -384,7 +384,7 @@
       $('#video-player').attr('src', 'http://www.youtube.com/embed/' + videoId);
       $('iframe').attr('src', $('iframe').attr('src')); // Reloads iFrame
       $('#theatre-video-author').html('by ' + videoAuthor);
-      $('#theatre-video-title').html(videoTitle);
+      $('#theatre-video-title').html('by ' + videoTitle);
       $('#theatre-video-excerpt').html(videoExcerpt);
     });
   }
