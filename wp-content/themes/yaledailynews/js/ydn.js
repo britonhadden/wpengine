@@ -122,7 +122,7 @@
 
         // Remove duplicates from post array
         for (var i = 1; i < posts.length; i++) {
-          if (posts[0] == posts [i])
+          if (posts[0] == posts[i])
             splice(i,1);
         }
 
