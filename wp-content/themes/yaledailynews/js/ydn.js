@@ -139,7 +139,7 @@
                 var p = posts[i];
                 htmlstr += "<li>\n";
                 htmlstr += "<div class=\"crop\" title=\"" + p.title + "\">\n";
-                htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">\n";
+                htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" data-slug=\"" + p.slug + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">\n";
                 htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + p.content.replace(/<(?:.|\n)*?>/gm, '') + "</p>\n";
                 htmlstr += "<img class=\"thumbnail-youtube\" title=\"" + p.title + "\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>\n";
                 htmlstr += "</a>\n";
@@ -160,7 +160,7 @@
     query = "?json=get_category_posts&count=21&post_type=video&category_slug=" + category;
     $.ajax({
       type: "GET",
-      url: "http://yaledailynews.com/" + query
+      url: "http://yaledailynews.staging.wpengine.com/" + query
     }).always(function (data) {
       try {
         var json;
@@ -176,7 +176,8 @@
           console.log("Updated");
           console.log("Response ok. Parsing.");
           var parsed_posts = [];
-          for(var i = 0; i < json.count; i++) {
+          console.log(json);
+          for(var i = 0; i < json.count; i++) { 
             var post = json.posts[i];
             var author = post.author.name;
             var title = post.title_plain;
@@ -189,11 +190,13 @@
             id = id[1]; // get the video id
             var k = tmp.indexOf('\n');
             var content = tmp.substring(k + 1, tmp.length);
+            var postSlug = post.slug;
             var parsed = {
               author: author,
               title: title,
               vid_id: id,
-              content: content
+              content: content,
+              slug: postSlug
             };
             parsed_posts.push(parsed);
           }
@@ -203,7 +206,7 @@
             query = "?json=get_post&post_type=video&slug=" + slug;
             $.ajax({
               type: "GET",
-              url: "http://yaledailynews.com/" + query
+              url: "http://yaledailynews.staging.wpengine.com/" + query
             }).always(function (data) {
               var post = data.post;
               var author = post.author.name;
@@ -216,11 +219,13 @@
               var id = tmp2.match(myregexp)[1];
               var k = tmp.indexOf('\n');
               var content = tmp.substring(k + 1, tmp.length);
+              var postSlug = post.slug;
               var parsed = {
                 author: author,
                 title: title,
                 vid_id: id,
-                content: content
+                content: content,
+                slug: postSlug
               };
               parsed_posts.unshift(parsed); // Put into front of array
               mult_insert_posts(parsed_posts);
@@ -412,8 +417,10 @@
   function multimedia_selector() {
     $('.thumbnail-video').click(function(e){
       e.preventDefault();
+      console.log(e);
       var videoId = e.currentTarget.attributes[1].value;
       var videoAuthor = e.currentTarget.attributes[2].value;
+      var videoSlug = e.currentTarget.attributes[3].value;
       var videoTitle = e.currentTarget.attributes.title.value;
       var videoExcerpt = $('p[data-videoid="' + videoId + '"]').html();
       $('#video-player').attr('src', 'http://www.youtube.com/embed/' + videoId);
@@ -421,6 +428,7 @@
       $('#theatre-video-author').html('by ' + videoAuthor);
       $('#theatre-video-title').html('by ' + videoTitle);
       $('#theatre-video-excerpt').html(videoExcerpt);
+      window.history.pushState("object or string", "Title", "/ytv#" + videoSlug);
     });
   }
 
