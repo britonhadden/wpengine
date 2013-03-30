@@ -81,7 +81,6 @@
     // Selector id must be of the ul element containing the navbar links
     $('ul[id^="menu-multimedia"] li > a').click(function(e){
       var path = e.target.pathname;
-      console.log(e);
       if (path == '/') {
         return;
       }
@@ -101,6 +100,7 @@
         mult_helper(path.substr(lastSlash + 1));
         console.log('Initialized content for: ' + path.substr(lastSlash));
       }
+      window.history.pushState("object or string", "Title", "/ytv");
     });
   }
 
@@ -155,7 +155,7 @@
     query = "?json=get_category_posts&count=21&post_type=video&category_slug=" + category;
     $.ajax({
       type: "GET",
-      url: "http://yaledailynews.com/" + query
+      url: "http://yaledailynews.staging.wpengine.com/" + query
     }).always(function (data) {
       try {
         var json;
@@ -192,7 +192,42 @@
             };
             parsed_posts.push(parsed);
           }
-          mult_insert_posts(parsed_posts);
+          var slug;
+          if ((slug = window.location.hash.substring(1))) {
+            var query;
+            query = "?json=get_post&post_type=video&slug=" + slug;
+            console.log(query);
+            $.ajax({
+              type: "GET",
+              url: "http://yaledailynews.staging.wpengine.com/" + query
+            }).always(function (data) {
+              console.log(data);
+              console.log(data.post);
+              var post = data.post;
+              console.log('post ' + post);
+              var author = post.author.name;
+              var title = post.title_plain;
+              var tmp = post.content;
+              var yt = tmp.indexOf("youtube");
+              var qs = tmp.indexOf('?', yt);
+              var tmp2 = tmp.substring(yt, (qs < 0) ? tmp.length : qs);
+              var myregexp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i;
+              var id = tmp2.match(myregexp)[1];
+              var k = tmp.indexOf('\n');
+              var content = tmp.substring(k + 1, tmp.length);
+              var parsed = {
+                author: author,
+                title: title,
+                vid_id: id,
+                content: content
+              };
+              console.log('Parsed: ' + parsed.author);
+              parsed_posts.unshift(parsed); // Put into front of array
+              mult_insert_posts(parsed_posts);
+            });
+          } else {
+            mult_insert_posts(parsed_posts);
+          }
         }
         } catch(e) {
           spinner.stop();

@@ -25,7 +25,7 @@
             foreach ( $home_content->get_videos() as $post ) : setup_postdata($post);
             ?>
               <div class="span4 item">
-                <a href="/ytv" class="image"><?php the_post_thumbnail('video-thumbnail'); ?><span></span></a>
+                <a href="/ytv#<?= basename(get_permalink())?>" class="image"><?php the_post_thumbnail('video-thumbnail'); ?><span></span></a>
                 <a href="/ytv"><?php the_title(); ?></a>
               </div>
             <?php endforeach; ?>
