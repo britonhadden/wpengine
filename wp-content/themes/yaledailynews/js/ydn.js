@@ -120,8 +120,13 @@
         $("#theatre-video-author").html('by ' + first.author);
         $("#theatre-video-excerpt").html(first.content);
 
+        // Remove duplicates from post array
+        for (var i = 1; i < posts.length; i++) {
+          if (posts[0] == posts [i])
+            splice(i,1);
+        }
+
         // Load the rest of the videos into the slider
-        var i;
         htmlstr = "";
         for(i = 0; i < posts.length; i) {
             if(i === 0) {    // only the first 7 are active
