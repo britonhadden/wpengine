@@ -201,15 +201,11 @@
           if ((slug = window.location.hash.substring(1))) {
             var query;
             query = "?json=get_post&post_type=video&slug=" + slug;
-            console.log(query);
             $.ajax({
               type: "GET",
               url: "http://yaledailynews.com/" + query
             }).always(function (data) {
-              console.log(data);
-              console.log(data.post);
               var post = data.post;
-              console.log('post ' + post);
               var author = post.author.name;
               var title = post.title_plain;
               var tmp = post.content;
@@ -226,7 +222,6 @@
                 vid_id: id,
                 content: content
               };
-              console.log('Parsed: ' + parsed.author);
               parsed_posts.unshift(parsed); // Put into front of array
               mult_insert_posts(parsed_posts);
             });
