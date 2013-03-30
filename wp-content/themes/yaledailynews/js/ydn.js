@@ -160,7 +160,7 @@
     query = "?json=get_category_posts&count=21&post_type=video&category_slug=" + category;
     $.ajax({
       type: "GET",
-      url: "http://yaledailynews.staging.wpengine.com/" + query
+      url: "http://yaledailynews.com/" + query
     }).always(function (data) {
       try {
         var json;
@@ -206,7 +206,7 @@
             query = "?json=get_post&post_type=video&slug=" + slug;
             $.ajax({
               type: "GET",
-              url: "http://yaledailynews.staging.wpengine.com/" + query
+              url: "http://yaledailynews.com/" + query
             }).always(function (data) {
               var post = data.post;
               var author = post.author.name;
