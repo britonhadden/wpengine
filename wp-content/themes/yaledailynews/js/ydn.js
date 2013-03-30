@@ -122,8 +122,8 @@
 
         // Remove duplicates from post array
         for (var i = 1; i < posts.length; i++) {
-          if (posts[0] == posts[i])
-            splice(i,1);
+          if (posts[0].title == posts[i].title)
+            posts.splice(i,1);
         }
 
         // Load the rest of the videos into the slider
