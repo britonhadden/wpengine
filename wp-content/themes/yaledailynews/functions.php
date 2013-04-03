@@ -383,6 +383,7 @@ function img_caption_shortcode_mediacredit($attr, $content = null) {
     . do_shortcode( $content ) . '<p class="wp-caption-text">' . do_shortcode( $caption ) . '</p></div>'; 
 }
 
+add_action('rss2_item', 'add_image_rss_node');
 // Add featured images to the rss feed
 function add_image_rss_node() {
 	global $post;
@@ -392,7 +393,6 @@ function add_image_rss_node() {
 	endif;
 }
 
-add_action('rss2_item', 'add_image_rss_node');
 /**
  * Include other funciton files
  */
