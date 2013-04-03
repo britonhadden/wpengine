@@ -384,17 +384,15 @@ function img_caption_shortcode_mediacredit($attr, $content = null) {
 }
 
 // Add featured images to the rss feed
-function featuredtoRSS($content) {
-global $post;
-if ( has_post_thumbnail( $post->ID ) ){
-$content = '<div>' . get_the_post_thumbnail( $post->ID, 'full', array( 'style' => 'margin-bottom: 15px;') ) . '</div>'. $content;
+function add_image_rss_node() {
+	global $post;
+	if(has_post_thumbnail($post->ID)):
+		$thumbnail = get_attachment_link(get_post_thumbnail_id($post->ID));
+		echo("<image>{$thumbnail}</image>");
+	endif;
 }
-return $content;
-}
-add_filter('the_excerpt_rss', 'featuredtoRSS');
-add_filter('the_content_feed', 'featuredtoRSS');
 
-
+add_action('rss2_item', 'add_image_rss_node');
 /**
  * Include other funciton files
  */
