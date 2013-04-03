@@ -383,6 +383,18 @@ function img_caption_shortcode_mediacredit($attr, $content = null) {
     . do_shortcode( $content ) . '<p class="wp-caption-text">' . do_shortcode( $caption ) . '</p></div>'; 
 }
 
+// Add featured images to the rss feed
+function featuredtoRSS($content) {
+global $post;
+if ( has_post_thumbnail( $post->ID ) ){
+$content = '<div>' . get_the_post_thumbnail( $post->ID, 'full', array( 'style' => 'margin-bottom: 15px;') ) . '</div>'. $content;
+}
+return $content;
+}
+add_filter('the_excerpt_rss', 'featuredtoRSS');
+add_filter('the_content_feed', 'featuredtoRSS');
+
+
 /**
  * Include other funciton files
  */
