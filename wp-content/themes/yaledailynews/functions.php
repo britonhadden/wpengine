@@ -389,7 +389,7 @@ function add_image_rss_node() {
 	global $post;
 	if(has_post_thumbnail($post->ID)):
 		$thumbnail = get_attachment_link(get_post_thumbnail_id($post->ID));
-		echo("<image>{$thumbnail}</image>");
+		echo("<ydn:image>{$thumbnail}</ydn:image>");
 	endif;
 }
 
