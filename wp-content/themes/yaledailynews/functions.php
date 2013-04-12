@@ -129,6 +129,16 @@ if (!function_exists('ydn_widgets_init')):
     ) );
 
     register_sidebar( array(
+      'name' => __( 'Home Leaderboard', 'ydn' ),
+      'id' => 'home_leaderboard',
+      'class' => 'sidebar-widgets',
+      'before_widget' => '<div id="leaderboard">',
+      'after_widget' => '</div>',
+      'before_title' => '',
+      'after_title' => ''
+    ) );
+
+    register_sidebar( array(
       'name' => __( 'Leaderboard', 'ydn' ),
       'id' => 'leaderboard',
       'class' => 'sidebar-widgets',
