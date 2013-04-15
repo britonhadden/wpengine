@@ -9,7 +9,7 @@
     */
 
 	function add_importer_endpoint() {
-		add_rewrite_endpoint( 'importer', EP_PAGES );
+		add_rewrite_endpoint( 'importer', EP_ROOT );
 	}
 	add_action( 'init', 'add_importer_endpoint' );
 
