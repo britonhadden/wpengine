@@ -396,11 +396,7 @@ function img_caption_shortcode_mediacredit($attr, $content = null) {
 add_action('rss2_item', 'add_image_rss_node');
 // Add featured images to the rss feed
 function add_image_rss_node() {
-	global $post;
-	if(has_post_thumbnail($post->ID)):
-		$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), "full");
-		echo("<ydn:image>{$thumbnail[0]}</ydn:image>");
-	endif;
+  return 0;
 }
 
 /**
