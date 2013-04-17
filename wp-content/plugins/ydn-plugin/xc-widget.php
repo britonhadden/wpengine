@@ -64,7 +64,9 @@ class YDN_XC_Widget extends WP_Widget {
     echo $before_widget;
     ?>
     <div id="cross-campus" class="ydn-plugin widget no-js">
-      <a href="<?php echo get_bloginfo('url'); ?>"><h1>Cross Campus</h1></a>
+      <a id="cross-campus-widget-header" href="<?php echo get_bloginfo('url'); ?>">
+<h2>CROSS</h2><h1>CAMPUS</h1>
+</a>
       <div class="content-list borders">
         <?php
           $first_post = $this->xc_posts->get_posts();
