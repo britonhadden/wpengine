@@ -165,7 +165,6 @@ googletag.enableServices();
     ));
             restore_current_blog(); //no longer necessary
             ?>
-
         </div>
       </div>
     </nav>
