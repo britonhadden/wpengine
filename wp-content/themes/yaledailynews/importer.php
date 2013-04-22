@@ -11,7 +11,7 @@ if($url) {
     $xml = file_get_contents($url);
     $xml_object = new SimpleXMLElement($xml);
     $title = $xml->head->body->{'body.head'}->hedline->hl1;
-    echo $title;
+    echo $xml->children();
 }
 ?>
 
