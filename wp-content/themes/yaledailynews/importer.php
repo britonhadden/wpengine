@@ -33,14 +33,14 @@ if($url) {
         $real_authors[$i] = $wpdb->get_var($query);
         $i = $i + 1;
     }
-    $content = $body->{'body.content'};
+    $content = $body->{'body.content'}->asXML();
     $_author = $real_authors[0];
     $post = array(
         'post_author' => $_author,
         'post_status' => $status,
         'post_name' => $name,
         'post_title' => $name,
-        'post_content' => (string)$content
+        'post_content' => $content
         );
     echo var_dump($post);
     $id = wp_insert_post($post);
