@@ -26,7 +26,7 @@ if($url) {
             WHERE first_name LIKE $fn AND last_name LIKE $ln" );
         $i = $i + 1;
     }
-    echo $real_authors;
+    echo var_dump($real_authors);
     $content = $body->{'body.content'};
 }
 ?>
