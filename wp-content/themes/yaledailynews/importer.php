@@ -17,7 +17,7 @@ if($url) {
     $author_title = $body->{'body.head'}->byline->byttl;
     $real_authors = new array();
     $i = 0;
-    for($authors as $author) {
+    foreach ($authors as $author) {
         $tmp = explode(" ", $author);
         $fn = $tmp[0];
         $ln = end($tmp);
