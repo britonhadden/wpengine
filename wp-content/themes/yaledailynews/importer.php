@@ -21,9 +21,13 @@ if($url) {
         $tmp = explode(" ", $author);
         $fn = $tmp[0];
         $ln = end($tmp);
-        $real_authors[$i] = $wpdb->get_var( $wpdb->prepare("SELECT user_id 
+        echo $fn;
+        echo $ln;
+        $query = "SELECT user_id 
             FROM $wpdb->usermeta
-            WHERE first_name LIKE %s AND last_name LIKE %s", $fn, $ln) );
+            WHERE first_name LIKE $fn AND last_name LIKE $ln";
+        echo $query;
+        $real_authors[$i] = $wpdb->get_var($query);
         $i = $i + 1;
     }
     echo var_dump($real_authors);
