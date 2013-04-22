@@ -44,6 +44,7 @@ if($url) {
         );
     echo var_dump($post);
     $id = wp_insert_post($post);
+    add_post_meta($id, 'ydn_reporter_type', (string)$author_title);
 }
 ?>
 
