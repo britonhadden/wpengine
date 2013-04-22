@@ -9,7 +9,9 @@ echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
 $url = $_GET['NITFurl'];
 if($url) {
     $xml = file_get_contents($url);
-    echo $xml;
+    $xml_object = new SimpleXMLElement($xml);
+    $title = $xml->body->{'body.head'}->hedline->hl1;
+    echo $title;
 }
 ?>
 
