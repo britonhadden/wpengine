@@ -15,7 +15,7 @@ if($url) {
     $status = 'post_status';
     $authors = $body->{'body.head'}->byline->person;
     $author_title = $body->{'body.head'}->byline->byttl;
-    $real_authors = new array();
+    $real_authors = array();
     $i = 0;
     foreach ($authors as $author) {
         $tmp = explode(" ", $author);
