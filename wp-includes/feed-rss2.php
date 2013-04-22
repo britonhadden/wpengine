@@ -34,6 +34,10 @@ echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>'; ?>
 	<?php while( have_posts()) : the_post(); ?>
 	<item>
 		<title><?php the_title_rss() ?></title>
+<?php if(has_post_thumbnail(($postID = the_ID()))):
+		$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($postID), "full");?>
+    <ydn:image><?= $thumbnail[0]?></ydn:image>
+    <?php endif ?>
 		<link><?php the_permalink_rss() ?></link>
 		<comments><?php comments_link_feed(); ?></comments>
 		<pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false); ?></pubDate>

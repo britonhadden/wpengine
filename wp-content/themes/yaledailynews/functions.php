@@ -129,6 +129,16 @@ if (!function_exists('ydn_widgets_init')):
     ) );
 
     register_sidebar( array(
+      'name' => __( 'Home Leaderboard', 'ydn' ),
+      'id' => 'home_leaderboard',
+      'class' => 'sidebar-widgets',
+      'before_widget' => '<div id="leaderboard">',
+      'after_widget' => '</div>',
+      'before_title' => '',
+      'after_title' => ''
+    ) );
+
+    register_sidebar( array(
       'name' => __( 'Leaderboard', 'ydn' ),
       'id' => 'leaderboard',
       'class' => 'sidebar-widgets',
@@ -386,11 +396,7 @@ function img_caption_shortcode_mediacredit($attr, $content = null) {
 add_action('rss2_item', 'add_image_rss_node');
 // Add featured images to the rss feed
 function add_image_rss_node() {
-	global $post;
-	if(has_post_thumbnail($post->ID)):
-		$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), "full");
-		echo("<ydn:image>{$thumbnail[0]}</ydn:image>");
-	endif;
+  return 0;
 }
 
 /**
