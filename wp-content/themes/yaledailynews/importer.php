@@ -28,7 +28,7 @@ if($url) {
                     JOIN $wpdb->usermeta t2 
                     ON t1.user_id = t2.user_id
                     WHERE t1.meta_key = 'first_name' AND t2.meta_key = 'last_name'
-                    AND t1.meta_value LIKE $fn AND t2.meta_value LIKE $ln";
+                    AND t1.meta_value LIKE '$fn' AND t2.meta_value LIKE '$ln'";
         echo $query;
         $real_authors[$i] = $wpdb->get_var($query);
         $i = $i + 1;
