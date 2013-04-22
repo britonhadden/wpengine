@@ -10,7 +10,7 @@ $url = $_GET['NITFurl'];
 if($url) {
     $xml = file_get_contents($url);
     $xml_object = new SimpleXMLElement($xml);
-    $title = $xml->body->{'body.head'}->hedline->hl1;
+    $title = $xml->head->body->{'body.head'}->hedline->hl1;
     echo $title;
 }
 ?>
