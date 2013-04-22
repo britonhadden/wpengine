@@ -23,9 +23,13 @@ if($url) {
         $ln = end($tmp);
         echo $fn;
         echo $ln;
-        $query = "SELECT user_id 
+        $query = "SELECT user_id
             FROM $wpdb->usermeta
-            WHERE first_name LIKE $fn AND last_name LIKE $ln";
+            WHERE 'meta_key'='first_name' AND 'meta_value'=$fn 
+            INTERSECT
+            SELECT user_id
+            FROM $wpdb->usermeta
+            WHERE 'meta_key'='last_name' AND 'meta_value'=$ln;";
         echo $query;
         $real_authors[$i] = $wpdb->get_var($query);
         $i = $i + 1;
