@@ -12,7 +12,7 @@ if($url) {
     $xml_object = new SimpleXMLElement($xml);
     $body = $xml_object->body;
     $name = $body->{'body.head'}->hedline->hl1;
-    $status = 'post_status';
+    $status = 'draft';
     $authors = $body->{'body.head'}->byline->person;
     $author_title = $body->{'body.head'}->byline->byttl;
     $real_authors = array();
@@ -33,8 +33,16 @@ if($url) {
         $real_authors[$i] = $wpdb->get_var($query);
         $i = $i + 1;
     }
-    echo var_dump($real_authors);
     $content = $body->{'body.content'};
+    $_author = $real_authors[0];
+    $post = array(
+        'post_author' => $_author,
+        'post_status' => $status,
+        'post_name' => $name,
+        'post_content' => $content
+        );
+    echo var_dump($post);
+    $id = wp_insert_post($post);
 }
 ?>
 
