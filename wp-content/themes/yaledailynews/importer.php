@@ -7,13 +7,11 @@ Template Name: Importer
 global $wpdb;
 echo("Importer! An endpoint to import k4 into the wordpress dbs.\n");
 $url = $_GET['NITFurl'];
-echo $url;
 if($url) {
-    echo $url;
     $xml = file_get_contents($url);
     $xml_object = new SimpleXMLElement($xml);
-    $title = $xml->head->body->{'body.head'}->hedline->hl1;
-    echo $xml->children();
+    $title = $xml_object->body->{'body.head'}->hedline->hl1;
+    echo $title;
 }
 ?>
 
