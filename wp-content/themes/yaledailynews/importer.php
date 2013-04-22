@@ -39,6 +39,7 @@ if($url) {
         'post_author' => $_author,
         'post_status' => $status,
         'post_name' => $name,
+        'post_title' => $name,
         'post_content' => (string)$content
         );
     echo var_dump($post);
