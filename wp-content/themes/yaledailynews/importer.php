@@ -39,7 +39,7 @@ if($url) {
         'post_author' => $_author,
         'post_status' => $status,
         'post_name' => $name,
-        'post_content' => $content
+        'post_content' => (string)$content
         );
     echo var_dump($post);
     $id = wp_insert_post($post);
