@@ -157,11 +157,7 @@ googletag.enableServices();
       'walker' => new Bootstrap_Walker_Nav_Menu,
       'menu_class' => 'nav'
     ));
-  } else if (is_home() && get_current_blog_id() == 1){
-    // The query reset fixes a navbar bug where the navbar won't show up on category pages.
-    // $backup_query = $wp_query;
-    // $wp_query = NULL;
-    // $wp_query = new WP_Query(array('post_type' => 'post')); 
+  } else if (0 && is_home() && get_current_blog_id() == 1){
     wp_nav_menu( array( 'theme_location' => 'primary',
       'container_class' => 'menu-primary-container container',
       'walker' => new Bootstrap_Walker_Nav_Menu,
