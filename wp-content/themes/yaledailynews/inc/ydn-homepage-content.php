@@ -15,7 +15,7 @@ if (! function_exists("ydn_home_print_section") ):
     setup_postdata($post);
     ?>
     <div class="print-section content-list narrow">
-      <h1><?php echo $slug; ?></h1>
+      <a href="/blog/category/<?= $slug ?>"><h1><?php echo $slug; ?></h1></a>
       <div class="row">
         <div class="span6 featured item">
           <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail("home-print-section"); ?></a>

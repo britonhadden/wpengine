@@ -44,7 +44,7 @@
 
         <div class="span13 print-section" id="opinion-section">
           <!-- opinion -->
-          <h1>Opinion</h1>
+          <a href="/blog/category/opinion/"><h1>Opinion</h1></a>
           <div class="content-list">
             <?php
               foreach ($home_content->get_post_list("opinion", 5, null,686) as $post):
@@ -66,7 +66,7 @@
         <div class="span6">
           <!-- column with sports/weekend/today's paper -->
           <div class="print-section">
-            <h1>Sports</h1>
+            <a href="/blog/category/sports/"><h1>Sports</h1></a>
             <?php
               $sports_content = $home_content->get_content_for_cat("sports",2); //this is the list/featrued array
               $sports_stories = $sports_content["list"]; //this is a flat array of stories to be looped through
@@ -87,7 +87,7 @@
             </div><!-- content-list -->
           </div><!-- print-section -->
 					<div class="print-section">
-						<h1>Comics</h1>
+						<a href="/blog/category/opinion/comics/"><h1>Comics</h1></a>
 			<?php 
 							$comic_content= $home_content->get_content_for_cat("comics");?>
 							<a href="<?php echo get_permalink($comic_content["featured"]->ID); ?>">
@@ -100,11 +100,11 @@
             <a href="http://issuu.com/yaledailynews" id="todayspaper" target="_blank"><?php ydn_get_special_image("front_page","home-print-section-narrow"); ?></a>
           </div><!-- print-section -->
           <div class="print-section">
-            <h1>WEEKEND</h1>
+            <a href="/weekend/"><h1>WEEKEND</h1></a>
             <a href="/weekend"><?php ydn_get_special_image("weekend_cover","home-print-section-narrow"); ?></a>
           </div><!-- print-section -->
           <div class="print-section">
-            <h1>Magazine</h1>
+            <a href="/magazine"><h1>Magazine</h1></a>
             <a href="/magazine"><?php ydn_get_special_image("magazine_cover","home-print-section-narrow"); ?></a>
           </div><!-- print-section -->
 
