@@ -31,7 +31,7 @@ register_activation_hook(__FILE__, array(YDN_URL_Rewrites::get_instance(), 'inst
 include('propagate-users.php');
 
 // A plugin to redirect wp-login to /login
-include('redirect-login.php');
+// include('redirect-login.php');
 
 //tells co-authors plus to use a custom capability in its search for
 //eligible bylines
