@@ -90,8 +90,7 @@
             <!-- contains shorts, poetry, and photo gallery -->
             <div class="row" id="shorts-poetry">
               <div class="span5">
-		<!-- shorts -->
-		<!-- note: renamed section to Shorts & Poetry temporarily. unchanged on Issues backend. -->
+		<!-- shorts & poetry -->
                 <h1 class="mag-section border">Shorts & Poetry</h1>
                 <div class="content-list">
                   <?php
@@ -103,12 +102,11 @@
                 </div>
               </div>
               <div class="span5 offset1">
-		<!-- poetry -->
-		<!-- note: renamed this section to Features temporarily. unchanged on Issues backend. -->
+		<!-- features -->
                 <h1 class="mag-section border">Features</h1>
                 <div class="content-list">
                   <?php
-                  $content = $issue_content["poetry"] == null ? array() : $issue_content["poetry"];
+                  $content = $issue_content["features"] == null ? array() : $issue_content["features"];
                   foreach($content as $post): setup_postdata($post);
                   ?>
                     <h5 class="item"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h5>

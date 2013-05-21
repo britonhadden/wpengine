@@ -81,7 +81,7 @@ class YDN_Mag_Issue_Type {
                                   "essays" => array("title" => "Essays", "num" => 3, "post_type"=>"post"),
                                   "small_talk" => array("title" => "Small Talk", "num" => 3, "post_type"=>"post"),
                                   "shorts" => array("title" => "Shorts", "num" => 4, "post_type" => "post"),
-                                  "poetry" => array("title" => "Poetry", "num" => 4, "post_type" => "post"),
+                                  "features" => array("title" => "Features", "num" => 4, "post_type" => "post"),
                                   "photo_essay" => array("title" => "Photo Essay", "num" => 1, "post_type" => "attachment,post"));
 
     //register the image sizes necessary to draw the magazine content
