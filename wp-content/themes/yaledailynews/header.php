@@ -158,6 +158,7 @@ googletag.enableServices();
       'menu_class' => 'nav'
     ));
   } else {
+    //switch_to_blog(YDN_MAIN_SITE_ID);
     $temp_query = $wp_query;
     $wp_query = NULL;
     $wp_query = new WP_Query(array('post_type' => 'post'));
