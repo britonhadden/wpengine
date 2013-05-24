@@ -46,6 +46,9 @@ class Bootstrap_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 		$attributes .= ($args->has_children) 	    ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
 
+    // Fixes navbar links on non-primary sites
+    $attributes = preg_replace('#com/category#', 'com/blog/category', $attributes, 1);
+
         // new addition for active class on the a tag
         if(in_array('current-menu-item', $classes)) {
             $attributes .= ' class="active"';
