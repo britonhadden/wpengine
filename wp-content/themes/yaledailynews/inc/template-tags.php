@@ -461,6 +461,11 @@ add_action( 'save_post', 'ydn_category_transient_flusher' );
 if(!function_exists(ydn_timestamp)) :
 	function ydn_timestamp() {
 		$timestamp = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago';
+    if ( preg_match('/.* min[s]? ago/', $timestamp ) )
+      $timestamp = '<span class="recent-timestamp">' . $timestamp . '</span>';
+    else 
+      $timestamp = '<span class="datetime">' . $timestamp . '</span>';
+    return $timestamp; 
 		return preg_replace('/.* min[s]? ago/', '<span class="recent-timestamp"> $0 </span>', $timestamp);
 	}
 endif;

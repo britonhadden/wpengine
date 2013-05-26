@@ -6729,6 +6729,78 @@ body.magazine #photo-essay span:hover {
           box-sizing: border-box;
 }
 
+.category .middle-column {
+  float: right;
+}
+
+.category .middle-column .column {
+  width: 173px;
+  padding: 5px;
+  margin: 0 0 15px 0;
+  background: #eee;
+  border: 1px;
+  -webkit-box-shadow: 1px 1px #e3e3e3, 2px 2px #e3e3e3, 3px 3px #e3e3e3, 4px 4px #e3e3e3, 5px 5px #e3e3e3, 6px 6px #e3e3e3, 7px 7px #e3e3e3;
+     -moz-box-shadow: 1px 1px #e3e3e3, 2px 2px #e3e3e3, 3px 3px #e3e3e3, 4px 4px #e3e3e3, 5px 5px #e3e3e3, 6px 6px #e3e3e3, 7px 7px #e3e3e3;
+          box-shadow: 1px 1px #e3e3e3, 2px 2px #e3e3e3, 3px 3px #e3e3e3, 4px 4px #e3e3e3, 5px 5px #e3e3e3, 6px 6px #e3e3e3, 7px 7px #e3e3e3;
+}
+
+.category .middle-column .column h3 {
+  padding-bottom: 0.2em;
+  margin-bottom: 0.3em;
+  text-align: center;
+  border-bottom: 1px #222222 solid;
+}
+
+.category .middle-column .media {
+  text-align: center;
+}
+
+.category .middle-column .media .media-box {
+  padding-bottom: 5px;
+}
+
+.category .middle-column .media .media-box .media-box-hover {
+  display: table;
+  margin: 0 20px 0 20px;
+  text-align: center;
+}
+
+.category .middle-column .media .media-box .media-box-hover .media-box-hover-text {
+  display: table-cell;
+  width: 150px;
+  height: 100px;
+  color: white;
+  vertical-align: middle;
+  background: black;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.category .middle-column .media .media-box .media-box-hover .media-box-hover-text:hover {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.category .featured-article {
+  width: 532px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.category .featured-headline {
+  padding-top: 5px;
+}
+
+.category .content-list .content-item {
+  padding-bottom: 0.3em;
+}
+
+.category .thumbnail {
+  float: left;
+  margin: 3px 3px 3px;
+}
+
 /* define some borders for the grid system  using LESS mixins to build the
 styles up dynamically */
 

@@ -103,6 +103,7 @@ function ydn_setup() {
   add_image_size('home-print-section-narrow',230,99999999);
   add_image_size('opinion-featured',550,425,true);
   add_image_size('video-thumbnail',150,100,true);
+  add_image_size('featured-cat-img',532,99999999,true);
   /**
    * Add support for the Aside Post Formats
    */
@@ -405,4 +406,5 @@ function add_image_rss_node() {
 require( get_template_directory() . '/inc/bootstrap-menu-walker.php' );
 require( get_template_directory() . '/inc/slideshow-slides.php');
 require( get_template_directory() . '/inc/ydn-homepage-content.php');
+require( get_template_directory() . '/inc/category-functions.php');
 require( get_template_directory() . '/inc/video-post-type.php');

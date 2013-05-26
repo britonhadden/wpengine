@@ -158,7 +158,7 @@ googletag.enableServices();
       'menu_class' => 'nav'
     ));
   } else {
-    //switch_to_blog(YDN_MAIN_SITE_ID);
+    // Switch query to make sure menu gets populated
     $temp_query = $wp_query;
     $wp_query = NULL;
     $wp_query = new WP_Query(array('post_type' => 'post'));
@@ -168,7 +168,7 @@ googletag.enableServices();
       'walker' => new Bootstrap_Walker_Nav_Menu,
       'menu_class' => 'nav'
     ));
-    $wp_query = $temp_query;
+    $wp_query = $temp_query;  // Switch back
     $temp_query = NULL;
   } ?>
   </div>

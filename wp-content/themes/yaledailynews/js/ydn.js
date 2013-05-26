@@ -40,7 +40,17 @@
 
    if ($body.hasClass('category-opinion') ) {
      opinion_init();
-   }
+   } else if ($body.hasClass('category')) {
+     $('.content-item').each(function(){
+      var item_height = $(this).height();
+      var img_height = $(this).children('img').height();
+      var height = (item_height > img_height) ? item_height : img_height; 
+      console.log(this);
+      console.log(height);
+      console.log('fuck');
+      $(this).css('height', height);
+     });
+   } 
 
    if ($body.hasClass('page-template-multimedia-php')) {
     mult_content_init();
@@ -265,12 +275,12 @@
 
 
     $social_share.find('.twitter').click( function() {
-      var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,F=document,E;if(C>A){G=Math.round((C/2)-(A/2))}
+      var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,F=document,E;if(C>A){G=Math.round((C/2)-(A/2));}
       window.open('http://twitter.com/share?' + $.param(twitter_object),'','left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');
       return false;
     } );
 
-  };
+  }
 
   /* extract metadata from the DOM for use in JS */
   function extract_metadata_for_key(key) {
@@ -281,7 +291,7 @@
     } else {
       return '';
    }
-  };
+  }
 
   /**
    * replace the no-javascript HTML markup with the javascript-enabled markup that gets rendered
@@ -336,7 +346,7 @@
     $home_carousel.mouseenter( function() { $home_carousel.carousel('pause'); } );
     $home_carousel.mouseleave( function() { $home_carousel.carousel('cycle'); } );
 
-  };
+  }
 
   /* sets up scrolling on the weekend top nav. if the user scrolls past the navigation,
    * it will have it's position fixed to the top of the browser */
@@ -361,12 +371,12 @@
         $header.css('position','fixed');
         header_fixed = true;
       }
-    };
+    }
 
     //wrap the event handler in a throttle function to prevent excessive calls
     //then attach it
     $window.scroll( $.throttle(100,scroll_handler) );
-  };
+  }
 
   /* some initialization for the opinion category landing page */
   function opinion_init() {
@@ -378,7 +388,7 @@
   /* the selector should be an ID to guarantee uniqueness */
   function equally_space_horizontally(selector)  {
     var $selector = $(selector); //this is the UL we're styling
-    if ($selector.length == 0) { return; }
+    if ($selector.length === 0) { return; }
 
     $selector.removeClass('no-script'); //no-script styles can be applied to manage spacing very roughly
     var container_width = $selector.width();
@@ -432,6 +442,17 @@
     });
   }
 
+  function resize_list_item() {
+    var item_height = $(this).height();
+    var img_height = $(this).children('img').height();
+    var height = (item_height > img_height) ? item_height : img_height; 
+    console.log(this);
+    console.log(height);
+    console.log('fuck');
+    $(this).css('height', height);
+  }
+
   $(document).ready( initialize );
 
 } (jQuery) );
+

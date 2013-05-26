@@ -1,0 +1,61 @@
+.category {
+  .middle-column {
+    float: right;
+    .column {
+      margin: 0 0 15px 0;
+      width: 173px;
+      background: #eee;
+      padding: 5px;
+      border: 1px;
+      .box-shadow(1px 1px #e3e3e3, 2px 2px #e3e3e3, 3px 3px #e3e3e3, 4px 4px #e3e3e3, 5px 5px #e3e3e3, 6px 6px #e3e3e3, 7px 7px #e3e3e3;);
+      h3 {
+        // color: @ydnDarkGray;
+        text-align: center;
+        padding-bottom: 0.2em;
+        margin-bottom: 0.3em;
+        border-bottom: 1px @grayDarker solid;
+      }
+    }
+    .media {
+      text-align: center;
+      .media-box {
+        padding-bottom: 5px;
+        .media-box-hover {
+          margin: 0 20px 0 20px;
+          text-align: center;
+          display: table;
+          .media-box-hover-text {
+            color: white;
+            background: black;
+            height: 100px;
+            width: 150px;
+            display: table-cell;
+            vertical-align: middle;
+            .opacity (0);
+            &:hover {
+              .opacity(70);
+            } 
+          }
+        }
+      }
+    }
+  }
+  .featured-article {
+    width: 532px;
+    border-bottom: 1px solid @ydnLightGray;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+  .featured-headline {
+    padding-top: 5px;
+  }
+  .content-list {
+    .content-item {
+      padding-bottom: 0.3em;
+    }
+  }
+  .thumbnail {
+    margin: 3px 3px 3px; 
+    float: left;
+  }
+}
