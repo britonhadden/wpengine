@@ -1,4 +1,6 @@
 <?php 
+global $wp_query;
+global $wp; // For pagination
 $ydn_suppress_thumbnails = true; // ugly hack, but necessary to pass variables to template
 $current_cat_ID = get_category(get_query_var('cat'), false)->cat_ID;
 $current_cat_slug = get_category(get_query_var('cat'), false)->slug;
@@ -11,7 +13,7 @@ $current_cat_slug = get_category(get_query_var('cat'), false)->slug;
     <?php
     if ($current_cat_slug != 'city' && $current_cat_slug != 'university' && $current_cat_slug != 'features') :?>
     <div class="column">
-      <h3>Editorial</h3>
+      <h3>Columns</h3>
       <?php
       $columns = get_post_list(null, null, array(13, $current_cat_ID));
       foreach( $columns as $post ) : ?>
@@ -56,7 +58,7 @@ $img_src = wp_get_attachment_image_src(get_post_thumbnail_id($clip->ID), 'video-
   </div>
 
   <!-- Posts list -->
-  <div class="content-list">
+  <div id="content-list">
     <?php
     $post_index = 0;
     while ( have_posts() ) : 
@@ -77,6 +79,10 @@ $img_src = wp_get_attachment_image_src(get_post_thumbnail_id($clip->ID), 'video-
         $post_index++;
       endif;
     endwhile; ?>
+  </div>
+  
+  <div class="page-nav"> 
+    <div class="pagination"><?php pagination($wp_query); ?></div>
   </div>
 
 </div> <!-- Main column wrapper -->

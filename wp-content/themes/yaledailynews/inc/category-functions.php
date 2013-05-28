@@ -58,4 +58,41 @@ $exclude_cat = null) {
   wp_cache_set($cache_key, $query->posts);
   return $query->posts;
 }
+
+/* Creates UL of pagination links 
+  a la http://wordpress.stackexchange.com/questions/12456/adding-pagination-to-a-custom-template-that-uses-custom-post-types */
+function pagination( $query, $npages = 5 ) {
+  global $wp;
+  $page = $query->query_vars["paged"];
+  $baseURL = site_url( implode( '/', array_slice( explode('/', $wp->request), 0, ($page) ? -1 : null)));
+  if ( !$page ) {
+    $baseURL .= '/page/';
+    $page = 1;
+  } else {
+    $baseURL .= '/';
+  }
+  $qs = $_SERVER["QUERY_STRING"] ? "?".$_SERVER["QUERY_STRING"] : "";
+  // Only necessary if there's more posts than posts-per-page
+  if ( $query->found_posts > $query->query_vars["posts_per_page"] ) {
+    echo '<ul>';
+    // Previous link?
+    if ( $page > 1 ) {
+      echo '<li class="previous"><a href="'.$baseURL.($page-1).'/'.$qs.'">« previous</a></li>';
+    }
+    // Loop through pages
+    for ( $i = ($page - floor($npages/2) > 0) ? ($page - floor($npages/2)) : 1; $i <= $page + floor($npages/2) && $i <= $query->max_num_pages; $i++ ) {
+      // Current page or linked page?
+      if ( $i == $page ) {
+        echo '<li class="active"><a href="#">'.$i.'</a></li>';
+      } else {
+        echo '<li><a href="'.$baseURL.$i.'/'.$qs.'">'.$i.'</a></li>';
+      }
+    }
+    // Next link?
+    if ( $page < $query->max_num_pages ) {
+      echo '<li><a href="'.$baseURL.($page+1).'/'.$qs.'">next »</a></li>';
+    }
+    echo '</ul>';
+  }
+}
 ?>

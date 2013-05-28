@@ -41,15 +41,22 @@
    if ($body.hasClass('category-opinion') ) {
      opinion_init();
    } else if ($body.hasClass('category')) {
-     $('.content-item').each(function(){
-      var item_height = $(this).height();
-      var img_height = $(this).children('img').height();
-      var height = (item_height > img_height) ? item_height : img_height; 
-      console.log(this);
-      console.log(height);
-      console.log('fuck');
-      $(this).css('height', height);
-     });
+     resize_items();
+     $('#content-list').infinitescroll({
+      loading: {
+        finished: undefined,
+        finishedMsg: "<em>Congratulations, you've reached the end of the Earth.</em>",
+        img: 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+        msg: null,
+        msgText: '<div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div><em>Loading the next set of posts...</em>',
+        selector: null,
+        speed: 'fast',
+        start: undefined },
+      navSelector : 'div.page-nav',
+      nextSelector : 'div.page-nav a:last',
+      itemSelector : 'div.content-item',
+      bufferPx: 100
+      }, function() {resize_items();});
    } 
 
    if ($body.hasClass('page-template-multimedia-php')) {
@@ -60,7 +67,8 @@
       equally_space_horizontally('#menu-primary'); //spaces the links in the nav under the masthead
       console.log('Spacing main nav bar');
     }
-  }
+
+  } // End of initialize
 
   function mult_content_init() {
     // Setup loading spinner
@@ -442,14 +450,13 @@
     });
   }
 
-  function resize_list_item() {
-    var item_height = $(this).height();
-    var img_height = $(this).children('img').height();
-    var height = (item_height > img_height) ? item_height : img_height; 
-    console.log(this);
-    console.log(height);
-    console.log('fuck');
-    $(this).css('height', height);
+  function resize_items () {
+    $('.content-item').each(function(){
+     var item_height = $(this).height();
+     var img_height = $(this).children('img').height();
+     var height = (item_height > img_height) ? item_height : img_height; 
+     $(this).css('height', height);
+    });
   }
 
   $(document).ready( initialize );
