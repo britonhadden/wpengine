@@ -5288,19 +5288,16 @@ body {
   margin-top: 35px;
 }
 
-.site-title {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-
 .site-title a {
   display: block;
   width: 710px;
   height: 70px;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
   background: transparent url("../img/cross_campus_logo.jpg") center 2px no-repeat;
+  background-color: transparent;
+  border: 0;
 }
 
 .site-title a:hover {

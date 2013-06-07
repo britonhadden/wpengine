@@ -85,12 +85,12 @@ body {
 
 //replace the link text with the cross campus logo.
 .site-title  {
-  .hide-text();
   a {
     background: transparent url("@{asset_path}cross_campus_logo.jpg") center 2px no-repeat; //the logo has a small white line on the bottom; use the y offset to hide it
     #grid > .core > .span(18);
     height: 70px;
     display: block;
+    .hide-text();
 
     &:hover {
       text-decoration: none;
