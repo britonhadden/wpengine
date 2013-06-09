@@ -25,8 +25,14 @@ function weekend_setup() {
 	) );
 }
 
-add_action( 'after_setup_theme', 'weekend_setup' );
+function weekend_scripts() {
+  wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.js', array('jquery') );  
+  wp_enqueue_script('infinite-scroll', get_template_directory_uri() . '/js/jquery.infinitescroll.js'); 
+  wp_enqueue_script('weekend', get_template_directory_uri() . '/js/weekend.js');
+}
 
+add_action( 'after_setup_theme', 'weekend_setup' );
+add_action( 'wp_enqueue_scripts', 'weekend_scripts' );
 ?>
 
 
