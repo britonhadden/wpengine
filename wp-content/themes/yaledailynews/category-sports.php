@@ -15,7 +15,7 @@ $current_cat_slug = get_category(get_query_var('cat'), false)->slug;
     <div class="column">
       <h3>Columns</h3>
       <?php
-      $columns = get_post_list(null, null, array(13, $current_cat_ID));
+      $columns = get_post_list(null, null, array(10279, $current_cat_ID));
       foreach( $columns as $post ) : ?>
         <div class="column-box">
           <a href="<?= $post->guid ?>"><h4><?= $post->post_title ?></h4></a>
