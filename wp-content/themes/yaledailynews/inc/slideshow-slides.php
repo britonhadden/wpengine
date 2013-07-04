@@ -40,9 +40,11 @@ add_action( 'init', 'ydn_register_slideshow_slide',1);//register early so we bea
 
 //add in the custom field that tracks the URL
 function ydn_register_slideshow_metadata() {
-  x_add_metadata_group( 'ydn_slideshow_data', array( 'slideshow-slide'), array( 'label' => "Slide Options")  );
-  x_add_metadata_field( 'ydn_slideshow_url', array( 'slideshow-slide' ), array( 'label' => "Slide target URL:", "group" => 'ydn_slideshow_data' ) );
-  x_add_metadata_field( 'ydn_slideshow_cat', array( 'slideshow-slide' ), array( 'label' => "Slide category text:", "group" => 'ydn_slideshow_data') );
+  if ( function_exists('x_add_metadata_group') && function_exists('x_add_metadata_field')) {
+    x_add_metadata_group( 'ydn_slideshow_data', array( 'slideshow-slide'), array( 'label' => "Slide Options")  );
+    x_add_metadata_field( 'ydn_slideshow_url', array( 'slideshow-slide' ), array( 'label' => "Slide target URL:", "group" => 'ydn_slideshow_data' ) );
+    x_add_metadata_field( 'ydn_slideshow_cat', array( 'slideshow-slide' ), array( 'label' => "Slide category text:", "group" => 'ydn_slideshow_data') );
+  }
 }
 
 add_action('admin_menu', 'ydn_register_slideshow_metadata');
