@@ -103,7 +103,7 @@ function ydn_setup() {
   add_image_size('home-print-section-narrow',230,99999999);
   add_image_size('opinion-featured',550,425,true);
   add_image_size('video-thumbnail',150,100,true);
-  add_image_size('featured-cat-img',532,99999999,true);
+  add_image_size('featured-cat-img',532,532,true);
   /**
    * Add support for the Aside Post Formats
    */
