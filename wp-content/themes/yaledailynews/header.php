@@ -92,6 +92,7 @@ var node = document.getElementsByTagName('script')[0];
 node.parentNode.insertBefore(gads, node);
 })();
 </script>
+
 <script type='text/javascript'>
 googletag.cmd.push(function() {
 googletag.defineSlot('/1041068/YDN_Lower_Skyscraper', [160, 600], 'div-gpt-ad-1364346235312-0').addService(googletag.pubads());
@@ -104,23 +105,24 @@ googletag.enableServices();
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
 (function() {
-  var gads = document.createElement('script');
-  gads.async = true;
-  gads.type = 'text/javascript';
-  var useSSL = 'https:' == document.location.protocol;
-  gads.src = (useSSL ? 'https:' : 'http:') + 
-    '//www.googletagservices.com/tag/js/gpt.js';
-  var node = document.getElementsByTagName('script')[0];
-  node.parentNode.insertBefore(gads, node);
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
 })();
 </script>
+
 <script type='text/javascript'>
 googletag.cmd.push(function() {
-  googletag.defineSlot('/1041068/Top_of_Page_No_Padding', [232, 90], 'div-gpt-ad-1377534465328-0').addService(googletag.pubads());
-  googletag.pubads().enableSingleRequest();
-  googletag.enableServices();
+googletag.defineSlot('/1041068/Top_of_Page_No_Padding', [232, 90], 'div-gpt-ad-1377534465328-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
 });
-</script>})
+</script>
 
 <!-- Homepage leaderboard -->
 <script type='text/javascript'>
