@@ -7,7 +7,6 @@
   function init_onload()  {
     //wait for the images to load before adjusting columns,
     //in case they change the height of primary
-    adjust_column_heights();
   };
 
 
