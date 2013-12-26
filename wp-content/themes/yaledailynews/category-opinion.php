@@ -10,11 +10,10 @@
     <div class="span14 featured">
       <!-- This is the section with the featured opinion image & main story.  If Friday Forum is available,
            it's drawn here as well -->
-      <?php ydn_get_special_image("opinion_featured_image","opinion-featured"); ?>
       <?php if (empty($friday_forum_content)): /* the regular layout */ ?>
         <?php $standard_content = ydn_fix_list_size($standard_content,'opinion',4); ?>
         <div class="content-list">
-          <?php $post = array_shift($standard_content);  setup_postdata($post); get_template_part('list','opinion'); ?>
+          <?php $post = array_shift($standard_content);  setup_postdata($post); ydn_get_featured_image_only($post); get_template_part('list','opinion'); ?>
         </div>
       <?php else: /* the friday-forum layout */ ?>
 

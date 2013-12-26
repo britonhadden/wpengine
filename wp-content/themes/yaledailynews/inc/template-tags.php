@@ -147,6 +147,18 @@ function ydn_get_featured_image() {
 }
 endif; // end function_exists condition
 
+// Gets and outputs featured image for $post
+if (! function_exists( 'ydn_get_featured_image_only') ):
+function ydn_get_featured_image_only($post) {
+  if(  has_post_thumbnail() ):
+    $featured_image_id = get_post_thumbnail_id( $post->ID );
+    $featured_image_obj = get_post($featured_image_id);
+    ?>
+      <?php  the_post_thumbnail('entry-featured-image'); ?>
+    <?php endif; //end has_post_thumbnail condition
+    $post = $temp_post;
+}
+endif; // end function_exists condition
 
 
 
