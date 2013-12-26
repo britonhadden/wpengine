@@ -32,18 +32,46 @@
   if ( $site_description && ( is_home() || is_front_page() ) )
     echo " | $site_description";
 
+
   // Add a page number if necessary:
   if ( $paged >= 2 || $page >= 2 )
     echo ' | ' . sprintf( __( 'Page %s', 'ydn' ), max( $paged, $page ) );
 
   ?></title>
-<meta property="og:title" content= "<?php echo get_the_title(); ?>" />
-<meta property="og:type" content="article"/>
-<meta property="og:url" content= "<?php echo get_permalink(); ?>" />
-<meta property="og:image" content= "http://yaledailynews.com/wp-content/themes/yaledailynews/ydn-logo-fb.jpg"/>
-<meta property="og:site_name" content="Yale Daily News"/>
-<meta property="og:description"
-      content=  "<?php echo get_the_excerpt(); ?>" />
+
+<?php 
+// This loads the static metadata if homepage.
+
+if ( is_home() || is_front_page() )
+{
+  echo '
+  <meta property="og:title" content= "The Yale Daily News" />
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content= "http://yaledailynews.com" />
+  <meta property="og:image" content= "http://yaledailynews.com/wp-content/themes/yaledailynews/ydn-logo-fb.jpg"/>
+  <meta property="og:site_name" content="Yale Daily News"/>
+  <meta property="og:description"
+        content=  "Daily newspaper for Yale University and New Haven. Includes coverage of university and city news, sports, culture, opinion, and more. Publishes Monday through Friday in print and online." />
+    ';
+}
+ 
+else {
+
+  $gtt = '"'.get_the_title().'"';
+  $perma = '"'.get_permalink().'"';
+  $excerpt = '"'.get_the_excerpt().'"';
+
+  echo "
+  <meta property='og:title' content= {$gtt} />
+  <meta property='og:type' content='article'/>
+  <meta property='og:url' content= {$perma} />
+  <meta property='og:image' content= 'http://yaledailynews.com/wp-content/themes/yaledailynews/ydn-logo-fb.jpg'/>
+  <meta property='og:site_name' content='Yale Daily News'/>
+  <meta property='og:description'
+      content=  {$excerpt} />
+      ";
+}
+?>
  
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -58,10 +86,10 @@
   _gaq.push(['_trackPageview']);
 
     (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
   </script>
 <!-- ComScore Analytics Script -->
@@ -69,9 +97,9 @@
   var _comscore = _comscore || [];
   _comscore.push({ c1: "2", c2: "15882552" });
   (function() {
-	  var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
-	  s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
-	  el.parentNode.insertBefore(s, el);
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
   })();
 </script>
 <noscript>
@@ -100,7 +128,6 @@ googletag.pubads().enableSingleRequest();
 googletag.enableServices();
 });
 </script>
-
 <script type='text/javascript'>
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
@@ -118,7 +145,7 @@ node.parentNode.insertBefore(gads, node);
 
 <script type='text/javascript'>
 googletag.cmd.push(function() {
-googletag.defineSlot('/1041068/Top_of_Page_No_Padding', [232, 90], 'div-gpt-ad-1377534465328-0').addService(googletag.pubads());
+googletag.defineSlot('/1041068/Top_of_page_small', [222, 90], 'div-gpt-ad-1378345467709-0').addService(googletag.pubads());
 googletag.pubads().enableSingleRequest();
 googletag.enableServices();
 });
@@ -148,7 +175,22 @@ googletag.enableServices();
 });
 </script>
 
+<script type='text/javascript'>
+  (function() {
+    var cx = '005865341660642744177:4iw9nrk-rsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
 <?php wp_head(); ?>
+
 </head>
 
 <body <?php body_class(); ?>>
@@ -158,15 +200,25 @@ googletag.enableServices();
   </div>
   <header class="site-header" role="banner">
     <div  class="container">
-			<div id="masthead" class="pull-left"><?php  switch_to_blog(YDN_MAIN_SITE_ID); //this is necessary so that the menu and header link will be shared among all the children themes ?>
-				<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-			</div>
-		<div id="toolbar" class="pull-right">
-			<a target="_blank" href="http://www.facebook.com/YaleDailyNews"><img alt="Follow us on Facebook" class="social-media-icon" src="<?php echo get_template_directory_uri(); ?>/img/facebook-64.png"></a> 
-			<a target="_blank" href="http://www.twitter.com/YaleDailyNews"><img alt="Follow us on Twitter" class="social-media-icon" src="<?php echo get_template_directory_uri(); ?>/img/twitter-64.png"></a> 
-			<a target="_blank" href="http://yaledailynews.com/feed/"><img alt="Subscribe to RSS" class="social-media-icon" src="<?php echo get_template_directory_uri() ?>/img/rss-64.png"></a> 
-			<?php get_search_form(); ?>
-		</div>
+      <div id="masthead" class="pull-left"><?php  switch_to_blog(YDN_MAIN_SITE_ID); //this is necessary so that the menu and header link will be shared among all the children themes ?>
+        <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+      </div>
+    <div id="toolbar" class="pull-right">
+<style scoped>
+.gsc-control-cse {
+background-color: transparent;
+border: 0;
+}
+</style>
+<div style="margin-left: 5%;
+margin-bottom: 20px;">
+      <a target="_blank" href="http://www.facebook.com/YaleDailyNews"><img alt="Follow us on Facebook" class="social-media-icon" src="<?php echo get_template_directory_uri(); ?>/img/facebook-64.png"></a> 
+      <a target="_blank" href="http://www.twitter.com/YaleDailyNews"><img alt="Follow us on Twitter" class="social-media-icon" src="<?php echo get_template_directory_uri(); ?>/img/twitter-64.png"></a> 
+      <a target="_blank" href="http://yaledailynews.com/feed/"><img alt="Subscribe to RSS" class="social-media-icon" src="<?php echo get_template_directory_uri() ?>/img/rss-64.png"></a> 
+
+</div>
+      <gcse:search></gcse:search>
+    </div>
     </div>
 
     <nav role="navigation" class="site-navigation main-navigation">
@@ -204,13 +256,15 @@ googletag.enableServices();
     </nav>
   </header><!-- #masthead .site-header -->
 
+
+
   <div id="main" class="container">
 <?php 
   if (is_home() && function_exists('dynamic_sidebar'))
     dynamic_sidebar('home_leaderboard');
 
-	if ((!is_home() || $GLOBALS['blog_id'] != 1) 
-		&& function_exists('dynamic_sidebar') && !is_page_template( 'multimedia.php' )) { 
-			dynamic_sidebar('leaderboard'); 
-		} ?>
+  if ((!is_home() || $GLOBALS['blog_id'] != 1) 
+    && function_exists('dynamic_sidebar') && !is_page_template( 'multimedia.php' )) { 
+      dynamic_sidebar('leaderboard'); 
+    } ?>
     <div class="row">
