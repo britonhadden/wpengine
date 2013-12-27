@@ -11,6 +11,15 @@
     </div> <!-- everything row -->
 	</div><!-- #main -->
 
+	<script type='text/javascript'>
+	googletag.cmd.push(function() {
+	googletag.defineSlot('/1041068/Top_of_page_small', [222, 90], 'div-gpt-ad-1378345467709-0').addService(googletag.pubads());
+	googletag.pubads().enableSingleRequest();
+	googletag.enableServices();
+	});
+	</script>
+
+
 	<footer id="colophon" class="site-footer container" role="contentinfo">
 	<?php if (function_exists('dynamic_sidebar')) { dynamic_sidebar('footer-advertisements'); } ?>
     <div class="double-border"></div>
