@@ -155,8 +155,8 @@ if (!function_exists('ydn_widgets_init')):
       'class' => 'sidebar-widgets',
       'before_widget' => '<aside id="%1$s" class="widget %2$s">',
       'after_widget' => "</aside>",
-      'before_title' => '<h1 class="widget-title">',
-      'after_title' => '</h1>',
+      'before_title' => '',
+      'after_title' => '',
     ) );
 
     register_sidebar( array(
