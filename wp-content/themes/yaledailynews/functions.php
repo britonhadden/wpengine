@@ -155,13 +155,23 @@ if (!function_exists('ydn_widgets_init')):
       'class' => 'sidebar-widgets',
       'before_widget' => '<aside id="%1$s" class="widget %2$s">',
       'after_widget' => "</aside>",
-      'before_title' => '',
-      'after_title' => '',
+      'before_title' => '<h1 class="widget-title">',
+      'after_title' => '</h1>',
     ) );
 
     register_sidebar( array(
       'name' => __( 'Opinion Sidebar', 'ydn' ),
       'id' => 'opinion-sidebar',
+      'class' => 'sidebar-widgets',
+      'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+      'after_widget' => "</aside>",
+      'before_title' => '<h1 class="widget-title">',
+      'after_title' => '</h1>',
+    ) );
+
+    register_sidebar( array(
+      'name' => __( 'Footer Advertisements', 'ydn' ),
+      'id' => 'footer-advertisements',
       'class' => 'sidebar-widgets',
       'before_widget' => '<aside id="%1$s" class="widget %2$s">',
       'after_widget' => "</aside>",
