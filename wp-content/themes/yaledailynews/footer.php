@@ -12,7 +12,7 @@
 	</div><!-- #main -->
 
 	<footer id="colophon" class="site-footer container" role="contentinfo">
-	<?php if (function_exists('dynamic_sidebar')) { dynamic_sidebar('footer-advertisements'); } ?>
+	<?php dynamic_sidebar('footer-advertisements'); ?>
     <div class="double-border"></div>
 		<div class="pull-left"> 
 			<a href="/contact/">Contact Us</a> | <a href="/advertising/">Advertise</a> | <a href="/archives/">Archives</a> | <a href="/subscribe/">Subscribe</a> | <a href="http://yaledailynews.com/wp-login.php">Login</a></div>
