@@ -10,4 +10,7 @@ License URI: license.txt
 Tags:
 */
 
-#primary { border:none; }
+.home .widget {
+  padding:0px;
+  border:none;
+}
