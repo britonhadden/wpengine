@@ -170,8 +170,8 @@ if (!function_exists('ydn_widgets_init')):
     ) );
 
     register_sidebar( array(
-      'name' => __( 'Footer Advertisements', 'ydn' ),
-      'id' => 'footer-advertisements',
+      'name' => __( 'Bottom Advertisements', 'ydn' ),
+      'id' => 'bottom-advertisements',
       'class' => 'sidebar-widgets',
       'before_widget' => '<aside id="%1$s" class="widget %2$s">',
       'after_widget' => "</aside>",

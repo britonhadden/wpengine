@@ -12,8 +12,6 @@
 	</div><!-- #main -->
 
 	<footer id="colophon" class="site-footer container" role="contentinfo">
-	
-	<?php dynamic_sidebar('footer-advertisements'); ?>
     
     <div class="double-border"></div>
 		<div class="pull-left"> 
