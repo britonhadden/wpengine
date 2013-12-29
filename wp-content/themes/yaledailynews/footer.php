@@ -9,6 +9,7 @@
  */
 ?>
     </div> <!-- everything row -->
+    <?php dynamic_sidebar('bottom-advertisements'); ?>
 	</div><!-- #main -->
 
 	<footer id="colophon" class="site-footer container" role="contentinfo">
