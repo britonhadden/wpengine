@@ -155,7 +155,7 @@ googletag.enableServices();
 });
 </script>
 
-<!--Bottom large DFP-->
+<!--Bottom Leaderboard DFPs-->
 <script type='text/javascript'>
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
@@ -174,6 +174,14 @@ node.parentNode.insertBefore(gads, node);
 <script type='text/javascript'>
 googletag.cmd.push(function() {
 googletag.defineSlot('/1041068/BottomLeaderboard', [728, 90], 'div-gpt-ad-1385954277988-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
+
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/1041068/BottomSmall', [217, 90], 'div-gpt-ad-1385954381097-0').addService(googletag.pubads());
 googletag.pubads().enableSingleRequest();
 googletag.enableServices();
 });
