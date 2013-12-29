@@ -158,5 +158,6 @@
         <?php dynamic_sidebar('home-advertisements'); ?>
       </div>
     </div> <!-- end right most column -->
+    <?php dynamic_sidebar('footer-advertisements'); ?>
 <?php get_footer(); ?>
 
