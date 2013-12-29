@@ -123,6 +123,8 @@
 
       </div><!-- end row.border6 -->
 
+      <?php dynamic_sidebar('footer-advertisements'); ?>
+
     </div> <!-- end all content except right most column -->
 
     <div class="span5"> <!-- right most column -->
@@ -158,6 +160,5 @@
         <?php dynamic_sidebar('home-advertisements'); ?>
       </div>
     </div> <!-- end right most column -->
-    <?php dynamic_sidebar('footer-advertisements'); ?>
 <?php get_footer(); ?>
 
