@@ -123,8 +123,6 @@
 
       </div><!-- end row.border6 -->
 
-      <?php dynamic_sidebar('footer-advertisements'); ?>
-
     </div> <!-- end all content except right most column -->
 
     <div class="span5"> <!-- right most column -->
