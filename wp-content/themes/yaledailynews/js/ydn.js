@@ -90,7 +90,7 @@
       left: 'auto' // Left position relative to parent in px
     };
     var target = document.getElementById('main-theater');
-    var spinner = new Spinner(opts).spin(target);
+    //var spinner = new Spinner(opts).spin(target);
 
     mult_helper("multimedia");
     console.log('Content initialized.');
@@ -105,7 +105,7 @@
       e.preventDefault();
       var lastSlash = path.lastIndexOf('/');
       $('iframe').remove();
-      var spinner = new Spinner(opts).spin(target);
+      //var spinner = new Spinner(opts).spin(target);
 
       if (path.indexOf('/') != path.length - 1) {
         var i;
