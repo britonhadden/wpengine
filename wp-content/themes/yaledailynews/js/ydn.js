@@ -94,6 +94,8 @@
     var spinner = new Spinner(opts).spin(target);
 
     mult_helper("multimedia");
+
+    console.log("Changed");
     console.log('Content initialized.');
     // Click listeners for navbar 
     // On-click call mult_helper(with the relevant category);
