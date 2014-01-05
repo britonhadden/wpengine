@@ -112,10 +112,10 @@
         var slash;
         for (i = 0; i < path.length - 1 && (i = path.indexOf('/', i)) != lastSlash; i++ )
           slash = i;
-        mult_helper(path.substr(slash + 1, lastSlash - slash - 1));
+        //mult_helper(path.substr(slash + 1, lastSlash - slash - 1));
         console.log('Initializing content for: ' + path.substr(slash, lastSlash));
       } else {
-        mult_helper(path.substr(lastSlash + 1));
+        //mult_helper(path.substr(lastSlash + 1));
         console.log('Initialized content for: ' + path.substr(lastSlash));
       }
       window.history.pushState("object or string", "Title", "/ytv");
