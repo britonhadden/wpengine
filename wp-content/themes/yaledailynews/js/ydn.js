@@ -60,7 +60,7 @@
    } 
 
    if ($body.hasClass('page-template-multimedia-php')) {
-    mult_content_init();
+    //mult_content_init();
     equally_space_horizontally('ul[id^="menu-multimedia"]'); //spaces the links in the nav under the masthead
     console.log('Spacing mult nav bar');
     } else {
