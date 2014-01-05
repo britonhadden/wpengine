@@ -170,7 +170,7 @@
         tooltip_init();
         carousel_init();
         multimedia_selector();
-        spinner.stop();
+        //spinner.stop();
     }
 
   function mult_helper(category) {
@@ -253,7 +253,7 @@
           }
         }
         } catch(e) {
-          spinner.stop();
+          //spinner.stop();
           console.log("Error: could not pull posts for: " + category);
         } 
     });
