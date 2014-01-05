@@ -1,24 +1,3 @@
-var opts = {
-    lines: 13, // The number of lines to draw
-    length: 7, // The length of each line
-    width: 4, // The line thickness
-    radius: 10, // The radius of the inner circle
-    corners: 1, // Corner roundness (0..1)
-    rotate: 0, // The rotation offset
-    color: '#000', // #rgb or #rrggbb
-    speed: 1, // Rounds per second
-    trail: 60, // Afterglow percentage
-    shadow: false, // Whether to render a shadow
-    hwaccel: false, // Whether to use hardware acceleration
-    className: 'spinner', // The CSS class to assign to the spinner
-    zIndex: 2e9, // The z-index (defaults to 2000000000)
-    top: 'auto', // Top position relative to parent in px
-    left: 'auto' // Left position relative to parent in px
-  };
-
-var target = document.getElementById('main-theater');
-var spinner = new Spinner(opts).spin(target);
-
 (function($) {
   var YDN = window.YDN || (window.YDN = {});
 
@@ -110,10 +89,10 @@ var spinner = new Spinner(opts).spin(target);
       top: 'auto', // Top position relative to parent in px
       left: 'auto' // Left position relative to parent in px
     };
-    // var target = document.getElementById('main-theater');
-    // var spinner = new Spinner(opts).spin(target);
+    var target = document.getElementById('main-theater');
+    var spinner = new Spinner(opts).spin(target);
 
-    mult_helper("multimedia");
+    //mult_helper("multimedia");
     console.log('Content initialized.');
     // Click listeners for navbar 
     // On-click call mult_helper(with the relevant category);
@@ -143,56 +122,56 @@ var spinner = new Spinner(opts).spin(target);
     });
   }
 
-    function mult_insert_posts(posts) {
-        if(posts.length === 0) {
-            console.log("No posts");
-            return;
-        }
-        // Put the first post into the player
-        var first = posts[0];
-        console.log("Loading First Video");
-        var htmlstr = "<iframe id=\"video-player\" src=\"http://youtube.com/embed/" + first.vid_id + "\" frameborder=0></iframe>";
-        $("#main-theater").html(htmlstr);
-        
-        // Put the first post info into the appropriate place
-        $("#theatre-video-title").html(first.title);
-        $("#theatre-video-author").html('by ' + first.author);
-        $("#theatre-video-excerpt").html(first.content);
+  function mult_insert_posts(posts) {
+      if(posts.length === 0) {
+          console.log("No posts");
+          return;
+      }
+      // Put the first post into the player
+      var first = posts[0];
+      console.log("Loading First Video");
+      var htmlstr = "<iframe id=\"video-player\" src=\"http://youtube.com/embed/" + first.vid_id + "\" frameborder=0></iframe>";
+      $("#main-theater").html(htmlstr);
+      
+      // Put the first post info into the appropriate place
+      $("#theatre-video-title").html(first.title);
+      $("#theatre-video-author").html('by ' + first.author);
+      $("#theatre-video-excerpt").html(first.content);
 
-        // Remove duplicates from post array
-        for (var i = 1; i < posts.length; i++) {
-          if (posts[0].title == posts[i].title)
-            posts.splice(i,1);
-        }
+      // Remove duplicates from post array
+      for (var i = 1; i < posts.length; i++) {
+        if (posts[0].title == posts[i].title)
+          posts.splice(i,1);
+      }
 
-        // Load the rest of the videos into the slider
-        htmlstr = "";
-        for(i = 0; i < posts.length; i) {
-            if(i === 0) {    // only the first 7 are active
-                htmlstr += "<div class=\"item active\"><ul>\n";
-            } else {
-                htmlstr += "<div class=\"item\"><ul>\n";
-            }
-            var k = i + 7;
-            for(i; i < k && i < posts.length; i++) {
-                var p = posts[i];
-                htmlstr += "<li>\n";
-                htmlstr += "<div class=\"crop\" title=\"" + p.title + "\">\n";
-                htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" data-slug=\"" + p.slug + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">\n";
-                htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + p.content.replace(/<(?:.|\n)*?>/gm, '') + "</p>\n";
-                htmlstr += "<img class=\"thumbnail-youtube\" title=\"" + p.title + "\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>\n";
-                htmlstr += "</a>\n";
-                htmlstr += "</div>\n";
-                htmlstr += "</li>\n";
-            }
-            htmlstr += "</ul></div>\n";
-        }
-        $(".carousel-inner").html(htmlstr);
-        tooltip_init();
-        carousel_init();
-        multimedia_selector();
-        spinner.stop();
-    }
+      // Load the rest of the videos into the slider
+      htmlstr = "";
+      for(i = 0; i < posts.length; i) {
+          if(i === 0) {    // only the first 7 are active
+              htmlstr += "<div class=\"item active\"><ul>\n";
+          } else {
+              htmlstr += "<div class=\"item\"><ul>\n";
+          }
+          var k = i + 7;
+          for(i; i < k && i < posts.length; i++) {
+              var p = posts[i];
+              htmlstr += "<li>\n";
+              htmlstr += "<div class=\"crop\" title=\"" + p.title + "\">\n";
+              htmlstr += "<a href=\"#\" data-videoid=\"" + p.vid_id + "\" data-author=\"" + p.author + "\" data-slug=\"" + p.slug + "\" rel=\"tooltip\" class=\"thumbnail-video\" title=\"" + p.title + "\">\n";
+              htmlstr += "<p data-videoid=\"" + p.vid_id + "\" class=\"video-content\">" + p.content.replace(/<(?:.|\n)*?>/gm, '') + "</p>\n";
+              htmlstr += "<img class=\"thumbnail-youtube\" title=\"" + p.title + "\" src=\"http://img.youtube.com/vi/" + p.vid_id + "/0.jpg\"/>\n";
+              htmlstr += "</a>\n";
+              htmlstr += "</div>\n";
+              htmlstr += "</li>\n";
+          }
+          htmlstr += "</ul></div>\n";
+      }
+      $(".carousel-inner").html(htmlstr);
+      tooltip_init();
+      carousel_init();
+      multimedia_selector();
+      spinner.stop();
+  }
 
   function mult_helper(category) {
     var query;
