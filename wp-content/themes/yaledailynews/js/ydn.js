@@ -1,4 +1,5 @@
 (function($) {
+  console.log("Changed");
   var YDN = window.YDN || (window.YDN = {});
 
   function initialize() {
@@ -60,7 +61,7 @@
    } 
 
    if ($body.hasClass('page-template-multimedia-php')) {
-    //mult_content_init();
+    mult_content_init();
     equally_space_horizontally('ul[id^="menu-multimedia"]'); //spaces the links in the nav under the masthead
     console.log('Spacing mult nav bar');
     } else {
@@ -92,7 +93,7 @@
     var target = document.getElementById('main-theater');
     var spinner = new Spinner(opts).spin(target);
 
-    //mult_helper("multimedia");
+    mult_helper("multimedia");
     console.log('Content initialized.');
     // Click listeners for navbar 
     // On-click call mult_helper(with the relevant category);
@@ -112,10 +113,10 @@
         var slash;
         for (i = 0; i < path.length - 1 && (i = path.indexOf('/', i)) != lastSlash; i++ )
           slash = i;
-        //mult_helper(path.substr(slash + 1, lastSlash - slash - 1));
+        mult_helper(path.substr(slash + 1, lastSlash - slash - 1));
         console.log('Initializing content for: ' + path.substr(slash, lastSlash));
       } else {
-        //mult_helper(path.substr(lastSlash + 1));
+        mult_helper(path.substr(lastSlash + 1));
         console.log('Initialized content for: ' + path.substr(lastSlash));
       }
       window.history.pushState("object or string", "Title", "/ytv");
