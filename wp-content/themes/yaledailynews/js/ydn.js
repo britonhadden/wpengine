@@ -94,7 +94,7 @@
 
     mult_helper("multimedia", spinner);
 
-    console.log("Changed3");
+    console.log("Changed4");
     console.log('Content initialized.');
     // Click listeners for navbar 
     // On-click call mult_helper(with the relevant category);
