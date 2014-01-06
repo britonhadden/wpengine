@@ -94,7 +94,6 @@
 
     mult_helper("multimedia", spinner);
 
-    console.log("Changed4");
     console.log('Content initialized.');
     // Click listeners for navbar 
     // On-click call mult_helper(with the relevant category);
@@ -182,7 +181,7 @@
       type: "GET",
       url: "http://yaledailynews.com/" + query
     }).always(function (data) {
-      // try {
+      try {
         var json;
         if (data.responseText) {
           console.log('Response text parsing...');
@@ -254,10 +253,10 @@
             mult_insert_posts(parsed_posts);
           }
         }
-        // } catch(e) {
-        //   spinner.stop();
-        //   console.log("Error: could not pull posts for: " + category);
-        // } 
+        } catch(e) {
+          spinner.stop();
+          console.log("Error: could not pull posts for: " + category);
+        } 
     });
   }
 
