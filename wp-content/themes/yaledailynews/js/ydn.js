@@ -92,9 +92,9 @@
     var target = document.getElementById('main-theater');
     var spinner = new Spinner(opts).spin(target);
 
-    mult_helper("multimedia");
+    mult_helper("multimedia", spinner);
 
-    console.log("Changed2");
+    console.log("Changed3");
     console.log('Content initialized.');
     // Click listeners for navbar 
     // On-click call mult_helper(with the relevant category);
@@ -114,17 +114,17 @@
         var slash;
         for (i = 0; i < path.length - 1 && (i = path.indexOf('/', i)) != lastSlash; i++ )
           slash = i;
-        mult_helper(path.substr(slash + 1, lastSlash - slash - 1));
+        mult_helper(path.substr(slash + 1, lastSlash - slash - 1), spinner);
         console.log('Initializing content for: ' + path.substr(slash, lastSlash));
       } else {
-        mult_helper(path.substr(lastSlash + 1));
+        mult_helper(path.substr(lastSlash + 1), spinner);
         console.log('Initialized content for: ' + path.substr(lastSlash));
       }
       window.history.pushState("object or string", "Title", "/ytv");
     });
   }
 
-  function mult_insert_posts(posts) {
+  function mult_insert_posts(posts, spinner) {
       if(posts.length === 0) {
           console.log("No posts");
           return;
@@ -175,7 +175,7 @@
       spinner.stop();
   }
 
-  function mult_helper(category) {
+  function mult_helper(category, spinner) {
     var query;
     query = "?json=get_category_posts&count=21&post_type=video&category_slug=" + category;
     $.ajax({
