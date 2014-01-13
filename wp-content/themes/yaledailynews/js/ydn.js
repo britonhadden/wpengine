@@ -105,7 +105,7 @@
       }
       e.preventDefault();
       var lastSlash = path.lastIndexOf('/');
-      $('iframe').remove();
+      $('#video-player').remove();
       var spinner = new Spinner(opts).spin(target);
 
       if (path.indexOf('/') != path.length - 1) {
@@ -443,7 +443,7 @@
       var videoTitle = e.currentTarget.attributes.title.value;
       var videoExcerpt = $('p[data-videoid="' + videoId + '"]').html();
       $('#video-player').attr('src', 'http://www.youtube.com/embed/' + videoId);
-      $('iframe').attr('src', $('iframe').attr('src')); // Reloads iFrame
+      $('#video-player').attr('src', $('video-player').attr('src')); // Reloads iFrame
       $('#theatre-video-author').html('by ' + videoAuthor);
       $('#theatre-video-title').html('by ' + videoTitle);
       $('#theatre-video-excerpt').html(videoExcerpt);
