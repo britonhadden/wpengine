@@ -16,7 +16,7 @@
     
     <div class="double-border"></div>
 		<div class="pull-left"> 
-			<a href="/contact/">Contact Us</a> | <a href="/advertising/">Advertise</a> | <a href="/archives/">Archives</a> | <a href="/subscribe/">Subscribe</a> | <a href="http://yaledailynews.com/wp-login.php">Login</a></div>
+			<a href="/contact/">Contact Us</a> | <a href="/advertising/">Advertise</a> | <a href="/archives/">Archives</a> | <a href="http://subscribe.yaledailynews.com/">Subscribe</a> | <a href="http://yaledailynews.com/wp-login.php">Login</a></div>
 		<div id="footer" class="pull-right">
       &copy; <?php printf( date('Y') ); ?> Yale Daily News &bull; <a href="http://yaledailynews.com/rights-permissions/">All Rights Reserved</a>
 		</div><!-- .site-info -->
