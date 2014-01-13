@@ -173,7 +173,7 @@ if (!function_exists('ydn_widgets_init')):
       'name' => __( 'Bottom Advertisements', 'ydn' ),
       'id' => 'bottom-advertisements',
       'class' => 'sidebar-widgets',
-      'before_widget' => '<aside id="%1$s" class="widget %2$s" stlye = "border: none;">',
+      'before_widget' => '<aside id="%1$s" class="widget %2$s" style = "border: none;">',
       'after_widget' => "</aside>",
       'before_title' => '<h1 class="widget-title">',
       'after_title' => '</h1>',
