@@ -132,14 +132,21 @@ googletag.enableServices();
 </script>
 
 <!--Top of page small DFP-->
-
 <script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/1041068/Homepage_SmallAd', [217, 90], 'div-gpt-ad-1388877570738-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
+
+<!--<script type='text/javascript'>
 googletag.cmd.push(function() {
 googletag.defineSlot('/1041068/Top_of_page_small', [222, 90], 'div-gpt-ad-1378345467709-0').addService(googletag.pubads());
 googletag.pubads().enableSingleRequest();
 googletag.enableServices();
 });
-</script>
+</script>-->
 
 <!--Bottom Leaderboard Big DFP-->
 
