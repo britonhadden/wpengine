@@ -1,0 +1,189 @@
+/*
+Plugin Name: Vina Timeline Widget
+Plugin URI: http://VinaThemes.biz
+Description: This simple plugin helps you to give more life to the boring timelines.
+Version: 1.0
+Author: VinaThemes
+Author URI: http://VinaThemes.biz
+Author email: mr_hiennc@yahoo.com
+Demo URI: http://VinaDemo.biz
+Forum URI: http://VinaForum.biz
+License: GPLv3+
+*/
+
+#vina-timeline {
+	width: 800px;
+	height: 350px;
+	overflow: hidden;
+	margin: 100px auto;
+	position: relative;
+	background: url('../images/dot.gif') left 45px repeat-x #222222;
+}
+#vina-timeline a {
+	transition: all 0.5s ease 0s;
+	text-decoration: none;
+	outline: medium none;
+}
+#vina-dates {
+	width: 800px;
+	height: 60px;
+	overflow: hidden;
+}
+#vina-dates li {
+	background: url("../images/biggerdot.png") no-repeat scroll center bottom transparent;
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    list-style: none outside none;
+    margin: 0 !important;
+    text-align: center;
+    width: 100px;
+}
+#vina-dates a {
+	line-height: 38px;
+	padding-bottom: 10px;
+	text-decoration: none;
+	color: #FFFFCC;
+}
+#vina-dates a:hover,
+#vina-dates a:visited,
+#vina-dates a.selected {
+	outline: medium none;
+}
+#vina-dates a.selected {
+	font-size: 25px;
+	color: #FFCC00;
+}
+#vina-issues {
+	width: 800px;
+	height: 350px;
+	overflow: hidden;
+}	
+#vina-issues li {
+	float: left;
+    height: 350px;
+    list-style: none outside none;
+    margin: 0 !important;
+    width: 800px;
+}
+#vina-issues li h3 {
+	margin: 0 !important;
+	padding: 0 !important;
+	clear: none !important;
+	color: #FFCC00;
+    font-size: 25px;
+    margin: 20px 0;
+    text-shadow: 1px 1px 2px #000000;
+}
+#vina-issues li.selected img {
+	-webkit-transform: scale(1.1,1.1);
+	-moz-transform: scale(1.1,1.1);
+	-o-transform: scale(1.1,1.1);
+	-ms-transform: scale(1.1,1.1);
+	transform: scale(1.1,1.1);
+}
+#vina-issues li img {
+	float: left;
+	margin: 10px 30px 10px 50px;
+	background: transparent;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE 8 */   
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);/* IE 6 & 7 */      
+	zoom: 1;
+	-webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-o-transition: all 2s ease-in-out;
+	-ms-transition: all 2s ease-in-out; 
+	transition: all 2s ease-in-out;
+	-webkit-transform: scale(0.7,0.7);
+	-moz-transform: scale(0.7,0.7);
+	-o-transform: scale(0.7,0.7);
+	-ms-transform: scale(0.7,0.7);
+	transform: scale(0.7,0.7);
+}
+#vina-issues li h1 {
+	color: #ffcc00;
+	font-size: 48px;
+	margin: 20px 0;
+	text-shadow: #000 1px 1px 2px;
+}
+#vina-issues li p {
+	font-size: 14px;
+	margin-right: 20px;
+	font-weight: normal;
+	line-height: 22px;
+	text-shadow: #000 1px 1px 2px;
+	color: #FFFFFF;
+}	
+#vina-issues .no-image {
+	padding: 0 40px;
+}
+#vina-issues .has-image {
+	padding: 0 40px 0 0;
+}
+#vina-grad-left,
+#vina-grad-right {
+	width: 100px;
+	height: 350px;
+	position: absolute;
+	top: 0;
+}
+#vina-grad-left {
+	left: 0;
+	background: url('../images/grad_left.png') repeat-y;
+}
+#vina-grad-right {
+	right: 0;
+	background: url('../images/grad_right.png') repeat-y;
+}	
+#vina-next,
+#vina-prev {
+	position: absolute;
+	top: 0;
+	font-size: 70px;
+	top: 170px;
+	width: 22px;
+	height: 38px;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+#vina-next:hover,
+#vina-prev:hover {
+	background-position: 0 -76px;
+}
+#vina-next {
+	right: 0;
+	background-image: url('../images/next.png');
+}
+#vina-prev {
+	left: 0;
+	background-image: url('../images/prev.png');
+}
+#vina-next.disabled,
+#vina-prev.disabled {
+	opacity: 0.2;
+}
+#vina-timeline .buttonlight {
+	border-radius: 5px 5px 5px 5px;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+}
+#vina-timeline .buttonlight:link, 
+#vina-timeline .buttonlight:visited {
+    background: url("../images/btn-light.png") repeat-x scroll center top #999999;
+    border: 1px solid #CDCDCD;
+    color: #777777;
+    font-weight: bold;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #FFFFFF;
+}
+div#tcvn-copyright {
+	font-size: 12px;
+    height: 0;
+    overflow: hidden;
+}

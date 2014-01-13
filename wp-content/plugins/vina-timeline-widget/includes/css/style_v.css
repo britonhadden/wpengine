@@ -1,0 +1,176 @@
+/*
+Plugin Name: Vina Timeline Widget
+Plugin URI: http://VinaThemes.biz
+Description: This simple plugin helps you to give more life to the boring timelines.
+Version: 1.0
+Author: VinaThemes
+Author URI: http://VinaThemes.biz
+Author email: mr_hiennc@yahoo.com
+Demo URI: http://VinaDemo.biz
+Forum URI: http://VinaForum.biz
+License: GPLv3+
+*/
+#vina-timeline {
+	width: 500px;
+	height: 600px;
+	overflow: hidden;
+	margin: 40px auto;
+	position: relative;
+	background: url('../images/dot.gif') 3px top repeat-y #222222;
+}
+#vina-timeline a {
+	transition: all 0.5s ease 0s;
+	text-decoration: none;
+	outline: medium none;
+}
+#vina-dates {
+	width: 100px;
+	height: 600px;
+	overflow: hidden;
+	float: left;
+}
+#vina-dates li {
+	background: url("../images/biggerdot.png") no-repeat scroll left center transparent;
+    font-size: 18px;
+    height: 100px;
+    line-height: 100px;
+    list-style: none outside none;
+    margin: 0;
+    padding-left: 10px;
+    width: 100px;
+}
+#vina-dates a {
+	line-height: 38px;
+	padding-bottom: 10px;
+	color: #FFFFCC;
+}
+#vina-dates .selected {
+	font-size: 25px;
+	color: #FFCC00;
+}	
+#vina-issues {
+	width: 400px;
+	height: 600px;
+	overflow: hidden;
+	float: left;
+}	
+#vina-issues li {
+	height: 600px;
+    list-style: none outside none;
+    margin: 0;
+    width: 400px;
+}
+#vina-issues li.selected img {
+	-webkit-transform: scale(1.1,1.1);
+	-moz-transform: scale(1.1,1.1);
+	-o-transform: scale(1.1,1.1);
+	-ms-transform: scale(1.1,1.1);
+	transform: scale(1.1,1.1);
+}
+#vina-issues li img {
+	float: left;
+	margin: 60px 30px 10px 50px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE 8 */   
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);/* IE 6 & 7 */      
+	zoom: 1;
+	-webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-o-transition: all 2s ease-in-out;
+	-ms-transition: all 2s ease-in-out; 
+	transition: all 2s ease-in-out;
+	-webkit-transform: scale(0.7,0.7);
+	-moz-transform: scale(0.7,0.7);
+	-o-transform: scale(0.7,0.7);
+	-ms-transform: scale(0.7,0.7);
+	transform: scale(0.7,0.7);
+}
+#vina-issues li h3 {
+	margin: 0 !important;
+	padding: 10px 0 0 !important;
+	clear: both !important;
+	color: #FFCC00;
+    font-size: 25px;
+    text-shadow: 1px 1px 2px #000000;
+	text-align: center;
+}
+#vina-issues li p {
+	color: #FFFFFF;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 22px;
+    margin: 10px 20px;
+    text-shadow: 1
+}	
+#vina-grad-top,
+#vina-grad-bottom {
+	width: 500px;
+	height: 80px;
+	position: absolute;
+}
+#vina-grad-top {
+	top: 0;
+	background: url('../images/grad_top.png') repeat-x;
+}
+#vina-grad-bottom {
+	bottom: 0;
+	background: url('../images/grad_bottom.png') repeat-x;
+}
+		
+#vina-next,
+#vina-prev {
+	position: absolute;
+	left: 55%;
+	font-size: 70px;
+	width: 38px;
+	height: 22px;
+	background-position: 0 -44px;
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+#vina-next:hover,
+#vina-prev:hover {
+	background-position:  0 0;
+}
+#vina-next {
+	bottom: 0;
+	background-image: url('../images/next_v.png');
+}
+#vina-prev {
+	top: 0;
+	background-image: url('../images/prev_v.png');
+}
+#vina-next.disabled,
+#vina-prev.disabled {
+	opacity: 0.2;
+}
+#vina-timeline .buttonlight {
+	border-radius: 5px 5px 5px 5px;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+}
+#vina-timeline .buttonlight:link, 
+#vina-timeline .buttonlight:visited {
+    background: url("../images/btn-light.png") repeat-x scroll center top #999999;
+    border: 1px solid #CDCDCD;
+    color: #777777;
+    font-weight: bold;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #FFFFFF;
+}
+#vina-issues .no-image,
+#vina-issues .has-image {
+	text-align: center;
+}
+#vina-issues .no-image {
+	padding: 30px 0;
+}
+div#tcvn-copyright {
+	font-size: 12px;
+    height: 0;
+    overflow: hidden;
+}
