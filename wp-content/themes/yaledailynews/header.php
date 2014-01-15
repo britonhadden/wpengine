@@ -75,9 +75,11 @@ else {
  
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
+
 <!-- Google Analytics -->
 <script type="text/javascript">
 
@@ -92,105 +94,6 @@ else {
     })();
 
   </script>
-<!-- ComScore Analytics Script -->
-<script>
-  var _comscore = _comscore || [];
-  _comscore.push({ c1: "2", c2: "15882552" });
-  (function() {
-    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
-    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
-    el.parentNode.insertBefore(s, el);
-  })();
-</script>
-<noscript>
-  <img src="http://b.scorecardresearch.com/p?c1=2&c2=15882552&cv=2.0&cj=1" />
-</noscript>
-<!-- Google DFP -->
-
-<!--Lower Skyscraper DFP-->
-<script type='text/javascript'>
-var googletag = googletag || {};
-googletag.cmd = googletag.cmd || [];
-(function() {
-var gads = document.createElement('script');
-gads.async = true;
-gads.type = 'text/javascript';
-var useSSL = 'https:' == document.location.protocol;
-gads.src = (useSSL ? 'https:' : 'http:') + 
-'//www.googletagservices.com/tag/js/gpt.js';
-var node = document.getElementsByTagName('script')[0];
-node.parentNode.insertBefore(gads, node);
-})();
-</script>
-
-<script type='text/javascript'>
-googletag.cmd.push(function() {
-googletag.defineSlot('/1041068/YDN_Lower_Skyscraper', [160, 600], 'div-gpt-ad-1364346235312-0').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});
-</script>
-
-<!--Top of page small DFP-->
-<!--<script type='text/javascript'>
-googletag.cmd.push(function() {
-googletag.defineSlot('/1041068/Homepage_SmallAd', [217, 90], 'div-gpt-ad-1388877570738-0').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});
-</script>-->
-
-<script type='text/javascript'>
-googletag.cmd.push(function() {
-googletag.defineSlot('/1041068/Top_of_page_small', [222, 90], 'div-gpt-ad-1378345467709-0').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});
-</script>
-
-<!--Bottom Leaderboard Big DFP-->
-
-<script type='text/javascript'>
-googletag.cmd.push(function() {
-googletag.defineSlot('/1041068/BottomLeaderboard', [728, 90], 'div-gpt-ad-1385954277988-0').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});
-</script>
-
-<!--Bottom Leaderboard Small DFP-->
-
-<script type='text/javascript'>
-googletag.cmd.push(function() {
-googletag.defineSlot('/1041068/BottomSmall', [217, 90], 'div-gpt-ad-1385954381097-0').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});
-</script>
-
-<!-- Homepage leaderboard -->
-
-<script type='text/javascript'>
-googletag.cmd.push(function() {
-googletag.defineSlot('/1041068/YDN_Home_Leaderboard', [728, 90], 'div-gpt-ad-1365622060397-0').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});
-</script>
-
-<script type='text/javascript'>
-  (function() {
-    var cx = '005865341660642744177:4iw9nrk-rsi';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-
 
 <?php wp_head(); ?>
 
